@@ -19,6 +19,9 @@ gem 'uglifier'
 gem 'remotipart', github: 'mshibuya/remotipart'
 gem 'rails_admin', '>= 1.0.0.rc'
 
+#testing
+gem 'faker'
+
 group :development, :test do
   gem 'better_errors'
   gem 'binding_of_caller'
