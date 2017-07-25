@@ -1,6 +1,6 @@
 class ListingsController < ApplicationController
   before_action :set_listing, only: [:show, :edit, :update, :destroy]
-
+  before_action :authenticate_user!, only: [:create, :update, :destroy]
   # GET /listings
   # GET /listings.json
   def index
@@ -25,7 +25,7 @@ class ListingsController < ApplicationController
   # POST /listings.json
   def create
     @listing = Listing.new(listing_params)
-
+    @listing.user = current_user
     respond_to do |format|
       if @listing.save
         format.html { redirect_to @listing, notice: 'Listing was successfully created.' }
@@ -40,6 +40,7 @@ class ListingsController < ApplicationController
   # PATCH/PUT /listings/1
   # PATCH/PUT /listings/1.json
   def update
+    @listing.user = current_user
     respond_to do |format|
       if @listing.update(listing_params)
         format.html { redirect_to @listing, notice: 'Listing was successfully updated.' }
@@ -69,6 +70,6 @@ class ListingsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def listing_params
-      params.require(:listing).permit(:name, :description, :status, :owner_id, :user_id, :city, :street, :landmark, :phonenumber, :longtitude, :latitude)
+      params.require(:listing).permit(:name, :description, :status, :owner_id, :city, :street, :landmark, :phonenumber, :longtitude, :latitude)
     end
 end
