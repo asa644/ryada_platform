@@ -10,3 +10,6 @@ oppening hours and closing hours
 
 commands for building
 rails g scaffold listings name:string description:string status:integer owner:references user:references city:string street:string landmark:string phonenumber:string longtitude:float latitude:float
+
+rails g model Service name:string
+rails g model ServiceListing service:references listing:references
