@@ -4,5 +4,7 @@ class Listing < ApplicationRecord
   has_many :timings
   has_many :service_listing
   has_many :services, through: :service_listing
+  has_many :tag_listing
+  has_many :tags, through: :tag_listing
 
 end

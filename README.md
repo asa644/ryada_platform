@@ -13,3 +13,5 @@ rails g scaffold listings name:string description:string status:integer owner:re
 
 rails g model Service name:string
 rails g model ServiceListing service:references listing:references
+rails g model Tag name:string
+rails g model TagListing tag:references listing:references

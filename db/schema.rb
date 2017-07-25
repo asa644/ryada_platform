@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170725122743) do
+ActiveRecord::Schema.define(version: 20170725124326) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -48,6 +48,21 @@ ActiveRecord::Schema.define(version: 20170725122743) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "tag_listings", force: :cascade do |t|
+    t.bigint "tag_id"
+    t.bigint "listing_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["listing_id"], name: "index_tag_listings_on_listing_id"
+    t.index ["tag_id"], name: "index_tag_listings_on_tag_id"
+  end
+
+  create_table "tags", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "timings", force: :cascade do |t|
     t.string "day"
     t.time "start_time"
@@ -79,5 +94,7 @@ ActiveRecord::Schema.define(version: 20170725122743) do
 
   add_foreign_key "service_listings", "listings"
   add_foreign_key "service_listings", "services"
+  add_foreign_key "tag_listings", "listings"
+  add_foreign_key "tag_listings", "tags"
   add_foreign_key "timings", "listings"
 end
