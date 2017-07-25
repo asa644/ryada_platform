@@ -6,5 +6,7 @@ class Listing < ApplicationRecord
   has_many :services, through: :service_listing
   has_many :tag_listing
   has_many :tags, through: :tag_listing
+  has_many :category_listing
+  has_many :categories, through: :category_listing
 
 end
