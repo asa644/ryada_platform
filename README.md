@@ -15,3 +15,5 @@ rails g model Service name:string
 rails g model ServiceListing service:references listing:references
 rails g model Tag name:string
 rails g model TagListing tag:references listing:references
+rails g model Category name:string
+rails g model CategoryListing Category:references listing:references

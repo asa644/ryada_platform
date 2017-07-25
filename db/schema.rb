@@ -10,10 +10,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170725124326) do
+ActiveRecord::Schema.define(version: 20170725125320) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "categories", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "category_listings", force: :cascade do |t|
+    t.bigint "category_id"
+    t.bigint "listing_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["category_id"], name: "index_category_listings_on_category_id"
+    t.index ["listing_id"], name: "index_category_listings_on_listing_id"
+  end
 
   create_table "listings", force: :cascade do |t|
     t.string "name"
@@ -92,6 +107,8 @@ ActiveRecord::Schema.define(version: 20170725124326) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "category_listings", "categories"
+  add_foreign_key "category_listings", "listings"
   add_foreign_key "service_listings", "listings"
   add_foreign_key "service_listings", "services"
   add_foreign_key "tag_listings", "listings"
