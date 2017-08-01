@@ -1,0 +1,10 @@
+<% @listings.each do |listing| %>
+<h2>
+
+  <small>by <%=listing.name%></small>
+</h2>
+<%= link_to listing, class: "btn btn-primary" do %>
+  Read More
+  <i class="glyphicon glyphicon-chevron-right"></i>
+<% end %>
+<%end%>

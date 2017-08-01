@@ -12,6 +12,9 @@ class ListingsController < ApplicationController
   def show
   end
 
+  def search
+    @listings = Listing.algolia_search(params[:search])
+  end
   # GET /listings/new
   def new
     @listing = Listing.new

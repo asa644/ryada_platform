@@ -19,6 +19,9 @@ gem 'uglifier'
 gem 'remotipart', github: 'mshibuya/remotipart'
 gem 'rails_admin', '>= 1.0.0.rc'
 
+
+#search
+gem 'algoliasearch-rails'
 #testing
 gem 'faker'
 

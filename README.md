@@ -17,3 +17,16 @@ rails g model Tag name:string
 rails g model TagListing tag:references listing:references
 rails g model Category name:string
 rails g model CategoryListing Category:references listing:references
+
+
+
+
+
+
+
+
+TODO for later:
+
+Heatmap.js
+
+validation, what did we do in sprints,
