@@ -13,8 +13,7 @@ class Listing < ApplicationRecord
   # algoliasearch do
   #   # :name, categories: [:name]
   # end
-  algoliasearch do
-    # add_attribute :profile_licenses
-    # add_attribute :profile_specialties
+  algoliasearch per_environment: true, :disable_indexing => Rails.env.test? do
+    attribute :name
   end
 end

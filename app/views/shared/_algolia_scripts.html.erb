@@ -1,0 +1,52 @@
+  <script src="https://cdn.jsdelivr.net/algoliasearch/3/algoliasearch.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/hogan.js/3.0/hogan.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/autocomplete.js/0/autocomplete.min.js"></script>
+  <script>
+    var client = algoliasearch("V1R3LGMWAY", "44dd99316898c140ac50ba7f4f582f44");
+    var listings = client.initIndex('Listing');
+    var categories = client.initIndex('Category');
+
+  // Mustache templating by Hogan.js (http://mustache.github.io/)
+  var templateDropdown = Hogan.compile(
+    '<div class="container">' +
+    '<a href="http://localhost:3000/listings/{{ id }}"><div class="aa-dataset-project">' +
+    '{{{ _highlightResult.name.value }}} {{{ _highlightResult.id.value }}}'+
+    '</div></a>' +
+    '</div>');
+    var templateDropdown2 = Hogan.compile(
+    '<div class="container">' +
+    '<a href="http://localhost:3000/categories/{{ id }}"><div class="aa-dataset-project">' +
+    '{{{ _highlightResult.name.value }}} {{{ _highlightResult.id.value }}}'+
+    '</div></a>' +
+    '</div>');
+
+  // autocomplete.js initialization
+  autocomplete('#demo-search', {hint: false}, [
+  {
+    source: autocomplete.sources.hits(listings, {hitsPerPage: 3}),
+    templates: {
+      header: '<div class="category"><div style="width:50%; text-align:left; display:inline-block;">Listings</div><div style="width:50%; text-align:right; display:inline-block;"><img src="locahlhost:3000/assets/algolia.png" height="20"/></div></div>',
+      suggestion: function(hit) {
+          // render the hit using Hogan.js
+          return templateDropdown.render(hit);
+        }
+      }
+    },
+    {
+      source: autocomplete.sources.hits(categories, {hitsPerPage: 5}),
+      templates: {
+        header: '<div class="category"><div style="width:50%; text-align:left; display:inline-block;">Categories</div><div style="width:50%; text-align:right; display:inline-block;"><img src="locahlhost:3000/assets/algolia.png" height="20"/></div></div>',
+        suggestion: function(hit) {
+          // render the hit using Hogan.js
+          return templateDropdown2.render(hit);
+        }
+      }
+    }
+
+    ]).on('autocomplete:selected', function(event, suggestion, dataset) {
+      console.log(suggestion, dataset);
+    });
+  </script>
+
+
+
