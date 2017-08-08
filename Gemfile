@@ -25,6 +25,9 @@ gem 'algoliasearch-rails'
 #testing
 gem 'faker'
 
+#rating
+gem 'ratyrate'
+
 group :development, :test do
   gem 'better_errors'
   gem 'binding_of_caller'

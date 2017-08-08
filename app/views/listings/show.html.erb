@@ -44,6 +44,25 @@
   <strong>Latitude:</strong>
   <%= @listing.latitude %>
 </p>
+<div class="row">
+  <div class="small-2 large-2 columns">
+      <%= imdb_style_rating_for @listing, current_user%>
+  </div>
+  <br>
+  <div class="small-2 large-4 columns">
+    <% if current_user%>
+      Visual Effects: <%= rating_for @listing, "listing" %>
+    <% end %>
+  </div>
+</div>
 
+<h4>Leave a review:</h4>
+<%= simple_form_for [@listing, @review] do |f| %>
+    <%= f.input :description,:input_html => { :wrap => :soft, :rows => 3}, label: false%>
+    <%= f.submit "Submit", class:"btn btn-primary"%>
+<% end %>
+<% @listing.reviews.each do |c| %>
+  <p><%= c.description %> </p>
+<% end %>
 <%= link_to 'Edit', edit_listing_path(@listing) %> |
 <%= link_to 'Back', listings_path %>

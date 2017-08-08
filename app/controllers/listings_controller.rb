@@ -10,6 +10,8 @@ class ListingsController < ApplicationController
   # GET /listings/1
   # GET /listings/1.json
   def show
+    @review = Review.new
+    @rates = Rate.where(rateable: @listing)
   end
 
   def search

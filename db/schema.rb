@@ -10,10 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170725125320) do
+ActiveRecord::Schema.define(version: 20170808110749) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "average_caches", force: :cascade do |t|
+    t.bigint "rater_id"
+    t.string "rateable_type"
+    t.bigint "rateable_id"
+    t.float "avg", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["rateable_type", "rateable_id"], name: "index_average_caches_on_rateable_type_and_rateable_id"
+    t.index ["rater_id"], name: "index_average_caches_on_rater_id"
+  end
 
   create_table "categories", force: :cascade do |t|
     t.string "name"
@@ -46,6 +57,62 @@ ActiveRecord::Schema.define(version: 20170725125320) do
     t.datetime "updated_at", null: false
     t.index ["owner_id"], name: "index_listings_on_owner_id"
     t.index ["user_id"], name: "index_listings_on_user_id"
+  end
+
+  create_table "overall_averages", force: :cascade do |t|
+    t.string "rateable_type"
+    t.bigint "rateable_id"
+    t.float "overall_avg", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["rateable_type", "rateable_id"], name: "index_overall_averages_on_rateable_type_and_rateable_id"
+  end
+
+  create_table "rates", force: :cascade do |t|
+    t.bigint "rater_id"
+    t.string "rateable_type"
+    t.bigint "rateable_id"
+    t.float "stars", null: false
+    t.string "dimension"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.text "comment"
+    t.index ["rateable_id", "rateable_type"], name: "index_rates_on_rateable_id_and_rateable_type"
+    t.index ["rateable_type", "rateable_id"], name: "index_rates_on_rateable_type_and_rateable_id"
+    t.index ["rater_id"], name: "index_rates_on_rater_id"
+  end
+
+  create_table "rating_caches", force: :cascade do |t|
+    t.string "cacheable_type"
+    t.bigint "cacheable_id"
+    t.float "avg", null: false
+    t.integer "qty", null: false
+    t.string "dimension"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["cacheable_id", "cacheable_type"], name: "index_rating_caches_on_cacheable_id_and_cacheable_type"
+    t.index ["cacheable_type", "cacheable_id"], name: "index_rating_caches_on_cacheable_type_and_cacheable_id"
+  end
+
+  create_table "responds", force: :cascade do |t|
+    t.text "description"
+    t.bigint "review_id"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["review_id"], name: "index_responds_on_review_id"
+    t.index ["user_id"], name: "index_responds_on_user_id"
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.integer "star"
+    t.text "description"
+    t.bigint "listing_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "user_id"
+    t.index ["listing_id"], name: "index_reviews_on_listing_id"
+    t.index ["user_id"], name: "index_reviews_on_user_id"
   end
 
   create_table "service_listings", force: :cascade do |t|
@@ -109,6 +176,10 @@ ActiveRecord::Schema.define(version: 20170725125320) do
 
   add_foreign_key "category_listings", "categories"
   add_foreign_key "category_listings", "listings"
+  add_foreign_key "responds", "reviews"
+  add_foreign_key "responds", "users"
+  add_foreign_key "reviews", "listings"
+  add_foreign_key "reviews", "users"
   add_foreign_key "service_listings", "listings"
   add_foreign_key "service_listings", "services"
   add_foreign_key "tag_listings", "listings"
