@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
-  resources :listings
+  resources :listings do
+    resources :reviews, only: [:create]
+  end
   resources :categories
 
   devise_for :users
