@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   resources :listings do
-    resources :reviews, only: [:create]
+    resources :reviews, only: [:create] do
+      resources :responds, only: [:create]
+    end
   end
   resources :categories
 

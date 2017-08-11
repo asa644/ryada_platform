@@ -11,6 +11,7 @@ class ListingsController < ApplicationController
   # GET /listings/1.json
   def show
     @review = Review.new
+    @respond = Respond.new
   end
 
   def search

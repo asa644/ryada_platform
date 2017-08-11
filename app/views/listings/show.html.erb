@@ -45,10 +45,24 @@
 </p>
 <%= simple_form_for [@listing, @review] do |f| %>
   <label for="input-1" class="control-label">Rate This</label>
-<%= f.input :rating, :input_html => { class: 'rating rating-loading', id: 'input-1', :data => {:min => '0', max: '5', step: '1'} }%>
+  <%= f.input :rating, :input_html => { class: 'rating rating-loading', id: 'input-1', :data => {:min => '0', max: '5', step: '1'} }%>
     <%= f.input :description,:input_html => { :wrap => :soft, :rows => 3}, label: false%>
     <%= f.submit "Submit", class:"btn btn-primary"%>
 <% end %>
+<% @listing.reviews.each do |review| %>
+  <%= review.description %>
+   <% unless review.nil? %>
+    <%= simple_form_for [@listing, review, @respond] do |f| %>
+      <%= f.input :content,:input_html => { :wrap => :soft, :rows => 3}, label: false%>
+      <%= f.submit "Submit", class:"btn btn-primary"%>
 
+    <% end %>
+  <% end %>
+  <% unless review.responds.empty? %>
+    <% review.responds.each do |respond|  %>
+      <%= respond.content %>
+    <% end %>
+  <% end %>
+<% end%>
 <%= link_to 'Edit', edit_listing_path(@listing) %> |
 <%= link_to 'Back', listings_path %>
