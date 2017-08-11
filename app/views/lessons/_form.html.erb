@@ -1,0 +1,20 @@
+<%= simple_form_for(@lesson) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :name %>
+    <%= f.input :description %>
+    <%= f.input :city %>
+    <%= f.input :street %>
+    <%= f.input :landmark %>
+    <%= f.input :phonenumber %>
+    <%= f.input :longtitude %>
+    <%= f.input :latitude %>
+    <%= f.association :user %>
+    <%= f.association :listing %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

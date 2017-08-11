@@ -20,7 +20,7 @@ rails g model CategoryListing Category:references listing:references
 
 
 
-rails g scaffold classes name:string description:string   city:string street:string landmark:string phonenumber:string longtitude:float latitude:float user:references listing:references
+rails g scaffold lessons name:string description:string   city:string street:string landmark:string phonenumber:string longtitude:float latitude:float user:references listing:references
 
 
 
