@@ -1,5 +1,5 @@
 # This migration comes from kms (originally 20141209132901)
-class AddHiddenToPage < ActiveRecord::Migration[4.2]
+class AddHiddenToPage < ActiveRecord::Migration[5.1]
   def change
     add_column :kms_pages, :hidden, :boolean, default: false
   end

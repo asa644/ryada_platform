@@ -4,7 +4,7 @@ require 'dragonfly'
 Dragonfly.app.configure do
   plugin :imagemagick
 
-  secret 'f28af137ed5eaea0584a5c7d891fc7f6fd4e1325ea9c7858d744ba48801d43df'
+  secret '699c51eb2d652eeedca74def5ccfb67a6c34783d5211b448f51cab6557581082'
 
   url_format "/media/:job/:name"
 

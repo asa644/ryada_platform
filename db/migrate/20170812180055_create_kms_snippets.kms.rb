@@ -1,5 +1,5 @@
 # This migration comes from kms (originally 20160129100437)
-class CreateKmsSnippets < ActiveRecord::Migration[4.2]
+class CreateKmsSnippets < ActiveRecord::Migration[5.1]
   def change
     create_table :kms_snippets do |t|
       t.string :name
