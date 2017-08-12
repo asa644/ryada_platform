@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170809220703) do
+ActiveRecord::Schema.define(version: 20170812105732) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,6 +28,50 @@ ActiveRecord::Schema.define(version: 20170809220703) do
     t.datetime "updated_at", null: false
     t.index ["category_id"], name: "index_category_listings_on_category_id"
     t.index ["listing_id"], name: "index_category_listings_on_listing_id"
+  end
+
+  create_table "kms_assets", id: :serial, force: :cascade do |t|
+    t.string "file"
+    t.string "content_type"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "kms_pages", id: :serial, force: :cascade do |t|
+    t.string "title"
+    t.string "slug"
+    t.text "content", default: ""
+    t.boolean "published"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "template_id"
+    t.string "ancestry"
+    t.string "fullpath"
+    t.index ["ancestry"], name: "index_kms_pages_on_ancestry"
+  end
+
+  create_table "kms_templates", id: :serial, force: :cascade do |t|
+    t.string "name"
+    t.text "content", default: ""
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "lessons", force: :cascade do |t|
+    t.string "name"
+    t.string "description"
+    t.string "city"
+    t.string "street"
+    t.string "landmark"
+    t.string "phonenumber"
+    t.float "longtitude"
+    t.float "latitude"
+    t.bigint "user_id"
+    t.bigint "listing_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["listing_id"], name: "index_lessons_on_listing_id"
+    t.index ["user_id"], name: "index_lessons_on_user_id"
   end
 
   create_table "listings", force: :cascade do |t|
@@ -130,6 +174,8 @@ ActiveRecord::Schema.define(version: 20170809220703) do
 
   add_foreign_key "category_listings", "categories"
   add_foreign_key "category_listings", "listings"
+  add_foreign_key "lessons", "listings"
+  add_foreign_key "lessons", "users"
   add_foreign_key "responds", "reviews"
   add_foreign_key "responds", "users"
   add_foreign_key "reviews", "listings"
