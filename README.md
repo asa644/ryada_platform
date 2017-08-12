@@ -32,3 +32,5 @@ Heatmap.js
 
 validation, what did we do in sprints,
 rails g model Respond content:text user:references review:references
+
+starting a branch
