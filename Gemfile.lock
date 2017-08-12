@@ -4,26 +4,6 @@ GIT
   specs:
     remotipart (1.3.1)
 
-GIT
-  remote: git://github.com/webgradus/kms.git
-  revision: 4bc0cb33b07477b75057f9fda95a84c941c2838e
-  specs:
-    kms (1.0.1)
-      active_model_serializers
-      ancestry
-      angular-rails-templates (~> 1.0.0)
-      cancancan (~> 2.0.0)
-      carrierwave (~> 1.1.0)
-      devise
-      dragonfly (~> 1.1.3)
-      fog-aws
-      liquor
-      pg
-      rails (>= 5.0.0)
-      russian
-      slim-rails
-      textacular (~> 5.0.0)
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -71,11 +51,11 @@ GEM
       tzinfo (~> 1.1)
     addressable (2.5.1)
       public_suffix (~> 2.0, >= 2.0.2)
-    algoliasearch (1.12.7)
+    algoliasearch (1.14.0)
       httpclient (~> 2.8.3)
       json (>= 1.5.1)
-    algoliasearch-rails (1.19.1)
-      algoliasearch (~> 1.12.4)
+    algoliasearch-rails (1.20.1)
+      algoliasearch (~> 1.14.0)
       json (>= 1.5.1)
     ancestry (3.0.1)
       activerecord (>= 3.2.0)
@@ -84,12 +64,12 @@ GEM
       sprockets (>= 3.0, < 5)
       tilt
     arel (8.0.0)
-    autoprefixer-rails (7.1.2.3)
+    autoprefixer-rails (7.1.2.4)
       execjs
     bcrypt (3.1.11)
-    better_errors (2.1.1)
+    better_errors (2.3.0)
       coderay (>= 1.0.0)
-      erubis (>= 2.6.6)
+      erubi (>= 1.0.0)
       rack (>= 0.9.0)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
@@ -126,7 +106,6 @@ GEM
       multi_json (~> 1.0)
       rack (>= 1.3)
     erubi (1.6.1)
-    erubis (2.7.0)
     excon (0.58.0)
     execjs (2.7.0)
     faker (1.8.4)
@@ -156,7 +135,7 @@ GEM
     formatador (0.2.5)
     globalid (0.4.0)
       activesupport (>= 4.2.0)
-    haml (5.0.1)
+    haml (5.0.2)
       temple (>= 0.8.0)
       tilt
     httpclient (2.8.3)
@@ -185,6 +164,21 @@ GEM
       activerecord
       kaminari-core (= 1.0.1)
     kaminari-core (1.0.1)
+    kms (1.0.1)
+      active_model_serializers
+      ancestry
+      angular-rails-templates (~> 1.0.0)
+      cancancan (~> 2.0.0)
+      carrierwave (~> 1.1.0)
+      devise
+      dragonfly (~> 1.1.3)
+      fog-aws
+      liquor
+      pg
+      rails (>= 5.0.0)
+      russian
+      slim-rails
+      textacular (~> 5.0.0)
     liquor (1.0.0)
     listen (3.0.8)
       rb-fsevent (~> 0.9, >= 0.9.4)
@@ -334,7 +328,7 @@ DEPENDENCIES
   font-awesome-sass
   jbuilder (~> 2.0)
   jquery-rails
-  kms!
+  kms
   listen (~> 3.0.5)
   pg
   pry-byebug

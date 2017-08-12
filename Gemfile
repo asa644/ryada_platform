@@ -20,7 +20,7 @@ gem 'remotipart', github: 'mshibuya/remotipart'
 gem 'rails_admin', '>= 1.0.0.rc'
 
 #content management system
-gem "kms", github: "webgradus/kms"
+gem "kms"
 
 #search
 gem 'algoliasearch-rails'
