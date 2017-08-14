@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170812105732) do
+ActiveRecord::Schema.define(version: 20170813131147) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,14 +30,14 @@ ActiveRecord::Schema.define(version: 20170812105732) do
     t.index ["listing_id"], name: "index_category_listings_on_listing_id"
   end
 
-  create_table "kms_assets", id: :serial, force: :cascade do |t|
+  create_table "kms_assets", force: :cascade do |t|
     t.string "file"
     t.string "content_type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "kms_pages", id: :serial, force: :cascade do |t|
+  create_table "kms_pages", force: :cascade do |t|
     t.string "title"
     t.string "slug"
     t.text "content", default: ""
@@ -47,10 +47,28 @@ ActiveRecord::Schema.define(version: 20170812105732) do
     t.integer "template_id"
     t.string "ancestry"
     t.string "fullpath"
+    t.boolean "templatable", default: false
+    t.string "templatable_type"
+    t.boolean "hidden", default: false
+    t.integer "position", default: 0, null: false
     t.index ["ancestry"], name: "index_kms_pages_on_ancestry"
   end
 
-  create_table "kms_templates", id: :serial, force: :cascade do |t|
+  create_table "kms_settings", force: :cascade do |t|
+    t.json "values", default: {}
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "kms_snippets", force: :cascade do |t|
+    t.string "name"
+    t.string "slug"
+    t.text "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "kms_templates", force: :cascade do |t|
     t.string "name"
     t.text "content", default: ""
     t.datetime "created_at", null: false
@@ -168,6 +186,7 @@ ActiveRecord::Schema.define(version: 20170812105732) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "admin", default: false, null: false
+    t.string "role"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

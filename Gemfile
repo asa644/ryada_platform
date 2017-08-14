@@ -19,7 +19,11 @@ gem 'uglifier'
 gem 'remotipart', github: 'mshibuya/remotipart'
 gem 'rails_admin', '>= 1.0.0.rc'
 
+#coffee rails
+gem 'coffee-rails'
 
+# content management system
+gem 'kms'
 #search
 gem 'algoliasearch-rails'
 #testing

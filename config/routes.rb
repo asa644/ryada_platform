@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+
+  mount Kms::Engine => '/kms', as: 'kms'
   resources :lessons
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   resources :listings do
