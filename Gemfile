@@ -13,11 +13,16 @@ gem 'autoprefixer-rails'
 gem 'bootstrap-sass'
 gem 'font-awesome-sass'
 gem 'jquery-rails'
-gem 'sass-rails'
+gem 'draper'
+gem 'sass-rails', '~> 5.0'
 gem 'simple_form'
 gem 'uglifier'
 gem 'remotipart', github: 'mshibuya/remotipart'
-gem 'rails_admin', '>= 1.0.0.rc'
+gem 'rails_admin'
+
+
+# content management system
+gem "camaleon_cms"
 
 
 #search
@@ -34,3 +39,8 @@ group :development, :test do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
 end
+
+
+#################### Camaleon CMS include all gems for plugins and themes ####################
+require './lib/plugin_routes'
+instance_eval(PluginRoutes.draw_gems)

@@ -3,9 +3,10 @@
 #
 # Examples:
 #
+
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
-User.create!(email: 'ahmad.msouti@hotmail.com', password: 'ahmad.93', password_confirmation: 'ahmad.93', admin: true)
+
+User.create!(email: 'admin@local.com', username: 'admin', password: 'admin123', password_confirmation: 'admin123', first_name: 'Administrator', admin: true)
 Category.destroy_all
 category1 = Category.create!(name: 'Seasonal')
 category2 = Category.create!(name: 'Fitness')
