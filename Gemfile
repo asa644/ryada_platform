@@ -6,7 +6,7 @@ gem 'figaro'
 gem 'jbuilder', '~> 2.0'
 gem 'pg'
 gem 'puma'
-gem 'rails', '5.1.2'
+gem 'rails'
 gem 'redis'
 
 gem 'autoprefixer-rails'
@@ -19,7 +19,7 @@ gem 'uglifier'
 gem 'remotipart', github: 'mshibuya/remotipart'
 gem 'rails_admin', '>= 1.0.0.rc'
 
-
+ gem 'refinerycms', '~> 3.0.0'
 #search
 gem 'algoliasearch-rails'
 #testing
