@@ -19,6 +19,9 @@ gem 'uglifier'
 gem 'remotipart', github: 'mshibuya/remotipart'
 gem 'rails_admin', '>= 1.0.0.rc'
 
+#cms
+gem 'spina'
+
 
 #search
 gem 'algoliasearch-rails'

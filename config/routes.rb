@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
+  mount Spina::Engine => '/'
   resources :lessons
-  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
+  # mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   resources :listings do
     resources :reviews, only: [:create] do
       resources :responds, only: [:create]
