@@ -1,64 +1,301 @@
-<nav class="navbar navbar-default navbar-static-top">
-    <div class="container">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false">
-                 <span class="icon-bar-1"></span>
-                 <span class="icon-bar-2"></span>
-                 <span class="icon-bar-3"></span>
-                 <span class="icon-bar-4"></span>
-            </button>
-            <a class="page-scroll navbar-brand" href="#page-top"></a>
+    <!-- header -->
+    <header>
+        <div class="container">
+            <div class="headline">
+                <h1>ryada</h1>
+                <h1>Your way to discover sports.</h1>
+            </div>
+            <div class="search-bar">
+                <form>
+                    <input type="text" name="location" placeholder="Enter your location">
+                    <input type="text" name="search" placeholder="Search for fitness studios or facilities...">
+                    <input type="submit" value="Search">
+                </form>
+            </div>
         </div>
+    </header>
+    <!-- end of header -->
 
-        <div class="collapse navbar-collapse" id="navbar-collapse">
-            <ul class="nav navbar-nav navbar-right">
-                <li><a class="page-scroll" href="#features-list">Add a place</a></li>
-                <li><a class="page-scroll" href="#business">Contact</a></li>
-                <li><a class="page-scroll" href="#faq">FAQ</a></li>
-                <li><a class="page-scroll" href="#newsletter">Sign Up</a></li>
-                <li><a class="page-scroll" href="#team">Log in</a></li>
-            </ul>
+    <!-- categories -->
+    <!-- these will be fetched from the database,
+         sorted according to calculated popularity
+         then plugged-in using the follow format -->
+    <nav class="categories">
+        <ul>
+            <li><a class="selected" href="#">FOR YOU</a>
+            </li>
+            <li><a href="#">INDIVIDUAL</a>
+            </li>
+            <li><a href="#">GROUP</a>
+            </li>
+            <li><a href="#">FITNESS</a>
+            </li>
+            <li><a href="#">SEASONAL</a>
+            </li>
+            <li><a href="#">WELLBEING</a>
+            </li>
+            <li><a href="#">STORES</a>
+            </li>
+            <li><a href="#">CLASSES</a>
+            </li>
+            <li><a href="#">EVENTS</a>
+            </li>
+            <li><a href="#">LEISURE</a>
+            </li>
+            <li><a href="#">OUTDOORS</a>
+            </li>
+        </ul>
+    </nav>
+    <!-- end of categories -->
+
+    <!-- promoted -->
+    <section id="promoted">
+        <div class="container">
+            <h2>Places we love</h2>
+            <div class="row">
+                <a class="col-md-4 col-xs-12" href="#">
+                    <div class="card-lg">
+                        <img src="http://via.placeholder.com/350x150" alt="">
+                        <p class="card-title">Fitness Zone</p>
+                        <p class="card-category">Fitness Center</p>
+                    </div>
+                </a>
+                <a class="col-md-4 col-xs-12" href="#">
+                    <div class="card-lg">
+                        <img src="http://via.placeholder.com/350x150" alt="">
+                        <p class="card-title">Fitness Zone</p>
+                        <p class="card-category">Fitness Center</p>
+                    </div>
+                </a>
+                <a class="col-md-4 col-xs-12" href="#">
+                    <div class="card-lg">
+                        <img src="http://via.placeholder.com/350x150" alt="">
+                        <p class="card-title">Fitness Zone</p>
+                        <p class="card-category">Fitness Center</p>
+                    </div>
+                </a>
+            </div>
         </div>
-    </div>
-</nav>
-<section id="slider" style="padding-bottom: 335px">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="block">
-                            <div class="slider-text-area text-center">
-                                <div class="slider-text">
-                                    <%#= link_to "Check All Parking Spots", parking_spots_path %>
-                                    <p class="sub-slider-text" style="padding-bottom:20px">Find your perfect training spot</p>
+    </section>
+    <!-- end of promoted -->
 
+    <!-- featured -->
+    <section id="featured">
+        <div class="container">
+            <h2>Browse</h2>
+            <a href="#">See all</a>
+            <hr>
+            <div class="row">
+                <div class="col-md-2 col-xs-6">
+                    <div class="card-sm">
+                        <img src="http://via.placeholder.com/150x150" alt="">
+                        <p class="card-title">Fitness Zone</p>
+                        <p class="card-category">Fitness Center</p>
+                    </div>
+                </div>
+                <div class="col-md-2 col-xs-6">
+                    <div class="card-sm">
+                        <img src="http://via.placeholder.com/150x150" alt="">
+                        <p class="card-title">Fitness Zone</p>
+                        <p class="card-category">Fitness Center</p>
+                    </div>
+                </div>
+                <div class="col-md-2 col-xs-6">
+                    <div class="card-sm">
+                        <img src="http://via.placeholder.com/150x150" alt="">
+                        <p class="card-title">Fitness Zone</p>
+                        <p class="card-category">Fitness Center</p>
+                    </div>
+                </div>
+                <div class="col-md-2 col-xs-6">
+                    <div class="card-sm">
+                        <img src="http://via.placeholder.com/150x150" alt="">
+                        <p class="card-title">Fitness Zone</p>
+                        <p class="card-category">Fitness Center</p>
+                    </div>
+                </div>
+                <div class="col-md-2 col-xs-6">
+                    <div class="card-sm">
+                        <img src="http://via.placeholder.com/150x150" alt="">
+                        <p class="card-title">Fitness Zone</p>
+                        <p class="card-category">Fitness Center</p>
+                    </div>
+                </div>
+                <div class="col-md-2 col-xs-6">
+                    <div class="card-sm">
+                        <img src="http://via.placeholder.com/150x150" alt="">
+                        <p class="card-title">Fitness Zone</p>
+                        <p class="card-category">Fitness Center</p>
+                    </div>
+                </div>
+            </div>
 
-                                    <form action='/search' id='form_container' class='form-inline'>
-                                      <div class='form-group'>
-                                        <label for='search'><label>
-                                        <input id="search_box" type='text' name='search' class='form-control' placeholder= 'Where to train?'>
-                                        <input class="btn btn-success" type='submit' value='Search' id="searchhhdd" >
-                                      </div>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                    </div><!-- .col-md-12 close -->
-                </div><!-- .row close -->
-            </div><!-- .container close -->
-        </section><!-- #slider close -->
+            <!-- not visible on mobile -->
+            <div class="row">
+                <div class="col-md-2 col-xs-6">
+                    <div class="card-sm">
+                        <img src="http://via.placeholder.com/150x150" alt="">
+                        <p class="card-title">Fitness Zone</p>
+                        <p class="card-category">Fitness Center</p>
+                    </div>
+                </div>
+                <div class="col-md-2 col-xs-6">
+                    <div class="card-sm">
+                        <img src="http://via.placeholder.com/150x150" alt="">
+                        <p class="card-title">Fitness Zone</p>
+                        <p class="card-category">Fitness Center</p>
+                    </div>
+                </div>
+                <div class="col-md-2 col-xs-6">
+                    <div class="card-sm">
+                        <img src="http://via.placeholder.com/150x150" alt="">
+                        <p class="card-title">Fitness Zone</p>
+                        <p class="card-category">Fitness Center</p>
+                    </div>
+                </div>
+                <div class="col-md-2 col-xs-6">
+                    <div class="card-sm">
+                        <img src="http://via.placeholder.com/150x150" alt="">
+                        <p class="card-title">Fitness Zone</p>
+                        <p class="card-category">Fitness Center</p>
+                    </div>
+                </div>
+                <div class="col-md-2 col-xs-6">
+                    <div class="card-sm">
+                        <img src="http://via.placeholder.com/150x150" alt="">
+                        <p class="card-title">Fitness Zone</p>
+                        <p class="card-category">Fitness Center</p>
+                    </div>
+                </div>
+                <div class="col-md-2 col-xs-6">
+                    <div class="card-sm">
+                        <img src="http://via.placeholder.com/150x150" alt="">
+                        <p class="card-title">Fitness Zone</p>
+                        <p class="card-category">Fitness Center</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- end of featured -->
+
+    <!-- by location -->
+    <section id="by-location">
+        <div class="container">
+            <h2>Discover by location</h2>
+            <hr>
+            <div class="row">
+                <div class="col-md-4">
+                    <ul>
+                        <li><a href="#">Ashrafieh (361 places)</a>
+                        </li>
+                        <li><a href="#">Hamra (287 places)</a>
+                        </li>
+                        <li><a href="#">Mar Mikhael (133 places)</a>
+                        </li>
+                        <li><a href="#">Dbayeh (134 places)</a>
+                        </li>
+                        <li><a href="#">Jounieh (171 places)</a>
+                        </li>
+                        <li><a href="#">Jbeil (212 places)</a>
+                        </li>
+                        <li><a href="#">Gemmayze (73 places)</a>
+                        </li>
+                        <li><a href="#">Downtown (104 places)</a>
+                        </li>
+                        <li><a href="#">Minet el Hosn (50 places)</a>
+                        </li>
+                        <li><a href="#">Zalka (65 places)</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <ul>
+                        <li><a href="#">Ashrafieh (361 places)</a>
+                        </li>
+                        <li><a href="#">Hamra (287 places)</a>
+                        </li>
+                        <li><a href="#">Mar Mikhael (133 places)</a>
+                        </li>
+                        <li><a href="#">Dbayeh (134 places)</a>
+                        </li>
+                        <li><a href="#">Jounieh (171 places)</a>
+                        </li>
+                        <li><a href="#">Jbeil (212 places)</a>
+                        </li>
+                        <li><a href="#">Gemmayze (73 places)</a>
+                        </li>
+                        <li><a href="#">Downtown (104 places)</a>
+                        </li>
+                        <li><a href="#">Minet el Hosn (50 places)</a>
+                        </li>
+                        <li><a href="#">Zalka (65 places)</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <ul>
+                        <li><a href="#">Ashrafieh (361 places)</a>
+                        </li>
+                        <li><a href="#">Hamra (287 places)</a>
+                        </li>
+                        <li><a href="#">Mar Mikhael (133 places)</a>
+                        </li>
+                        <li><a href="#">Dbayeh (134 places)</a>
+                        </li>
+                        <li><a href="#">Jounieh (171 places)</a>
+                        </li>
+                        <li><a href="#">Jbeil (212 places)</a>
+                        </li>
+                        <li><a href="#">Gemmayze (73 places)</a>
+                        </li>
+                        <li><a href="#">Downtown (104 places)</a>
+                        </li>
+                        <li><a href="#">Minet el Hosn (50 places)</a>
+                        </li>
+                        <li><a href="#">Zalka (65 places)</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- end of by location -->
+
+    <!-- newsletter -->
+    <section id="newsletter">
+        <div class="container">
+            <h2>Newsletter</h2>
+            <form>
+                <input type="email" name="email" placeholder="Enter your email">
+                <input type="submit" value="Sign up">
+            </form>
+        </div>
+    </section>
+    <!-- end of newsletter -->
+
+    <!-- footer -->
+    <footer>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-4">
+                    <a href="#page-top">Ryada</a>
+                </div>
+                <div class="col-md-8 text-right">
+                    <p>
+                        <a href="#">Terms of use</a>&nbsp;
+                        <a href="#">Privacy policy</a>&nbsp;
+                        Copyright &copy; Ryada 2017
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- end of footer -->
 <section id="header">
     <div class="container center">
         <div class="ui search">
-        <p>s</p>
-        <p>s</p>
-        <p>s</p>
-        <p>s</p>
-        <p>s</p>
-        <p>s</p>
-        <p>s</p>
-        <p>s</p>
 
-<p>s</p>
           <div class="ui icon input">
             <input class="prompt" id="demo-search" type="text" placeholder="Search for listings or categories">
             <i class="search icon"></i>
