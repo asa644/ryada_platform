@@ -104,31 +104,6 @@ ul {
     margin: 0 40px 0 10px;
 }
 
-.segment input[type="radio"] {
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    -ms-appearance: none;
-    -o-appearance: none;
-    appearance: none;
-    position: relative;
-    top: 10px;
-    width: 30px;
-    height: 30px;
-    border: 3px solid #e7e7e7;
-    border-radius: 100%;
-    cursor: pointer;
-}
-
-.segment input[type="radio"]:hover {
-
-}
-.segment input[type="radio"]:checked {
-
-}
-.segment input[type="radio"]:checked::before {
-
-}
-
 
 .btn-form {
     width: 100%;
@@ -152,4 +127,7 @@ footer {
 footer p {
     margin: 0;
     color: white;
+}
+#info {
+    display:none;
 }
