@@ -34,3 +34,11 @@ Heatmap.js
 validation, what did we do in sprints,
 rails g model Respond content:text user:references review:references
 <%= render 'form', listing: @listing %>
+
+
+
+
+
+notes:
+IAS
+access_level

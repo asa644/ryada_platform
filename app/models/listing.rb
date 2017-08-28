@@ -1,4 +1,5 @@
 class Listing < ApplicationRecord
+  mount_uploaders :avatars, PhotoUploader
   include AlgoliaSearch
 
   belongs_to :owner, :class_name => 'User', optional: true
