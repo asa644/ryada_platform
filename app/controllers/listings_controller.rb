@@ -4,7 +4,12 @@ class ListingsController < ApplicationController
   # GET /listings
   # GET /listings.json
   def index
-    @listings = Listing.all
+    @listings = Listing.where.not(latitude: nil, longitude: nil)
+    @hash = Gmaps4rails.build_markers(@listings) do |listing, marker|
+      marker.lat listing.latitude
+      marker.lng listing.longitude
+      # marker.infowindow render_to_string(partial: "/listings/map_box", locals: { listing: listing })
+    end
   end
 
   # GET /listings/1
@@ -12,6 +17,8 @@ class ListingsController < ApplicationController
   def show
     @review = Review.new
     @respond = Respond.new
+    # @alert_message = "You are viewing #{@listing.name}"
+    @listing_coordinates = { lat: @listing.latitude, lng: @listing.longitude }
   end
 
   def search
@@ -75,6 +82,6 @@ class ListingsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def listing_params
-      params.require(:listing).permit(:name, :description, :status, :owner_id, :city, :street, :landmark, :phonenumber, :ownerphone, :longtitude, :latitude, {photos: []})
+      params.require(:listing).permit(:name, :description, :status, :owner_id, :city, :country, :zip_code, :street, :landmark, :phonenumber, :ownerphone, :longitude, :latitude, {photos: []})
     end
 end

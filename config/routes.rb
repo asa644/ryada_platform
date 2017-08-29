@@ -11,12 +11,14 @@ Rails.application.routes.draw do
   resources :categories
 
   devise_for :users
-  root to: 'pages#home'
+  root to: 'landings#home'
   get '/search' => 'listings#search'
+
+
+
   get '/:locale/*id' => 'pages#show', constraints: {locale: /#{Spina.config.locales.join('|')}/ }
-  get '/:locale/' => 'home#index', constraints: {locale: /#{Spina.config.locales.join('|')}/ }
+  get '/:locale/' => 'pages#homepage', constraints: {locale: /#{Spina.config.locales.join('|')}/ }
   get '/*id' => 'pages#show', as: "page", controller: 'pages', constraints: lambda { |request|
    !(Rails.env.development? && request.env['PATH_INFO'].starts_with?('/rails/') || request.env['PATH_INFO'].starts_with?("/#{Spina.config.backend_path}") || request.env['PATH_INFO'].starts_with?('/attachments/'))
  }
-
 end
