@@ -11,7 +11,7 @@
     </div>
 </header>
 <!-- end of header -->
-<%= render 'form'%>
+
     <!-- form -->
 <section id="form">
     <div class="container">
@@ -25,15 +25,6 @@
                             <p>NAME OF FACILITY *</p>
                             <%= f.input :name, label: false, placeholder: "Give your place a name"  %>
                         </div>
-
-                        <div class="field">
-                            <p>CITY *</p>
-                            <div class="input">
-                            <%= f.input :city, label: false, placeholder: "Search City" %>
-                                <i class="fa fa-search" aria-hidden="true"></i>
-                            </div>
-                        </div>
-
                         <div class="field">
                             <div class="owner">
                                 <p>ARE YOU THE OWNER OR MANAGER OF THIS PLACE? *</p>
@@ -62,10 +53,10 @@
                             <p>LOCATION</p>
                                 <div class="row">
                                     <div class="col-xs-9">
-                                        <div class="input">
-                                            <input type="text" name="location" placeholder="Enter an address so we can find this place faster">
-                                            <i class="fa fa-search" aria-hidden="true"></i>
-                                        </div>
+                                        <%= f.input :address, label: false %>
+                                        <%= f.input :zip_code, label: false%>
+                                        <%= f.input :city, label: false%>
+                                        <%= f.input :country, priority: [ 'LB' ] %>
                                     </div>
                                     <div class="col-xs-3">
                                         <div class="input">
@@ -222,6 +213,8 @@
     </div>
 </section>
 <%= link_to 'Back', listings_path %>
+
 <%= content_for(:after_js) do %>
   <script src="https://maps.googleapis.com/maps/api/js?libraries=places&amp;key=AIzaSyAMXLrJHdJKUZG4RIPp5JTDQ6M8XdFkeJc"></script>
 <% end %>
+

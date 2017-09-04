@@ -22,6 +22,7 @@ function getAddressComponents(place) {
 
   if (window.console && typeof console.log === "function") {
     console.log(place.formatted_address);
+    // console.log(place.city);
   }
 
   var street_number = null;
@@ -32,6 +33,7 @@ function getAddressComponents(place) {
   for (var i in place.address_components) {
     var component = place.address_components[i];
     for (var j in component.types) {
+      // console.log(type);
       var type = component.types[j];
       if (type === 'street_number') {
         street_number = component.long_name;
@@ -41,8 +43,7 @@ function getAddressComponents(place) {
         zip_code = component.long_name;
       } else if (type === 'locality') {
         city = component.long_name;
-      } else if (type === 'postal_town' && city === null) {
-        city = component.long_name;
+        console.log(city);
       } else if (type === 'country') {
         country_code = component.short_name;
       }
