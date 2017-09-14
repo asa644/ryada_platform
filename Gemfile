@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-ruby '2.3.3'
+ruby '2.3.4'
 
 gem 'devise'
 gem 'figaro'
@@ -22,6 +22,9 @@ gem 'carrierwave', '~> 1.0'
 gem 'cloudinary'
 gem 'country_select'
 
+# turbolinks
+gem 'turbolinks'
+#
 #geocoding
 gem "geocoder"
 gem "coffee-rails"
