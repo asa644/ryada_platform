@@ -1,4 +1,23 @@
 <p id="notice"><%= notice %></p>
+<div id="map" style="width: 100%; height: 600px;"></div>
+
+<% content_for(:after_js) do %>
+  <%= javascript_tag do %>
+    $(document).ready(function() {
+      var handler = Gmaps.build('Google');
+      handler.buildMap({ internal: { id: 'map' } }, function() {
+        markers = handler.addMarkers(<%= raw @hash.to_json %>);
+        handler.bounds.extendWith(markers);
+        handler.fitMapToBounds();
+        if (markers.length == 0) {
+          handler.getMap().setZoom(2);
+        } else if (markers.length == 1) {
+        handler.getMap().setZoom(14);
+        }
+      });
+    });
+  <% end %>
+<% end %>
 
 <h1>Listings</h1>
 
@@ -14,7 +33,7 @@
       <th>Street</th>
       <th>Landmark</th>
       <th>Phonenumber</th>
-      <th>Longtitude</th>
+      <th>longitude</th>
       <th>Latitude</th>
       <th colspan="3"></th>
     </tr>
@@ -32,7 +51,7 @@
         <td><%= listing.street %></td>
         <td><%= listing.landmark %></td>
         <td><%= listing.phonenumber %></td>
-        <td><%= listing.longtitude %></td>
+        <td><%= listing.longitude %></td>
         <td><%= listing.latitude %></td>
         <td><%= link_to 'Show', listing %></td>
         <td><%= link_to 'Edit', edit_listing_path(listing) %></td>

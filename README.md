@@ -42,3 +42,13 @@ rails g model Respond content:text user:references review:references
 notes:
 IAS
 access_level
+
+
+
+
+
+
+
+
+Improtant resources:
+https://github.com/ankane/blazer (for intelligent business apps)
