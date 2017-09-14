@@ -375,6 +375,7 @@ DEPENDENCIES
   spina!
   spring
   spring-watcher-listen (~> 2.0.0)
+  turbolinks
   uglifier
 
 RUBY VERSION
