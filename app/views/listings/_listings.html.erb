@@ -1,0 +1,19 @@
+<% @listings.each do |listing|%>
+<!-- Listing Item -->
+<div class="col-lg-6 col-md-6">
+  <a href="listings-single-page.html" class="listing-item-container compact" data-marker-id="1">
+    <div class="listing-item">
+      <img src="images/listing-item-01.jpg" alt="">
+
+      <div class="listing-badge now-open">Now Open</div>
+
+      <div class="listing-item-content">
+        <div class="numerical-rating" data-rating="3.5"></div>
+        <h3><%=listing.name%></h3>
+        <span><%=listing.address%></span>
+      </div>
+      <span class="like-icon"></span>
+    </div>
+  </a>
+</div>
+<%end%>

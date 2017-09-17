@@ -96,7 +96,6 @@ $(document).ready(function(){
 	 return false;
 	});
 
-
 	/*----------------------------------------------------*/
 	/*  Inline CSS replacement for backgrounds etc.
 	/*----------------------------------------------------*/

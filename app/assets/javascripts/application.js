@@ -3,7 +3,7 @@
 //= require turbolinks
 //= require bootstrap-sprockets
 // = require star-rating
-// = require add-listing
+//= require add-listing
 //= require underscore
 //= require google_maps_autocomplete
 //= require gmaps/google
@@ -15,6 +15,6 @@
 //= require waypoints.min
 //= require counterup.min
 //= require tooltips.min
-//= require custom
 //= require switcher
+//= require custom
 // alert('Sadly this is static...');
