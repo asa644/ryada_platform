@@ -187,7 +187,7 @@
       <% @listings.each do |listing| %>
       <!-- Listing Item -->
         <div class="col-lg-6 col-md-6">
-          <a href="listings-single-page.html" class="listing-item-container compact" data-marker-id="1">
+          <%= link_to listing, class: "listing-item-container compact" do %>
             <div class="listing-item">
               <img src="images/listing-item-01.jpg" alt="">
 
@@ -200,7 +200,7 @@
               </div>
               <span class="like-icon"></span>
             </div>
-          </a>
+            <%end%>
         </div>
       <%end%>
         <!-- Listing Item / End -->
