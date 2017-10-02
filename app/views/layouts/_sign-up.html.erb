@@ -1,0 +1,75 @@
+
+<!-- Sign In Popup -->
+<div id="sign-in-dialog" class="zoom-anim-dialog mfp-hide">
+
+  <div class="small-dialog-header">
+    <h3>Sign In</h3>
+  </div>
+
+  <!--Tabs -->
+  <div class="sign-in-form style-1">
+
+    <ul class="tabs-nav">
+      <li class=""><a href="#tab1">Log In</a></li>
+      <li><a href="#tab2">Register</a></li>
+    </ul>
+
+    <div class="tabs-container alt">
+
+      <!-- Login -->
+      <div class="tab-content" id="tab1" style="display: none;">
+          <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+          <p class="form-row form-row-wide">
+            <label for="username">Email:
+              <i class="im im-icon-Mail"></i>
+              <%= f.input_field :email, label: false, required: true, autofocus: true %>
+            </label>
+          </p>
+          <p class="form-row form-row-wide">
+            <label for="password">Password:
+              <i class="im im-icon-Lock-2"></i>
+              <%= f.input_field :password, required: true, label: false %>
+            </label>
+            <span class="lost_password">
+            <%= link_to "Forgot your password?", new_password_path(resource_name) %>
+            </span>
+          </p>
+          <div class="form-row">
+            <%=f.submit 'Login', class: 'button border margin-top-5'%>
+            <div class="checkboxes margin-top-10">
+              <input id="remember-me" type="checkbox" name="check">
+              <label for="remember-me">Remember Me</label>
+            </div>
+          </div>
+
+       <% end %>
+      </div>
+
+      <!-- Register -->
+      <div class="tab-content" id="tab2" style="display: none;">
+          <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+            <p class="form-row form-row-wide">
+              <label for="email2">Email Address:
+                <i class="im im-icon-Mail"></i>
+              <%= f.input_field :email, label: false, required: true, autofocus: true %>
+              </label>
+            </p>
+            <p class="form-row form-row-wide">
+              <label for="password1">Password:
+                <i class="im im-icon-Lock-2"></i>
+              <%= f.input_field :password, label: false, required: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length) %>
+              </label>
+            </p>
+
+            <p class="form-row form-row-wide">
+              <label for="password2">Repeat Password:
+                <i class="im im-icon-Lock-2"></i>
+                <%= f.input_field :password_confirmation, label: false, required: true, autofocus: true %>
+              </label>
+            </p>
+            <%=f.submit 'Register', class: 'button border fw margin-top-10'%>
+          <%end%>
+      </div>
+    </div>
+  </div>
+</div>
