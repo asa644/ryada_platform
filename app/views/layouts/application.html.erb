@@ -20,6 +20,11 @@
     <%= javascript_include_tag "https://cdn.rawgit.com/printercu/google-maps-utility-library-v3-read-only/master/infobox/src/infobox_packed.js" %>
 
     <%= javascript_include_tag "application" %>
+
+    <% unless user_signed_in? %>
+      <%= render 'layouts/sign-up' %>
+    <% end %>
+
     <%= yield(:after_js) %>
   </body>
 </html>
