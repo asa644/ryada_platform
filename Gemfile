@@ -25,10 +25,10 @@ gem 'country_select'
 # turbolinks
 gem 'turbolinks'
 #kaminari for multiple pages
-gem 'will_paginate'
+# gem 'will_paginate'
 # gem 'betterlorem', '~> 0.1.2'
 # gem 'bootstrap-sass', '~> 3.0.3.0'
-gem 'bootstrap-will_paginate'
+# gem 'bootstrap-will_paginate'
 
 #geocoding
 gem "geocoder"
