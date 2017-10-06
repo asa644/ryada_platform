@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   devise_for :users
   root to: 'landings#home'
   get '/search' => 'listings#search'
+  get '/dashboard' => 'users#dashboard'
 
 
 

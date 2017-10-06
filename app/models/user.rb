@@ -7,4 +7,7 @@ class User < ApplicationRecord
   has_many :user_listings, :class_name => 'Listing', :foreign_key => 'owner_id'
   has_many :reviews
   has_many :responds
+  def name
+    self.email.split('@')[0]
+  end
 end

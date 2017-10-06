@@ -18,7 +18,7 @@
       <!-- Titlebar -->
       <div id="titlebar" class="listing-titlebar">
         <div class="listing-titlebar-title">
-          <h2><%=@listing.name%> <span class="listing-tag">Eat & Drink</span></h2>
+          <h2><%=@listing.name%> <span class="listing-tag">Fitness</span></h2>
           <span>
             <a href="#listing-location" class="listing-address">
               <i class="fa fa-map-marker"></i>
@@ -48,11 +48,7 @@
         <!-- Description -->
 
         <p>
-          Ut euismod ultricies sollicitudin. Curabitur sed dapibus nulla. Nulla eget iaculis lectus. Mauris ac maximus neque. Nam in mauris quis libero sodales eleifend. Morbi varius, nulla sit amet rutrum elementum, est elit finibus tellus, ut tristique elit risus at metus.
-        </p>
-
-        <p>
-           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas in pulvinar neque. Nulla finibus lobortis pulvinar. Donec a consectetur nulla. Nulla posuere sapien vitae lectus suscipit, et pulvinar nisi tincidunt. Aliquam erat volutpat. Curabitur convallis fringilla diam sed aliquam. Sed tempor iaculis massa faucibus feugiat. In fermentum facilisis massa, a consequat purus viverra.
+          <%=@listing.description%>
         </p>
 
         <!-- Amenities -->
@@ -76,49 +72,43 @@
           <div class="pricing-list-container">
 
             <!-- Food List -->
-            <h4>Burgers</h4>
+            <h4>Monday</h4>
             <ul>
-              <li>
-                <h5>Classic Burger</h5>
-                <p>Beef, salad, mayonnaise, spicey relish, cheese</p>
-                <span>$6</span>
-              </li>
-              <li>
-                <h5>Cheddar Burger</h5>
-                <p>Cheddar cheese, lettuce, tomato, onion, dill pickles</p>
-                <span>$6</span>
-              </li>
-              <li>
-                <h5>Veggie Burger</h5>
-                <p>Panko crumbed and fried, grilled peppers and mushroom</p>
-                <span>$6</span>
-              </li>
-              <li>
-                <h5>Chicken Burger</h5>
-                <p>Cheese, chicken fillet, avocado, bacon, tomatoes, basil</p>
-                <span>$6</span>
-              </li>
+              <%= @listing.lessons.each do |lesson| %>
+                <li>
+                  <h5><%=lesson.name%></h5>
+                  <p><%=lesson.description%></p>
+                </li>
+              <%end%>
             </ul>
 
             <!-- Food List -->
-            <h4>Drinks</h4>
+            <h4>Tuesday</h4>
             <ul>
-              <li>
-                <h5>Frozen Shake</h5>
-                <span>$4</span>
-              </li>
-              <li>
-                <h5>Orange Juice</h5>
-                <span>$4</span>
-              </li>
-              <li>
-                <h5>Beer</h5>
-                <span>$4</span>
-              </li>
-              <li>
-                <h5>Water</h5>
-                <span>Free</span>
-              </li>
+              <%= @listing.lessons.each do |lesson| %>
+                <li>
+                  <h5><%=lesson.name%></h5>
+                  <p><%=lesson.description%></p>
+                </li>
+              <%end%>
+            </ul>
+            <h4>Wednsday</h4>
+            <ul>
+              <%= @listing.lessons.each do |lesson| %>
+                <li>
+                  <h5><%=lesson.name%></h5>
+                  <p><%=lesson.description%></p>
+                </li>
+              <%end%>
+            </ul>
+            <h4>Thursday</h4>
+            <ul>
+              <%= @listing.lessons.each do |lesson| %>
+                <li>
+                  <h5><%=lesson.name%></h5>
+                  <p><%=lesson.description%></p>
+                </li>
+              <%end%>
             </ul>
 
           </div>
