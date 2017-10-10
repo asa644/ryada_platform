@@ -52,3 +52,16 @@ access_level
 
 Improtant resources:
 https://github.com/ankane/blazer (for intelligent business apps)
+
+
+
+
+
+
+
+
+
+
+
+
+one cover photo instead of multiple

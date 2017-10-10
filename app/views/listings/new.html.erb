@@ -62,9 +62,8 @@
 
         <div class="row">
             <div class="col-lg-12">
-
+            <%= simple_form_for(@listing) do |f| %>
                 <div id="add-listing">
-
                     <!-- Section -->
                     <div class="add-listing-section">
 
@@ -77,7 +76,7 @@
                         <div class="row with-forms">
                             <div class="col-md-12">
                                 <h5>Studio Title <i class="tip" data-tip-content="Name of your business"></i></h5>
-                                <input class="search-field" type="text" value=""/>
+                                <%= f.input_field :name, class: "search-field" %>
                             </div>
                         </div>
 
@@ -117,11 +116,15 @@
                         <div class="add-listing-headline">
                             <h3><i class="sl sl-icon-location"></i> Location</h3>
                         </div>
+                          <%= f.input :latitude%>
+                          <%= f.input :longitude %>
 
                         <div class="submit-section">
 
                             <!-- Row -->
                             <div class="row with-forms">
+                                <div id="map_set_location" class="map_structure" style="width: 100%;height: 200px;position: fixed !important;">
+                              </div>
 
                                 <!-- City -->
                                 <div class="col-md-6">
@@ -141,7 +144,13 @@
                                 <!-- Address -->
                                 <div class="col-md-6">
                                     <h5>Address</h5>
-                                    <input type="text" placeholder="e.g. 964 School Street">
+                                    <%= f.input :address, label: false %>
+                                    <%= f.input :zip_code, label: false%>
+                                    <%= f.input :city, label: false%>
+                                    <%= f.input :country, priority: [ 'LB' ] %>
+                                    <input id="lat">
+                                    <input id="lng">
+
                                 </div>
 
                                 <!-- City -->
@@ -499,10 +508,11 @@
                     </div>
                     <!-- Section / End -->
 
-
+                    <%=f.submit %>
                     <a href="#" class="button preview">Preview <i class="fa fa-arrow-circle-right"></i></a>
 
                 </div>
+            <%end%>
             </div>
 
             <!-- Copyrights -->
@@ -526,17 +536,6 @@
 
 <!-- Scripts
 ================================================== -->
-<script type="text/javascript" src="scripts/jquery-2.2.0.min.js"></script>
-<script type="text/javascript" src="scripts/jpanelmenu.min.js"></script>
-<script type="text/javascript" src="scripts/chosen.min.js"></script>
-<script type="text/javascript" src="scripts/slick.min.js"></script>
-<script type="text/javascript" src="scripts/rangeslider.min.js"></script>
-<script type="text/javascript" src="scripts/magnific-popup.min.js"></script>
-<script type="text/javascript" src="scripts/waypoints.min.js"></script>
-<script type="text/javascript" src="scripts/counterup.min.js"></script>
-<script type="text/javascript" src="scripts/jquery-ui.min.js"></script>
-<script type="text/javascript" src="scripts/tooltips.min.js"></script>
-<script type="text/javascript" src="scripts/custom.js"></script>
 
 
 <!-- Opening hours added via JS (this is only for demo purpose) -->
@@ -573,9 +572,68 @@ $(".opening-day.js-demo-hours .chosen-select").each(function() {
 </script>
 
 <!-- DropZone | Documentation: http://dropzonejs.com -->
-<script type="text/javascript" src="scripts/dropzone.js"></script>
+<!-- <script type="text/javascript" src="scripts/dropzone.js"></script> -->
+
+<%= javascript_include_tag "https://cdn.rawgit.com/printercu/google-maps-utility-library-v3-read-only/master/markerclusterer/src/markerclusterer_compiled.js" %>
 
 
+<% content_for(:after_js) do %>
+  <%= javascript_tag do %>
+
+    var map;
+    var marker;
+
+// geolocation with HTML5 through browser
+     if (navigator.geolocation) {
+
+        navigator.geolocation.getCurrentPosition(function(p){
+        console.log(p.coords.longitude);
+          var mapOptions = {
+          center: new google.maps.LatLng({lng: p.coords.longitude,lat: p.coords.latitude}),
+          zoom: 14
+          }
+          initMap(mapOptions);
+          });
+    } else {
+      var mapOptions = {
+        //  document.getElementById('lat').value
+         // document.getElementById('lng').value
+
+        center: new google.maps.LatLng(-25.363, 131.044),
+        zoom: 14
+        }
+      initMap(mapOptions);
+       }
+
+
+      function initMap(mapOptions) {
+        var handler = Gmaps.build('Google');
+
+        handler.buildMap({ provider: mapOptions, internal: { id: 'map_set_location' } }, function() {
+          map = handler.getMap();
+          map.addListener('click', function(e) {
+            addMarker(e.latLng);
+          });
+        });
+      }
+
+      function addMarker(latLng){
+        if (marker) marker.setMap(null);
+        marker = new google.maps.Marker({
+          position: latLng,
+          map: map
+        });
+        $('#listing_latitude').val(latLng.lat());
+        $('#listing_longitude').val(latLng.lng());
+      }
+  <% end %>
+<% end %>
+
+
+
+<%= content_for(:after_js) do %>
+  <script src="https://maps.googleapis.com/maps/api/js?libraries=places&amp;key=AIzaSyAMXLrJHdJKUZG4RIPp5JTDQ6M8XdFkeJc"></script>
+<% end %>
 
 
 

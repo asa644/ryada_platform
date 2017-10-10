@@ -1,21 +1,3 @@
-
-
-
-<header>
-    <div class="container">
-        <img src="http://via.placeholder.com/150x75" alt="">
-        <div class="search-bar">
-            <form>
-                <input type="text" name="location" placeholder="Enter your location">
-                <input type="text" name="search" placeholder="Search for fitness studios or facilities...">
-                <input type="submit" value="Search">
-            </form>
-        </div>
-    </div>
-</header>
-<!-- end of header -->
-
-    <!-- form -->
 <section id="form">
     <div class="container">
         <div class="row">
@@ -216,8 +198,4 @@
     </div>
 </section>
 <%= link_to 'Back', listings_path %>
-
-<%= content_for(:after_js) do %>
-  <script src="https://maps.googleapis.com/maps/api/js?libraries=places&amp;key=AIzaSyAMXLrJHdJKUZG4RIPp5JTDQ6M8XdFkeJc"></script>
-<% end %>
 
