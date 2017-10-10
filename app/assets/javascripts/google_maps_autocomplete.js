@@ -8,9 +8,11 @@ function onPlaceChanged() {
 
   document.getElementById('listing_zip_code').value = components.zip_code;
   document.getElementById('listing_city').value = components.city;
-  document.getElementById('lat').value = place.geometry.location.lat();
-  document.getElementById('lng').value = place.geometry.location.lng();
-
+  var position = $('.map_structure').css('position');
+  if (position == 'fixed'){
+      document.getElementById('listing_latitude').value = place.geometry.location.lat();
+      document.getElementById('listing_longitude').value = place.geometry.location.lng();
+    }
   if (components.country_code) {
     var selector = '#listing_country option[value="' + components.country_code + '"]';
     document.querySelector(selector).selected = true;

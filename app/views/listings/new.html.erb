@@ -116,53 +116,41 @@
                         <div class="add-listing-headline">
                             <h3><i class="sl sl-icon-location"></i> Location</h3>
                         </div>
-                          <%= f.input :latitude%>
-                          <%= f.input :longitude %>
-
+                          <%= f.input :latitude, as: :hidden %>
+                          <%= f.input :longitude, as: :hidden %>
                         <div class="submit-section">
-
                             <!-- Row -->
                             <div class="row with-forms">
                                 <div id="map_set_location" class="map_structure" style="width: 100%;height: 200px;position: fixed !important;">
                               </div>
+                                    <input class="btn-detect" type="button" value="Detect my location" onclick="getLocation();">
+                                <div class="col-md-6">
+                                    <h5>Address</h5>
+                                    <%= f.input :address, label: false %>
+                                    <%= f.input :zip_code, as: :hidden%>
+                                </div>
 
                                 <!-- City -->
                                 <div class="col-md-6">
                                     <h5>City</h5>
-                                    <select class="chosen-select-no-single" >
-                                        <option label="blank">Select City</option>
-                                        <option>New York</option>
-                                        <option>Los Angeles</option>
-                                        <option>Chicago</option>
-                                        <option>Houston</option>
-                                        <option>Phoenix</option>
-                                        <option>San Diego</option>
-                                        <option>Austin</option>
-                                    </select>
+                                    <%= f.input :city, label: false%>
                                 </div>
 
                                 <!-- Address -->
-                                <div class="col-md-6">
-                                    <h5>Address</h5>
-                                    <%= f.input :address, label: false %>
-                                    <%= f.input :zip_code, label: false%>
-                                    <%= f.input :city, label: false%>
-                                    <%= f.input :country, priority: [ 'LB' ] %>
-                                    <input id="lat">
-                                    <input id="lng">
-
-                                </div>
 
                                 <!-- City -->
                                 <div class="col-md-6">
-                                    <h5>State</h5>
-                                    <input type="text">
+                                    <h5>Street</h5>
+                                    <%= f.input :street, label: false %>
                                 </div>
 
-                                <!-- Zip-Code -->
                                 <div class="col-md-6">
-                                    <h5>Zip-Code</h5>
-                                    <input type="text">
+                                    <h5>Landmark</h5>
+                                    <%= f.input :landmark, label: false %>
+                                </div>
+                                <div class="col-md-6">
+                                    <h5>Country</h5>
+                                    <%= f.input :country, priority: [ 'LB' ], label: false %>
                                 </div>
 
                             </div>
@@ -547,8 +535,8 @@
     var marker;
 
 // geolocation with HTML5 through browser
+    function getLocation() {
      if (navigator.geolocation) {
-
         navigator.geolocation.getCurrentPosition(function(p){
         console.log(p.coords.longitude);
           var mapOptions = {
@@ -561,12 +549,12 @@
       var mapOptions = {
         //  document.getElementById('lat').value
          // document.getElementById('lng').value
-
         center: new google.maps.LatLng(-25.363, 131.044),
         zoom: 14
         }
       initMap(mapOptions);
        }
+   }
       function initMap(mapOptions) {
         var handler = Gmaps.build('Google');
 
@@ -577,7 +565,6 @@
           });
         });
       }
-
       function addMarker(latLng){
         if (marker) marker.setMap(null);
         marker = new google.maps.Marker({
