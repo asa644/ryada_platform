@@ -167,6 +167,9 @@
                         <!-- Headline -->
                         <div class="add-listing-headline">
                             <h3><i class="sl sl-icon-picture"></i> Gallery</h3>
+                              <%= f.file_field :photos, :multiple => true%>
+<%= f.input :photos_cache, as: :hidden %>
+
                         </div>
 
                         <!-- Dropzone -->
