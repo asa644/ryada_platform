@@ -16,9 +16,9 @@
             </ul>
 
             <ul data-submenu-title="Listings">
-                <li class="active"><a href="/listings/new"><i class="sl sl-icon-plus"></i> Add Classes</a></li>
-                     <li><a href="/listings/new"><i class="sl sl-icon-plus"></i> Add Listing</a></li>
-            </ul>
+                <li class="active"><a href="/listings/new"><i class="sl sl-icon-plus"></i> Add Listing</a></li>
+<!--                      <li><a href="/listings/new"><i class="sl sl-icon-plus"></i> Add Listing</a></li>
+ -->            </ul>
 
             <ul data-submenu-title="Account">
                 <li><a href="dashboard-my-profile.html"><i class="sl sl-icon-user"></i> My Profile</a></li>
@@ -277,20 +277,26 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <table id="pricing-list-container">
+
                                         <tr class="pricing-list-item pattern">
+                                        <%= f.simple_fields_for :lessons do |s| %>
+
                                             <td>
                                                 <div class="fm-move"><i class="sl sl-icon-cursor-move"></i></div>
-                                                <div class="fm-input pricing-name"><input type="text" placeholder="Title" /></div>
-                                                <div class="fm-input pricing-name"><input type="text" placeholder="Title" /></div>
-                                                <div class="fm-input pricing-ingredients"><input type="text" placeholder="Description" /></div>
-                                                <div class="fm-input pricing-price"><input type="text" placeholder="Price" data-unit="USD" /></div>
-                                                <div class="fm-close"><a class="delete" href="#"><i class="fa fa-remove"></i></a></div>
-                                            </td>
+                                                <div class="fm-input pricing-name">
+                                                <%= s.input_field :name, placeholder: "Name" %>
+                                                </div>
+                                                <div class="fm-input pricing-ingredients">
+                                                <%= s.input_field :description, placeholder: "Description" %>
+                                                </div>
+<!--                                                 <div class="fm-close"><a class="delete" href="#"><i class="fa fa-remove"></i></a></div>
+ -->                                            </td>
+                                        <%end%>
                                         </tr>
                                     </table>
                                     <a href="#" class="button add-pricing-list-item">Add Class</a>
-                                    <a href="#" class="button add-pricing-submenu">Add Category</a>
-                                </div>
+<!--                                     <a href="#" class="button add-pricing-submenu">Add Category</a>
+ -->                                </div>
                             </div>
 
                         </div>
