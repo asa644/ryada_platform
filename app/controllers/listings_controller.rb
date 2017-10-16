@@ -27,6 +27,12 @@ class ListingsController < ApplicationController
   # GET /listings/new
   def new
     @listing = Listing.new
+    @days = ['Monday', 'Tuesday', 'Wednsday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
+    @listing_photo = @listing.listing_photos.build
+    @listing.timings.build
+    @listing_photo.user = current_user
+    @listing.lessons.build
+    # raise 'he'
   end
 
   # GET /listings/1/edit
@@ -39,6 +45,7 @@ class ListingsController < ApplicationController
     @listing = Listing.new(listing_params)
     @listing.user = current_user
     @listing.owner = current_user
+    @listing.listing_photos.first.user = current_user
     respond_to do |format|
       if @listing.save
         format.html { redirect_to @listing, notice: 'Listing was successfully created.' }
@@ -83,6 +90,6 @@ class ListingsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def listing_params
-      params.require(:listing).permit(:name, :description, :status, :owner_id, :city, :country, :zip_code, :street, :landmark, :phonenumber, :ownerphone, :longitude, :latitude, {photos: [], photos_cache:[]})
+      params.require(:listing).permit(:id, :name, :description, :status, :owner_id, :city, :country, :zip_code, :street, :landmark, :phonenumber, :ownerphone, :longitude, :latitude, listing_photos_attributes: [:id, :user_id, :photo, :photo_cache], timings_attributes: [:id, :day, :start_time, :end_time, :status], lessons_attributes: [:id, :name, :description, :end_time, :status])
     end
 end

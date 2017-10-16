@@ -18,8 +18,11 @@ gem 'simple_form'
 gem 'uglifier'
 gem 'remotipart', github: 'mshibuya/remotipart'
 gem 'rails_admin', '>= 1.0.0.rc'
-gem 'carrierwave', '~> 1.0'
+gem 'carrierwave'
+
 gem 'cloudinary'
+# gem 'activesupport-json_encoder'
+
 gem 'country_select'
 
 # turbolinks

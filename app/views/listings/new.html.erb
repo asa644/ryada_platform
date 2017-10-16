@@ -13,20 +13,11 @@
 
             <ul data-submenu-title="Main">
                 <li><a href="dashboard.html"><i class="sl sl-icon-settings"></i> Dashboard</a></li>
-                <li><a href="dashboard-messages.html"><i class="sl sl-icon-envelope-open"></i> Messages <span class="nav-tag messages">2</span></a></li>
             </ul>
 
             <ul data-submenu-title="Listings">
-                <li><a><i class="sl sl-icon-layers"></i> My Listings</a>
-                    <ul>
-                        <li><a href="dashboard-my-listings.html">Active <span class="nav-tag green">6</span></a></li>
-                        <li><a href="dashboard-my-listings.html">Pending <span class="nav-tag yellow">1</span></a></li>
-                        <li><a href="dashboard-my-listings.html">Expired <span class="nav-tag red">2</span></a></li>
-                    </ul>
-                </li>
-                <li><a href="dashboard-reviews.html"><i class="sl sl-icon-star"></i> Reviews</a></li>
-                <li><a href="dashboard-bookmarks.html"><i class="sl sl-icon-heart"></i> Bookmarks</a></li>
-                <li class="active"><a href="dashboard-add-listing.html"><i class="sl sl-icon-plus"></i> Add Listing</a></li>
+                <li class="active"><a href="/listings/new"><i class="sl sl-icon-plus"></i> Add Classes</a></li>
+                     <li><a href="/listings/new"><i class="sl sl-icon-plus"></i> Add Listing</a></li>
             </ul>
 
             <ul data-submenu-title="Account">
@@ -167,9 +158,10 @@
                         <!-- Headline -->
                         <div class="add-listing-headline">
                             <h3><i class="sl sl-icon-picture"></i> Gallery</h3>
-                              <%= f.file_field :photos, :multiple => true%>
-<%= f.input :photos_cache, as: :hidden %>
-
+                            <%= f.simple_fields_for :listing_photos do |s| %>
+                              <%= s.input :photo %>
+                              <%= s.input :photo_cache, as: :hidden %>
+                            <%end%>
                         </div>
 
                         <!-- Dropzone -->
@@ -192,55 +184,17 @@
                         <!-- Description -->
                         <div class="form">
                             <h5>Description</h5>
-                            <textarea class="WYSIWYG" name="summary" cols="40" rows="3" id="summary" spellcheck="true"></textarea>
+                            <%=f.text_area :description, cols: 40, rows: 3%>
                         </div>
 
                         <!-- Row -->
                         <div class="row with-forms">
-
                             <!-- Phone -->
                             <div class="col-md-4">
                                 <h5>Phone <span>(optional)</span></h5>
+                                <%f.input_field :ownerphone%>
                                 <input type="text">
                             </div>
-
-                            <!-- Website -->
-                            <div class="col-md-4">
-                                <h5>Website <span>(optional)</span></h5>
-                                <input type="text">
-                            </div>
-
-                            <!-- Email Address -->
-                            <div class="col-md-4">
-                                <h5>E-mail <span>(optional)</span></h5>
-                                <input type="text">
-                            </div>
-
-                        </div>
-                        <!-- Row / End -->
-
-
-                        <!-- Row -->
-                        <div class="row with-forms">
-
-                            <!-- Phone -->
-                            <div class="col-md-4">
-                                <h5 class="fb-input"><i class="fa fa-facebook-square"></i> Facebook <span>(optional)</span></h5>
-                                <input type="text" placeholder="https://www.facebook.com/">
-                            </div>
-
-                            <!-- Website -->
-                            <div class="col-md-4">
-                                <h5 class="twitter-input"><i class="fa fa-twitter"></i> Twitter <span>(optional)</span></h5>
-                                <input type="text" placeholder="https://www.twitter.com/">
-                            </div>
-
-                            <!-- Email Address -->
-                            <div class="col-md-4">
-                                <h5 class="gplus-input"><i class="fa fa-google-plus"></i> Google Plus <span>(optional)</span></h5>
-                                <input type="text" placeholder="https://plus.google.com">
-                            </div>
-
                         </div>
                         <!-- Row / End -->
 
@@ -249,21 +203,17 @@
                         <h5 class="margin-top-30 margin-bottom-10">Amenities <span>(optional)</span></h5>
                         <div class="checkboxes in-row margin-bottom-20">
 
-                            <input id="check-a" type="checkbox" name="check">
-                            <label for="check-a">Elevator in building</label>
-
                             <input id="check-b" type="checkbox" name="check">
-                            <label for="check-b">Friendly workspace</label>
+                            <label for="check-b">Toilets</label>
 
                             <input id="check-c" type="checkbox" name="check">
-                            <label for="check-c">Instant Book</label>
+                            <label for="check-c">Showers</label>
 
                             <input id="check-d" type="checkbox" name="check">
-                            <label for="check-d">Wireless Internet</label>
+                            <label for="check-d">Towels</label>
 
                             <input id="check-e" type="checkbox" name="check" >
                             <label for="check-e">Free parking on premises</label>
-
                             <input id="check-f" type="checkbox" name="check" >
                             <label for="check-f">Free parking on street</label>
 
@@ -271,8 +221,7 @@
                             <label for="check-g">Smoking allowed</label>
 
                             <input id="check-h" type="checkbox" name="check">
-                            <label for="check-h">Events</label>
-
+                            <label for="check-h">Wireless internet</label>
                         </div>
                         <!-- Checkboxes / End -->
 
@@ -292,182 +241,32 @@
 
                         <!-- Switcher ON-OFF Content -->
                         <div class="switcher-content">
-
                             <!-- Day -->
+                        <% @days.each do |day| %>
                             <div class="row opening-day">
-                                <div class="col-md-2"><h5>Monday</h5></div>
+                            <%= f.simple_fields_for :timings do |t| %>
+                                  <%= t.hidden_field :day, value: day%>
+                                <div class="col-md-2"><h5><%=day%></h5></div>
                                 <div class="col-md-5">
-                                    <select class="chosen-select" data-placeholder="Opening Time">
-                                        <option label="Opening Time"></option>
-                                        <option>Closed</option>
-                                        <option>1 AM</option>
-                                        <option>2 AM</option>
-                                        <option>3 AM</option>
-                                        <option>4 AM</option>
-                                        <option>5 AM</option>
-                                        <option>6 AM</option>
-                                        <option>7 AM</option>
-                                        <option>8 AM</option>
-                                        <option>9 AM</option>
-                                        <option>10 AM</option>
-                                        <option>11 AM</option>
-                                        <option>12 AM</option>
-                                        <option>1 PM</option>
-                                        <option>2 PM</option>
-                                        <option>3 PM</option>
-                                        <option>4 PM</option>
-                                        <option>5 PM</option>
-                                        <option>6 PM</option>
-                                        <option>7 PM</option>
-                                        <option>8 PM</option>
-                                        <option>9 PM</option>
-                                        <option>10 PM</option>
-                                        <option>11 PM</option>
-                                        <option>12 PM</option>
-                                    </select>
+                                  <%= t.input :start_time, collection: ['Closed', '1 AM', '2 AM', '3 AM', '4 AM', '5 AM', '6 AM', '7 AM', '8 AM', '9 AM', '10 AM', '11 AM', '12 AM', '1 PM', '2 PM', '3 PM', '4 PM', '5 PM', '6 PM', '7 PM', '8 PM', '9 PM', '10 PM', '11 PM', '12 PM'], input_html: { class: 'chosen-select' }, label: false%>
                                 </div>
                                 <div class="col-md-5">
-                                    <select class="chosen-select" data-placeholder="Closing Time">
-                                        <option label="Closing Time"></option>
-                                        <option>Closed</option>
-                                        <option>1 AM</option>
-                                        <option>2 AM</option>
-                                        <option>3 AM</option>
-                                        <option>4 AM</option>
-                                        <option>5 AM</option>
-                                        <option>6 AM</option>
-                                        <option>7 AM</option>
-                                        <option>8 AM</option>
-                                        <option>9 AM</option>
-                                        <option>10 AM</option>
-                                        <option>11 AM</option>
-                                        <option>12 AM</option>
-                                        <option>1 PM</option>
-                                        <option>2 PM</option>
-                                        <option>3 PM</option>
-                                        <option>4 PM</option>
-                                        <option>5 PM</option>
-                                        <option>6 PM</option>
-                                        <option>7 PM</option>
-                                        <option>8 PM</option>
-                                        <option>9 PM</option>
-                                        <option>10 PM</option>
-                                        <option>11 PM</option>
-                                        <option>12 PM</option>
-                                    </select>
+                                  <%= t.input :end_time, collection: ['Closed', '1 AM', '2 AM', '3 AM', '4 AM', '5 AM', '6 AM', '7 AM', '8 AM', '9 AM', '10 AM', '11 AM', '12 AM', '1 PM', '2 PM', '3 PM', '4 PM', '5 PM', '6 PM', '7 PM', '8 PM', '9 PM', '10 PM', '11 PM', '12 PM'], input_html: { class: 'chosen-select' }, label: false %>
                                 </div>
+                            <%end%>
                             </div>
                             <!-- Day / End -->
-
-                            <!-- Day -->
-                            <div class="row opening-day js-demo-hours">
-                                <div class="col-md-2"><h5>Tuesday</h5></div>
-                                <div class="col-md-5">
-                                    <select class="chosen-select" data-placeholder="Opening Time">
-                                        <!-- Hours added via JS (this is only for demo purpose) -->
-                                    </select>
-                                </div>
-                                <div class="col-md-5">
-                                    <select class="chosen-select" data-placeholder="Closing Time">
-                                        <!-- Hours added via JS (this is only for demo purpose) -->
-                                    </select>
-                                </div>
-                            </div>
-                            <!-- Day / End -->
-
-                            <!-- Day -->
-                            <div class="row opening-day js-demo-hours">
-                                <div class="col-md-2"><h5>Wednesday</h5></div>
-                                <div class="col-md-5">
-                                    <select class="chosen-select" data-placeholder="Opening Time">
-                                        <!-- Hours added via JS (this is only for demo purpose) -->
-                                    </select>
-                                </div>
-                                <div class="col-md-5">
-                                    <select class="chosen-select" data-placeholder="Closing Time">
-                                        <!-- Hours added via JS (this is only for demo purpose) -->
-                                    </select>
-                                </div>
-                            </div>
-                            <!-- Day / End -->
-
-                            <!-- Day -->
-                            <div class="row opening-day js-demo-hours">
-                                <div class="col-md-2"><h5>Thursday</h5></div>
-                                <div class="col-md-5">
-                                    <select class="chosen-select" data-placeholder="Opening Time">
-                                        <!-- Hours added via JS (this is only for demo purpose) -->
-                                    </select>
-                                </div>
-                                <div class="col-md-5">
-                                    <select class="chosen-select" data-placeholder="Closing Time">
-                                        <!-- Hours added via JS (this is only for demo purpose) -->
-                                    </select>
-                                </div>
-                            </div>
-                            <!-- Day / End -->
-
-                            <!-- Day -->
-                            <div class="row opening-day js-demo-hours">
-                                <div class="col-md-2"><h5>Friday</h5></div>
-                                <div class="col-md-5">
-                                    <select class="chosen-select" data-placeholder="Opening Time">
-                                        <!-- Hours added via JS (this is only for demo purpose) -->
-                                    </select>
-                                </div>
-                                <div class="col-md-5">
-                                    <select class="chosen-select" data-placeholder="Closing Time">
-                                        <!-- Hours added via JS (this is only for demo purpose) -->
-                                    </select>
-                                </div>
-                            </div>
-                            <!-- Day / End -->
-
-                            <!-- Day -->
-                            <div class="row opening-day js-demo-hours">
-                                <div class="col-md-2"><h5>Saturday</h5></div>
-                                <div class="col-md-5">
-                                    <select class="chosen-select" data-placeholder="Opening Time">
-                                        <!-- Hours added via JS (this is only for demo purpose) -->
-                                    </select>
-                                </div>
-                                <div class="col-md-5">
-                                    <select class="chosen-select" data-placeholder="Closing Time">
-                                        <!-- Hours added via JS (this is only for demo purpose) -->
-                                    </select>
-                                </div>
-                            </div>
-                            <!-- Day / End -->
-
-                            <!-- Day -->
-                            <div class="row opening-day js-demo-hours">
-                                <div class="col-md-2"><h5>Sunday</h5></div>
-                                <div class="col-md-5">
-                                    <select class="chosen-select" data-placeholder="Opening Time">
-                                        <!-- Hours added via JS (this is only for demo purpose) -->
-                                    </select>
-                                </div>
-                                <div class="col-md-5">
-                                    <select class="chosen-select" data-placeholder="Closing Time">
-                                        <!-- Hours added via JS (this is only for demo purpose) -->
-                                    </select>
-                                </div>
-                            </div>
-                            <!-- Day / End -->
-
+                        <%end%>
                         </div>
                         <!-- Switcher ON-OFF Content / End -->
-
                     </div>
                     <!-- Section / End -->
-
-
                     <!-- Section -->
                     <div class="add-listing-section margin-top-45">
 
                         <!-- Headline -->
                         <div class="add-listing-headline">
-                            <h3><i class="sl sl-icon-book-open"></i> Pricing</h3>
+                            <h3><i class="sl sl-icon-book-open"></i> Classes</h3>
                             <!-- Switcher -->
                             <label class="switch"><input type="checkbox" checked><span class="slider round"></span></label>
                         </div>
@@ -482,13 +281,15 @@
                                             <td>
                                                 <div class="fm-move"><i class="sl sl-icon-cursor-move"></i></div>
                                                 <div class="fm-input pricing-name"><input type="text" placeholder="Title" /></div>
+                                                <div class="fm-input pricing-name"><input type="text" placeholder="Title" /></div>
+
                                                 <div class="fm-input pricing-ingredients"><input type="text" placeholder="Description" /></div>
                                                 <div class="fm-input pricing-price"><input type="text" placeholder="Price" data-unit="USD" /></div>
                                                 <div class="fm-close"><a class="delete" href="#"><i class="fa fa-remove"></i></a></div>
                                             </td>
                                         </tr>
                                     </table>
-                                    <a href="#" class="button add-pricing-list-item">Add Item</a>
+                                    <a href="#" class="button add-pricing-list-item">Add Class</a>
                                     <a href="#" class="button add-pricing-submenu">Add Category</a>
                                 </div>
                             </div>
@@ -499,16 +300,16 @@
                     </div>
                     <!-- Section / End -->
 
-                    <%=f.submit %>
-                    <a href="#" class="button preview">Preview <i class="fa fa-arrow-circle-right"></i></a>
 
+                      <%= button_tag type: 'submit', class: "button preview" do %>Preview
+                        <i class="fa fa-arrow-circle-right"></i>
+                    <% end %>
                 </div>
             <%end%>
             </div>
-
             <!-- Copyrights -->
             <div class="col-md-12">
-                <div class="copyrights">© 2017 Listeo. All Rights Reserved.</div>
+                <div class="copyrights">© 2017 LocalFitt. All Rights Reserved.</div>
             </div>
 
         </div>
