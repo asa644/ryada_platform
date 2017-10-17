@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171015131125) do
+ActiveRecord::Schema.define(version: 20171017153853) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,6 +30,14 @@ ActiveRecord::Schema.define(version: 20171015131125) do
     t.index ["listing_id"], name: "index_category_listings_on_listing_id"
   end
 
+  create_table "lesson_exceptions", force: :cascade do |t|
+    t.bigint "lesson_id"
+    t.datetime "time"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["lesson_id"], name: "index_lesson_exceptions_on_lesson_id"
+  end
+
   create_table "lessons", force: :cascade do |t|
     t.string "name"
     t.string "description"
@@ -46,6 +54,8 @@ ActiveRecord::Schema.define(version: 20171015131125) do
     t.json "photos"
     t.string "country"
     t.string "zip_code"
+    t.text "recurring"
+    t.datetime "start_time"
     t.index ["listing_id"], name: "index_lessons_on_listing_id"
     t.index ["user_id"], name: "index_lessons_on_user_id"
   end
@@ -374,6 +384,7 @@ ActiveRecord::Schema.define(version: 20171015131125) do
 
   add_foreign_key "category_listings", "categories"
   add_foreign_key "category_listings", "listings"
+  add_foreign_key "lesson_exceptions", "lessons"
   add_foreign_key "lessons", "listings"
   add_foreign_key "lessons", "users"
   add_foreign_key "listing_photos", "listings"

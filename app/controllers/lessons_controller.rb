@@ -28,6 +28,7 @@ class LessonsController < ApplicationController
   def create
     @lesson = Lesson.new(lesson_params)
     respond_to do |format|
+      # i should remove this
       if @lesson.save
         format.html { redirect_to @lesson, notice: 'Lesson was successfully created.' }
         format.json { render :show, status: :created, location: @lesson }
@@ -70,6 +71,6 @@ class LessonsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def lesson_params
-      params.require(:lesson).permit(:name, :description, :city, :street, :landmark, :phonenumber, :longtitude, :latitude, :user_id, :listing_id, {photos: []})
+      params.require(:lesson).permit(:name, :description, :city, :street, :landmark, :phonenumber, :longtitude, :latitude, :user_id, :listing_id, :recurring, :start_time, {photos: []})
     end
 end

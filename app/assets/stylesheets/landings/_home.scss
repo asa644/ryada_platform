@@ -96,7 +96,7 @@ input[type="password"],
 input[type="email"],
 input[type="number"],
 textarea,
-select {
+{
   height: 51px;
   line-height: 51px;
   padding: 0 20px;
@@ -3799,7 +3799,11 @@ section.fullwidth .blog-post { margin: 5px 0 0 0; }
   background-repeat: no-repeat;
   background-position: 50%
 }
+.something img{
 
+  height: 100%;
+  cover: 100%;
+}
 .post-img:hover:before {
   opacity: 1;
   visibility: visible;

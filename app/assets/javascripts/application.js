@@ -19,5 +19,7 @@
 //= require switcher
 //= require custom
 //= require dropzone
-
+//= require recurring_select
+//= require moment
+//= require fullcalendar
 // alert('Sadly this is static...');
