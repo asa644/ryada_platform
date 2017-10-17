@@ -1,11 +1,8 @@
 
 <!-- Slider
 ================================================== -->
-<div class="listing-slider mfp-gallery-container margin-bottom-0">
-    <%=image_tag 'show1.png', class: 'item mfp-gallery', title: 'first' %>
-    <%=image_tag 'show2.png', class: 'item mfp-gallery', title: 'first' %>
-    <%=image_tag 'show3.png', class: 'item mfp-gallery', title: 'first' %>
-    <%=image_tag 'show4.png', class: 'item mfp-gallery', title: 'first' %>
+<div class="something">
+    <%= cl_image_tag @listing.listing_photos.first.photo, height: 300, width: 400, crop: :fill %>
  </div>
 
 
@@ -65,55 +62,10 @@
 
 
       <!-- Food Menu -->
+
       <div id="listing-pricing-list" class="listing-section">
         <h3 class="listing-desc-headline margin-top-70 margin-bottom-30">Classes</h3>
-
-        <div class="show-more">
-          <div class="pricing-list-container">
-
-            <!-- Food List -->
-            <h4>Monday</h4>
-            <ul>
-              <% @listing.lessons.each do |lesson| %>
-                <li>
-                  <h5><%=lesson.name%></h5>
-                  <p><%=lesson.description%></p>
-                </li>
-              <%end%>
-            </ul>
-
-            <!-- Food List -->
-            <h4>Tuesday</h4>
-            <ul>
-              <% @listing.lessons.each do |lesson| %>
-                <li>
-                  <h5><%=lesson.name%></h5>
-                  <p><%=lesson.description%></p>
-                </li>
-              <%end%>
-            </ul>
-            <h4>Wednsday</h4>
-            <ul>
-              <% @listing.lessons.each do |lesson| %>
-                <li>
-                  <h5><%=lesson.name%></h5>
-                  <p><%=lesson.description%></p>
-                </li>
-              <%end%>
-            </ul>
-            <h4>Thursday</h4>
-            <ul>
-              <% @listing.lessons.each do |lesson| %>
-                <li>
-                  <h5><%=lesson.name%></h5>
-                  <p><%=lesson.description%></p>
-                </li>
-              <%end%>
-            </ul>
-
-          </div>
-        </div>
-        <a href="#" class="show-more-button" data-more-title="Show More" data-less-title="Show Less"><i class="fa fa-angle-down"></i></a>
+          <div id="calendar"></div>
       </div>
       <!-- Food Menu / End -->
 
@@ -288,99 +240,6 @@
     </div>
 
 
-    <!-- Sidebar
-    ================================================== -->
-    <div class="col-lg-4 col-md-4 margin-top-75 sticky">
-
-      <!-- Book Now -->
-      <div class="boxed-widget">
-        <h3><i class="fa fa-calendar-check-o "></i> Book a class</h3>
-        <div class="row with-forms  margin-top-0">
-
-          <!-- Date Picker - docs: http://www.vasterad.com/docs/listeo/#!/date_picker -->
-          <div class="col-lg-6 col-md-12">
-            <input type="text" id="booking-date" data-lang="en" data-large-mode="true" data-min-year="2017" data-max-year="2020">
-          </div>
-
-          <!-- Time Picker - docs: http://www.vasterad.com/docs/listeo/#!/time_picker -->
-          <div class="col-lg-6 col-md-12">
-            <input type="text" id="booking-time" value="9:00 am">
-          </div>
-
-        </div>
-
-        <!-- progress button animation handled via custom.js -->
-        <button class="progress-button button fullwidth margin-top-5"><span>Book Now</span></button>
-      </div>
-      <!-- Book Now / End -->
-
-
-      <!-- Contact -->
-      <div class="boxed-widget margin-top-35">
-        <h3><i class="sl sl-icon-pin"></i> Contact</h3>
-        <ul class="listing-details-sidebar">
-          <li><i class="sl sl-icon-phone"></i> (123) 123-456</li>
-          <li><i class="sl sl-icon-globe"></i> <a href="#">http://example.com</a></li>
-          <li><i class="fa fa-envelope-o"></i> <a href="#">info@example.com</a></li>
-        </ul>
-
-        <ul class="listing-details-sidebar social-profiles">
-          <li><a href="#" class="facebook-profile"><i class="fa fa-facebook-square"></i> Facebook</a></li>
-          <li><a href="#" class="twitter-profile"><i class="fa fa-twitter"></i> Twitter</a></li>
-          <!-- <li><a href="#" class="gplus-profile"><i class="fa fa-google-plus"></i> Google Plus</a></li> -->
-        </ul>
-
-        <!-- Reply to review popup -->
-        <div id="small-dialog" class="zoom-anim-dialog mfp-hide">
-          <div class="small-dialog-header">
-            <h3>Send Message</h3>
-          </div>
-          <div class="message-reply margin-top-0">
-            <textarea cols="40" rows="3" placeholder="Your message to Burger House"></textarea>
-            <button class="button">Send Message</button>
-          </div>
-        </div>
-
-        <a href="#small-dialog" class="send-message-to-owner button popup-with-zoom-anim"><i class="sl sl-icon-envelope-open"></i> Send Message</a>
-      </div>
-      <!-- Contact / End-->
-
-
-      <!-- Opening Hours -->
-      <div class="boxed-widget opening-hours margin-top-35">
-        <div class="listing-badge now-open">Now Open</div>
-        <h3><i class="sl sl-icon-clock"></i> Opening Hours</h3>
-        <ul>
-          <li>Monday <span>9 AM - 5 PM</span></li>
-          <li>Tuesday <span>9 AM - 5 PM</span></li>
-          <li>Wednesday <span>9 AM - 5 PM</span></li>
-          <li>Thursday <span>9 AM - 5 PM</span></li>
-          <li>Friday <span>9 AM - 5 PM</span></li>
-          <li>Saturday <span>9 AM - 3 PM</span></li>
-          <li>Sunday <span>Closed</span></li>
-        </ul>
-      </div>
-      <!-- Opening Hours / End -->
-
-
-      <!-- Share / Like -->
-      <div class="listing-share margin-top-40 margin-bottom-40 no-border">
-        <button class="like-button"><span class="like-icon"></span> Bookmark this listing</button>
-        <span>159 people bookmarked this place</span>
-
-          <!-- Share Buttons -->
-          <ul class="share-buttons margin-top-40 margin-bottom-0">
-            <li><a class="fb-share" href="#"><i class="fa fa-facebook"></i> Share</a></li>
-            <li><a class="twitter-share" href="#"><i class="fa fa-twitter"></i> Tweet</a></li>
-            <li><a class="gplus-share" href="#"><i class="fa fa-google-plus"></i> Share</a></li>
-            <!-- <li><a class="pinterest-share" href="#"><i class="fa fa-pinterest-p"></i> Pin</a></li> -->
-          </ul>
-          <div class="clearfix"></div>
-      </div>
-
-    </div>
-    <!-- Sidebar / End -->
-
   </div>
 </div>
 
@@ -407,7 +266,6 @@
           <li><a href="#">Classes</a></li>
           <li><a href="#">Privacy Policy</a></li>
         </ul>
-
         <ul class="footer-links">
           <li><a href="#">FAQ</a></li>
           <li><a href="#">Blog</a></li>
@@ -462,16 +320,17 @@
 ================================================== -->
 
 <!-- Date Picker - docs: http://www.vasterad.com/docs/listeo/#!/date_picker -->
-<link href="css/plugins/datedropper.css" rel="stylesheet" type="text/css">
+<!-- <link href="css/plugins/datedropper.css" rel="stylesheet" type="text/css">
 <script src="scripts/datedropper.js"></script>
 <script>$('#booking-date').dateDropper();</script>
-
+ -->
 <!-- Time Picker - docs: http://www.vasterad.com/docs/listeo/#!/time_picker -->
-<script src="scripts/timedropper.js"></script>
-  <%= stylesheet_link_tag 'main', id: 'colors', media: 'all' %>
+<!-- <script src="scripts/timedropper.js"></script>
+ -->  <%= stylesheet_link_tag 'main', id: 'colors', media: 'all' %>
 
-<link rel="stylesheet" type="text/css" href="css/plugins/timedropper.css">
-<script>
+<!-- <link rel="stylesheet" type="text/css" href="css/plugins/timedropper.css">
+ -->
+<!--  <script>
 this.$('#booking-time').timeDropper({
   setCurrentTime: false,
   meridians: true,
@@ -485,12 +344,12 @@ var $clocks = $('.td-input');
   clock.value = null;
 });
 </script>
-
+ -->
 
 
 <!-- Style Switcher
 ================================================== -->
-<script src="scripts/switcher.js"></script>
+<!-- <script src="scripts/switcher.js"></script> -->
 
 <div id="style-switcher">
   <h2>Color Switcher <a href="#"><i class="sl sl-icon-settings"></i></a></h2>
@@ -585,3 +444,39 @@ var $clocks = $('.td-input');
 <%= link_to 'Edit', edit_listing_path(@listing) %> |
 <%= link_to 'Back', listings_path %>
  -->
+
+<% content_for(:after_js) do %>
+  <%= javascript_tag do %>
+  $(document).ready(function() {
+    $('#calendar').fullCalendar({
+    height: 600,
+     views: {
+        week: {
+            <!-- // options apply to week views -->
+        titleFormat: 'MMMM D YYYY'
+        },
+        day: {
+            <!-- // options day views -->
+        }
+    },
+    <!-- hiddenDays: <%#= raw @place.non_available_day.to_json  %>, -->
+    header: {
+    left:"",
+    center: 'title',
+    right: 'agendaWeek,agendaDay'
+    },
+    <!-- start view on month display -->
+    defaultView: 'agendaWeek',
+    <!-- start the week on monday -->
+
+
+    <!-- show end date booking -->
+    displayEventEnd: true,
+    timeFormat:  'HH:mm',
+
+    events: <%= raw @events.to_json %>,
+    eventColor: '#506170'
+    });
+  });
+  <% end %>
+<% end %>

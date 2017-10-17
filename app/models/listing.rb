@@ -5,7 +5,7 @@ class Listing < ApplicationRecord
   include AlgoliaSearch
   belongs_to :owner, :class_name => 'User', optional: true
   belongs_to :user,  :class_name => 'User'
-  has_many :timings,dependent: :destroy
+  has_many :timings, dependent: :destroy
   accepts_nested_attributes_for :timings
   has_many :lessons, dependent: :destroy
   accepts_nested_attributes_for :lessons

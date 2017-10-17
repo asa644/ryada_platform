@@ -22,6 +22,13 @@ gem 'carrierwave'
 
 gem 'cloudinary'
 # gem 'activesupport-json_encoder'
+gem 'ice_cube'
+# gem 'schedulable'
+gem 'recurring_select', github: "RundownApp/recurring_select"
+gem 'fullcalendar-rails'
+# gem 'rails-assets-air-datepicker', source: 'https://rails-assets.org'
+
+gem 'momentjs-rails'
 
 gem 'country_select'
 
