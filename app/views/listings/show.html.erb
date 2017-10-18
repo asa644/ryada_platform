@@ -2,7 +2,7 @@
 <!-- Slider
 ================================================== -->
 <div class="something">
-    <% if @listing.listing_photos.nil?%>
+    <% if @listing.listing_photos.empty?%>
       <%=image_tag 'show1.png', class: 'item mfp-gallery', title: 'first' %>
       <%=image_tag 'show2.png', class: 'item mfp-gallery', title: 'first' %>
       <%=image_tag 'show3.png', class: 'item mfp-gallery', title: 'first' %>
