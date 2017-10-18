@@ -2,7 +2,14 @@
 <!-- Slider
 ================================================== -->
 <div class="something">
-    <%= cl_image_tag @listing.listing_photos.first.photo, height: 300, width: 400, crop: :fill %>
+    <% if @listing.listing_photos.nil?%>
+      <%=image_tag 'show1.png', class: 'item mfp-gallery', title: 'first' %>
+      <%=image_tag 'show2.png', class: 'item mfp-gallery', title: 'first' %>
+      <%=image_tag 'show3.png', class: 'item mfp-gallery', title: 'first' %>
+      <%=image_tag 'show4.png', class: 'item mfp-gallery', title: 'first' %>
+    <%else%>
+      <%= cl_image_tag @listing.listing_photos.first.photo, height: 300, width: 400, crop: :fill %>
+    <%end%>
  </div>
 
 
