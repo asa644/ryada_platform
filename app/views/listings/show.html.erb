@@ -82,8 +82,27 @@
         <h3 class="listing-desc-headline margin-top-60 margin-bottom-30">Location</h3>
 
         <div id="singleListingMap-container">
-          <div id="singleListingMap" data-latitude="40.70437865245596" data-longitude="-73.98674011230469" data-map-icon="im im-icon-Hamburger"></div>
-          <a href="#" id="streetView">Street View</a>
+          <div id="singleListingMap" data-latitude="<%=@listing.latitude%>" data-longitude="<%=@listing.latitude%>"  data-map-icon="im im-icon-Hamburger"></div>
+            <% content_for(:after_js) do %>
+              <%= javascript_tag do %>
+                $(document).ready(function() {
+                  var handler = Gmaps.build('Google');
+                  handler.buildMap({ internal: { id: 'singleListingMap' } }, function() {
+                    markers = handler.addMarkers(<%= raw @hash.to_json %>);
+                    handler.bounds.extendWith(markers);
+                    handler.fitMapToBounds();
+                    if (markers.length == 0) {
+                      handler.getMap().setZoom(2);
+                    }
+                    else if (markers.length == 1) {
+                      handler.getMap().setZoom(14);
+                    }
+                  });
+                });
+              <% end %>
+            <% end %>
+
+          <!-- <a href="#" id="streetView">Street View</a> -->
         </div>
       </div>
 

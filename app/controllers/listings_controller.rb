@@ -19,8 +19,11 @@ class ListingsController < ApplicationController
     @respond = Respond.new
     # @alert_message = "You are viewing #{@listing.name}"
     @listing_coordinates = { lat: @listing.latitude, lng: @listing.longitude }
-    # @calendar_lessons = @listing.lessons.each{ |e| e.calendar_lessons(e.start_time)}
-      @calendar_lessons = @listing.lessons.each{ |e| e.calendar_lessons(e.start_time)}
+    @calendar_lessons = @listing.lessons.each{ |e| e.calendar_lessons(e.start_time)}
+    @hash = Gmaps4rails.build_markers([@listing]) do |listing, marker|
+      marker.lat listing.latitude
+      marker.lng listing.longitude
+    end
 
     l = @listing.lessons.first
     @calendar_lessons = l.calendar_lessons(l.start_time)
