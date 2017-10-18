@@ -59,8 +59,11 @@
                 <div class="carousel-item">
                     <a href="listings-single-page.html" class="listing-item-container">
                         <div class="listing-item">
-                            <img src="images/listing-item-01.jpg" alt="">
-
+                          <% unless listing.listing_photos.empty? %>
+                          <%= cl_image_tag listing.listing_photos.first.photo, height: 300, width: 400, crop: :fill %>
+                          <%else%>
+                          <%=image_tag "main.png"%>
+                          <%end%>
                             <div class="listing-badge now-open">Now Open</div>
 
                             <div class="listing-item-content">
