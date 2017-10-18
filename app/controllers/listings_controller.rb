@@ -56,7 +56,6 @@ class ListingsController < ApplicationController
     @listing = Listing.new(listing_params)
     @listing.user = current_user
     @listing.owner = current_user
-    @listing.listing_photos.first.user = current_user
     respond_to do |format|
       if @listing.save
         format.html { redirect_to @listing, notice: 'Listing was successfully created.' }
