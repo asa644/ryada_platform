@@ -7,7 +7,9 @@ class Lesson < ApplicationRecord
   belongs_to :listing
   def recurring=(value)
     if RecurringSelect.is_valid_rule?(value)
-      super(RecurringSelect.dirty_hash_to_rule(value).to_hash)
+      unless RecurringSelect.dirty_hash_to_rule(value).nil?
+        super(RecurringSelect.dirty_hash_to_rule(value).to_hash)
+      end
     else
       super(nil)
     end
@@ -32,7 +34,6 @@ class Lesson < ApplicationRecord
     if recurring.empty?
       [self]
     else
-      #start_date = start.beginning_of_month.beginning_of_week
       end_date = start.end_of_month.end_of_week
       schedule(start_time).occurrences(end_date).map do |date|
         Lesson.new(id: id, name: name, start_time: date)
@@ -40,4 +41,3 @@ class Lesson < ApplicationRecord
     end
   end
 end
-

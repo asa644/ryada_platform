@@ -45,8 +45,7 @@ class ListingsController < ApplicationController
     @listing_photo = @listing.listing_photos.build
     @listing.timings.build
     @listing_photo.user = current_user
-    @listing.lessons.build
-    # raise 'he'
+    @listing.lessons.new
   end
 
   # GET /listings/1/edit
@@ -103,6 +102,6 @@ class ListingsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def listing_params
-      params.require(:listing).permit(:id, :name, :description, :status, :owner_id, :city, :country, :zip_code, :street, :landmark, :phonenumber, :ownerphone, :longitude, :latitude, listing_photos_attributes: [:id, :user_id, :photo, :photo_cache], timings_attributes: [:id, :day, :start_time, :end_time, :status], lessons_attributes: [:id, :name, :description, :start_time, :recurring])
+      params.require(:listing).permit(:id, :name, :description, :status, :owner_id, :city, :country, :zip_code, :street, :landmark, :phonenumber, :ownerphone, :longitude, :latitude, listing_photos_attributes: [:id, :user_id, :photo, :photo_cache], timings_attributes: [:day, :start_time, :end_time, :status], lessons_attributes: [:name, :description, :start_time, :recurring, :listing_id])
     end
 end

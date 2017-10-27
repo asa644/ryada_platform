@@ -65,3 +65,12 @@ https://github.com/ankane/blazer (for intelligent business apps)
 
 
 one cover photo instead of multiple
+
+TODO:
+Edit a listing
+add another listing
+Fix the bug of not adding the default first class
+add classes
+Book classes by pressing on them
+reviews
+

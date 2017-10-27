@@ -278,28 +278,43 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <table id="pricing-list-container">
-
                                         <tr class="pricing-list-item pattern">
-                                        <%= f.simple_fields_for :lessons do |s| %>
-                                            <td>
-                                                <div class="fm-move"><i class="sl sl-icon-cursor-move"></i></div>
-                                                <div class="fm-input pricing-name">
-                                                <%= s.input_field :name, placeholder: "Name" %>
-                                                </div>
-                                                <div class="fm-input pricing-ingredients">
-                                                <%= s.input_field :description, placeholder: "Description" %>
-                                                </div>
-                                                <div class="fm-input pricing-ingredients">
-                                                <%= s.datetime_select :start_time %>
-                                                <%= s.select_recurring :recurring %>
-                                                </div>
-                                           </td>
-                                        <%end%>
+                                            <%= f.simple_fields_for :lessons do |s| %>
+                                                <td>
+                                                    <div class="fm-move"><i class="sl sl-icon-cursor-move"></i></div>
+                                                    <div class="fm-input pricing-name">
+                                                    <%= s.input_field :name, placeholder: "Name" %>
+                                                    </div>
+                                                    <div class="fm-input pricing-ingredients">
+                                                    <%= s.input_field :description, placeholder: "Description" %>
+                                                    </div>
+                                                    <div class="fm-input pricing-ingredients">
+                                                    <%= s.datetime_select :start_time %>
+                                                    <%= s.select_recurring :recurring %>
+                                                    </div>
+                                               </td>
+                                            <%end%>
+                                        </tr>
+                                        <tr class="pricing-list-item pattern">
+                                            <%= f.simple_fields_for :lessons do |s| %>
+                                                <td>
+                                                    <div class="fm-move"><i class="sl sl-icon-cursor-move"></i></div>
+                                                    <div class="fm-input pricing-name">
+                                                    <%= s.input_field :name, placeholder: "Name" %>
+                                                    </div>
+                                                    <div class="fm-input pricing-ingredients">
+                                                    <%= s.input_field :description, placeholder: "Description" %>
+                                                    </div>
+                                                    <div class="fm-input pricing-ingredients">
+                                                    <%= s.datetime_select :start_time %>
+                                                    <%= s.select_recurring :recurring %>
+                                                    </div>
+                                               </td>
+                                            <%end%>
                                         </tr>
                                     </table>
                                     <a href="#" class="button add-pricing-list-item">Add Class</a>
-<!--                                     <a href="#" class="button add-pricing-submenu">Add Category</a>
- -->                                </div>
+                                </div>
                             </div>
 
                         </div>

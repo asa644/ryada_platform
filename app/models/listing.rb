@@ -7,7 +7,7 @@ class Listing < ApplicationRecord
   belongs_to :user,  :class_name => 'User'
   has_many :timings, dependent: :destroy
   accepts_nested_attributes_for :timings
-  has_many :lessons, dependent: :destroy
+  has_many :lessons, dependent: :destroy, inverse_of: :listing
   accepts_nested_attributes_for :lessons
   has_many :listing_photos, inverse_of: :listing, dependent: :destroy
   accepts_nested_attributes_for :listing_photos
