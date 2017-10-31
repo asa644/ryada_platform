@@ -2,7 +2,6 @@ class Lesson < ApplicationRecord
   acts_as_schedulable :schedule
   # serialize :recurring, Hash
   has_many :lesson_exceptions
-
   belongs_to :user, optional: true
   belongs_to :listing
   # def recurring=(value)
@@ -28,12 +27,10 @@ class Lesson < ApplicationRecord
   #   schedule
   # end
 
-  def calendar_lessons(start)
+  def calendar_lessons
       #start_date = start.beginning_of_month.beginning_of_week
-      end_date = start.end_of_month.end_of_week
-      self.schedule.time.occurrences(end_date).map do |date|
-        Lesson.new(id: id, name: name, start_time: date)
-      end
+    self.schedule.occurrences(self.schedule.until).map do |date|
+      Lesson.new(id: id, name: name, start_time: date)
     end
   end
 end

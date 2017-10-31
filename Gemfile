@@ -8,7 +8,6 @@ gem 'pg'
 gem 'puma'
 gem 'rails', '5.1.2'
 gem 'redis'
-
 gem 'autoprefixer-rails'
 gem 'bootstrap-sass'
 gem 'font-awesome-sass'
@@ -20,6 +19,7 @@ gem 'uglifier'
 gem 'remotipart', github: 'mshibuya/remotipart'
 gem 'rails_admin', '>= 1.0.0.rc'
 gem 'carrierwave'
+gem "cocoon"
 
 gem 'cloudinary'
 # gem 'activesupport-json_encoder'

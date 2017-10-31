@@ -72,7 +72,7 @@
       <div id="listing-pricing-list" class="listing-section">
         <h3 class="listing-desc-headline margin-top-70 margin-bottom-30">Classes</h3>
           <div id="calendar"></div>
-          <%=@listing.lessons.first.schedule%>
+          <%=@events%>
       </div>
       <!-- Food Menu / End -->
       <!-- Location -->
@@ -468,6 +468,21 @@ var $clocks = $('.td-input');
 <%= link_to 'Edit', edit_listing_path(@listing) %> |
 <%= link_to 'Back', listings_path %>
  -->
+<div id="fullCalModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span> <span class="sr-only">close</span></button>
+                <h4 id="modalTitle" class="modal-title"></h4>
+            </div>
+            <div id="modalBody" class="modal-body"></div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button class="btn btn-primary"><a id="eventUrl" target="_blank">Event Page</a></button>
+            </div>
+        </div>
+    </div>
+</div>
 
 <% content_for(:after_js) do %>
   <%= javascript_tag do %>
@@ -499,8 +514,15 @@ var $clocks = $('.td-input');
     timeFormat:  'HH:mm',
 
     events: <%= raw @events.to_json %>,
-    eventColor: '#506170'
+    eventColor: '#506170',
+    eventClick:  function(event, jsEvent, view) {
+        $('#modalTitle').html(event.name);
+        $('#modalBody').html(event.description);
+        $('#eventUrl').attr('href',event.url);
+        $('#fullCalModal').modal();
+    }
     });
   });
   <% end %>
 <% end %>
+

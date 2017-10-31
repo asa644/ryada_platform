@@ -22,4 +22,6 @@
 //= require moment
 //= require bootstrap-datetimepicker
 //= require fullcalendar
+//= require cocoon
+
 // alert('Sadly this is static...');
