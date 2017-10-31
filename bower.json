@@ -1,0 +1,14 @@
+{
+  "name": "ryada_platform",
+  "description": "Web app to find and book fitness classes",
+  "main": "",
+  "authors": [
+    "Ahmad Al Msouty <ahmad.msouti@hotmail.com>"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/asa644/ryada_platform",
+  "dependencies": {
+    "bootstrap": "^3.3.7",
+    "eonasdan-bootstrap-datetimepicker": "^4.17.47"
+  }
+}

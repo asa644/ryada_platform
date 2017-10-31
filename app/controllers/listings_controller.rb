@@ -19,20 +19,20 @@ class ListingsController < ApplicationController
     @respond = Respond.new
     # @alert_message = "You are viewing #{@listing.name}"
     @listing_coordinates = { lat: @listing.latitude, lng: @listing.longitude }
-    @calendar_lessons = @listing.lessons.each{ |e| e.calendar_lessons(e.start_time)}
+    # @calendar_lessons = @listing.lessons.each{ |e| e.calendar_lessons(e.start_time)}
     @hash = Gmaps4rails.build_markers([@listing]) do |listing, marker|
       marker.lat listing.latitude
       marker.lng listing.longitude
     end
 
-    l = @listing.lessons.first
-    @calendar_lessons = l.calendar_lessons(l.start_time)
-      @events = []
-      @calendar_lessons.each do |lesson|
-        unless lesson.start_time.nil?
-          @events << {title:  "#{lesson.name}", start: lesson.start_time, end: lesson.start_time+1.hours, allDay: false}
-        end
-      end
+    # l = @listing.lessons.first
+    # @calendar_lessons = l.calendar_lessons(l.start_time)
+    #   @events = []
+    #   @calendar_lessons.each do |lesson|
+    #     unless lesson.start_time.nil?
+    #       @events << {title:  "#{lesson.name}", start: lesson.start_time, end: lesson.start_time+1.hours, allDay: false}
+    #     end
+    #   end
   end
 
   def search
@@ -101,8 +101,9 @@ class ListingsController < ApplicationController
       @listing = Listing.find(params[:id])
     end
 
+
     # Never trust parameters from the scary internet, only allow the white list through.
     def listing_params
-      params.require(:listing).permit(:id, :name, :description, :status, :owner_id, :city, :country, :zip_code, :street, :landmark, :phonenumber, :ownerphone, :longitude, :latitude, listing_photos_attributes: [:id, :user_id, :photo, :photo_cache], timings_attributes: [:id, :day, :start_time, :end_time, :status], lessons_attributes: [:id, :name, :description, :start_time, :recurring])
+      params.require(:listing).permit(:id, :name, :description, :status, :owner_id, :city, :country, :zip_code, :street, :landmark, :phonenumber, :ownerphone, :longitude, :latitude, listing_photos_attributes: [:id, :user_id, :photo, :photo_cache], timings_attributes: [:id, :day, :start_time, :end_time, :status], lessons_attributes: [:id, :name, :description, :start_time, :recurring, schedule_attributes: Schedulable::ScheduleSupport.param_names])
     end
 end

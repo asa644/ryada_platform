@@ -5,6 +5,24 @@ SimpleForm.setup do |config|
   # wrapper, change the order or even add your own to the
   # stack. The options given below are used to wrap the
   # whole input.
+  config.wrappers :horizontal_select_date, tag: 'div', class: 'form-group', error_class: 'has-error' do |b|
+  b.use :html5
+  b.optional :readonly
+  b.use :label, class: 'control-label'
+  b.wrapper tag: 'div', class: 'form-inline' do |ba|
+    ba.use :input, class: 'form-control'
+    ba.use :error, wrap_with: { tag: 'span', class: 'help-block' }
+    ba.use :hint,  wrap_with: { tag: 'p', class: 'help-block' }
+  end
+end
+
+# Include date_select-wrapper in mappings
+config.wrapper_mappings = {
+  datetime: :horizontal_select_date,
+  date: :horizontal_select_date,
+  time: :horizontal_select_date
+}
+
   config.wrappers :default, class: :input,
     hint_class: :field_with_hint, error_class: :field_with_errors do |b|
     ## Extensions enabled by default

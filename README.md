@@ -62,6 +62,5 @@ https://github.com/ankane/blazer (for intelligent business apps)
 
 
 
-
-
-one cover photo instead of multiple
+TODO:
+style for the datetime using brower

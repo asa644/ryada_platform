@@ -838,6 +838,7 @@ $(document).ready(function(){
 
 			newElem.appendTo('table#pricing-list-container');
 		});
+  // $('.datepicker').datepicker();
 
 		$('table#pricing-list-container tbody').sortable({
 			forcePlaceholderSize: true,
