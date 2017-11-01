@@ -8,27 +8,30 @@ gem 'pg'
 gem 'puma'
 gem 'rails', '5.1.2'
 gem 'redis'
-
 gem 'autoprefixer-rails'
 gem 'bootstrap-sass'
 gem 'font-awesome-sass'
 gem 'jquery-rails'
+gem 'jquery-ui-rails'
 gem 'sass-rails'
 gem 'simple_form'
 gem 'uglifier'
 gem 'remotipart', github: 'mshibuya/remotipart'
 gem 'rails_admin', '>= 1.0.0.rc'
 gem 'carrierwave'
+gem "cocoon"
 
 gem 'cloudinary'
 # gem 'activesupport-json_encoder'
 gem 'ice_cube'
-# gem 'schedulable'
+gem 'schedulable'
 gem 'recurring_select', github: "RundownApp/recurring_select"
 gem 'fullcalendar-rails'
 # gem 'rails-assets-air-datepicker', source: 'https://rails-assets.org'
+gem 'momentjs-rails', '>= 2.9.0'
+gem 'bootstrap3-datetimepicker-rails', '~> 4.17.47'
 
-gem 'momentjs-rails'
+gem 'date_picker'
 
 gem 'country_select'
 

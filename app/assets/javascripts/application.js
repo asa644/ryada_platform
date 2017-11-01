@@ -14,12 +14,14 @@
 //= require magnific-popup.min
 //= require waypoints.min
 //= require counterup.min
-//= require jquery-ui.min
+//= require jquery-ui
 //= require tooltips.min
 //= require switcher
 //= require custom
 //= require dropzone
-//= require recurring_select
 //= require moment
+//= require bootstrap-datetimepicker
 //= require fullcalendar
+//= require cocoon
+
 // alert('Sadly this is static...');

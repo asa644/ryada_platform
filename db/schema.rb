@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171017153853) do
+ActiveRecord::Schema.define(version: 20171031123116) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,12 +30,39 @@ ActiveRecord::Schema.define(version: 20171017153853) do
     t.index ["listing_id"], name: "index_category_listings_on_listing_id"
   end
 
+  create_table "event_occurrences", force: :cascade do |t|
+    t.string "schedulable_type"
+    t.bigint "schedulable_id"
+    t.datetime "date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["schedulable_type", "schedulable_id"], name: "index_event_occurrences_on_schedulable_type_and_schedulable_id"
+  end
+
   create_table "lesson_exceptions", force: :cascade do |t|
     t.bigint "lesson_id"
     t.datetime "time"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["lesson_id"], name: "index_lesson_exceptions_on_lesson_id"
+  end
+
+  create_table "lesson_occurences", force: :cascade do |t|
+    t.string "schedulable_type"
+    t.bigint "schedulable_id"
+    t.datetime "date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["schedulable_type", "schedulable_id"], name: "index_lesson_occurences_on_schedulable_type_and_schedulable_id"
+  end
+
+  create_table "lesson_occurrences", force: :cascade do |t|
+    t.string "schedulable_type"
+    t.bigint "schedulable_id"
+    t.datetime "date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["schedulable_type", "schedulable_id"], name: "index_lesson_occurrences_on_schedulable_type_and_schedulable_id"
   end
 
   create_table "lessons", force: :cascade do |t|
@@ -112,6 +139,22 @@ ActiveRecord::Schema.define(version: 20171017153853) do
     t.datetime "updated_at", null: false
     t.index ["listing_id"], name: "index_reviews_on_listing_id"
     t.index ["user_id"], name: "index_reviews_on_user_id"
+  end
+
+  create_table "schedules", force: :cascade do |t|
+    t.string "schedulable_type"
+    t.bigint "schedulable_id"
+    t.date "date"
+    t.time "time"
+    t.string "rule"
+    t.string "interval"
+    t.text "day"
+    t.text "day_of_week"
+    t.datetime "until"
+    t.integer "count"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["schedulable_type", "schedulable_id"], name: "index_schedules_on_schedulable_type_and_schedulable_id"
   end
 
   create_table "service_listings", force: :cascade do |t|

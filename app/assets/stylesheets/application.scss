@@ -1,12 +1,12 @@
 // Graphical variables
 @import "config/variables";
 @import "config/bootstrap_variables";
-
+@import "jquery-ui";
 // External libraries
-@import "bootstrap-sprockets";
-@import "bootstrap";
+@import 'bootstrap-sprockets';
+@import 'bootstrap';
+@import 'bootstrap-datetimepicker';
 @import "fullcalendar";
-
 @import "font-awesome-sprockets";
 @import "font-awesome";
 @import "recurring_select";
