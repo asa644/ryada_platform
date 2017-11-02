@@ -17,6 +17,7 @@ class ListingsController < ApplicationController
   def show
     @review = Review.new
     @respond = Respond.new
+    @booking = Booking.new
     # @alert_message = "You are viewing #{@listing.name}"
     @listing_coordinates = { lat: @listing.latitude, lng: @listing.longitude }
     # @calendar_lessons = @listing.lessons.each{ |e| e.calendar_lessons(e.start_time)}
@@ -24,12 +25,11 @@ class ListingsController < ApplicationController
       marker.lat listing.latitude
       marker.lng listing.longitude
     end
-          @events = []
-
+    @events = []
     @listing.lessons.each do |event|
       @calendar_lessons = event.calendar_lessons
         @calendar_lessons.each do |lesson|
-            @events << {title:  "#{lesson.name}", start: lesson.start_time, end: lesson.start_time+1.hours, allDay: false}
+            @events << {id: lesson.id ,title:  "#{lesson.name}", start: lesson.start_time, end: lesson.start_time+1.hours, allDay: false}
         end
     end
   end

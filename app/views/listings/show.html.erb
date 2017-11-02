@@ -473,10 +473,19 @@ var $clocks = $('.td-input');
                 <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span> <span class="sr-only">close</span></button>
                 <h4 id="modalTitle" class="modal-title"></h4>
             </div>
-            <div id="modalBody" class="modal-body"></div>
+            <div id="modalBody" class="modal-body">
+          <%= simple_form_for [@booking], remote: true do |f| %>
+              <%=f.input_field :start_time, :as => :string, as: :hidden %>
+              <%=f.input :lesson_id, as: :hidden %>
+            </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button class="btn btn-primary"><a id="eventUrl" target="_blank">Event Page</a></button>
+                <%= button_tag type: 'submit', class: "button", id: "book" do %>Book this class
+                  <i class="fa fa-arrow-circle-right"></i>
+                <%end%>
+<!--                 <button class="button"><a id="eventUrl" target="_blank" style="color: white;">Book this class</a></button>
+ -->                          <%end%>
+
             </div>
         </div>
     </div>
@@ -490,7 +499,7 @@ var $clocks = $('.td-input');
      views: {
         week: {
             <!-- // options apply to week views -->
-        titleFormat: 'MMMM D YYYY'
+          titleFormat: 'MMMM D YYYY'
         },
         day: {
             <!-- // options day views -->
@@ -498,7 +507,7 @@ var $clocks = $('.td-input');
     },
     <!-- hiddenDays: <%#= raw @place.non_available_day.to_json  %>, -->
     header: {
-    left:"",
+    left:"prev, next",
     center: 'title',
     right: 'agendaWeek,agendaDay'
     },
@@ -508,18 +517,24 @@ var $clocks = $('.td-input');
     <!-- start the week on monday -->
     <!-- show end date booking -->
     displayEventEnd: true,
+    duration: { days: 3 },
     timeFormat:  'HH:mm',
-
     events: <%= raw @events.to_json %>,
     eventColor: '#506170',
     eventClick:  function(event, jsEvent, view) {
-        console.log(event);
+        $('#booking_start_time').val(event.start);
+        console.log($('.booking_start_time'));
+        $('#booking_lesson_id').val(event.id);
         $('#modalTitle').html(event.title);
         $('#modalBody').html(event.name);
         $('#eventUrl').attr('href',event.url);
         $('#fullCalModal').modal();
     }
     });
+    $('#book').click(function(){
+       alert('Please wait while form is submitting');
+    });
+
   });
   <% end %>
 <% end %>
