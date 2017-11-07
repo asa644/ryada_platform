@@ -29,8 +29,10 @@ class Lesson < ApplicationRecord
 
   def calendar_lessons
       #start_date = start.beginning_of_month.beginning_of_week
-    self.schedule.occurrences(self.schedule.until).map do |date|
-      Lesson.new(id: id, name: name, start_time: date)
+    unless self.schedule.nil?
+      self.schedule.occurrences(self.schedule.until).map do |date|
+        Lesson.new(id: id, name: name, start_time: date)
+      end
     end
   end
 end
