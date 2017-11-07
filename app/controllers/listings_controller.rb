@@ -29,9 +29,11 @@ class ListingsController < ApplicationController
     unless @listing.lessons.nil?
       @listing.lessons.each do |event|
         @calendar_lessons = event.calendar_lessons
+        unless @calendar_lessons.nil?
           @calendar_lessons.each do |lesson|
               @events << {id: lesson.id ,title:  "#{lesson.name}", start: lesson.start_time, end: lesson.start_time+1.hours, allDay: false}
           end
+        end
       end
     end
   end
