@@ -26,7 +26,7 @@ class ListingsController < ApplicationController
       marker.lng listing.longitude
     end
     @events = []
-    unless @listing.lessons.empty?
+    unless @listing.lessons.nil?
       @listing.lessons.each do |event|
         @calendar_lessons = event.calendar_lessons
           @calendar_lessons.each do |lesson|
