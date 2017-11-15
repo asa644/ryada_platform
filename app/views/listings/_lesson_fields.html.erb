@@ -1,13 +1,16 @@
 <tr class="pricing-list-item pattern">
 <td>
-    <div class="opening-day">
-      <%= f.input :category_ids, collection: Category.all, input_html: { class: 'chosen-select' }, label: false, checked: @categories.first %>
-  </div>
 
      <div class="fm-move"><i class="sl sl-icon-cursor-move"></i></div>
     <div class="fm-input pricing-name">
     <%= f.input_field :name, placeholder: "Name" %>
     </div>
+        <div class="fm-input pricing-name">
+          <%= f.select :category_ids, Category.all.map { |r| [r.name, r.id, { class: r.id }] } %>
+        </div>
+
+
+
     <div class="fm-input pricing-ingredients">
     <%= f.input_field :description, placeholder: "Description" %>
     </div>

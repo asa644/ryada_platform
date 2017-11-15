@@ -20,6 +20,7 @@ gem 'remotipart', github: 'mshibuya/remotipart'
 gem 'rails_admin', '>= 1.0.0.rc'
 gem 'carrierwave'
 gem "cocoon"
+gem "select2-rails"
 
 gem 'cloudinary'
 # gem 'activesupport-json_encoder'

@@ -8,6 +8,7 @@
 //= require google_maps_autocomplete
 //= require gmaps/google
 //= require jpanelmenu.min
+//= require cocoon
 //= require chosen.min
 //= require slick.min
 //= require rangeslider.min
@@ -22,6 +23,6 @@
 //= require moment
 //= require bootstrap-datetimepicker
 //= require fullcalendar
-//= require cocoon
+//= require select2-full
 
 // alert('Sadly this is static...');
