@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171102144022) do
+ActiveRecord::Schema.define(version: 20171108003817) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,6 +29,15 @@ ActiveRecord::Schema.define(version: 20171102144022) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "category_lessons", force: :cascade do |t|
+    t.bigint "categories_id"
+    t.bigint "lessons_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["categories_id"], name: "index_category_lessons_on_categories_id"
+    t.index ["lessons_id"], name: "index_category_lessons_on_lessons_id"
   end
 
   create_table "category_listings", force: :cascade do |t|
@@ -437,6 +446,7 @@ ActiveRecord::Schema.define(version: 20171102144022) do
 
   add_foreign_key "bookings", "lessons"
   add_foreign_key "bookings", "users"
+  add_foreign_key "category_lessons", "lessons", column: "lessons_id"
   add_foreign_key "category_listings", "categories"
   add_foreign_key "category_listings", "listings"
   add_foreign_key "lesson_exceptions", "lessons"

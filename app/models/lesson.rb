@@ -4,28 +4,8 @@ class Lesson < ApplicationRecord
   has_many :lesson_exceptions
   belongs_to :user, optional: true
   belongs_to :listing
-  # def recurring=(value)
-  #   if RecurringSelect.is_valid_rule?(value)
-  #     super(RecurringSelect.dirty_hash_to_rule(value).to_hash)
-  #   else
-  #     super(nil)
-  #   end
-  # end
-
-  # def rule
-  #   IceCube::Rule.from_hash recurring
-  # end
-
-  # def schedule(start)
-  #   schedule = IceCube::Schedule.new(start)
-  #   schedule.add_recurrence_rule(rule)
-
-  #   lesson_exceptions.each do |exception|
-  #     schedule.add_exception_time(exception.time)
-  #   end
-
-  #   schedule
-  # end
+  has_many :category_lesson, dependent: :destroy
+  has_many :categories, through: :category_lesson
 
   def calendar_lessons
       #start_date = start.beginning_of_month.beginning_of_week

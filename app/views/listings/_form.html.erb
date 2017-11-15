@@ -222,7 +222,7 @@
                 <div class="col-md-12">
                     <table id="pricing-list-container">
                         <%= f.simple_fields_for :lessons do |s| %>
-                          <%= render 'lesson_fields', f: s %>
+                              <%= render 'lesson_fields', f: s %>
                         <%end%>
                     </table>
                         <%= link_to_add_association f, :lessons, class: "button add-pricing-list-item" do %>

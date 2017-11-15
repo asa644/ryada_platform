@@ -44,6 +44,7 @@ class ListingsController < ApplicationController
   # GET /listings/new
   def new
     @listing = Listing.new
+    @categories = Category.all
     @days = ['Monday', 'Tuesday', 'Wednsday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
     @listing_photo = @listing.listing_photos.build
     @listing.timings.build
@@ -106,6 +107,6 @@ class ListingsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def listing_params
-      params.require(:listing).permit(:id, :name, :description, :status, :owner_id, :city, :country, :zip_code, :street, :landmark, :phonenumber, :ownerphone, :longitude, :latitude, listing_photos_attributes: [:id, :user_id, :photo, :photo_cache], timings_attributes: [:id, :day, :start_time, :end_time, :status], lessons_attributes: [:id, :name, :description, :start_time, :recurring, :_destroy, schedule_attributes: Schedulable::ScheduleSupport.param_names])
+      params.require(:listing).permit(:id, :name, :categories_ids,:description, :status, :owner_id, :city, :country, :zip_code, :street, :landmark, :phonenumber, :ownerphone, :longitude, :latitude, listing_photos_attributes: [:id, :user_id, :photo, :photo_cache], timings_attributes: [:id, :day, :start_time, :end_time, :status], lessons_attributes: [:id, :name, :description, :start_time, :recurring, :_destroy, :categories_ids,schedule_attributes: Schedulable::ScheduleSupport.param_names])
     end
 end
