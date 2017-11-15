@@ -5,12 +5,9 @@
     <div class="fm-input pricing-name">
     <%= f.input_field :name, placeholder: "Name" %>
     </div>
-        <div class="fm-input pricing-name">
+      <div class="fm-input pricing-name">
           <%= f.select :category_ids, Category.all.map { |r| [r.name, r.id, { class: r.id }] } %>
-        </div>
-
-
-
+    </div>
     <div class="fm-input pricing-ingredients">
     <%= f.input_field :description, placeholder: "Description" %>
     </div>
