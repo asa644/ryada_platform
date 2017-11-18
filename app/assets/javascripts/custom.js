@@ -3,7 +3,13 @@
 "use strict";
 
 $(document).ready(function(){
-	$(".e1").select2();
+// $('.test').on('click', '.add-pricing-list-item', function(){
+// 	  $('.chosen-select').chosen()
+// });
+  $('.test').on('cocoon:after-insert', function() {
+	  $('.chosen-select').chosen({placeholder_text_single: "select category"});
+  });
+
 	/*--------------------------------------------------*/
 	/*  Navigation
 	/*--------------------------------------------------*/
