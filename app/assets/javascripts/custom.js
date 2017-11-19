@@ -8,6 +8,7 @@ $(document).ready(function(){
 // });
   $('.test').on('cocoon:after-insert', function() {
 	  $('.chosen-select').chosen({placeholder_text_single: "select category"});
+	   // $('.date0').datepicker();
   });
 
 	/*--------------------------------------------------*/

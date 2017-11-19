@@ -21,7 +21,7 @@
 //= require custom
 //= require dropzone
 //= require moment
-//= require bootstrap-datetimepicker
+//= require bootstrap-datepicker
 //= require fullcalendar
 //= require select2-full
 
