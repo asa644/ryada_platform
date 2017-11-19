@@ -23,6 +23,5 @@
 //= require moment
 //= require bootstrap-datepicker
 //= require fullcalendar
-//= require select2-full
 
 // alert('Sadly this is static...');
