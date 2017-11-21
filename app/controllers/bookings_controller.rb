@@ -11,7 +11,9 @@ class BookingsController < ApplicationController
   # GET /bookings/1.json
   def show
   end
+  def aboutus
 
+  end
   # GET /bookings/1/edit
   def edit
   end
