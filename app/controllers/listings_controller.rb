@@ -55,6 +55,9 @@ class ListingsController < ApplicationController
 
   # GET /listings/1/edit
   def edit
+    @categories = Category.all
+    @days = ['Monday', 'Tuesday', 'Wednsday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
+
   end
 
   # POST /listings

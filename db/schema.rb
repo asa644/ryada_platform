@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171108003817) do
+ActiveRecord::Schema.define(version: 20171123171327) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,12 +32,12 @@ ActiveRecord::Schema.define(version: 20171108003817) do
   end
 
   create_table "category_lessons", force: :cascade do |t|
-    t.bigint "categories_id"
-    t.bigint "lessons_id"
+    t.bigint "category_id"
+    t.bigint "lesson_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["categories_id"], name: "index_category_lessons_on_categories_id"
-    t.index ["lessons_id"], name: "index_category_lessons_on_lessons_id"
+    t.index ["category_id"], name: "index_category_lessons_on_category_id"
+    t.index ["lesson_id"], name: "index_category_lessons_on_lesson_id"
   end
 
   create_table "category_listings", force: :cascade do |t|
@@ -440,13 +440,18 @@ ActiveRecord::Schema.define(version: 20171108003817) do
     t.datetime "updated_at", null: false
     t.boolean "admin", default: false, null: false
     t.string "name"
+    t.string "phone"
+    t.float "weight"
+    t.float "height"
+    t.date "birthdate"
+    t.string "photo"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
   add_foreign_key "bookings", "lessons"
   add_foreign_key "bookings", "users"
-  add_foreign_key "category_lessons", "lessons", column: "lessons_id"
+  add_foreign_key "category_lessons", "lessons"
   add_foreign_key "category_listings", "categories"
   add_foreign_key "category_listings", "listings"
   add_foreign_key "lesson_exceptions", "lessons"

@@ -13,4 +13,14 @@ class UsersController < ApplicationController
   def profile
     @user = current_user
   end
+  def active
+    @listings = current_user.owner_listings
+  end
+  def pending
+    @user = current_user
+  end
+  def expired
+    @user = current_user
+  end
+
 end

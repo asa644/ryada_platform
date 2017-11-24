@@ -103,12 +103,10 @@
 
             </div>
             <!-- Left Side Content / End -->
-
             <!-- Right Side Content / End -->
             <div class="right-side">
                 <div class="header-widget">
                 <% if !user_signed_in? %>
-
                     <a href="#sign-in-dialog" class="sign-in popup-with-zoom-anim"><i class="sl sl-icon-login"></i> Sign In</a>
                 <%else%>
                     <div class="user-menu">
@@ -116,12 +114,14 @@
                         <ul>
 
                             <li><a href="/dashboard"><i class="sl sl-icon-settings"></i> Dashboard</a></li>
-                            <li><a href="dashboard-messages.html"><i class="sl sl-icon-envelope-open"></i> Messages</a></li>
-                            <li><a href="dashboard-my-profile.html"><i class="sl sl-icon-user"></i> My Profile</a></li>
+
+<!--                             <li><a href="dashboard-messages.html"><i class="sl sl-icon-envelope-open"></i> Messages</a></li>
+ -->
+                            <li><a href="/profile"><i class="sl sl-icon-user"></i> My Profile</a></li>
                             <li>
                                 <%= link_to destroy_user_session_path, method: :delete do %>
                                     <i class="sl sl-icon-power"></i>  <%= t(".sign_out", default: "Log out") %>
-                              <% end %>
+                                <% end %>
                             </li>
                         </ul>
                     </div>

@@ -1,3 +1,4 @@
+<%= simple_form_for(@listing) do |f| %>
 <div id="add-listing">
     <!-- Section -->
     <div class="add-listing-section">
@@ -186,21 +187,17 @@
         <!-- Switcher ON-OFF Content -->
         <div class="switcher-content">
             <!-- Day -->
-        <% @days.each do |day| %>
             <div class="row opening-day">
-            <%= f.simple_fields_for :timings do |t| %>
-                  <%= t.hidden_field :day, value: day%>
-                <div class="col-md-2"><h5><%=day%></h5></div>
-                <div class="col-md-5">
-                  <%= t.input :start_time, collection: ['Closed', '1 AM', '2 AM', '3 AM', '4 AM', '5 AM', '6 AM', '7 AM', '8 AM', '9 AM', '10 AM', '11 AM', '12 AM', '1 PM', '2 PM', '3 PM', '4 PM', '5 PM', '6 PM', '7 PM', '8 PM', '9 PM', '10 PM', '11 PM', '12 PM'], input_html: { class: 'chosen-select' }, label: false%>
-                </div>
-                <div class="col-md-5">
-                  <%= t.input :end_time, collection: ['Closed', '1 AM', '2 AM', '3 AM', '4 AM', '5 AM', '6 AM', '7 AM', '8 AM', '9 AM', '10 AM', '11 AM', '12 AM', '1 PM', '2 PM', '3 PM', '4 PM', '5 PM', '6 PM', '7 PM', '8 PM', '9 PM', '10 PM', '11 PM', '12 PM'], input_html: { class: 'chosen-select' }, label: false %>
-                </div>
-            <%end%>
+                <%= f.simple_fields_for :timings do |t| %>
+                   <div class="col-md-5">
+                      <%= t.input :start_time, collection: ['Closed', '1 AM', '2 AM', '3 AM', '4 AM', '5 AM', '6 AM', '7 AM', '8 AM', '9 AM', '10 AM', '11 AM', '12 AM', '1 PM', '2 PM', '3 PM', '4 PM', '5 PM', '6 PM', '7 PM', '8 PM', '9 PM', '10 PM', '11 PM', '12 PM'], input_html: { class: 'chosen-select' }, label: false%>
+                    </div>
+                    <div class="col-md-5">
+                      <%= t.input :end_time, collection: ['Closed', '1 AM', '2 AM', '3 AM', '4 AM', '5 AM', '6 AM', '7 AM', '8 AM', '9 AM', '10 AM', '11 AM', '12 AM', '1 PM', '2 PM', '3 PM', '4 PM', '5 PM', '6 PM', '7 PM', '8 PM', '9 PM', '10 PM', '11 PM', '12 PM'], input_html: { class: 'chosen-select' }, label: false %>
+                    </div>
+                <%end%>
             </div>
             <!-- Day / End -->
-        <%end%>
         </div>
         <!-- Switcher ON-OFF Content / End -->
     </div>
@@ -242,3 +239,4 @@
         <i class="fa fa-arrow-circle-right"></i>
     <% end %>
 </div>
+<%end%>

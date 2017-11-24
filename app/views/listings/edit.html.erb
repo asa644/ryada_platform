@@ -1,6 +1,116 @@
-<h1>Editing Listing</h1>
 
-<%= render 'form', listing: @listing %>
+<!-- Dashboard -->
+<div id="dashboard">
 
-<%= link_to 'Show', @listing %> |
-<%= link_to 'Back', listings_path %>
+    <!-- Navigation
+    ================================================== -->
+
+    <!-- Responsive Navigation Trigger -->
+    <a href="#" class="dashboard-responsive-nav-trigger"><i class="fa fa-reorder"></i> Dashboard Navigation</a>
+
+    <%= render 'dashboard_nav'%>
+
+    <!-- Navigation / End -->
+
+
+    <!-- Content
+    ================================================== -->
+    <div class="dashboard-content">
+
+        <!-- Titlebar -->
+        <div id="titlebar">
+            <div class="row">
+                <div class="col-md-12">
+                    <h2>Add Listing</h2>
+                    <!-- Breadcrumbs -->
+                    <nav id="breadcrumbs">
+                        <ul>
+                            <li><a href="#">Home</a></li>
+                            <li><a href="#">Dashboard</a></li>
+                            <li>Add Listing</li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-12">
+                <%= render partial: 'form', listing: @listing%>
+            </div>
+            <!-- Copyrights -->
+            <div class="col-md-12">
+                <div class="copyrights">© 2017 LocalFitt. All Rights Reserved.</div>
+            </div>
+
+        </div>
+
+    </div>
+    <!-- Content / End -->
+
+
+</div>
+<!-- Dashboard / End -->
+
+
+</div>
+<!-- Wrapper / End -->
+
+
+<!-- Scripts
+================================================== -->
+
+
+
+
+<% content_for(:after_js) do %>
+  <%= javascript_tag do %>
+
+    var map;
+    var marker;
+
+// geolocation with HTML5 through browser
+    function getLocation() {
+     if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(function(p){
+        console.log(p.coords.longitude);
+          var mapOptions = {
+          center: new google.maps.LatLng({lng: p.coords.longitude,lat: p.coords.latitude}),
+          zoom: 14
+          }
+          initMap(mapOptions);
+          });
+    } else {
+      var mapOptions = {
+        //  document.getElementById('lat').value
+         // document.getElementById('lng').value
+        center: new google.maps.LatLng(-25.363, 131.044),
+        zoom: 14
+        }
+      initMap(mapOptions);
+       }
+   }
+      function initMap(mapOptions) {
+        var handler = Gmaps.build('Google');
+
+        handler.buildMap({ provider: mapOptions, internal: { id: 'map_set_location' } }, function() {
+          map = handler.getMap();
+          map.addListener('click', function(e) {
+            addMarker(e.latLng);
+          });
+        });
+      }
+      function addMarker(latLng){
+        if (marker) marker.setMap(null);
+        marker = new google.maps.Marker({
+          position: latLng,
+          map: map
+        });
+        $('#listing_latitude').val(latLng.lat());
+        $('#listing_longitude').val(latLng.lng());
+      }
+  <% end %>
+<% end %>
+
+
+

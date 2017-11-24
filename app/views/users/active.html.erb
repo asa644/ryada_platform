@@ -1,0 +1,82 @@
+<div class="clearfix"></div>
+<!-- Header Container / End -->
+
+
+<!-- Dashboard -->
+<div id="dashboard">
+
+  <!-- Navigation
+  ================================================== -->
+
+  <!-- Responsive Navigation Trigger -->
+  <a href="#" class="dashboard-responsive-nav-trigger"><i class="fa fa-reorder"></i> Dashboard Navigation</a>
+  <%=render 'listings/dashboard_nav'%>
+
+  <!-- Navigation / End -->
+  <!-- Content
+  ================================================== -->
+  <div class="dashboard-content">
+
+    <!-- Titlebar -->
+    <div id="titlebar">
+      <div class="row">
+        <div class="col-md-12">
+          <h2>My Listings</h2>
+          <!-- Breadcrumbs -->
+          <nav id="breadcrumbs">
+            <ul>
+              <li><a href="#">Home</a></li>
+              <li><a href="#">Dashboard</a></li>
+              <li>My Listings</li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+
+      <!-- Listings -->
+      <div class="col-lg-12 col-md-12">
+        <div class="dashboard-list-box margin-top-0">
+          <h4>Active Listings</h4>
+          <ul>
+            <%@listings.each do |listing|%>
+              <li>
+                <div class="list-box-listing">
+                  <div class="list-box-listing-img"><a href="#"><img src="images/listing-item-01.jpg" alt=""></a></div>
+                  <div class="list-box-listing-content">
+                    <div class="inner">
+                      <h3><a href="#"><%=listing.name%></a></h3>
+                      <span><%=listing.city + listing.street%></span>
+                      <div class="star-rating" data-rating="3.5">
+                        <div class="rating-counter">(12 reviews)</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="buttons-to-right">
+                  <%= link_to edit_listing_path(listing), class: 'button gray' do %>
+                    <i class="sl sl-icon-note"></i>Edit
+                  <%end%>
+                  <a href="#" class="button gray"><i class="sl sl-icon-close"></i> Delete</a>
+                </div>
+              </li>
+            <%end%>
+          </ul>
+        </div>
+      </div>
+      <!-- Copyrights -->
+      <div class="col-md-12">
+        <div class="copyrights">© 2017 LocalFitt. All Rights Reserved.</div>
+      </div>
+    </div>
+  </div>
+  <!-- Content / End -->
+
+</div>
+<!-- Dashboard / End -->
+
+</div>
+<!-- Wrapper / End -->
+

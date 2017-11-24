@@ -1,4 +1,4 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<!-- <h2>Edit <%= resource_name.to_s.humanize %></h2>
 
 <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= f.error_notification %>
@@ -25,3 +25,137 @@
 <p>Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
 
 <%= link_to "Back", :back %>
+ -->
+<!-- Wrapper -->
+<div id="wrapper">
+
+<div class="clearfix"></div>
+<!-- Header Container / End -->
+
+
+<!-- Dashboard -->
+<div id="dashboard">
+
+  <!-- Navigation
+  ================================================== -->
+
+  <!-- Responsive Navigation Trigger -->
+  <a href="#" class="dashboard-responsive-nav-trigger"><i class="fa fa-reorder"></i> Dashboard Navigation</a>
+
+  <%=render 'listings/dashboard_nav'%>
+  <!-- Navigation / End -->
+
+
+  <!-- Content
+  ================================================== -->
+  <div class="dashboard-content">
+
+    <!-- Titlebar -->
+    <div id="titlebar">
+      <div class="row">
+        <div class="col-md-12">
+          <h2>My Profile</h2>
+          <!-- Breadcrumbs -->
+          <nav id="breadcrumbs">
+            <ul>
+              <li><a href="#">Home</a></li>
+              <li><a href="#">Dashboard</a></li>
+              <li>My Profile</li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+          <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+
+      <!-- Profile -->
+      <div class="col-lg-6 col-md-12">
+        <div class="dashboard-list-box margin-top-0">
+          <h4 class="gray">Profile Details</h4>
+          <div class="dashboard-list-box-static">
+
+            <!-- Avatar -->
+            <div class="edit-profile-photo">
+              <%= cl_image_tag current_user.photo%>
+
+              <img src="images/user-avatar.jpg" alt="">
+              <div class="change-photo-btn">
+                <div class="photoUpload">
+                    <span><i class="fa fa-upload"></i> Upload Photo</span>
+                      <%= f.input_field :photo, label: false, class: "upload"%>
+                      <%= f.input :photo_cache, as: :hidden %>
+                </div>
+              </div>
+            </div>
+
+            <!-- Details -->
+            <%= f.error_notification %>
+
+            <div class="my-profile">
+              <label>Your Name</label>
+              <%=f.input :name, label: false%>
+              <label>Phone</label>
+              <%=f.input :phone, label: false%>
+              <label>Email</label>
+              <%=f.input :email, label: false%>
+              <label>Weight(kg)</label>
+              <%=f.input :weight, label: false%>
+              <label>Height(cm)</label>
+              <%=f.input :weight, label: false%>
+              <label>birthday</label>
+              <%=f.input :birthdate, label: false%>
+    <%= f.input :current_password, hint: "we need your current password to confirm your changes", required: true %>
+            </div>
+            <%=f.button :submit, 'Save changes', class: "button margin-top-15"%>
+      <%end%>
+          </div>
+        </div>
+      </div>
+
+      <!-- Change Password -->
+      <div class="col-lg-6 col-md-12">
+        <div class="dashboard-list-box margin-top-0">
+          <h4 class="gray">Change Password</h4>
+          <div class="dashboard-list-box-static">
+          <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+            <%= f.error_notification %>
+
+            <!-- Change Password -->
+            <div class="my-profile">
+              <!-- <label class="margin-top-0">Current Password</label> -->
+    <%= f.input :password, autocomplete: "off", hint: "leave it blank if you don't want to change it", required: false %>
+
+              <!-- <label>New Password</label> -->
+    <%= f.input :password_confirmation, required: false %>
+
+              <!-- <label>Confirm New Password</label> -->
+    <%= f.input :current_password, hint: "we need your current password to confirm your changes", required: true %>
+
+            <%=f.button :submit, 'Change password', class: "button margin-top-15"%>
+          <%end%>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+
+      <!-- Copyrights -->
+      <div class="col-md-12">
+        <div class="copyrights">© 2017 LocalFitt. All Rights Reserved.</div>
+      </div>
+
+    </div>
+
+  </div>
+  <!-- Content / End -->
+
+
+</div>
+<!-- Dashboard / End -->
+
+
+</div>
+<!-- Wrapper / End -->
