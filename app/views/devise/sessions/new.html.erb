@@ -1,15 +1,53 @@
-<h2>Log in</h2>
+<div id="wrapper">
 
-<%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="form-inputs">
+<div class="clearfix"></div>
+<br>
+<br>
+
+<br>
+<div class="col-lg-6 col-md-12">
+  <div class="dashboard-list-box margin-top-0">
+    <h4 class="gray">Log in</h4>
+    <div class="dashboard-list-box-static">
+    <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      <%= f.error_notification %>
+
+      <!-- Change Password -->
+      <div class="my-profile">
+        <!-- <label class="margin-top-0">Current Password</label> -->
     <%= f.input :email, required: false, autofocus: true %>
     <%= f.input :password, required: false %>
     <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
-  </div>
 
-  <div class="form-actions">
     <%= f.button :submit, "Log in" %>
-  </div>
-<% end %>
+    <%end%>
+    <%= render "devise/shared/links" %>
 
-<%= render "devise/shared/links" %>
+      </div>
+
+    </div>
+  </div>
+</div>
+<div class="col-lg-6 col-md-12">
+  <div class="dashboard-list-box margin-top-0">
+    <h4 class="gray">Sign up</h4>
+    <div class="dashboard-list-box-static">
+<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <%= f.error_notification %>
+      <!-- Change Password -->
+      <div class="my-profile">
+        <!-- <label class="margin-top-0">Current Password</label> -->
+    <%= f.input :email, required: true, autofocus: true %>
+    <%= f.input :password, required: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length) %>
+    <%= f.input :password_confirmation, required: true %>
+
+    <%= f.button :submit, "Sign up" %>
+    <%end%>
+    <%= render "devise/shared/links" %>
+
+      </div>
+
+    </div>
+  </div>
+</div>
+</div>

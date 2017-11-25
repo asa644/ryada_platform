@@ -110,14 +110,15 @@
                     <a href="#sign-in-dialog" class="sign-in popup-with-zoom-anim"><i class="sl sl-icon-login"></i> Sign In</a>
                 <%else%>
                     <div class="user-menu">
-                        <div class="user-name"><span><img src="images/dashboard-avatar.jpg" alt=""></span><%=current_user.name%></div>
+
+                        <div class="user-name"><span><%= cl_image_tag current_user.photo%></span><%=current_user.name%></div>
                         <ul>
 
                             <li><a href="/dashboard"><i class="sl sl-icon-settings"></i> Dashboard</a></li>
 
 <!--                             <li><a href="dashboard-messages.html"><i class="sl sl-icon-envelope-open"></i> Messages</a></li>
  -->
-                            <li><a href="/profile"><i class="sl sl-icon-user"></i> My Profile</a></li>
+                            <li><a href="/users/edit"><i class="sl sl-icon-user"></i> My Profile</a></li>
                             <li>
                                 <%= link_to destroy_user_session_path, method: :delete do %>
                                     <i class="sl sl-icon-power"></i>  <%= t(".sign_out", default: "Log out") %>

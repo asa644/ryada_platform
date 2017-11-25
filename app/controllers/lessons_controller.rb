@@ -29,6 +29,7 @@ class LessonsController < ApplicationController
     @lesson = Lesson.new(lesson_params)
     respond_to do |format|
       # i should remove this
+      raise 'eh'
       if @lesson.save
         format.html { redirect_to @lesson, notice: 'Lesson was successfully created.' }
         format.json { render :show, status: :created, location: @lesson }

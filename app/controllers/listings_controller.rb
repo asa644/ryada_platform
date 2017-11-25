@@ -68,6 +68,7 @@ class ListingsController < ApplicationController
     @listing.owner = current_user
     respond_to do |format|
       if @listing.save
+        raise 'eh'
         format.html { redirect_to @listing, notice: 'Listing was successfully created.' }
         format.json { render :show, status: :created, location: @listing }
       else
@@ -110,6 +111,6 @@ class ListingsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def listing_params
-      params.require(:listing).permit(:id, :name, :categories_ids,:description, :status, :owner_id, :city, :country, :zip_code, :street, :landmark, :phonenumber, :ownerphone, :longitude, :latitude, listing_photos_attributes: [:id, :user_id, :photo, :photo_cache], timings_attributes: [:id, :day, :start_time, :end_time, :status], lessons_attributes: [:id, :name, :description, :start_time, :recurring, :_destroy, :categories_ids,schedule_attributes: Schedulable::ScheduleSupport.param_names])
+      params.require(:listing).permit(:id, :name, :categories_ids,:description, :status, :owner_id, :city, :country, :zip_code, :street, :landmark, :phonenumber, :ownerphone, :longitude, :latitude, listing_photos_attributes: [:id, :user_id, :photo, :photo_cache], timings_attributes: [:id, :day, :start_time, :end_time, :status], lessons_attributes: [:id, :name, :description, :start_time, :recurring, :_destroy, category_ids: [], schedule_attributes: Schedulable::ScheduleSupport.param_names])
     end
 end
