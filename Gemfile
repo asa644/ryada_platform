@@ -55,7 +55,7 @@ source 'https://rails-assets.org' do
 end
 
 # custom cms
-gem 'spina', github: 'asa644/spina'
+# gem 'spina', github: 'asa644/spina'
 
 #search
 gem 'algoliasearch-rails'
