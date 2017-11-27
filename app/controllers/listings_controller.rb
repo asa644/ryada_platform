@@ -68,7 +68,6 @@ class ListingsController < ApplicationController
     @listing.owner = current_user
     respond_to do |format|
       if @listing.save
-        raise 'eh'
         format.html { redirect_to @listing, notice: 'Listing was successfully created.' }
         format.json { render :show, status: :created, location: @listing }
       else

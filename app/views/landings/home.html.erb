@@ -15,17 +15,12 @@
                         </div>
 
                         <div class="main-search-input-item">
-                            <select data-placeholder="All Categories" class="chosen-select" >
-                                <option>All Categories</option>
-                                <!-- <option>Shops</option> -->
-                                <!-- <option>Hotels</option> -->
-                                <!-- <option>Restaurants</option> -->
-                                <option>Fitness</option>
-                                <!-- <option>Events</option> -->
-                            </select>
+                            <%= form_tag('/categories',:method=>:get) do %>
+                                <%= select_tag "id", options_from_collection_for_select(Category.all, "id", "name"), class: "chosen-select" %>
                         </div>
 
-                        <button class="button" onclick="window.location.href='/listings">Search</button>
+                             <%= button_tag "Search", class: "button" %>
+                                <% end %>
                     </div>
                 </div>
             </div>
@@ -57,7 +52,7 @@
             <%@listings.each do |listing|%>
             <!-- Listing Item -->
                 <div class="carousel-item">
-                    <a href="listings-single-page.html" class="listing-item-container">
+                    <a href="/listings/<%=listing.id%>" class="listing-item-container">
                         <div class="listing-item">
                           <% unless listing.listing_photos.empty? %>
                           <%= cl_image_tag listing.listing_photos.first.photo, height: 300, width: 400, crop: :fill %>
