@@ -469,6 +469,9 @@ var $clocks = $('.td-input');
   <%= javascript_tag do %>
   $(document).ready(function() {
     $('#calendar').fullCalendar({
+      minTime: "06:00:00",
+      maxTime: "23:00:00",
+
     height: 600,
      views: {
         week: {

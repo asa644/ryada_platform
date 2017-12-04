@@ -44,7 +44,10 @@
             <%@listings.each do |listing|%>
               <li>
                 <div class="list-box-listing">
-                  <div class="list-box-listing-img"><a href="#"><img src="images/listing-item-01.jpg" alt=""></a></div>
+                  <div class="list-box-listing-img">
+                    <a href="#">
+                    <%= cl_image_tag listing.listing_photos.first.photo %>
+                  </a></div>
                   <div class="list-box-listing-content">
                     <div class="inner">
                       <h3><a href="#"><%=listing.name%></a></h3>
