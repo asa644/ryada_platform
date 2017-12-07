@@ -63,6 +63,8 @@ gem 'algoliasearch-rails'
 gem 'faker'
 
 group :development, :test do
+  gem 'derailed_benchmarks'
+  gem 'stackprof'
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'listen', '~> 3.0.5'
