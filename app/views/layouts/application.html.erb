@@ -4,7 +4,42 @@
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>LocalFitt</title>
+    <title>LocalFitt. Discover Local Fitness Classes in Beirut</title>
+    <meta name="title" content="LocalFitt">
+    <meta name="author" content="Ahmad Al Msouti">
+    <meta name="keywords" content="LocalFitt,sports,leisure,fitness,nutrition,community,activity">
+    <meta name="description" content="LocalFitt is a web-based community platform that serves to discover and book local fitness classes in Beirut.">
+
+    <!-- Open Graph Meta Data -->
+    <meta property="og:title" content="LocalFitt">
+    <meta property="og:site_name" content="LocalFitt">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="http://www.localfitt.com">
+    <meta property="og:image" content="<%= image_url 'thumbnail.png' %>">
+    <meta property="og:image:width" content="996" />
+    <meta property="og:image:height" content="520" />
+
+    <meta property="og:description" content="LocalFitt is a web-based community platform that serves to discover and book local fitness classes in Beirut.">
+
+    <!-- Twitter Card Meta Data -->
+    <meta name="twitter:title" content="LocalFitt">
+    <meta name="twitter:site" content="http://www.localfitt.com">
+    <meta name="twitter:image" content="<%= image_url 'thumbnail.png' %>">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:description" content="LocalFitt is a web-based community platform that serves to discover and book local fitness classes in Beirut.">
+
+    <!-- Favicon -->
+
+    <%= favicon_link_tag 'apple-icon.png', rel: 'apple-icon', type: 'image/png', sizes: "180x180" %>
+    <%= favicon_link_tag 'safari-pinned-tab.svg', rel: 'mask-icon', type: 'image/svg', color: "#000000" %>
+
+    <meta name="theme-color" content="#ffffff">
+    <%= favicon_link_tag 'favicon-32x32.png', rel: 'icon', type: 'image/png', sizes: "32x32" %>
+    <%= favicon_link_tag 'favicon-16x16.png', rel: 'icon', type: 'image/png', sizes: "16x16" %>
+    <%= favicon_link_tag 'manifest.json', rel: 'manifest' %>
+    <%= favicon_link_tag 'favicon.ico', rel: 'shortcut icon', sizes: "48x48"%>
+
     <%= csrf_meta_tags %>
     <%= action_cable_meta_tag %>
     <%= stylesheet_link_tag 'application', media: 'all' %>
@@ -12,7 +47,7 @@
 
   </head>
   <body>
-          <%= javascript_include_tag "application" %>
+    <%= javascript_include_tag "application" %>
 
     <div id="wrapper">
       <%= render 'shared/navbar' %>

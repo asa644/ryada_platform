@@ -53,6 +53,10 @@ gem "gmaps4rails"
 source 'https://rails-assets.org' do
   gem "rails-assets-underscore"
 end
+#mails
+gem "letter_opener", group: :development
+gem 'postmark'
+gem 'postmark-rails'
 
 # custom cms
 # gem 'spina', github: 'asa644/spina'

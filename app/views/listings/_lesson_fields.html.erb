@@ -8,7 +8,7 @@
        <%= f.input :category_ids, collection: Category.all, input_html: { class: 'chosen-select', multiple: true}, label: false%>
     </div>
     <div class="fm-input pricing-ingredients date0">
-  <%= f.schedule_select :schedule%>
+  <%= f.schedule_select :schedule, until: true%>
    </div>
 </td>
 </tr>

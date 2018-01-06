@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   end
   resources :bookings, only: [:create, :show]
   resources :categories
-  devise_for :users
+  devise_for :users, controllers: { confirmations: 'confirmations' }
   get '/about' => 'bookings#aboutus'
   root to: 'landings#home'
   get '/search' => 'listings#search'

@@ -26,16 +26,27 @@ class ListingsController < ApplicationController
       marker.lng listing.longitude
     end
     @events = []
+    min = DateTime.now
+    max = DateTime.now+2.hours
     unless @listing.lessons.nil?
       @listing.lessons.each do |event|
         @calendar_lessons = event.calendar_lessons
         unless @calendar_lessons.nil?
           @calendar_lessons.each do |lesson|
+              if lesson.start_time < min
+                min = lesson.start_time
+              end
+              if lesson.start_time > max
+                max = lesson.start_time
+              end
               @events << {id: lesson.id ,title:  "#{lesson.name}", start: lesson.start_time, end: lesson.start_time+1.hours, allDay: false}
           end
         end
       end
     end
+    @min = min
+    @max = max + 2.hours
+    # raise 'e'
   end
 
   def search

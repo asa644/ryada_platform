@@ -1,6 +1,5 @@
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks
 //= require bootstrap-sprockets
 // = require star-rating
 //= require add-listing
@@ -23,6 +22,7 @@
 //= require moment
 //= require bootstrap-datepicker
 //= require fullcalendar
+//= require turbolinks
 
 // alert('Sadly this is static...');
 $(document).on("submit", "form[data-turboform]", function(e) {

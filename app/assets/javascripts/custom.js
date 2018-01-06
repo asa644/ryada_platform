@@ -3,9 +3,6 @@
 "use strict";
 
 $(document).ready(function(){
-// $('.test').on('click', '.add-pricing-list-item', function(){
-// 	  $('.chosen-select').chosen()
-// });
   $('.test').on('cocoon:after-insert', function() {
 	  $('.chosen-select').chosen({placeholder_text_single: "select category"});
 	   // $('.date0').datepicker();

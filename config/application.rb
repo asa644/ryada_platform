@@ -20,6 +20,10 @@ Bundler.require(*Rails.groups)
 module RyadaPlatform
   class Application < Rails::Application
     config.action_view.embed_authenticity_token_in_remote_forms = true
+    config.action_mailer.delivery_method = :postmark
+    config.action_mailer.postmark_settings = { api_key: ENV['POSTMARK_API_KEY'] }
+    config.action_mailer.default_url_options = { host: "ryadapp.herokuapp.com" }
+
     config.generators do |generate|
       generate.assets false
       generate.helper false
