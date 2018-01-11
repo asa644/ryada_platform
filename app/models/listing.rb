@@ -18,6 +18,8 @@ class Listing < ApplicationRecord
   has_many :category_listing, dependent: :destroy
   has_many :categories, through: :category_listing
   has_many :reviews
+  enum status: [:pending, :rejected, :accepted]
+
   # algoliasearch do
   #   # :name, categories: [:name]
   # end

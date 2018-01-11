@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180105214400) do
+ActiveRecord::Schema.define(version: 20180109131415) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -75,6 +75,7 @@ ActiveRecord::Schema.define(version: 20180105214400) do
     t.string "zip_code"
     t.text "recurring"
     t.datetime "start_time"
+    t.float "price"
     t.index ["listing_id"], name: "index_lessons_on_listing_id"
     t.index ["user_id"], name: "index_lessons_on_user_id"
   end
@@ -92,7 +93,6 @@ ActiveRecord::Schema.define(version: 20180105214400) do
   create_table "listings", force: :cascade do |t|
     t.string "name"
     t.string "description"
-    t.integer "status"
     t.bigint "owner_id"
     t.bigint "user_id"
     t.string "city"
@@ -108,6 +108,7 @@ ActiveRecord::Schema.define(version: 20180105214400) do
     t.string "address"
     t.string "country"
     t.string "zip_code"
+    t.integer "status", default: 0
     t.index ["owner_id"], name: "index_listings_on_owner_id"
     t.index ["user_id"], name: "index_listings_on_user_id"
   end

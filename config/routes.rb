@@ -3,6 +3,8 @@ Rails.application.routes.draw do
    resources :lessons
    mount RailsAdmin::Engine => '/admin_data', as: 'rails_admin'
   resources :listings do
+    put "approve", to: "listings#approve"
+    put "disapprove", to: "listings#disapprove"
     resources :reviews, only: [:create] do
       resources :responds, only: [:create]
     end
@@ -14,6 +16,7 @@ Rails.application.routes.draw do
   get '/about' => 'bookings#aboutus'
   root to: 'landings#home'
   get '/search' => 'listings#search'
+  get '/pendings' => 'listings#pendings'
   get '/dashboard' => 'users#dashboard'
   get '/profile' => 'users#profile'
   get '/active' => 'users#active'

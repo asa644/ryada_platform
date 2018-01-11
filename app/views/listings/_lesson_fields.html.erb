@@ -4,6 +4,9 @@
     <div class="fm-input pricing-name">
     <%= f.input_field :name, placeholder: "Name" %>
     </div>
+    <div class="fm-input pricing-name">
+      <%= f.input_field :price, placeholder: "Price" %>
+    </div>
       <div class="fm-input pricing-name">
        <%= f.input :category_ids, collection: Category.all, input_html: { class: 'chosen-select', multiple: true}, label: false%>
     </div>

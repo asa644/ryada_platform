@@ -11,7 +11,21 @@ class ListingsController < ApplicationController
       # marker.infowindow render_to_string(partial: "/listings/map_box", locals: { listing: listing })
     end
   end
+  def pendings
+    @listings = Listing.where(status: 'pending')
+  end
+  def approve
+    @listing = Listing.find(params[:listing_id])
+    @listing.update(status: 'accepted')
+    @listing.owner
+    redirect_to listing_path(@listing)
+  end
+  def disapprove
+    @listing = Listing.find(params[:listing_id])
+    @listing.update(status: 'rejected')
+    redirect_to listing_path(@listing)
 
+  end
   # GET /listings/1.
   # GET /listings/1.json
   def show
@@ -121,6 +135,6 @@ class ListingsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def listing_params
-      params.require(:listing).permit(:id, :name, :categories_ids,:description, :status, :owner_id, :city, :country, :zip_code, :street, :landmark, :phonenumber, :ownerphone, :longitude, :latitude, listing_photos_attributes: [:id, :user_id, :photo, :photo_cache], timings_attributes: [:id, :day, :start_time, :end_time, :status], lessons_attributes: [:id, :name, :description, :start_time, :recurring, :_destroy, category_ids: [], schedule_attributes: Schedulable::ScheduleSupport.param_names])
+      params.require(:listing).permit(:id, :name, :categories_ids,:description, :status, :owner_id, :city, :country, :zip_code, :street, :landmark, :phonenumber, :ownerphone, :longitude, :latitude, listing_photos_attributes: [:id, :user_id, :photo, :photo_cache], timings_attributes: [:id, :day, :start_time, :end_time, :status], lessons_attributes: [:id, :name, :price, :description, :start_time, :recurring, :_destroy, category_ids: [], schedule_attributes: Schedulable::ScheduleSupport.param_names])
     end
 end
