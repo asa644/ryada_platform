@@ -46,7 +46,7 @@
                 <div class="list-box-listing">
                   <div class="list-box-listing-img">
                     <a href="#">
-                      <% unless listing.listing_photos.nil?%>
+                      <% unless listing.listing_photos.first.nil?%>
                     <%= cl_image_tag listing.listing_photos.first.photo %>
                     <%end%>
                   </a></div>
