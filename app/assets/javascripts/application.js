@@ -20,7 +20,6 @@
 //= require custom
 //= require dropzone
 //= require moment
-//= require bootstrap-datepicker
 //= require fullcalendar
 //= require turbolinks
 

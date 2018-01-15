@@ -13,7 +13,6 @@ Rails.application.routes.draw do
   resources :bookings, only: [:create, :show]
   resources :categories
   devise_for :users, controllers: { confirmations: 'confirmations' }
-  get '/about' => 'bookings#aboutus'
   root to: 'landings#home'
   get '/search' => 'listings#search'
   get '/pendings' => 'listings#pendings'
