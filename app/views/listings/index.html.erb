@@ -43,21 +43,17 @@
 
       <!-- Listings -->
       <div class="row fs-listings">
-      <% @listings.each do |listing| %>
+      <% @lessons.each do |lesson| %>
       <!-- Listing Item -->
         <div class="col-lg-6 col-md-6">
-          <%= link_to listing, class: "listing-item-container compact" do %>
+          <%= link_to lesson.listing, class: "listing-item-container compact" do %>
             <div class="listing-item">
-              <% unless listing.listing_photos.empty? %>
-              <%= cl_image_tag listing.listing_photos.first.photo, height: 300, width: 400, crop: :fill %>
-              <%else%>
               <%=image_tag 'main.png'%>
-              <%end%>
               <div class="listing-badge now-open">Now Open</div>
               <div class="listing-item-content">
                 <div class="numerical-rating" data-rating="3.5"></div>
-                <h3><%=listing.name%></h3>
-                <span><%=listing.address%></span>
+                <h3><%=lesson.name%></h3>
+                <span><%=lesson.listing.address%></span>
               </div>
               <span class="like-icon"></span>
             </div>

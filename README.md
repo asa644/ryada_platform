@@ -59,12 +59,12 @@ https://github.com/ankane/blazer (for intelligent business apps)
 
 
 
-
+functional testnig for the premature phase
+jira, slack, coll
 
 
 TODO:
 style for the datetime using brower
-
 
 
 

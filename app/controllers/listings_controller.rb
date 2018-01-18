@@ -4,7 +4,14 @@ class ListingsController < ApplicationController
   # GET /listings
   # GET /listings.json
   def index
+    # raise 'eh'
     @listings = Listing.where.not(latitude: nil, longitude: nil)
+    @lessons = []
+    Lesson.all.each do |lesson|
+      unless lesson.listing.latitude.nil? && lesson.listing.longitude.nil?
+        @lessons << lesson
+      end
+    end
     @hash = Gmaps4rails.build_markers(@listings) do |listing, marker|
       marker.lat listing.latitude
       marker.lng listing.longitude
