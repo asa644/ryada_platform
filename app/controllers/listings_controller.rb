@@ -12,9 +12,30 @@ class ListingsController < ApplicationController
         @lessons << lesson
       end
     end
+      respond_to do |format|
+        format.js
+        format.html
+      end
+
     @hash = Gmaps4rails.build_markers(@listings) do |listing, marker|
       marker.lat listing.latitude
       marker.lng listing.longitude
+      # marker.marker "<span>hi</span>"
+      # marker.picture({
+      #                 url: "#{view_context.image_path("favicon-32x32.png") }",
+      #                 width: "44",
+      #                 height: "58"
+      #                })
+      # marker.custom_marker "<img src='assets/main.png' width='90' height='140'> The Statue of Liberty is a colossal neoclassical sculpture on Liberty Island in the middle of New York"
+      # marker.infowindow "<img src='assets/main.png' width='90' height='140'> The Statue of Liberty is a colossal neoclassical sculpture on Liberty Island in the middle of New York"
+
+          # marker.picture({
+          #           marker_anchor: [40, 58], # added this optionally <- doesn't work either
+          #           url: "#{view_context.image_path("map/icons/3dmarker.png") }",
+          #           width: "44",
+          #           height: "58"
+          #          })
+# marker.picture({anchor: [16, 16], :url => "#{ view_context.image_path("map/icons/categories/#{location.cat‌​egories.first.slug}.‌​png") }",:width => "32",:height => "32"}) in my controller. And this in my view: var json_array = <%= raw @hash.to_json %>;var markers = handler.addMarkers(json_array);
       # marker.infowindow render_to_string(partial: "/listings/map_box", locals: { listing: listing })
     end
   end

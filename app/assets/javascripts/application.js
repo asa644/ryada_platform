@@ -3,8 +3,8 @@
 //= require bootstrap-sprockets
 // = require star-rating
 //= require add-listing
-//= require underscore
 //= require google_maps_autocomplete
+//= require underscore
 //= require gmaps/google
 //= require jpanelmenu.min
 //= require cocoon
@@ -22,7 +22,6 @@
 //= require moment
 //= require fullcalendar
 //= require turbolinks
-
 // alert('Sadly this is static...');
 $(document).on("submit", "form[data-turboform]", function(e) {
     Turbolinks.visit(this.action+(this.action.indexOf('?') == -1 ? '?' : '&')+$(this).serialize());

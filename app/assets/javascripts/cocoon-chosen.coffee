@@ -1,4 +1,5 @@
 jQuery ($) ->
+  console.log('hello')
   $('.add_fields').each ->
     $this              = $(this)
     insertionNode      = $this.data('association-insertion-node')
