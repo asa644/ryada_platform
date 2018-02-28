@@ -48,6 +48,32 @@
             <%= stylesheet_link_tag 'application', media: 'all' %>
         <%end%>
     <%= stylesheet_link_tag 'main', id: 'colors', media: 'all' %>
+    <script>
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r;
+            i[r] = i[r] || function () {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date();
+            a = s.createElement(o),
+                m = s.getElementsByTagName(o)[0];
+            a.async = 1;
+            a.src = g;
+            m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+        ga('create', 'UA-108466234-1', 'auto');
+        ga('send', 'pageview');
+        function handleOutboundLinkClicks(event) {
+          ga('send', 'event', {
+            eventCategory: 'Outbound Link',
+            eventAction: 'click',
+            eventLabel: event.target.href,
+            transport: 'beacon'
+          });
+        }
+
+
+    </script>
+
   </head>
     <% if controller_name == "subscribers" || controller_name == "attendees" || controller_name == "feedbacks"%>
       <body class="page">
