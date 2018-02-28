@@ -1,24 +1,472 @@
-<!-- <p id="notice"><%= notice %></p>
- --><!-- <div id="map" style="width: 100%; height: 600px;"></div>
- -->
 <% content_for(:after_js) do %>
   <%= javascript_tag do %>
-    $(document).ready(function() {
-      var handler = Gmaps.build('Google');
-      handler.buildMap({ internal: { id: 'map' } }, function() {
-        markers = handler.addMarkers(<%= raw @hash.to_json %>);
-        handler.bounds.extendWith(markers);
-        handler.fitMapToBounds();
-        if (markers.length == 0) {
-          handler.getMap().setZoom(2);
-        } else if (markers.length == 1) {
-        handler.getMap().setZoom(14);
-        }
+var infoBox_ratingType = 'star-rating';
+
+(function($){
+    "use strict";
+
+    function mainMap() {
+
+      // Locations
+      // ----------------------------------------------- //
+      var ib = new InfoBox();
+
+      // Infobox Output
+      function locationData(locationURL,locationImg,locationTitle, locationAddress, locationRating, locationRatingCounter) {
+          return(''+
+            '<a href="'+ locationURL +'" class="listing-img-container">'+
+               '<div class="infoBox-close"><i class="fa fa-times"></i></div>'+
+               '<img src="'+locationImg+'" alt="">'+
+
+               '<div class="listing-item-content">'+
+                  '<h3>'+locationTitle+'</h3>'+
+                  '<span>'+locationAddress+'</span>'+
+               '</div>'+
+
+            '</a>'+
+
+            '<div class="listing-content">'+
+               '<div class="listing-title">'+
+                  '<div class="'+infoBox_ratingType+'" data-rating="'+locationRating+'"><div class="rating-counter">('+locationRatingCounter+' reviews)</div></div>'+
+               '</div>'+
+            '</div>')
+      }
+
+      // Locations
+      var locations = [
+      <% @listings.each do |listing|%>
+        [ locationData('/listings/<%=listing.id%>',"<%=image_path 'main.png'%>","<%=listing.name%>",'<%=listing.city%>, <%=listing.country%>', '3.5', '12'), <%=listing.latitude%>, <%=listing.longitude%>, <%=listing.id%>, '<i class="im im-icon-Chef-Hat"></i>'],
+      <%end%>
+      ];
+
+      // Chosen Rating Type
+      google.maps.event.addListener(ib,'domready',function(){
+         if (infoBox_ratingType = 'numerical-rating') {
+            numericalRating('.infoBox .'+infoBox_ratingType+'');
+         }
+         if (infoBox_ratingType = 'star-rating') {
+            starRating('.infoBox .'+infoBox_ratingType+'');
+         }
       });
-    });
+
+
+
+      // Map Attributes
+      // ----------------------------------------------- //
+
+      var mapZoomAttr = $('#map').attr('data-map-zoom');
+      var mapScrollAttr = $('#map').attr('data-map-scroll');
+
+      if (typeof mapZoomAttr !== typeof undefined && mapZoomAttr !== false) {
+          var zoomLevel = parseInt(mapZoomAttr);
+      } else {
+          var zoomLevel = 5;
+      }
+
+      if (typeof mapScrollAttr !== typeof undefined && mapScrollAttr !== false) {
+         var scrollEnabled = parseInt(mapScrollAttr);
+      } else {
+        var scrollEnabled = false;
+      }
+
+
+      // Main Map
+      var map = new google.maps.Map(document.getElementById('map'), {
+        zoom: zoomLevel,
+        scrollwheel: scrollEnabled,
+        center: new google.maps.LatLng(33.8966, 35.4823),
+        mapTypeId: google.maps.MapTypeId.ROADMAP,
+        zoomControl: false,
+        mapTypeControl: false,
+        scaleControl: false,
+        panControl: false,
+        navigationControl: false,
+        streetViewControl: false,
+        gestureHandling: 'cooperative',
+
+        // Google Map Style
+        styles: [{"featureType":"poi","elementType":"labels.text.fill","stylers":[{"color":"#747474"},{"lightness":"23"}]},{"featureType":"poi.attraction","elementType":"geometry.fill","stylers":[{"color":"#f38eb0"}]},{"featureType":"poi.government","elementType":"geometry.fill","stylers":[{"color":"#ced7db"}]},{"featureType":"poi.medical","elementType":"geometry.fill","stylers":[{"color":"#ffa5a8"}]},{"featureType":"poi.park","elementType":"geometry.fill","stylers":[{"color":"#c7e5c8"}]},{"featureType":"poi.place_of_worship","elementType":"geometry.fill","stylers":[{"color":"#d6cbc7"}]},{"featureType":"poi.school","elementType":"geometry.fill","stylers":[{"color":"#c4c9e8"}]},{"featureType":"poi.sports_complex","elementType":"geometry.fill","stylers":[{"color":"#b1eaf1"}]},{"featureType":"road","elementType":"geometry","stylers":[{"lightness":"100"}]},{"featureType":"road","elementType":"labels","stylers":[{"visibility":"off"},{"lightness":"100"}]},{"featureType":"road.highway","elementType":"geometry.fill","stylers":[{"color":"#ffd4a5"}]},{"featureType":"road.arterial","elementType":"geometry.fill","stylers":[{"color":"#ffe9d2"}]},{"featureType":"road.local","elementType":"all","stylers":[{"visibility":"simplified"}]},{"featureType":"road.local","elementType":"geometry.fill","stylers":[{"weight":"3.00"}]},{"featureType":"road.local","elementType":"geometry.stroke","stylers":[{"weight":"0.30"}]},{"featureType":"road.local","elementType":"labels.text","stylers":[{"visibility":"on"}]},{"featureType":"road.local","elementType":"labels.text.fill","stylers":[{"color":"#747474"},{"lightness":"36"}]},{"featureType":"road.local","elementType":"labels.text.stroke","stylers":[{"color":"#e9e5dc"},{"lightness":"30"}]},{"featureType":"transit.line","elementType":"geometry","stylers":[{"visibility":"on"},{"lightness":"100"}]},{"featureType":"water","elementType":"all","stylers":[{"color":"#d2e7f7"}]}]
+
+      });
+
+
+      // Marker highlighting when hovering listing item
+      $('.listing-item-container').on('mouseover', function(){
+
+        var listingAttr = $(this).data('marker-id');
+
+        if(listingAttr !== undefined) {
+          var listing_id = $(this).data('marker-id') ;
+          console.log(listing_id);
+          console.log(allMarkers);
+
+          var marker_div = allMarkers[listing_id].div;
+
+          $(marker_div).addClass('clicked');
+
+          $(this).on('mouseout', function(){
+              if ($(marker_div).is(":not(.infoBox-opened)")) {
+                 $(marker_div).removeClass('clicked');
+              }
+           });
+        }
+
+      });
+
+
+      // Infobox
+      // ----------------------------------------------- //
+
+      var boxText = document.createElement("div");
+      boxText.className = 'map-box'
+
+      var currentInfobox;
+
+      var boxOptions = {
+              content: boxText,
+              disableAutoPan: false,
+              alignBottom : true,
+              maxWidth: 0,
+              pixelOffset: new google.maps.Size(-134, -55),
+              zIndex: null,
+              boxStyle: {
+                width: "270px"
+              },
+              closeBoxMargin: "0",
+              closeBoxURL: "",
+              infoBoxClearance: new google.maps.Size(25, 25),
+              isHidden: false,
+              pane: "floatPane",
+              enableEventPropagation: false,
+      };
+
+
+      var markerCluster, overlay, i;
+      var allMarkers = [];
+
+      var clusterStyles = [
+        {
+          textColor: 'white',
+          url: '',
+          height: 50,
+          width: 50
+        }
+      ];
+
+
+      var markerIco;
+      for (i = 0; i < locations.length; i++) {
+
+        markerIco = locations[i][4];
+
+        var overlaypositions = new google.maps.LatLng(locations[i][1], locations[i][2]),
+
+        overlay = new CustomMarker(
+         overlaypositions,
+          map,
+          {
+            marker_id: i
+          },
+          markerIco
+        );
+
+        allMarkers.push(overlay);
+
+        google.maps.event.addDomListener(overlay, 'click', (function(overlay, i) {
+
+          return function() {
+             ib.setOptions(boxOptions);
+             boxText.innerHTML = locations[i][0];
+             ib.open(map, overlay);
+
+             currentInfobox = locations[i][3];
+             // var latLng = new google.maps.LatLng(locations[i][1], locations[i][2]);
+             // map.panTo(latLng);
+             // map.panBy(0,-90);
+
+
+            google.maps.event.addListener(ib,'domready',function(){
+              $('.infoBox-close').click(function(e) {
+                  e.preventDefault();
+                  ib.close();
+                  $('.map-marker-container').removeClass('clicked infoBox-opened');
+              });
+
+            });
+
+          }
+        })(overlay, i));
+
+      }
+
+
+      // Marker Clusterer Init
+      // ----------------------------------------------- //
+
+      var options = {
+          imagePath: 'images/',
+          styles : clusterStyles,
+          minClusterSize : 2
+      };
+
+      markerCluster = new MarkerClusterer(map, allMarkers, options);
+
+      google.maps.event.addDomListener(window, "resize", function() {
+          var center = map.getCenter();
+          google.maps.event.trigger(map, "resize");
+          map.setCenter(center);
+      });
+
+
+
+      // Custom User Interface Elements
+      // ----------------------------------------------- //
+
+      // Custom Zoom-In and Zoom-Out Buttons
+        var zoomControlDiv = document.createElement('div');
+        var zoomControl = new ZoomControl(zoomControlDiv, map);
+
+        function ZoomControl(controlDiv, map) {
+
+          zoomControlDiv.index = 1;
+          map.controls[google.maps.ControlPosition.RIGHT_CENTER].push(zoomControlDiv);
+          // Creating divs & styles for custom zoom control
+          controlDiv.style.padding = '5px';
+          controlDiv.className = "zoomControlWrapper";
+
+          // Set CSS for the control wrapper
+          var controlWrapper = document.createElement('div');
+          controlDiv.appendChild(controlWrapper);
+
+          // Set CSS for the zoomIn
+          var zoomInButton = document.createElement('div');
+          zoomInButton.className = "custom-zoom-in";
+          controlWrapper.appendChild(zoomInButton);
+
+          // Set CSS for the zoomOut
+          var zoomOutButton = document.createElement('div');
+          zoomOutButton.className = "custom-zoom-out";
+          controlWrapper.appendChild(zoomOutButton);
+
+          // Setup the click event listener - zoomIn
+          google.maps.event.addDomListener(zoomInButton, 'click', function() {
+            map.setZoom(map.getZoom() + 1);
+          });
+
+          // Setup the click event listener - zoomOut
+          google.maps.event.addDomListener(zoomOutButton, 'click', function() {
+            map.setZoom(map.getZoom() - 1);
+          });
+
+      }
+
+
+      // Scroll enabling button
+      var scrollEnabling = $('#scrollEnabling');
+
+      $(scrollEnabling).click(function(e){
+          e.preventDefault();
+          $(this).toggleClass("enabled");
+
+          if ( $(this).is(".enabled") ) {
+             map.setOptions({'scrollwheel': true});
+          } else {
+             map.setOptions({'scrollwheel': false});
+          }
+      })
+
+
+      // Geo Location Button
+      $("#geoLocation, .input-with-icon.location a").click(function(e){
+          e.preventDefault();
+          geolocate();
+      });
+
+      function geolocate() {
+
+          if (navigator.geolocation) {
+              navigator.geolocation.getCurrentPosition(function (position) {
+                  var pos = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+                  map.setCenter(pos);
+                  map.setZoom(29);
+              });
+          }
+      }
+
+    }
+
+
+    // Map Init
+    var map =  document.getElementById('map');
+    if (typeof(map) != 'undefined' && map != null) {
+      google.maps.event.addDomListener(window, 'load',  mainMap);
+      google.maps.event.addDomListener(window, 'resize',  mainMap);
+    }
+
+
+    // ---------------- Main Map / End ---------------- //
+
+
+    // Single Listing Map
+    // ----------------------------------------------- //
+
+    function singleListingMap() {
+
+      var myLatlng = new google.maps.LatLng({lng: $( '#singleListingMap' ).data('longitude'),lat: $( '#singleListingMap' ).data('latitude'), });
+
+      var single_map = new google.maps.Map(document.getElementById('singleListingMap'), {
+        zoom: 15,
+        center: myLatlng,
+        scrollwheel: false,
+        zoomControl: false,
+        mapTypeControl: false,
+        scaleControl: false,
+        panControl: false,
+        navigationControl: false,
+        streetViewControl: false,
+        styles:  [{"featureType":"poi","elementType":"labels.text.fill","stylers":[{"color":"#747474"},{"lightness":"23"}]},{"featureType":"poi.attraction","elementType":"geometry.fill","stylers":[{"color":"#f38eb0"}]},{"featureType":"poi.government","elementType":"geometry.fill","stylers":[{"color":"#ced7db"}]},{"featureType":"poi.medical","elementType":"geometry.fill","stylers":[{"color":"#ffa5a8"}]},{"featureType":"poi.park","elementType":"geometry.fill","stylers":[{"color":"#c7e5c8"}]},{"featureType":"poi.place_of_worship","elementType":"geometry.fill","stylers":[{"color":"#d6cbc7"}]},{"featureType":"poi.school","elementType":"geometry.fill","stylers":[{"color":"#c4c9e8"}]},{"featureType":"poi.sports_complex","elementType":"geometry.fill","stylers":[{"color":"#b1eaf1"}]},{"featureType":"road","elementType":"geometry","stylers":[{"lightness":"100"}]},{"featureType":"road","elementType":"labels","stylers":[{"visibility":"off"},{"lightness":"100"}]},{"featureType":"road.highway","elementType":"geometry.fill","stylers":[{"color":"#ffd4a5"}]},{"featureType":"road.arterial","elementType":"geometry.fill","stylers":[{"color":"#ffe9d2"}]},{"featureType":"road.local","elementType":"all","stylers":[{"visibility":"simplified"}]},{"featureType":"road.local","elementType":"geometry.fill","stylers":[{"weight":"3.00"}]},{"featureType":"road.local","elementType":"geometry.stroke","stylers":[{"weight":"0.30"}]},{"featureType":"road.local","elementType":"labels.text","stylers":[{"visibility":"on"}]},{"featureType":"road.local","elementType":"labels.text.fill","stylers":[{"color":"#747474"},{"lightness":"36"}]},{"featureType":"road.local","elementType":"labels.text.stroke","stylers":[{"color":"#e9e5dc"},{"lightness":"30"}]},{"featureType":"transit.line","elementType":"geometry","stylers":[{"visibility":"on"},{"lightness":"100"}]},{"featureType":"water","elementType":"all","stylers":[{"color":"#d2e7f7"}]}]
+      });
+
+      // Steet View Button
+      $('#streetView').click(function(e){
+         e.preventDefault();
+         single_map.getStreetView().setOptions({visible:true,position:myLatlng});
+         // $(this).css('display', 'none')
+      });
+
+
+      // Custom zoom buttons
+      var zoomControlDiv = document.createElement('div');
+      var zoomControl = new ZoomControl(zoomControlDiv, single_map);
+
+      function ZoomControl(controlDiv, single_map) {
+
+        zoomControlDiv.index = 1;
+        single_map.controls[google.maps.ControlPosition.RIGHT_CENTER].push(zoomControlDiv);
+
+        controlDiv.style.padding = '5px';
+
+        var controlWrapper = document.createElement('div');
+        controlDiv.appendChild(controlWrapper);
+
+        var zoomInButton = document.createElement('div');
+        zoomInButton.className = "custom-zoom-in";
+        controlWrapper.appendChild(zoomInButton);
+
+        var zoomOutButton = document.createElement('div');
+        zoomOutButton.className = "custom-zoom-out";
+        controlWrapper.appendChild(zoomOutButton);
+
+        google.maps.event.addDomListener(zoomInButton, 'click', function() {
+          single_map.setZoom(single_map.getZoom() + 1);
+        });
+
+        google.maps.event.addDomListener(zoomOutButton, 'click', function() {
+          single_map.setZoom(single_map.getZoom() - 1);
+        });
+
+      }
+
+
+      // Marker
+      var singleMapIco =  "<i class='"+$('#singleListingMap').data('map-icon')+"'></i>";
+
+      new CustomMarker(
+        myLatlng,
+        single_map,
+        {
+          marker_id: '1'
+        },
+        singleMapIco
+      );
+
+
+    }
+
+    // Single Listing Map Init
+    var single_map =  document.getElementById('singleListingMap');
+    if (typeof(single_map) != 'undefined' && single_map != null) {
+      google.maps.event.addDomListener(window, 'load',  singleListingMap);
+      google.maps.event.addDomListener(window, 'resize',  singleListingMap);
+    }
+
+    // -------------- Single Listing Map / End -------------- //
+
+
+
+    // Custom Map Marker
+    // ----------------------------------------------- //
+
+    function CustomMarker(latlng, map, args, markerIco) {
+      this.latlng = latlng;
+      this.args = args;
+      this.markerIco = markerIco;
+      this.setMap(map);
+    }
+
+    CustomMarker.prototype = new google.maps.OverlayView();
+
+    CustomMarker.prototype.draw = function() {
+
+      var self = this;
+
+      var div = this.div;
+
+      if (!div) {
+
+        div = this.div = document.createElement('div');
+        div.className = 'map-marker-container';
+
+        div.innerHTML = '<div class="marker-container">'+
+                            '<div class="marker-card">'+
+                               '<div class="front face">' + self.markerIco + '</div>'+
+                               '<div class="back face">' + self.markerIco + '</div>'+
+                               '<div class="marker-arrow"></div>'+
+                            '</div>'+
+                          '</div>'
+
+
+        // Clicked marker highlight
+        google.maps.event.addDomListener(div, "click", function(event) {
+            $('.map-marker-container').removeClass('clicked infoBox-opened');
+            google.maps.event.trigger(self, "click");
+            $(this).addClass('clicked infoBox-opened');
+        });
+
+
+        if (typeof(self.args.marker_id) !== 'undefined') {
+          div.dataset.marker_id = self.args.marker_id;
+        }
+
+        var panes = this.getPanes();
+        panes.overlayImage.appendChild(div);
+      }
+
+      var point = this.getProjection().fromLatLngToDivPixel(this.latlng);
+
+      if (point) {
+        div.style.left = (point.x) + 'px';
+        div.style.top = (point.y) + 'px';
+      }
+    };
+
+    CustomMarker.prototype.remove = function() {
+      if (this.div) {
+        this.div.parentNode.removeChild(this.div);
+        this.div = null; $(this).removeClass('clicked');
+      }
+    };
+
+    CustomMarker.prototype.getPosition = function() { return this.latlng; };
+
+    // -------------- Custom Map Marker / End -------------- //
+
+
+
+})(this.jQuery);
+
   <% end %>
 <% end %>
-
 
 <!-- Content
 ================================================== -->
@@ -27,7 +475,7 @@
   <div class="fs-inner-container content">
     <div class="fs-content">
 
-      <!-- Search -->
+<!-- to be added (search nav html erb) -->
       <section class="search">
 
         <div class="row">
@@ -168,7 +616,6 @@
       </section>
       <!-- Search / End -->
 
-
     <section class="listings-container margin-top-30">
 
       <!-- Sorting / Layout Switcher -->
@@ -184,126 +631,30 @@
 
       <!-- Listings -->
       <div class="row fs-listings">
-      <% @listings.each do |listing| %>
-      <!-- Listing Item -->
-        <div class="col-lg-6 col-md-6">
-          <%= link_to listing, class: "listing-item-container compact" do %>
-            <div class="listing-item">
-              <% unless listing.listing_photos.empty? %>
-              <%= cl_image_tag listing.listing_photos.first.photo, height: 300, width: 400, crop: :fill %>
-              <%else%>
-              <%=image_tag 'main.png'%>
-              <%end%>
-              <div class="listing-badge now-open">Now Open</div>
-              <div class="listing-item-content">
-                <div class="numerical-rating" data-rating="3.5"></div>
-                <h3><%=listing.name%></h3>
-                <span><%=listing.address%></span>
-              </div>
-              <span class="like-icon"></span>
+          <% count = 0%>
+
+          <% @lessons.each do |lesson| %>
+
+          <!-- Listing Item -->
+            <div class="col-lg-6 col-md-6">
+<!--               <a href="listings-single-page.html" class="listing-item-container compact" data-marker-id="1">
+ -->
+              <%= link_to lesson.listing, class: "listing-item-container compact", :data => { "marker-id" => count} do %>
+                <div class="listing-item">
+                <%count = count + 1 %>
+                  <%=image_tag 'main.png'%>
+                  <div class="listing-badge now-open">Now Open</div>
+                  <div class="listing-item-content">
+                    <div class="numerical-rating" data-rating="3.5"></div>
+                    <h3><%=lesson.name%></h3>
+                    <span><%=lesson.listing.address%></span>
+                  </div>
+                  <span class="like-icon"></span>
+                </div>
+                <%end%>
             </div>
-            <%end%>
-        </div>
-      <%end%>
+          <%end%>
         <!-- Listing Item / End -->
-
-        <!-- Listing Item -->
-<!--         <div class="col-lg-6 col-md-6">
-          <a href="listings-single-page.html" class="listing-item-container compact" data-marker-id="2">
-            <div class="listing-item">
-              <img src="images/listing-item-02.jpg" alt="">
-              <div class="listing-item-details">
-                <ul>
-                  <li>Friday, August 10</li>
-                </ul>
-              </div>
-              <div class="listing-item-content">
-                <div class="numerical-rating" data-rating="5.0"></div>
-                <h3>Sticky Band</h3>
-                <span>Bishop Avenue, New York</span>
-              </div>
-              <span class="like-icon"></span>
-            </div>
-          </a>
-        </div>
- -->        <!-- Listing Item / End -->
-
-        <!-- Listing Item -->
-<!--         <div class="col-lg-6 col-md-12">
-          <a href="listings-single-page.html" class="listing-item-container compact" data-marker-id="3">
-            <div class="listing-item">
-              <img src="images/listing-item-03.jpg" alt="">
-              <div class="listing-item-details">
-                <ul>
-                  <li>Starting from $59 per night</li>
-                </ul>
-              </div>
-              <div class="listing-item-content">
-                <div class="numerical-rating" data-rating="2.0"></div>
-                <h3>Hotel Govendor</h3>
-                <span>778 Country Street, New York</span>
-              </div>
-              <span class="like-icon"></span>
-            </div>
-
-          </a>
-        </div>
- -->        <!-- Listing Item / End -->
-
-        <!-- Listing Item -->
-<!--         <div class="col-lg-6 col-md-12">
-          <a href="listings-single-page.html" class="listing-item-container compact" data-marker-id="4">
-            <div class="listing-item">
-              <img src="images/listing-item-04.jpg" alt="">
-
-              <div class="listing-badge now-open">Now Open</div>
-
-              <div class="listing-item-content">
-                <div class="numerical-rating" data-rating="5.0"></div>
-                <h3>Burger House</h3>
-                <span>2726 Shinn Street, New York</span>
-              </div>
-              <span class="like-icon"></span>
-            </div>
-          </a>
-        </div>
- -->        <!-- Listing Item / End -->
-
-        <!-- Listing Item -->
-<!--         <div class="col-lg-6 col-md-12">
-          <a href="listings-single-page.html" class="listing-item-container compact" data-marker-id="5">
-            <div class="listing-item">
-              <img src="images/listing-item-05.jpg" alt="">
-              <div class="listing-item-content">
-                <div class="numerical-rating" data-rating="3.5"></div>
-                <h3>Airport</h3>
-                <span>1512 Duncan Avenue, New York</span>
-              </div>
-              <span class="like-icon"></span>
-            </div>
-          </a>
-        </div>
- -->        <!-- Listing Item / End -->
-
-        <!-- Listing Item -->
-<!--         <div class="col-lg-6 col-md-12">
-          <a href="listings-single-page.html" class="listing-item-container compact" data-marker-id="6">
-            <div class="listing-item">
-              <img src="images/listing-item-06.jpg" alt="">
-
-              <div class="listing-badge now-closed">Now Closed</div>
-
-              <div class="listing-item-content">
-                <div class="numerical-rating" data-rating="4.5"></div>
-                <h3>Think Coffee</h3>
-                <span>215 Terry Lane, New York</span>
-              </div>
-              <span class="like-icon"></span>
-            </div>
-          </a>
-        </div> -->
-        <!-- Listing Item / End -->
-
       </div>
       <!-- Listings Container / End -->
 
@@ -317,17 +668,16 @@
           <div class="row">
             <div class="col-md-12">
               <!-- Pagination -->
-<!--               <div class="pagination-container margin-top-15 margin-bottom-40">
+<!--          <div class="pagination-container margin-top-15 margin-bottom-40">
                 <nav class="pagination">
                   <ul>
                     <li><a href="#" class="current-page">1</a></li>
                     <li><a href="#">2</a></li>
-                    <li><a href="#">3</a></li>
                     <li><a href="#"><i class="sl sl-icon-arrow-right"></i></a></li>
                   </ul>
                 </nav>
-              </div>
- -->            </div>
+              </div>-->
+            </div>
           </div>
           <div class="clearfix"></div>
           <!-- Pagination / End -->
@@ -346,7 +696,7 @@
 
     <!-- Map -->
     <div id="map-container">
-        <div id="map" data-map-zoom="9" data-map-scroll="true">
+        <div id="map" data-map-zoom="13" data-map-scroll="false">
             <!-- map goes here -->
         </div>
     </div>
@@ -356,3 +706,10 @@
 
 
 </div>
+
+// <% content_for(:after_js) do %>
+//   <%= javascript_tag do %>
+//     var myButton = document.getElementsByClassName("map-marker-container");
+//     console.log("myButton");
+// <%end%>
+// <%end%>

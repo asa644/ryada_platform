@@ -1,6 +1,5 @@
 <tr class="pricing-list-item pattern">
 <td>
-
     <div class="fm-input pricing-name">
     <%= f.input_field :name, placeholder: "Name" %>
     </div>
@@ -10,8 +9,11 @@
       <div class="fm-input pricing-name">
        <%= f.input :category_ids, collection: Category.all, input_html: { class: 'chosen-select', multiple: true}, label: false%>
     </div>
+      <div class="fm-input pricing-name">
+            <%= f.input_field :start_time, placeholder: "Start Time", as: :string, id: "booking-time"%>
+    </div>
     <div class="fm-input pricing-ingredients date0">
-  <%= f.schedule_select :schedule, until: true%>
+        <%= f.select_recurring :recurring%>
    </div>
 </td>
 </tr>

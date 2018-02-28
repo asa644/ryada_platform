@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
-  # mount Spina::Engine => '/'
    resources :lessons
-   mount RailsAdmin::Engine => '/admin_data', as: 'rails_admin'
+   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   resources :listings do
     put "approve", to: "listings#approve"
     put "disapprove", to: "listings#disapprove"
@@ -13,7 +12,20 @@ Rails.application.routes.draw do
   resources :bookings, only: [:create, :show]
   resources :categories
   devise_for :users, controllers: { confirmations: 'confirmations' }
-  root to: 'landings#home'
+  # root to: 'landings#home'
+  root to: 'subscribers#home'
+  get '/urbanfitt' => 'subscribers#urban'
+  scope '/urbanfitt' do
+    get '/community' => 'subscribers#community'
+    get '/events' => 'subscribers#events'
+    get '/about' => 'subscribers#about'
+    get '/attend' => 'subscribers#attend'
+    resources :attendees, only: [:new, :create, :show]
+  end
+  resources :subscribers, only: [:create, :show]
+  resources :feedbacks, only: [:new, :create, :show, :index]
+  # resources :facilities, only: [:create, :show]
+
   get '/search' => 'listings#search'
   get '/pendings' => 'listings#pendings'
   get '/dashboard' => 'users#dashboard'
@@ -21,9 +33,4 @@ Rails.application.routes.draw do
   get '/active' => 'users#active'
   get '/pending' => 'users#pending'
   get '/expired' => 'users#expired'
-  # get '/:locale/*id' => 'pages#show', constraints: {locale: /#{Spina.config.locales.join('|')}/ }
-  # get '/:locale/' => 'pages#homepage', constraints: {locale: /#{Spina.config.locales.join('|')}/ }
-  # get '/*id' => 'pages#show', as: "page", controller: 'pages', constraints: lambda { |request|
-  #   !(Rails.env.development? && request.env['PATH_INFO'].starts_with?('/rails/') || request.env['PATH_INFO'].starts_with?("/#{Spina.config.backend_path}") || request.env['PATH_INFO'].starts_with?('/attachments/'))
-  # }
 end

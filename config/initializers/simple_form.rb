@@ -20,7 +20,7 @@ end
 config.wrapper_mappings = {
   datetime: :horizontal_select_date,
   date: :horizontal_select_date,
-  time: :horizontal_select_date
+  # time: :horizontal_select_date
 }
 
   config.wrappers :default, class: :input,

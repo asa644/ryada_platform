@@ -4,39 +4,18 @@ class ListingsController < ApplicationController
   # GET /listings
   # GET /listings.json
   def index
-    # raise 'eh'
     @listings = Listing.where.not(latitude: nil, longitude: nil)
     @lessons = []
+    today = Date.today
+    @array = [today.strftime("%A"), (today + 1.day).strftime("%A"), (today + 2.day).strftime("%A"), (today + 3.day).strftime("%A"), (today + 4.day).strftime("%A"), (today + 5.day).strftime("%A"), (today + 6.day).strftime("%A")]
     Lesson.all.each do |lesson|
       unless lesson.listing.latitude.nil? && lesson.listing.longitude.nil?
         @lessons << lesson
       end
     end
-      respond_to do |format|
-        format.js
-        format.html
-      end
-
     @hash = Gmaps4rails.build_markers(@listings) do |listing, marker|
       marker.lat listing.latitude
       marker.lng listing.longitude
-      # marker.marker "<span>hi</span>"
-      # marker.picture({
-      #                 url: "#{view_context.image_path("favicon-32x32.png") }",
-      #                 width: "44",
-      #                 height: "58"
-      #                })
-      # marker.custom_marker "<img src='assets/main.png' width='90' height='140'> The Statue of Liberty is a colossal neoclassical sculpture on Liberty Island in the middle of New York"
-      # marker.infowindow "<img src='assets/main.png' width='90' height='140'> The Statue of Liberty is a colossal neoclassical sculpture on Liberty Island in the middle of New York"
-
-          # marker.picture({
-          #           marker_anchor: [40, 58], # added this optionally <- doesn't work either
-          #           url: "#{view_context.image_path("map/icons/3dmarker.png") }",
-          #           width: "44",
-          #           height: "58"
-          #          })
-# marker.picture({anchor: [16, 16], :url => "#{ view_context.image_path("map/icons/categories/#{location.cat‌​egories.first.slug}.‌​png") }",:width => "32",:height => "32"}) in my controller. And this in my view: var json_array = <%= raw @hash.to_json %>;var markers = handler.addMarkers(json_array);
-      # marker.infowindow render_to_string(partial: "/listings/map_box", locals: { listing: listing })
     end
   end
   def pendings
@@ -72,18 +51,18 @@ class ListingsController < ApplicationController
     max = DateTime.now+2.hours
     unless @listing.lessons.nil?
       @listing.lessons.each do |event|
-        @calendar_lessons = event.calendar_lessons
-        unless @calendar_lessons.nil?
-          @calendar_lessons.each do |lesson|
-              if lesson.start_time < min
-                min = lesson.start_time
-              end
-              if lesson.start_time > max
-                max = lesson.start_time
-              end
-              @events << {id: lesson.id ,title:  "#{lesson.name}", start: lesson.start_time, end: lesson.start_time+1.hours, allDay: false}
-          end
-        end
+        @calendar_lessons = event.calendar_lessons(DateTime.now)
+        # unless @calendar_lessons.nil?
+        #   @calendar_lessons.each do |lesson|
+        #       if lesson.start_time < min
+        #         min = lesson.start_time
+        #       end
+        #       if lesson.start_time > max
+        #         max = lesson.start_time
+        #       end
+        #       @events << {id: lesson.id ,title:  "#{lesson.name}", start: lesson.start_time, end: lesson.start_time+1.hours, allDay: false}
+        #   end
+        # end
       end
     end
     @min = min

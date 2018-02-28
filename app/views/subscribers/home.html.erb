@@ -1,0 +1,28 @@
+<%=render 'nav'%>
+<main role="main">
+  <div id="intro-wrap" class="full-height">
+    <div id="intro" class="preload darken">
+      <div class="intro-item" style="background-image: url('<%= image_path "landing-page-background.png"%>')">
+        <div class="caption">
+  <div style="text-align: center;display: inline-block;">
+    <%= image_tag  "Logo-white.png"%>
+  </div>
+      <h2 style="color: #fff;">Fitness with no barriers</h2>
+
+      <p>Find and book local fitness classes in Beirut, the easy way</p>
+      <p>Coming soon! Enter your email below, to get updates on latest trends, <br>
+        health & fitness news, events, competitions, and more.</p>
+          <div style="text-align: center;display: inline-block;">
+              <%= simple_form_for [@subscriber], validate: true do |f| %>
+                  <%= f.input :name, label: false, placeholder: "Your Name", input_html: {:style=> 'width: 300px'}%>
+                  <%= f.input :email, label: false, placeholder: "Your Email", input_html: {:style=> 'width: 300px'}%>
+                  <%= f.submit "Get going!", class: "button white transparent" %>
+              <%end%>
+          </div>
+<!--  -->
+    </div><!-- caption -->
+
+      </div>
+    </div><!-- intro -->
+  </div><!-- intro-wrap -->
+</main><!-- main -->

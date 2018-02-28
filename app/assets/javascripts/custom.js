@@ -5,6 +5,20 @@
 $(document).ready(function(){
   $('.test').on('cocoon:after-insert', function() {
 	  $('.chosen-select').chosen({placeholder_text_single: "select category"});
+	  $('#booking-time').timeDropper({
+  setCurrentTime: false,
+  meridians: true,
+  primaryColor: "#f91942",
+  borderColor: "#f91942",
+  minutesInterval: '15'
+});
+
+var $clocks = $('.td-input');
+  _.each($clocks, function(clock){
+  clock.value = null;
+});
+
+
 	   // $('.date0').datepicker();
   });
 

@@ -1,0 +1,49 @@
+    <!-- insert nav -->
+<header role="banner" class="transparent light">
+  <div class="row">
+    <div class="nav-inner row-content buffer-left buffer-right even clear-after">
+      <div id="brand">
+        <h1 class="reset"><a href="/"><%=image_tag "urban_logo.png"%></a></h1>
+      </div><!-- brand -->
+      <a id="menu-toggle" href="#"><i class="fa fa-bars fa-lg"></i></a>
+      <nav>
+        <ul class="reset" role="navigation">
+          <li class="menu-item">
+            <a href="/">Home</a>
+          </li>
+          <li class="menu-item">
+            <a href="/urbanfitt">UrbanFitt</a>
+          </li>
+          <li class="menu-item">
+            <a href="/urbanfitt/events">Events</a>
+          </li>
+          <li class="menu-item"><a href="/urbanfitt/community">Community</a></li>
+        </ul>
+      </nav>
+    </div><!-- row-content -->
+  </div><!-- row -->
+</header>
+<main role="main">
+  <div id="intro-wrap" class="full-height">
+    <div id="intro" class="preload darken">
+      <div class="intro-item" style="background-image: url('<%= image_path "landing-page-background.png"%>')">
+        <div class="caption">
+  <div style="text-align: center;display: inline-block;">
+    <%= image_tag  "Logo-white.png"%>
+  </div>
+      <h2 style="color: #fff;">Fitness with no barriers</h2>
+
+      <p>Thank you, <%=@subscriber.name%>!</p>
+      <p>You’re one step ahead of the others!</p>
+      <p>Click the button below and get the chance to win your free fitness class!</p>
+      <p>Hurry up and tell your friends before it’s too late!</p>
+      <br>
+                              <a onclick="handleOutboundLinkClicks(this)" target="_blank" class="btn btn-primary white-blue" href="https://docs.google.com/forms/d/e/1FAIpQLSdhd2_0iOVH220bhYMv6ZdUe8xZvLzn-9KU13nG2e57Fk7taQ/viewform?usp=pp_url&entry.557024521=<%=@subscriber.email%>&entry.2093917729&entry.1424661284&entry.468288690&entry.1489339150&entry.2606285">Take me to the form</a>
+
+<!--  -->
+    </div><!-- caption -->
+
+      </div>
+    </div><!-- intro -->
+  </div><!-- intro-wrap -->
+</main><!-- main -->

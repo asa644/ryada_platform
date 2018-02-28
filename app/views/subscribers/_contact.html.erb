@@ -1,0 +1,40 @@
+<footer class="row section">
+  <div class="row-content buffer even clear-after">
+    <div class="section-title"><h3 style="color: #000;">Contact Us</h3></div>
+<!--     <p>I’m an experienced and passionate user interface designer with interaction design background.<br>My goal is to make the world wide web a better place by designing beautiful user experiences, one site at a time.</p>
+ -->
+ <div class="column nine">
+        <%= simple_form_for (@feedback), html: { id: "contact-form", class: "contact-section"} do |f| %>
+          <span class="pre-input"><i class="icon icon-user"></i></span>
+          <%= f.input_field :email, label: false, placeholder: "Email", class: "email plain buffer" %>
+          <span class="pre-input"><i class="icon icon-email"></i></span>
+          <%= f.input_field :name, label: false, placeholder: "Full name", class: "name plain buffer" %>
+          <%= f.text_area :message, :placeholder => "Message", :class => "plain buffer", :rows => 10 %>
+          <%= f.button :submit,"Send", class: "plain button red"%>
+<br>
+<br>
+<br>
+
+        <%end%>
+      <div id="success"></div>
+    </div>
+    <div class="column three last">
+      <div class="widget">
+        <h4>Location</h4>
+        <p>
+          Bliss Street,<br>
+          Aub, West Hall, 402<br>
+          Beirut, Lebanon
+        </p>
+      </div>
+      <div class="widget">
+        <h4>Check us on:</h4>
+        <ul class="inline meta-social">
+          <li><a href="http://bit.ly/2DOU6ve" class="twitter-share border-box" target="_blank"><i class="fa fa-twitter fa-lg"></i></a></li>
+          <li><a href="http://bit.ly/2rk8ZCZ" class="facebook-share border-box" target="_blank"><i class="fa fa-facebook fa-lg"></i></a></li>
+          <li><a href="http://bit.ly/2Dp5tZo" class="instagram-share border-box" target="_blank"><i class="fa fa-instagram fa-lg"></i></a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</footer>

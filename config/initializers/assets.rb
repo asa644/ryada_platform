@@ -13,3 +13,6 @@ Rails.application.config.assets.paths << Rails.root.join('node_modules')
 # folder are already added.
 Rails.application.config.assets.precompile += %w(main.css)
 Rails.application.config.assets.precompile += %w( maps.js )
+Rails.application.config.assets.precompile += %w( urban.css )
+Rails.application.config.assets.precompile += %w( urban.js )
+Rails.application.config.assets.precompile += %w( plugins.js )

@@ -1,242 +1,259 @@
 <%= simple_form_for(@listing) do |f| %>
-<div id="add-listing">
-    <!-- Section -->
-    <div class="add-listing-section">
+    <div id="add-listing">
+        <!-- Section -->
+        <div class="add-listing-section">
 
-        <!-- Headline -->
-        <div class="add-listing-headline">
-            <h3><i class="sl sl-icon-doc"></i> Basic Informations</h3>
-        </div>
-
-        <!-- Title -->
-        <div class="row with-forms">
-            <div class="col-md-12">
-                <h5>Studio Title <i class="tip" data-tip-content="Name of your business"></i></h5>
-                <%= f.input_field :name, class: "search-field" %>
-            </div>
-        </div>
-
-        <!-- Row -->
-        <div class="row with-forms">
-
-            <!-- Status -->
-            <div class="col-md-6">
-                <h5>Category</h5>
-                <select class="chosen-select-no-single" >
-                    <option label="blank">Select Category</option>
-                    <option>Eat & Drink</option>
-                    <option>Shops</option>
-                    <option>Hotels</option>
-                    <option>Restaurants</option>
-                    <option>Fitness</option>
-                    <option>Events</option>
-                </select>
+            <!-- Headline -->
+            <div class="add-listing-headline">
+                <h3><i class="sl sl-icon-doc"></i> Basic Informations</h3>
             </div>
 
-            <!-- Type -->
-            <div class="col-md-6">
-                <h5>Keywords <i class="tip" data-tip-content="Maximum of 15 keywords related with your business"></i></h5>
-                <input type="text" placeholder="Keywords should be separated by commas">
+            <!-- Title -->
+            <div class="row with-forms">
+                <div class="col-md-12">
+                    <h5>Studio Title <i class="tip" data-tip-content="Name of your business"></i></h5>
+                    <%= f.input_field :name, class: "search-field" %>
+                </div>
             </div>
 
-        </div>
-        <!-- Row / End -->
-
-    </div>
-    <!-- Section / End -->
-
-    <!-- Section -->
-    <div class="add-listing-section margin-top-45">
-
-        <!-- Headline -->
-        <div class="add-listing-headline">
-            <h3><i class="sl sl-icon-location"></i> Location</h3>
-        </div>
-          <%= f.input :latitude, as: :hidden %>
-          <%= f.input :longitude, as: :hidden %>
-        <div class="submit-section">
             <!-- Row -->
             <div class="row with-forms">
-                <div id="map_set_location" class="map_structure" style="width: 100%;height: 200px;position: fixed !important;">
-              </div>
-                    <input class="btn-detect" type="button" value="Detect my location" onclick="getLocation();">
+
+                <!-- Status -->
                 <div class="col-md-6">
-                    <h5>Address</h5>
-                    <%= f.input :address, label: false %>
-                    <%= f.input :zip_code, as: :hidden%>
+                    <h5>Category</h5>
+                    <select class="chosen-select-no-single" >
+                        <option label="blank">Select Category</option>
+                        <option>Eat & Drink</option>
+                        <option>Shops</option>
+                        <option>Hotels</option>
+                        <option>Restaurants</option>
+                        <option>Fitness</option>
+                        <option>Events</option>
+                    </select>
                 </div>
 
-                <!-- City -->
+                <!-- Type -->
                 <div class="col-md-6">
-                    <h5>City</h5>
-                    <%= f.input :city, label: false%>
-                </div>
-
-                <!-- Address -->
-
-                <!-- City -->
-                <div class="col-md-6">
-                    <h5>Street</h5>
-                    <%= f.input :street, label: false %>
-                </div>
-
-                <div class="col-md-6">
-                    <h5>Landmark</h5>
-                    <%= f.input :landmark, label: false %>
-                </div>
-                <div class="col-md-6">
-                    <h5>Country</h5>
-                    <%= f.input :country, priority: [ 'LB' ], label: false %>
+                    <h5>Keywords <i class="tip" data-tip-content="Maximum of 15 keywords related with your business"></i></h5>
+                    <input type="text" placeholder="Keywords should be separated by commas">
                 </div>
 
             </div>
             <!-- Row / End -->
 
         </div>
-    </div>
-    <!-- Section / End -->
+        <!-- Section / End -->
 
+        <!-- Section -->
+        <div class="add-listing-section margin-top-45">
 
-    <!-- Section -->
-    <div class="add-listing-section margin-top-45">
+            <!-- Headline -->
+            <div class="add-listing-headline">
+                <h3><i class="sl sl-icon-location"></i> Location</h3>
+            </div>
+              <%= f.input :latitude, as: :hidden %>
+              <%= f.input :longitude, as: :hidden %>
+            <div class="submit-section">
+                <!-- Row -->
+                <div class="row with-forms">
+                    <div id="map_set_location" class="map_structure" style="width: 100%;height: 200px;position: fixed !important;">
+                  </div>
+                        <input class="btn-detect" type="button" value="Detect my location" onclick="getLocation();">
+                    <div class="col-md-6">
+                        <h5>Address</h5>
+                        <%= f.input :address, label: false %>
+                        <%= f.input :zip_code, as: :hidden%>
+                    </div>
 
-        <!-- Headline -->
-        <div class="add-listing-headline">
-            <h3><i class="sl sl-icon-picture"></i> Gallery</h3>
-            <%= f.simple_fields_for :listing_photos do |s| %>
-              <%= s.input :photo %>
-              <%= s.input :photo_cache, as: :hidden %>
-            <%end%>
-        </div>
+                    <!-- City -->
+                    <div class="col-md-6">
+                        <h5>City</h5>
+                        <%= f.input :city, label: false%>
+                    </div>
 
-        <!-- Dropzone -->
-        <div class="submit-section">
-            <form action="/file-upload" class="dropzone" ></form>
-        </div>
+                    <!-- Address -->
 
-    </div>
-    <!-- Section / End -->
+                    <!-- City -->
+                    <div class="col-md-6">
+                        <h5>Street</h5>
+                        <%= f.input :street, label: false %>
+                    </div>
 
+                    <div class="col-md-6">
+                        <h5>Landmark</h5>
+                        <%= f.input :landmark, label: false %>
+                    </div>
+                    <div class="col-md-6">
+                        <h5>Country</h5>
+                        <%= f.input :country, priority: [ 'LB' ], label: false %>
+                    </div>
 
-    <!-- Section -->
-    <div class="add-listing-section margin-top-45">
+                </div>
+                <!-- Row / End -->
 
-        <!-- Headline -->
-        <div class="add-listing-headline">
-            <h3><i class="sl sl-icon-docs"></i> Details</h3>
-        </div>
-
-        <!-- Description -->
-        <div class="form">
-            <h5>Description</h5>
-            <%=f.text_area :description, cols: 40, rows: 3%>
-        </div>
-
-        <!-- Row -->
-        <div class="row with-forms">
-            <!-- Phone -->
-            <div class="col-md-4">
-                <h5>Phone <span>(optional)</span></h5>
-                <%f.input_field :ownerphone%>
-                <input type="text">
             </div>
         </div>
-        <!-- Row / End -->
+        <!-- Section / End -->
 
 
-        <!-- Checkboxes -->
-        <h5 class="margin-top-30 margin-bottom-10">Amenities <span>(optional)</span></h5>
-        <div class="checkboxes in-row margin-bottom-20">
+        <!-- Section -->
 
-            <input id="check-b" type="checkbox" name="check">
-            <label for="check-b">Toilets</label>
+        <!-- responsivity problem from the attaching photo section -->
+        <div class="add-listing-section margin-top-45">
+            <!-- Headline -->
+            <div class="add-listing-headline">
+                <h3><i class="sl sl-icon-picture"></i> Gallery</h3>
+            </div>
+           <div class="submit-section">
+                  <form action="/file-upload" class="dropzone" ></form>
 
-            <input id="check-c" type="checkbox" name="check">
-            <label for="check-c">Showers</label>
-
-            <input id="check-d" type="checkbox" name="check">
-            <label for="check-d">Towels</label>
-
-            <input id="check-e" type="checkbox" name="check" >
-            <label for="check-e">Free parking on premises</label>
-            <input id="check-f" type="checkbox" name="check" >
-            <label for="check-f">Free parking on street</label>
-
-            <input id="check-g" type="checkbox" name="check">
-            <label for="check-g">Smoking allowed</label>
-
-            <input id="check-h" type="checkbox" name="check">
-            <label for="check-h">Wireless internet</label>
-        </div>
-        <!-- Checkboxes / End -->
-
-    </div>
-    <!-- Section / End -->
-
-
-    <!-- Section -->
-    <div class="add-listing-section margin-top-45">
-
-        <!-- Headline -->
-        <div class="add-listing-headline">
-            <h3><i class="sl sl-icon-clock"></i> Opening Hours</h3>
-            <!-- Switcher -->
-            <label class="switch"><input type="checkbox" checked><span class="slider round"></span></label>
-        </div>
-
-        <!-- Switcher ON-OFF Content -->
-        <div class="switcher-content">
-            <!-- Day -->
-            <div class="row opening-day">
-                <%= f.simple_fields_for :timings do |t| %>
-                   <div class="col-md-5">
-                      <%= t.input :start_time, collection: ['Closed', '1 AM', '2 AM', '3 AM', '4 AM', '5 AM', '6 AM', '7 AM', '8 AM', '9 AM', '10 AM', '11 AM', '12 AM', '1 PM', '2 PM', '3 PM', '4 PM', '5 PM', '6 PM', '7 PM', '8 PM', '9 PM', '10 PM', '11 PM', '12 PM'], input_html: { class: 'chosen-select' }, label: false%>
-                    </div>
-                    <div class="col-md-5">
-                      <%= t.input :end_time, collection: ['Closed', '1 AM', '2 AM', '3 AM', '4 AM', '5 AM', '6 AM', '7 AM', '8 AM', '9 AM', '10 AM', '11 AM', '12 AM', '1 PM', '2 PM', '3 PM', '4 PM', '5 PM', '6 PM', '7 PM', '8 PM', '9 PM', '10 PM', '11 PM', '12 PM'], input_html: { class: 'chosen-select' }, label: false %>
-                    </div>
+                <%= f.simple_fields_for :listing_photos do |s| %>
+                  <%= s.input :photo, label: false, :input_html => {:maxlength =>2,:style=> 'width: 60%'}%>
+                  <%= s.input :photo_cache, as: :hidden %>
                 <%end%>
-            </div>
-            <!-- Day / End -->
-        </div>
-        <!-- Switcher ON-OFF Content / End -->
-    </div>
-    <!-- Section / End -->
-    <!-- Section -->
-    <div class="add-listing-section margin-top-45">
 
-        <!-- Headline -->
-        <div class="add-listing-headline">
-            <h3><i class="sl sl-icon-book-open"></i> Classes</h3>
-            <!-- Switcher -->
-            <label class="switch"><input type="checkbox" checked><span class="slider round"></span></label>
-        </div>
 
-        <!-- Switcher ON-OFF Content -->
-        <div class="switcher-content">
-        <div class="test">
-            <div class="row">
-                <div class="col-md-12">
-                    <table id="pricing-list-container">
-                        <%= f.simple_fields_for :lessons do |s| %>
-                              <%= render 'lesson_fields', f: s %>
-                        <%end%>
-                    </table>
-                        <%= link_to_add_association f, :lessons, class: "button add-pricing-list-item" do %>
-                            Add a class
-                        <% end %>
-               </div>
             </div>
         </div>
+
+         <!-- Section / End -->
+
+
+        <!-- Section -->
+        <div class="add-listing-section margin-top-45">
+
+            <!-- Headline -->
+            <div class="add-listing-headline">
+                <h3><i class="sl sl-icon-docs"></i> Details</h3>
+            </div>
+
+            <!-- Description -->
+            <div class="form">
+                <h5>Description</h5>
+                <%=f.text_area :description, cols: 40, rows: 3%>
+            </div>
+
+            <!-- Row -->
+            <div class="row with-forms">
+                <!-- Phone -->
+                <div class="col-md-4">
+                    <h5>Phone <span>(optional)</span></h5>
+                    <%f.input_field :ownerphone%>
+                    <input type="text">
+                </div>
+            </div>
+            <!-- Row / End -->
+
+
+            <!-- Checkboxes -->
+            <h5 class="margin-top-30 margin-bottom-10">Amenities <span>(optional)</span></h5>
+            <div class="checkboxes in-row margin-bottom-20">
+
+                <input id="check-b" type="checkbox" name="check">
+                <label for="check-b">Toilets</label>
+
+                <input id="check-c" type="checkbox" name="check">
+                <label for="check-c">Showers</label>
+
+                <input id="check-d" type="checkbox" name="check">
+                <label for="check-d">Towels</label>
+
+                <input id="check-e" type="checkbox" name="check" >
+                <label for="check-e">Free parking on premises</label>
+                <input id="check-f" type="checkbox" name="check" >
+                <label for="check-f">Free parking on street</label>
+
+                <input id="check-g" type="checkbox" name="check">
+                <label for="check-g">Smoking allowed</label>
+
+                <input id="check-h" type="checkbox" name="check">
+                <label for="check-h">Wireless internet</label>
+            </div>
+            <!-- Checkboxes / End -->
+
         </div>
-        <!-- Switcher ON-OFF Content / End -->
+        <!-- Section / End -->
 
+
+        <!-- Section -->
+        <div class="add-listing-section margin-top-45">
+
+            <!-- Headline -->
+            <div class="add-listing-headline">
+                <h3><i class="sl sl-icon-clock"></i> Opening Hours</h3>
+                <!-- Switcher -->
+                <label class="switch"><input type="checkbox" checked><span class="slider round"></span></label>
+            </div>
+
+            <!-- Switcher ON-OFF Content -->
+            <div class="switcher-content">
+                <!-- Day -->
+                <div class="row opening-day">
+                    <%= f.simple_fields_for :timings do |t| %>
+                       <div class="col-md-5">
+                          <%= t.input :start_time, collection: ['Closed', '1 AM', '2 AM', '3 AM', '4 AM', '5 AM', '6 AM', '7 AM', '8 AM', '9 AM', '10 AM', '11 AM', '12 AM', '1 PM', '2 PM', '3 PM', '4 PM', '5 PM', '6 PM', '7 PM', '8 PM', '9 PM', '10 PM', '11 PM', '12 PM'], input_html: { class: 'chosen-select' }, label: false%>
+                        </div>
+                        <div class="col-md-5">
+                          <%= t.input :end_time, collection: ['Closed', '1 AM', '2 AM', '3 AM', '4 AM', '5 AM', '6 AM', '7 AM', '8 AM', '9 AM', '10 AM', '11 AM', '12 AM', '1 PM', '2 PM', '3 PM', '4 PM', '5 PM', '6 PM', '7 PM', '8 PM', '9 PM', '10 PM', '11 PM', '12 PM'], input_html: { class: 'chosen-select' }, label: false %>
+                        </div>
+                    <%end%>
+                </div>
+                <!-- Day / End -->
+            </div>
+            <!-- Switcher ON-OFF Content / End -->
+        </div>
+        <!-- Section / End -->
+        <!-- Section -->
+        <div class="add-listing-section margin-top-45">
+
+            <!-- Headline -->
+            <div class="add-listing-headline">
+                <h3><i class="sl sl-icon-book-open"></i> Classes</h3>
+                <!-- Switcher -->
+                <label class="switch"><input type="checkbox" checked><span class="slider round"></span></label>
+            </div>
+
+            <!-- Switcher ON-OFF Content -->
+            <div class="switcher-content">
+                <div class="test">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <table id="pricing-list-container">
+                                <%= f.simple_fields_for :lessons do |f| %>
+                                    <tr class="pricing-list-item pattern">
+                                        <td>
+                                            <div class="fm-input pricing-name">
+                                                <%= f.input_field :name, placeholder: "Name" %>
+                                            </div>
+                                            <div class="fm-input pricing-name">
+                                                <%= f.input_field :price, placeholder: "Price" %>
+                                            </div>
+                                                <div class="fm-input pricing-name">
+                                                    <%= f.input :category_ids, collection: Category.all, input_html: { class: 'chosen-select', multiple: true}, label: false%>
+                                                </div>
+                                            <div class="fm-input pricing-ingredients date0">
+                                                <%= f.schedule_select :schedule, until: true, style: :bootstrap %>
+                                           </div>
+                                        </td>
+                                    </tr>
+                                <%end%>
+                            </table>
+                            <%= link_to_add_association f, :lessons, class: "button add-pricing-list-item" do %>
+                                Add a class
+                            <% end %>
+                       </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Switcher ON-OFF Content / End -->
+
+        </div>
+        <!-- Section / End -->
+
+
+          <%= button_tag type: 'submit', class: "button preview" do %>Preview
+            <i class="fa fa-arrow-circle-right"></i>
+        <% end %>
     </div>
-    <!-- Section / End -->
-
-
-      <%= button_tag type: 'submit', class: "button preview" do %>Preview
-        <i class="fa fa-arrow-circle-right"></i>
-    <% end %>
-</div>
 <%end%>

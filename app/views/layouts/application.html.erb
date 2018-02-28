@@ -42,17 +42,29 @@
 
     <%= csrf_meta_tags %>
     <%= action_cable_meta_tag %>
-    <%= stylesheet_link_tag 'application', media: 'all' %>
+    <% if controller_name == "subscribers" || controller_name == "attendees" || controller_name == "feedbacks"%>
+            <%= stylesheet_link_tag "urban"%>
+        <%else%>
+            <%= stylesheet_link_tag 'application', media: 'all' %>
+        <%end%>
     <%= stylesheet_link_tag 'main', id: 'colors', media: 'all' %>
-
   </head>
-  <body>
+    <% if controller_name == "subscribers" || controller_name == "attendees" || controller_name == "feedbacks"%>
+      <body class="page">
+    <%else%>
+        <body>
+    <%end%>
 
-    <div id="wrapper">
+
+    <!-- <div id="wrapper"> -->
+    <% unless controller_name == "subscribers" || controller_name == "attendees" || controller_name == "feedbacks"%>
       <%= render 'shared/navbar' %>
+    <%end%>
+
       <%= render 'shared/flashes' %>
-      <%= yield %>
-    </div>
+
+     <%= yield %>
+    <!-- </div> -->
 
     <% unless user_signed_in? %>
       <%= render 'layouts/sign-up' %>
@@ -63,8 +75,11 @@
     <%= javascript_include_tag "https://cdn.rawgit.com/googlemaps/js-rich-marker/gh-pages/src/richmarker-compiled.js" %>
 
     <%= javascript_include_tag "https://cdn.rawgit.com/printercu/google-maps-utility-library-v3-read-only/master/infobox/src/infobox_packed.js" %>
-    <%= javascript_include_tag "application" %>
+    <% if controller_name == "subscribers" || controller_name == "attendees" || controller_name == "feedbacks"%>
+        <%= javascript_include_tag "urban" %>
+    <%else%>
+        <%= javascript_include_tag "application" %>
+    <%end%>
     <%= yield(:after_js) %>
-
   </body>
 </html>
