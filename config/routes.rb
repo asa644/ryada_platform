@@ -1,16 +1,16 @@
 Rails.application.routes.draw do
-   resources :lessons
+   # resources :lessons
    mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
-  resources :listings do
-    put "approve", to: "listings#approve"
-    put "disapprove", to: "listings#disapprove"
-    resources :reviews, only: [:create] do
-      resources :responds, only: [:create]
-    end
-    resources :lessons
-  end
-  resources :bookings, only: [:create, :show]
-  resources :categories
+  # resources :listings do
+  #   put "approve", to: "listings#approve"
+  #   put "disapprove", to: "listings#disapprove"
+  #   resources :reviews, only: [:create] do
+  #     resources :responds, only: [:create]
+  #   end
+  #   resources :lessons
+  # end
+  # resources :bookings, only: [:create, :show]
+  # resources :categories
   devise_for :users, controllers: { confirmations: 'confirmations' }
   # root to: 'landings#home'
   root to: 'subscribers#home'
@@ -24,13 +24,12 @@ Rails.application.routes.draw do
   end
   resources :subscribers, only: [:create, :show]
   resources :feedbacks, only: [:new, :create, :show, :index]
-  # resources :facilities, only: [:create, :show]
 
-  get '/search' => 'listings#search'
-  get '/pendings' => 'listings#pendings'
-  get '/dashboard' => 'users#dashboard'
-  get '/profile' => 'users#profile'
-  get '/active' => 'users#active'
-  get '/pending' => 'users#pending'
-  get '/expired' => 'users#expired'
+  # get '/search' => 'listings#search'
+  # get '/pendings' => 'listings#pendings'
+  # get '/dashboard' => 'users#dashboard'
+  # get '/profile' => 'users#profile'
+  # get '/active' => 'users#active'
+  # get '/pending' => 'users#pending'
+  # get '/expired' => 'users#expired'
 end
