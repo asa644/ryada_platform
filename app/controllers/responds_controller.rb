@@ -1,4 +1,6 @@
 class RespondsController < ApplicationController
+    before_action :authenticate_user!
+
   def create
     @respond = Respond.new(respond_params)
     @respond.user = current_user

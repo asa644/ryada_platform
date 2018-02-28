@@ -1,4 +1,6 @@
 class ReviewsController < ApplicationController
+  before_action :authenticate_user!
+
   # def new
   #   @story = Story.find(params[:story_id])
   #   @review = review.new

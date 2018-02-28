@@ -1,4 +1,6 @@
 class ListingPhotosController < ApplicationController
+    before_action :authenticate_user!
+
   # def new
   #   @story = Story.find(params[:story_id])
   #   @listing_photo = listing_photo.new

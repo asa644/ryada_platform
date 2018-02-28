@@ -1,6 +1,7 @@
 class ListingsController < ApplicationController
   before_action :set_listing, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!, only: [:new, :create, :update, :destroy, :edit]
+  before_action :authenticate_user!
+  # , only: [:new, :create, :update, :destroy, :edit]
   # GET /listings
   # GET /listings.json
   def index
