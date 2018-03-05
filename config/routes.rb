@@ -1,13 +1,16 @@
 Rails.application.routes.draw do
    # resources :lessons
    mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
-  # resources :listings do
-  #   put "approve", to: "listings#approve"
-  #   put "disapprove", to: "listings#disapprove"
-  #   resources :reviews, only: [:create] do
-  #     resources :responds, only: [:create]
+  # get '/beta' => 'landings#home'
+  # scope '/beta' do
+  #   resources :listings do
+  #     put "approve", to: "listings#approve"
+  #     put "disapprove", to: "listings#disapprove"
+  #     resources :reviews, only: [:create] do
+  #       resources :responds, only: [:create]
+  #     end
+  #     resources :lessons
   #   end
-  #   resources :lessons
   # end
   # resources :bookings, only: [:create, :show]
   # resources :categories
