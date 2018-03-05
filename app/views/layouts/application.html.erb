@@ -85,9 +85,10 @@
     <!-- <div id="wrapper"> -->
     <% unless controller_name == "subscribers" || controller_name == "attendees" || controller_name == "feedbacks"%>
       <%= render 'shared/navbar' %>
+      <%= render 'shared/flashes' %>
+
     <%end%>
 
-      <%= render 'shared/flashes' %>
 
      <%= yield %>
     <!-- </div> -->
