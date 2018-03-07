@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+match "*path" => redirect("https://www.localfitt.com/%{path}"), :constraints => { :protocol => "http://" }
+match "*path" => redirect("https://www.localfitt.com/%{path}"), :constraints => { :subdomain => "" }
    # resources :lessons
    mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   # get '/beta' => 'landings#home'
