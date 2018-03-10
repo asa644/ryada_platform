@@ -9,11 +9,18 @@
       <div class="fm-input pricing-name">
        <%= f.input :category_ids, collection: Category.all, input_html: { class: 'chosen-select', multiple: true}, label: false%>
     </div>
+</td>
+<td>
       <div class="fm-input pricing-name">
-            <%= f.input_field :start_time, placeholder: "Start Time", as: :string, id: "booking-time"%>
+          <%= f.input_field :start_time, placeholder: "Start Time", as: :string, id: "start-time"%>
     </div>
+      <div class="fm-input pricing-name">
+          <%= f.input_field :end_time, placeholder: "End Time", as: :string, id: "end-time"%>
+    </div>
+
     <div class="fm-input pricing-ingredients date0">
         <%= f.select_recurring :recurring%>
    </div>
 </td>
+
 </tr>

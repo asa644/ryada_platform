@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180227211952) do
+ActiveRecord::Schema.define(version: 20180308154708) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -106,6 +106,7 @@ ActiveRecord::Schema.define(version: 20180227211952) do
     t.text "recurring"
     t.time "start_time"
     t.float "price"
+    t.time "end_time"
     t.index ["listing_id"], name: "index_lessons_on_listing_id"
     t.index ["user_id"], name: "index_lessons_on_user_id"
   end

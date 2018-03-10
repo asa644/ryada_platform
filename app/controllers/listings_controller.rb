@@ -1,7 +1,6 @@
 class ListingsController < ApplicationController
   before_action :set_listing, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!
-  # , only: [:new, :create, :update, :destroy, :edit]
+  before_action :authenticate_user!, only: [:new, :create, :update, :destroy, :edit]
   # GET /listings
   # GET /listings.json
   def index
@@ -143,6 +142,6 @@ class ListingsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def listing_params
-      params.require(:listing).permit(:id, :name, :categories_ids,:description, :status, :owner_id, :city, :country, :zip_code, :street, :landmark, :phonenumber, :ownerphone, :longitude, :latitude, listing_photos_attributes: [:id, :user_id, :photo, :photo_cache], timings_attributes: [:id, :day, :start_time, :end_time, :status], lessons_attributes: [:id, :name, :price, :description, :start_time, :recurring, :_destroy, category_ids: [], schedule_attributes: Schedulable::ScheduleSupport.param_names])
+      params.require(:listing).permit(:id, :name, :categories_ids,:description, :status, :owner_id, :city, :country, :zip_code, :street, :landmark, :phonenumber, :ownerphone, :longitude, :latitude, listing_photos_attributes: [:id, :user_id, :photo, :photo_cache], timings_attributes: [:id, :day, :start_time, :end_time, :status], lessons_attributes: [:id, :name, :price, :description, :start_time, :end_time, :recurring, :_destroy, category_ids: [], schedule_attributes: Schedulable::ScheduleSupport.param_names])
     end
 end

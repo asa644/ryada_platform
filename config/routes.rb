@@ -13,9 +13,10 @@ Rails.application.routes.draw do
   #     end
   #     resources :lessons
   #   end
+  #   resources :bookings, only: [:create, :show]
+  #   resources :categories
+
   # end
-  # resources :bookings, only: [:create, :show]
-  # resources :categories
   devise_for :users, controllers: { confirmations: 'confirmations' }
   # root to: 'landings#home'
   root to: 'subscribers#home'
@@ -34,7 +35,7 @@ Rails.application.routes.draw do
   # get '/pendings' => 'listings#pendings'
   # get '/dashboard' => 'users#dashboard'
   # get '/profile' => 'users#profile'
-  # get '/active' => 'users#active'
+  get '/beta/active' => 'users#active'
   # get '/pending' => 'users#pending'
   # get '/expired' => 'users#expired'
 end

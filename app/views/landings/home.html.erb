@@ -15,7 +15,7 @@
                         </div>
 
                         <div class="main-search-input-item">
-                            <%= form_tag('/categories',:method=>:get) do %>
+                            <%= form_tag('/beta/categories',:method=>:get) do %>
                                 <%= select_tag "id", options_from_collection_for_select(Category.all, "id", "name"), class: "chosen-select" %>
                         </div>
                         <%= button_tag "Search", class: "button" %>
