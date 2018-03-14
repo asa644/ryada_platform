@@ -4,25 +4,29 @@
 
 $(document).ready(function(){
 	var count = 0;
-  $('.test').on('cocoon:after-insert', function(e, insertedItem) {
-  		// 		e.preventDefault();
+  // $('#test').on('cocoon:before-insert', function(event, insertedItem) {
 
-  	count = count + 1;
+  // });
+
+  $('#test').on('cocoon:after-insert', function(e, insertedItem) {
+  // 		// 		e.preventDefault();
+
+  // 	count = count + 1;
 	  $('.chosen-select').chosen({placeholder_text_single: "select category"});
 	  // $('end-time').attr('id', count);
 	  // console.log('hello'+count);
 	  // console.log(insertedItem);
-	  e.preventDefault();
-	  insertedItem.find($('div>input#start-time')).addClass("hello"+count);
-	  // console.log($('.hello'+count));
-	insertedItem.find($('.hello'+count)).timeDropper();
-	  $('#end-time').timeDropper({
-		  setCurrentTime: false,
-		  meridians: true,
-		  primaryColor: "#f91942",
-		  borderColor: "#f91942",
-		  minutesInterval: '15'
-	});
+	//   e.preventDefault();
+	//   insertedItem.find($('div>input#start-time')).addClass("hello"+count);
+	//   // console.log($('.hello'+count));
+	// insertedItem.find($('.hello'+count)).timeDropper();
+	//   $('#end-time').timeDropper({
+	// 	  setCurrentTime: false,
+	// 	  meridians: true,
+	// 	  primaryColor: "#f91942",
+	// 	  borderColor: "#f91942",
+	// 	  minutesInterval: '15'
+	// });
 
 
 	var $clocks = $('.td-input');

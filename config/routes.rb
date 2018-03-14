@@ -2,21 +2,20 @@ Rails.application.routes.draw do
 # match "*path" => redirect("https://www.localfitt.com/%{path}"), :constraints => { :protocol => "http://" }
 # match "*path" => redirect("https://www.localfitt.com/%{path}"), :constraints => { :subdomain => "" }
    # resources :lessons
-   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
-  # get '/beta' => 'landings#home'
-  # scope '/beta' do
-  #   resources :listings do
-  #     put "approve", to: "listings#approve"
-  #     put "disapprove", to: "listings#disapprove"
-  #     resources :reviews, only: [:create] do
-  #       resources :responds, only: [:create]
-  #     end
-  #     resources :lessons
-  #   end
-  #   resources :bookings, only: [:create, :show]
-  #   resources :categories
-
-  # end
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
+  get '/beta' => 'landings#home'
+  scope '/beta' do
+    resources :listings do
+      put "approve", to: "listings#approve"
+      put "disapprove", to: "listings#disapprove"
+      resources :reviews, only: [:create] do
+        resources :responds, only: [:create]
+      end
+      resources :lessons
+    end
+    resources :bookings, only: [:create, :show]
+    resources :categories
+  end
   devise_for :users, controllers: { confirmations: 'confirmations' }
   # root to: 'landings#home'
   root to: 'subscribers#home'

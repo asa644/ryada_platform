@@ -293,11 +293,16 @@ header.fullwidth .container {
   width: 35%;
   display: inline-block;
 }
+ select#end-time{
+    width: 50px;
+ }
+  select#start-time{
+    width: 50px;
+ }
  select {
     width: 167px;
     background-color: white;
     height: 49px;
-
  }
 
 #logo,
@@ -12316,3 +12321,6 @@ img.mfp-img {
   #reset a.button:hover { color: #333; background-color: #fff; }
 
   @media only screen and (max-width: 1024px) {#style-switcher {display: none;}}
+#end-time select{
+    width: 3px;
+}
