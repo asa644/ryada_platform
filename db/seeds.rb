@@ -62,7 +62,9 @@ classes.each do |row|
         category_data = Category.where(name: category.capitalize)
         # p category_data.first.id
         # p l.id
-        CategoryLesson.create!(category_id: category_data.first.id, lesson_id: l.id)
+        unless category_data.nil?
+          CategoryLesson.create!(category_id: category_data.first.id, lesson_id: l.id)
+        end
       end
      else
       p category_data.first.id
