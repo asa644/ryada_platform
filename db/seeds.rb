@@ -60,8 +60,8 @@ classes.each do |row|
       cat = categories.split(',')
       cat.each do |category|
         category_data = Category.where(name: category.capitalize)
-        p category_data.first.id
-        p l.id
+        # p category_data.first.id
+        # p l.id
         CategoryLesson.create!(category_id: category_data.first.id, lesson_id: l.id)
       end
      else
