@@ -28,6 +28,9 @@ class Lesson < ApplicationRecord
 
     schedule
   end
+  def occurrences
+    self.schedule(Time.now).occurrences(Time.now + 1.week)
+  end
   def calendar_lessons(start)
     if recurring.empty?
       [self]
@@ -35,7 +38,7 @@ class Lesson < ApplicationRecord
       #start_date = start.beginning_of_month.beginning_of_week
       end_date = start.end_of_month.end_of_week
       schedule(start_time).occurrences(end_date).map do |date|
-        Lesson.new(id: id, name: name, start_time: date)
+        Lesson.new(id: id, name: name, start_time: start_time, end_time: end_time)
       end
     end
   end

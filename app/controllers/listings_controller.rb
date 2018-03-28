@@ -6,11 +6,19 @@ class ListingsController < ApplicationController
   def index
     @listings = Listing.where.not(latitude: nil, longitude: nil)
     @lessons = []
-    today = Date.today
-    @array = [today.strftime("%A"), (today + 1.day).strftime("%A"), (today + 2.day).strftime("%A"), (today + 3.day).strftime("%A"), (today + 4.day).strftime("%A"), (today + 5.day).strftime("%A"), (today + 6.day).strftime("%A")]
-    Lesson.all.each do |lesson|
-      unless lesson.listing.latitude.nil? && lesson.listing.longitude.nil?
-        @lessons << lesson
+    today = Time.now
+    @array = [today, (today + 1.day), (today + 2.day), (today + 3.day), (today + 4.day), (today + 5.day), (today + 6.day)]
+    # @lesson.recur
+    @dayclass = []
+    @array.each do |day|
+      ordered = Lesson.order(:start_time)
+      @dayclass << ordered.select do |lesson|
+        l = lesson.schedule(Time.now)
+        if day.day == Time.now.day
+          l.occurs_on?(day) && lesson.start_time.hour > Time.now.hour
+        else
+          l.occurs_on?(day)
+        end
       end
     end
     @hash = Gmaps4rails.build_markers(@listings) do |listing, marker|

@@ -24,6 +24,8 @@ gem 'bootstrap-datepicker-rails', :require => 'bootstrap-datepicker-rails',
                               :git => 'git://github.com/Nerian/bootstrap-datepicker-rails.git'
 gem 'friendly_id', '~> 5.1.0'
 gem 'cloudinary'
+# gem 'csv',
+
 # gem 'activesupport-json_encoder'
 gem 'ice_cube'
 gem 'schedulable'

@@ -6,7 +6,6 @@ class CreateTimings < ActiveRecord::Migration[5.1]
       t.time :end_time
       t.integer :status
       t.references :listing, foreign_key: true
-
       t.timestamps
     end
   end

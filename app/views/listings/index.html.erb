@@ -35,7 +35,7 @@ var infoBox_ratingType = 'star-rating';
       // Locations
       var locations = [
       <% @listings.each do |listing|%>
-        [ locationData('/listings/<%=listing.id%>',"<%=image_path 'main.png'%>","<%=listing.name%>",'<%=listing.city%>, <%=listing.country%>', '3.5', '12'), <%=listing.latitude%>, <%=listing.longitude%>, <%=listing.id%>, '<i class="im im-icon-Chef-Hat"></i>'],
+        [ locationData('/beta/listings/<%=listing.id%>',"<%=image_path 'main.png'%>","<%=listing.name%>",'<%=listing.city%>, <%=listing.country%>', '3.5', '12'), <%=listing.latitude%>, <%=listing.longitude%>, <%=listing.id%>, '<i class="im im-icon-Chef-Hat"></i>'],
       <%end%>
       ];
 
@@ -98,9 +98,13 @@ var infoBox_ratingType = 'star-rating';
         if(listingAttr !== undefined) {
           var listing_id = $(this).data('marker-id') ;
           console.log(listing_id);
-          console.log(allMarkers);
-
-          var marker_div = allMarkers[listing_id].div;
+          console.log(typeof(allMarkers[0]));
+          for (i = 0; i < allMarkers.length; i++) {
+            if (allMarkers[i].args.marker_id==listing_id){
+              var marker_div = allMarkers[i].div;
+            }
+          };
+          // var marker_div = allMarkers[listing_id].div;
 
           $(marker_div).addClass('clicked');
 
@@ -158,14 +162,14 @@ var infoBox_ratingType = 'star-rating';
       for (i = 0; i < locations.length; i++) {
 
         markerIco = locations[i][4];
-
+        // console.log(locations[i][3]);
         var overlaypositions = new google.maps.LatLng(locations[i][1], locations[i][2]),
 
         overlay = new CustomMarker(
          overlaypositions,
           map,
           {
-            marker_id: i
+            marker_id: locations[i][3]
           },
           markerIco
         );
@@ -486,31 +490,21 @@ var infoBox_ratingType = 'star-rating';
                 <!-- Filters -->
                 <div class="col-fs-12">
                   <!-- Panel Dropdown / End -->
-                <ul class="nav nav-tabs" id="myTab" role="tablist">
-                  <li class="nav-item">
-                    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Today</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Tomorrow</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false"><%=@array[2]%></a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false"><%=@array[3]%></a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false"><%=@array[4]%></a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false"><%=@array[5]%></a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false"><%=@array[6]%></a>
-                  </li>
 
-                </ul>
 
+              <ul class="nav nav-pills mb-7" id="pills-tab" role="tablist">
+                  <%@array.each do |day|%>
+                      <% if day.day == Time.now.day %>
+                      <li class="nav-item active">
+                        <a class="nav-link" id="pills-<%=day.strftime("%A")%>-tab" data-toggle="pill" href="#pills-<%=day.strftime("%A")%>" role="tab" aria-controls="pills-<%=day.strftime("%A")%>" aria-selected="true"><%=day.strftime("%A")%></a>
+                      </li>
+                    <%else%>
+                      <li class="nav-item">
+                        <a class="nav-link" id="pills-<%=day.strftime("%A")%>-tab" data-toggle="pill" href="#pills-<%=day.strftime("%A")%>" role="tab" aria-controls="pills-<%=day.strftime("%A")%>" aria-selected="false"><%=day.strftime("%A")%></a>
+                      </li>
+                    <%end%>
+                  <%end%>
+              </ul>
                   <!-- Panel Dropdown / End -->
 
                   <!-- Panel Dropdown -->
@@ -530,49 +524,54 @@ var infoBox_ratingType = 'star-rating';
       <!-- Search / End -->
 
     <section class="listings-container margin-top-30">
-
       <!-- Sorting / Layout Switcher -->
-      <div class="row fs-switcher">
+<!--       <div class="row fs-switcher">
 
         <div class="col-md-6">
-          <!-- Showing Results -->
+          Showing Results
           <p class="showing-results">14 Results Found </p>
         </div>
 
       </div>
 
-
+ -->
       <!-- Listings -->
       <div class="row fs-listings">
-          <% count = 0%>
-
-          <% @lessons.each do |lesson| %>
           <!-- Listing Item -->
-          <div class="tab-content" id="myTabContent">
-              <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-            <div class="col-lg-6 col-md-6">
-              <%= link_to lesson.listing, class: "listing-item-container compact", :data => { "marker-id" => count} do %>
-                <div class="listing-item">
-                <%count = count + 1 %>
-                  <%=image_tag 'main.png'%>
-                  <div class="listing-badge now-open">Now Open</div>
-                  <div class="listing-item-content">
-                    <div class="numerical-rating" data-rating="3.5"></div>
-                    <h3><%=lesson.name%></h3>
-                    <span><%=lesson.listing.address%></span>
-                  </div>
-                  <span class="like-icon"></span>
-                </div>
+          <div class="tab-content" id="pills-tabContent">
+            <%@array.each do |day|%>
+            <% if day.day == Time.now.day %>
+              <div class="tab-pane fade active in" id="pills-<%=day.strftime("%A")%>" role="tabpanel" aria-labelledby="pills-<%=day.strftime("%A")%>-tab">
+            <%else%>
+              <div class="tab-pane fade" id="pills-<%=day.strftime("%A")%>" role="tabpanel" aria-labelledby="pills-<%=day.strftime("%A")%>-tab">
+            <%end%>
+              <%if @dayclass[@array.index(day)].count==0%>
+              <p class="showing-results">No fitness classes left today!</p>
+              <%end%>
+                <p class="showing-results"><%=@dayclass[@array.index(day)].count%> Results Found </p>
+
+                <%@dayclass[@array.index(day)].each do |lesson| %>
+                    <div class="col-lg-6 col-md-6">
+                      <%= link_to lesson.listing, class: "listing-item-container compact", :data => { "marker-id" => lesson.listing.id} do %>
+                        <div class="listing-item">
+                          <%=image_tag 'main.png'%>
+                          <div class="listing-badge now-open"><%=lesson.start_time.strftime("%I:%M %p")%></div>
+                          <div class="listing-item-content">
+                            <div class="numerical-rating" data-rating="3.5"></div>
+                            <h3><%=lesson.name%></h3>
+                            <span><%=lesson.listing.city%></span>
+                          </div>
+                          <span class="like-icon"></span>
+                        </div>
+                      <%end%>
+                    </div>
                 <%end%>
-            </div>
-            </div>
+              </div>
+            <%end%>
           </div>
-          <%end%>
         <!-- Listing Item / End -->
       </div>
       <!-- Listings Container / End -->
-
-
       <!-- Pagination Container -->
       <div class="row fs-listings">
         <div class="col-md-12">
@@ -597,7 +596,7 @@ var infoBox_ratingType = 'star-rating';
           <!-- Pagination / End -->
 
           <!-- Copyrights -->
-          <div class="copyrights margin-top-0">© 2017 LocalFitt. All Rights Reserved.</div>
+          <div class="copyrights margin-top-0">© 2018 LocalFitt. All Rights Reserved.</div>
 
         </div>
       </div>
@@ -620,10 +619,3 @@ var infoBox_ratingType = 'star-rating';
 
 
 </div>
-
-// <% content_for(:after_js) do %>
-//   <%= javascript_tag do %>
-//     var myButton = document.getElementsByClassName("map-marker-container");
-//     console.log("myButton");
-// <%end%>
-// <%end%>
