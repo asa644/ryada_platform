@@ -7233,8 +7233,8 @@ span.like-icon {
   background-color: rgba(24,24,24,0.4);
   display: block;
   height: 44px;
-  width: 44px;
-  border-radius: 50%;
+  width: 75px;
+  /*border-radius: 50%;*/
   transition: all 0.4s;
 }
 
@@ -7250,7 +7250,7 @@ span.like-icon {
 }
 
 .like-icon:before {
-  content: "\f08a";
+  content: "BOOK";
   transform: scale(0.95);
 }
 

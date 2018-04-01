@@ -108,6 +108,9 @@
     <%else%>
         <%= javascript_include_tag "application" %>
     <%end%>
+    <%= javascript_include_tag "infobox.min" %>
+    <%= javascript_include_tag "markerclusterer" %>
+
     <%= yield(:after_js) %>
   </body>
 </html>

@@ -1,73 +1,65 @@
 <% content_for(:after_js) do %>
   <%= javascript_tag do %>
-var infoBox_ratingType = 'star-rating';
 
-(function($){
+var infoBox_ratingType = 'star-rating';
+(function($) {
     "use strict";
 
     function mainMap() {
+        var ib = new InfoBox();
 
-      // Locations
-      // ----------------------------------------------- //
-      var ib = new InfoBox();
+        function locationData(locationURL, locationImg, locationTitle, locationAddress, locationRating, locationRatingCounter) {
+            return ('' +
+                '<a href="' + locationURL + '" class="listing-img-container">' +
+                '<div class="infoBox-close"><i class="fa fa-times"></i></div>' +
+                '<img src="' + locationImg + '" alt="">' +
+                '<div class="listing-item-content">' +
+                '<h3>' + locationTitle + '</h3>' +
+                '<span>' + locationAddress + '</span>' +
+                '</div>' +
+                '</a>' +
+                '<div class="listing-content">' +
+                '<div class="listing-title">' +
+                '<div class="' + infoBox_ratingType + '" data-rating="' + locationRating + '"><div class="rating-counter">(' + locationRatingCounter + ' reviews)</div></div>' +
+                '</div>' +
+                '</div>')
+        }
 
-      // Infobox Output
-      function locationData(locationURL,locationImg,locationTitle, locationAddress, locationRating, locationRatingCounter) {
-          return(''+
-            '<a href="'+ locationURL +'" class="listing-img-container">'+
-               '<div class="infoBox-close"><i class="fa fa-times"></i></div>'+
-               '<img src="'+locationImg+'" alt="">'+
-
-               '<div class="listing-item-content">'+
-                  '<h3>'+locationTitle+'</h3>'+
-                  '<span>'+locationAddress+'</span>'+
-               '</div>'+
-
-            '</a>'+
-
-            '<div class="listing-content">'+
-               '<div class="listing-title">'+
-                  '<div class="'+infoBox_ratingType+'" data-rating="'+locationRating+'"><div class="rating-counter">('+locationRatingCounter+' reviews)</div></div>'+
-               '</div>'+
-            '</div>')
-      }
 
       // Locations
       var locations = [
       <% @listings.each do |listing|%>
-        [ locationData('/beta/listings/<%=listing.id%>',"<%=image_path 'main.png'%>","<%=listing.name%>",'<%=listing.city%>, <%=listing.country%>', '3.5', '12'), <%=listing.latitude%>, <%=listing.longitude%>, <%=listing.id%>, '<i class="im im-icon-Chef-Hat"></i>'],
+        [ locationData('/beta/listings/<%=listing.id%>',"<%=image_path 'main.png'%>","<%=listing.name%>",'<%=listing.city%>, <%=listing.country%>', '3.5', '12'), <%=listing.latitude%>, <%=listing.longitude%>, <%=listing.id%>, '<i class="im im-icon-Dumbbell"></i>'],
       <%end%>
       ];
 
       // Chosen Rating Type
-      google.maps.event.addListener(ib,'domready',function(){
-         if (infoBox_ratingType = 'numerical-rating') {
-            numericalRating('.infoBox .'+infoBox_ratingType+'');
-         }
-         if (infoBox_ratingType = 'star-rating') {
-            starRating('.infoBox .'+infoBox_ratingType+'');
-         }
-      });
-
+        google.maps.event.addListener(ib, 'domready', function() {
+            if (infoBox_ratingType = 'numerical-rating') {
+                numericalRating('.infoBox .' + infoBox_ratingType + '');
+            }
+            if (infoBox_ratingType = 'star-rating') {
+                starRating('.infoBox .' + infoBox_ratingType + '');
+            }
+        });
 
 
       // Map Attributes
       // ----------------------------------------------- //
 
-      var mapZoomAttr = $('#map').attr('data-map-zoom');
-      var mapScrollAttr = $('#map').attr('data-map-scroll');
+        var mapZoomAttr = $('#map').attr('data-map-zoom');
+        var mapScrollAttr = $('#map').attr('data-map-scroll');
+        if (typeof mapZoomAttr !== typeof undefined && mapZoomAttr !== false) {
+            var zoomLevel = parseInt(mapZoomAttr);
+        } else {
+            var zoomLevel = 5;
+        }
+        if (typeof mapScrollAttr !== typeof undefined && mapScrollAttr !== false) {
+            var scrollEnabled = parseInt(mapScrollAttr);
+        } else {
+            var scrollEnabled = false;
+        }
 
-      if (typeof mapZoomAttr !== typeof undefined && mapZoomAttr !== false) {
-          var zoomLevel = parseInt(mapZoomAttr);
-      } else {
-          var zoomLevel = 5;
-      }
-
-      if (typeof mapScrollAttr !== typeof undefined && mapScrollAttr !== false) {
-         var scrollEnabled = parseInt(mapScrollAttr);
-      } else {
-        var scrollEnabled = false;
-      }
 
 
       // Main Map
@@ -92,71 +84,55 @@ var infoBox_ratingType = 'star-rating';
 
       // Marker highlighting when hovering listing item
       $('.listing-item-container').on('mouseover', function(){
-
         var listingAttr = $(this).data('marker-id');
-
         if(listingAttr !== undefined) {
           var listing_id = $(this).data('marker-id') ;
-          console.log(listing_id);
-          console.log(typeof(allMarkers[0]));
           for (i = 0; i < allMarkers.length; i++) {
             if (allMarkers[i].args.marker_id==listing_id){
               var marker_div = allMarkers[i].div;
             }
           };
           // var marker_div = allMarkers[listing_id].div;
-
           $(marker_div).addClass('clicked');
-
           $(this).on('mouseout', function(){
               if ($(marker_div).is(":not(.infoBox-opened)")) {
                  $(marker_div).removeClass('clicked');
               }
            });
         }
-
       });
-
 
       // Infobox
       // ----------------------------------------------- //
 
-      var boxText = document.createElement("div");
-      boxText.className = 'map-box'
-
-      var currentInfobox;
-
-      var boxOptions = {
-              content: boxText,
-              disableAutoPan: false,
-              alignBottom : true,
-              maxWidth: 0,
-              pixelOffset: new google.maps.Size(-134, -55),
-              zIndex: null,
-              boxStyle: {
+        var boxText = document.createElement("div");
+        boxText.className = 'map-box'
+        var currentInfobox;
+        var boxOptions = {
+            content: boxText,
+            disableAutoPan: false,
+            alignBottom: true,
+            maxWidth: 0,
+            pixelOffset: new google.maps.Size(-134, -55),
+            zIndex: null,
+            boxStyle: {
                 width: "270px"
-              },
-              closeBoxMargin: "0",
-              closeBoxURL: "",
-              infoBoxClearance: new google.maps.Size(25, 25),
-              isHidden: false,
-              pane: "floatPane",
-              enableEventPropagation: false,
-      };
-
-
-      var markerCluster, overlay, i;
-      var allMarkers = [];
-
-      var clusterStyles = [
-        {
-          textColor: 'white',
-          url: '',
-          height: 50,
-          width: 50
-        }
-      ];
-
+            },
+            closeBoxMargin: "0",
+            closeBoxURL: "",
+            infoBoxClearance: new google.maps.Size(25, 25),
+            isHidden: false,
+            pane: "floatPane",
+            enableEventPropagation: false,
+        };
+        var markerCluster, overlay, i;
+        var allMarkers = [];
+        var clusterStyles = [{
+            textColor: 'white',
+            url: '',
+            height: 50,
+            width: 50
+        }];
 
       var markerIco;
       for (i = 0; i < locations.length; i++) {
@@ -173,7 +149,7 @@ var infoBox_ratingType = 'star-rating';
           },
           markerIco
         );
-
+        // console.log(overlay.args.marker_id);
         allMarkers.push(overlay);
 
         google.maps.event.addDomListener(overlay, 'click', (function(overlay, i) {
@@ -181,8 +157,8 @@ var infoBox_ratingType = 'star-rating';
           return function() {
              ib.setOptions(boxOptions);
              boxText.innerHTML = locations[i][0];
+             ib.close();
              ib.open(map, overlay);
-
              currentInfobox = locations[i][3];
              // var latLng = new google.maps.LatLng(locations[i][1], locations[i][2]);
              // map.panTo(latLng);
@@ -190,6 +166,7 @@ var infoBox_ratingType = 'star-rating';
 
 
             google.maps.event.addListener(ib,'domready',function(){
+              console.log("hello");
               $('.infoBox-close').click(function(e) {
                   e.preventDefault();
                   ib.close();
@@ -207,13 +184,13 @@ var infoBox_ratingType = 'star-rating';
       // Marker Clusterer Init
       // ----------------------------------------------- //
 
-      var options = {
-          imagePath: 'images/',
-          styles : clusterStyles,
-          minClusterSize : 2
-      };
+      // var options = {
+      //     imagePath: 'images/',
+      //     styles : clusterStyles,
+      //     minClusterSize : 2
+      // };
 
-      markerCluster = new MarkerClusterer(map, allMarkers, options);
+      // markerCluster = new MarkerClusterer(map, allMarkers, options);
 
       google.maps.event.addDomListener(window, "resize", function() {
           var center = map.getCenter();
@@ -538,7 +515,7 @@ var infoBox_ratingType = 'star-rating';
       <!-- Listings -->
       <div class="row fs-listings">
           <!-- Listing Item -->
-          <div class="tab-content" id="pills-tabContent">
+          <div class="tab-content" id="pills-tabContent" style="padding: 0px 0px">
             <%@array.each do |day|%>
             <% if day.day == Time.now.day %>
               <div class="tab-pane fade active in" id="pills-<%=day.strftime("%A")%>" role="tabpanel" aria-labelledby="pills-<%=day.strftime("%A")%>-tab">
@@ -551,19 +528,37 @@ var infoBox_ratingType = 'star-rating';
                 <p class="showing-results"><%=@dayclass[@array.index(day)].count%> Results Found </p>
 
                 <%@dayclass[@array.index(day)].each do |lesson| %>
-                    <div class="col-lg-6 col-md-6">
-                      <%= link_to lesson.listing, class: "listing-item-container compact", :data => { "marker-id" => lesson.listing.id} do %>
+                    <div class="col-lg-12 col-md-12">
+                      <div class="listing-item-container list-layout" data-marker-id="<%=lesson.listing.id%>">
                         <div class="listing-item">
-                          <%=image_tag 'main.png'%>
-                          <div class="listing-badge now-open"><%=lesson.start_time.strftime("%I:%M %p")%></div>
-                          <div class="listing-item-content">
-                            <div class="numerical-rating" data-rating="3.5"></div>
-                            <h3><%=lesson.name%></h3>
-                            <span><%=lesson.listing.city%></span>
-                          </div>
-                          <span class="like-icon"></span>
+                            <!-- Image -->
+                            <div class="listing-item-image">
+                            <%=image_tag 'main.png'%>
+                                <span class="tag">
+                              <%lesson.categories.each do |category| %>
+                                <%=category.name%>
+                                <% unless lesson.categories.index(category) == lesson.categories.count - 1%>
+                                  &
+                                <%end%>
+                              <%end%>
+
+                                  </span>
+                            </div>
+                            <div class="listing-item-content">
+                              <div class="listing-badge now-open"><%=lesson.start_time.strftime("%I:%M %p")%></div>
+                              <div class="listing-item-inner">
+                                <h3><%=lesson.name%></h3>
+                                <span><%=lesson.listing.name%></span>
+                                <br>
+                                <span style="font-size: 14px;"><%=lesson.listing.city%>, <%=lesson.listing.street%> <%=lesson.listing.landmark%></span>
+                                  <div class="star-rating" data-rating="3.5">
+                                    <div class="rating-counter">(12 reviews)</div>
+                                  </div>
+                              </div>
+                              <span class="like-icon"></span>
+                            </div>
                         </div>
-                      <%end%>
+                      </div>
                     </div>
                 <%end%>
               </div>

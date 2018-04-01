@@ -28,6 +28,7 @@
 //= require fullcalendar
 //= require turbolinks
 //= require timedropper
+
 // alert('Sadly this is static...');
 $(document).on("submit", "form[data-turboform]", function(e) {
     Turbolinks.visit(this.action+(this.action.indexOf('?') == -1 ? '?' : '&')+$(this).serialize());

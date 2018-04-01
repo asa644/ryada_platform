@@ -11,22 +11,26 @@ Category.create!(name: "Dance")
 Category.create!(name: "Stretching")
 Category.create!(name: "Boxing")
 Category.create!(name: "Yoga")
-Category.create!(name: "Strength Training")
-Category.create!(name: "Martial Arts")
+Category.create!(name: "Strength training")
+Category.create!(name: "Martial arts")
 Category.create!(name: "Glutes")
 Category.create!(name: "HIIT")
-Category.create!(name: "legs")
+Category.create!(name: "Legs")
 Category.create!(name: "Conditioning")
 Category.create!(name: "Crossfit")
 Category.create!(name: "Resistance")
+Category.create!(name: "Climbing")
 Category.create!(name: "Metabolism")
+Category.create!(name: "Core")
+Category.create!(name: "Body toning")
+Category.create!(name: "Functional")
+Category.create!(name: "Gymnastics")
+
 
 Listing.destroy_all
-
 require 'csv'
 csv_lists = File.read(Rails.root.join('lib', 'seeds', 'fitness.csv'))
 csv_classes = File.read(Rails.root.join('lib', 'seeds', 'classes.csv'))
-
 listings = CSV.parse(csv_lists.scrub, headers: true)
 classes = CSV.parse(csv_classes.scrub, headers: true)
 listings.each do |row|
@@ -55,23 +59,26 @@ classes.each do |row|
   l.listing = Listing.find_by_id(list.first.id)
   l.save
   categories = row['Categories']
-  unless categories.nil?
-     if categories.include?(',')
-      cat = categories.split(',')
-      cat.each do |category|
+   if categories.include?(',')
+    cat = categories.split(',')
+    cat.each do |category|
+      p "TWO"
+      if category == "HIIT"
+        category_data = Category.where(name: category)
+      else
         category_data = Category.where(name: category.capitalize)
-        # p category_data.first.id
-        # p l.id
-        unless category_data.nil?
-          CategoryLesson.create!(category_id: category_data.first.id, lesson_id: l.id)
-        end
       end
-     else
-      p category_data.first.id
-      p l.id
-      category_data = Category.where(name: categories.capitalize)
-      CategoryLesson.create!(category_id: category_data.first.id, lesson_id: l.id)
-     end
-  end
-  puts "#{l.name}, #{l.city} saved"
+      p l.name
+      p l.start_time
+      p category_data.first.name
+      unless category_data.nil?
+        CategoryLesson.create!(category_id: category_data.first.id, lesson_id: l.id)
+      end
+    end
+   else
+    category = Category.where(name: categories.capitalize)
+      unless category.nil?
+        CategoryLesson.create!(category_id: category.first.id, lesson_id: l.id)
+      end
+   end
 end

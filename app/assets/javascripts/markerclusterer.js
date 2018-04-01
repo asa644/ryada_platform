@@ -711,14 +711,14 @@ MarkerClusterer.prototype.redraw = function() {
 };
 
 
-*
- * Calculates the distance between two latlng locations in km.
- * @see http://www.movable-type.co.uk/scripts/latlong.html
- *
- * @param {google.maps.LatLng} p1 The first lat lng point.
- * @param {google.maps.LatLng} p2 The second lat lng point.
- * @return {number} The distance between the two points in km.
- * @private
+// *
+//  * Calculates the distance between two latlng locations in km.
+//  * @see http://www.movable-type.co.uk/scripts/latlong.html
+//  *
+//  * @param {google.maps.LatLng} p1 The first lat lng point.
+//  * @param {google.maps.LatLng} p2 The second lat lng point.
+//  * @return {number} The distance between the two points in km.
+//  * @private
 
 MarkerClusterer.prototype.distanceBetweenPoints_ = function(p1, p2) {
   if (!p1 || !p2) {

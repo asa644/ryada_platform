@@ -1,119 +1,171 @@
-Class,Start time,End time,Categories,rule,gym
-XTREME CARDIO(w/ PATRICK),7:30 AM,8:20 AM,"Cardio, Strength training","IceCube::Rule.weekly(1).day(1, 3)",Athlete annonymous
-CALISTHENICS - INTRO (w/ DOM),6:00 PM,7:20 PM,Strength training,IceCube::Rule.weekly(1).day(1),Athlete annonymous
-TRX CIRCUIT (w/ RONNIE),7:00 PM,7:55 PM,Strength training,IceCube::Rule.weekly(1).day(1),Athlete annonymous
-CALISTHENICS - INTRO/ADV (w/ DOM),7:20 PM,8:55 PM,Strength training,"IceCube::Rule.weekly(1).day(1, 3)",Athlete annonymous
-POLE - ALL LEVELS(w/ LAURA),8:00 PM,9:15 PM,"DANCE, Strength training",IceCube::Rule.weekly(1).day(),Athlete annonymous
-A/A ABS CIRCUIT (w/ PATRICK),7:45 AM,8:35 AM,Strength training,"IceCube::Rule.weekly(1).day(2, 5)",Athlete annonymous
-POLE - ALL LEVELS(w/ LAURA),9:45 AM,11:00 AM,"DANCE, Strength training","IceCube::Rule.weekly(1).day(2, 4)",Athlete annonymous
-PILATES AND STRETCHING (w/ RANA),6:00 PM,6:55 PM,"Pilates, Strength training ",IceCube::Rule.weekly(1).day(2),Athlete annonymous
-BRAZILIAN BUTT (w/ DIALA),7:00 PM,7:55 PM,Strength training,IceCube::Rule.weekly(1).day(2),Athlete annonymous
-BRAZILIAN BUTT (w/ DIALA),7:15 PM,8:10 PM,Strength training,IceCube::Rule.weekly(1).day(4),Athlete annonymous
-A/A CIRCUIT (w/ HAROUT),7:00 PM,8:00 PM,Strength training,IceCube::Rule.weekly(1).day(2),Athlete annonymous
-WALL CLIMBING - ALL LEVELS (w/ NIC),7:00 PM,8:30 PM,"Strength training, Climbing",IceCube::Rule.weekly(1).day(2),Athlete annonymous
-BOXING (w/ CHARBEL),8:00 PM,9:25 PM,"Strength training, Martial arts",IceCube::Rule.weekly(1).day(2),Athlete annonymous
-A/A CIRCUIT (w/ PATRICK),6:20 PM,7:20 PM,Strength training,IceCube::Rule.weekly(1).day(3),Athlete annonymous
-POLE - ALL LEVELS(w/ LAURA),6:30 PM,7:45 PM,"DANCE, Strength training",IceCube::Rule.weekly(1).day(3),Athlete annonymous
-VINYASA YOGA (w/ KHALED),8:00 PM,9:25 PM,Yoga,IceCube::Rule.weekly(1).day(3),Athlete annonymous
-POLE - BEGINNERS (w/ LAURA),6:00 PM,7:10 PM,"DANCE, Strength training",IceCube::Rule.weekly(1).day(4),Athlete annonymous
-CALISTHENICS - INTRO (w/ DOM),7:00 PM,8:25 PM,Strength training,IceCube::Rule.weekly(1).day(4),Athlete annonymous
-POLE - INTERMEDIATE (w/ LAURA),6:15 PM,7:25 PM,"DANCE, Strength training",IceCube::Rule.weekly(1).day(5),Athlete annonymous
-ATHLETICS (w/ DIALA),6:30 PM,7:25 PM,"Cardio, Strength training",IceCube::Rule.weekly(1).day(5),Athlete annonymous
-TRX CIRCUIT (w/ PATRICK),7:30 PM,8:25 PM,Strength training,IceCube::Rule.weekly(1).day(5),Athlete annonymous
-VINYASA YOGA (w/ KHALED),10:00 AM,11:30 AM,Yoga,IceCube::Rule.weekly(1).day(6),Athlete annonymous
-BOXING (w/ CHARBEL),11:30 AM,1:00 PM,"Strength training, Martial arts",IceCube::Rule.weekly(1).day(6),Athlete annonymous
-YOGA (w/ Sara),9:30 AM,11:00 AM,Yoga,IceCube::Rule.weekly(1).day(1),Gofit
-ZUMBA (w/ Nadine),6:00 PM,7:00 PM,"Cardio, Dance",IceCube::Rule.weekly(1).day(1),Gofit
-PILATES (w/ Iman),7:00 PM,8:00 PM,"Pilates, Strength training ",IceCube::Rule.weekly(1).day(1),Gofit
-TOTAL FIT (w/ Omar),9:00 AM,10:00 AM,"Cardio, Strength training",IceCube::Rule.weekly(1).day(2),Gofit
-Stretching (w/ Manar),10:00 AM,11:00 AM,Yoga,IceCube::Rule.weekly(1).day(2),Gofit
-CORE OF STEEL (w/ Garo),6:00 PM,6:45 PM,Strength training,IceCube::Rule.weekly(1).day(2),Gofit
-TOTAL FIT (w/ Omar),6:45 PM,7:45 PM,"Cardio, Strength training",IceCube::Rule.weekly(1).day(2),Gofit
-FITNESS JUNKIES(w/ Nadim),10:00 AM,11:00 AM,"Cardio, Strength training",IceCube::Rule.weekly(1).day(3),Gofit
-BOXERCISE,6:00 PM,7:00 PM,"Strength training, Martial arts",IceCube::Rule.weekly(1).day(3),Gofit
-Yoga (w/ Samer),7:00 PM,8:30 PM,Yoga,IceCube::Rule.weekly(1).day(3),Gofit
-PILATES (w/ Hyam),10:00 AM,11:00 AM,"Pilates, Strength training ",IceCube::Rule.weekly(1).day(4),Gofit
-FITNESS JUNKIES(w/ Nadim),6:00 PM,7:00 PM,"Cardio, Strength training",IceCube::Rule.weekly(1).day(4),Gofit
-Stretching (w/ Rana),7:00 PM,8:00 PM,Yoga,IceCube::Rule.weekly(1).day(4),Gofit
-Stretching (w/ Jorge),10:00 AM,11:00 AM,Yoga,IceCube::Rule.weekly(1).day(5),Gofit
-TOTAL FIT (w/ Omar),5:30 PM,6:30 PM,"Cardio, Strength training",IceCube::Rule.weekly(1).day(5),Gofit
-CORE OF STEEL (w/ Garo),6:30 PM,7:00 PM,Strength training,IceCube::Rule.weekly(1).day(5),Gofit
-BOOT CAMP (KIDS) (w/ Omar),11:00 AM,11:40 AM,Kids,IceCube::Rule.weekly(1).day(6),Gofit
-HIP HOP (Kids) (w/ Rana),11:40 AM,12:40 PM,Kids,IceCube::Rule.weekly(1).day(6),Gofit
-CORE POWER PILATES (w/ Rana),7:30 AM,8:30 AM,"Pilates, Strength training ",IceCube::Rule.weekly(1).day(1),Lifestyles - Health Fitness and Beauty
-CYCLING (w/ Diana),8:30 AM,9:30 AM,Cardio,"IceCube::Rule.weekly(1).day(1, 4)",Lifestyles - Health Fitness and Beauty
-Body Weight Training (w/ Abed),9:30 AM,10:15 AM,"Cardio, Strength training",IceCube::Rule.weekly(1).day(1),Lifestyles - Health Fitness and Beauty
-CORE (w/ Abed),10:15 AM,10:45 AM,Strength training,IceCube::Rule.weekly(1).day(1),Lifestyles - Health Fitness and Beauty
-AQUA FIT (w/ Fadia),10:00 AM,11:00 AM,"Aerobic, Strength training","IceCube::Rule.weekly(1).day(1, 3)",Lifestyles - Health Fitness and Beauty
-BREATHE YOGA FLOW (w/ Lulia),11:15 AM,12:45 PM,Yoga,IceCube::Rule.weekly(1).day(1),Lifestyles - Health Fitness and Beauty
-LATIN DANCE (w/ Chloe),5:30 PM,6:30 PM,Dance,IceCube::Rule.weekly(1).day(1),Lifestyles - Health Fitness and Beauty
-LESMILLS RPM(w/ RPM),6:00 PM,7:00 PM,Cardio,IceCube::Rule.weekly(1).day(1),Lifestyles - Health Fitness and Beauty
-Power - Radical Fitness (w/ Mohamad),7:00 PM,8:00 PM,Strength training,"IceCube::Rule.weekly(1).day(1, 4)",Lifestyles - Health Fitness and Beauty
-AQUA FIT (w/ May),6:00 PM,7:00 PM,"Aerobic, Strength training",IceCube::Rule.weekly(1).day(1),Lifestyles - Health Fitness and Beauty
-YIN YOGA (w/ kaline),7:00 PM,8:30 PM,Yoga,IceCube::Rule.weekly(1).day(1),Lifestyles - Health Fitness and Beauty
-ONLY BUTT (w/ BUTT),8:00 PM,8:30 PM,Strength training,IceCube::Rule.weekly(1).day(1),Lifestyles - Health Fitness and Beauty
-Power - Radical Fitness (w/ Abed,8:30 AM,9:30 AM,Strength training,IceCube::Rule.weekly(1).day(2),Lifestyles - Health Fitness and Beauty
-MEGADANZ - Radical Fitness (w/ Wael),9:30 AM,10:30 AM,"Dance, Cardio",IceCube::Rule.weekly(1).day(2),Lifestyles - Health Fitness and Beauty
-UPPER POWER STRETCH (w/ Maha),10:30 AM,11:30 AM,"Yoga, Stretching",IceCube::Rule.weekly(1).day(2),Lifestyles - Health Fitness and Beauty
-ORIENTAL DANCE (w/ Eyad),5:45 PM,6:30 PM,DANCE,IceCube::Rule.weekly(1).day(2),Lifestyles - Health Fitness and Beauty
-CROSS TRAINING ( w/ hasan),6:30 PM,7:30 PM,Strength training,IceCube::Rule.weekly(1).day(2),Lifestyles - Health Fitness and Beauty
-ADVANCED PILATES (w/ maha),6:00 PM,7:00 PM,"Pilates, Strength training ",IceCube::Rule.weekly(1).day(2),Lifestyles - Health Fitness and Beauty
-ZUMBA (w/ Nadine),7:30 PM,8:30 PM,"Dance, Cardio",IceCube::Rule.weekly(1).day(2),Lifestyles - Health Fitness and Beauty
-Stretching (w/ Lina),7:00 PM,8:00 PM,Stretching,IceCube::Rule.weekly(1).day(2),Lifestyles - Health Fitness and Beauty
-ELITE PILATES (w/ Joelle),7:30 AM,8:15 AM,"Pilates, Strength training ",IceCube::Rule.weekly(1).day(3),Lifestyles - Health Fitness and Beauty
-FIGHTDO - Radical Fitness(w /dani),8:15 AM,9:00 AM,"Cardio, Martial Arts",IceCube::Rule.weekly(1).day(3),Lifestyles - Health Fitness and Beauty
-Stretching (w/ Joelle),8:15 AM,9:00 AM,Stretching,IceCube::Rule.weekly(1).day(3),Lifestyles - Health Fitness and Beauty
-SYNRGY360 (w/ Abed),9:00 AM,9:45 AM,"Cardio, Strength training",IceCube::Rule.weekly(1).day(3),Lifestyles - Health Fitness and Beauty
-FITBALL CORE (w / Abed),9:50 AM,10:35 AM,Strength training,IceCube::Rule.weekly(1).day(3),Lifestyles - Health Fitness and Beauty
-BREATHE YOGA FLOW (w/ Lulia),11:00 AM,12:30 PM,Yoga,IceCube::Rule.weekly(1).day(3),Lifestyles - Health Fitness and Beauty
-HATHA YOGA (w/Hisham),5:00 PM,6:30 PM,Yoga,IceCube::Rule.weekly(1).day(3),Lifestyles - Health Fitness and Beauty
-AQUA FIT (w/ May),6:30 PM,7:30 PM,"Aerobic, Strength training",IceCube::Rule.weekly(1).day(1),Lifestyles - Health Fitness and Beauty
-FIGHTDO - Radical Fitness(w /Abed),6:15 PM,7:15 PM,"Cardio, Martial Arts",IceCube::Rule.weekly(1).day(3),Lifestyles - Health Fitness and Beauty
-SYNRGY360 (w/ Abed),7:15 PM,8:00 PM,"Cardio, Strength training",IceCube::Rule.weekly(1).day(3),Lifestyles - Health Fitness and Beauty
-ABS & STRETCH (w/ Abed),8:00 PM,8:30 PM,"Stretching, Strength training",IceCube::Rule.weekly(1).day(3),Lifestyles - Health Fitness and Beauty
-BRAZILIAN BUTT (w/ Hassan),7:45 AM,8:30 AM,Strength training,IceCube::Rule.weekly(1).day(4),Lifestyles - Health Fitness and Beauty
-Power - Radical Fitness (w/ Salam),9:30 AM,10:30 AM,Strength training,IceCube::Rule.weekly(1).day(4),Lifestyles - Health Fitness and Beauty
-ZUMBA (w/ Nadine),10:30 AM,11:30 AM,"Dance, Cardio",IceCube::Rule.weekly(1).day(4),Lifestyles - Health Fitness and Beauty
-PILATES (w/ Rana),9:30 AM,10:30 AM,"pilates, Strength training ",IceCube::Rule.weekly(1).day(4),Lifestyles - Health Fitness and Beauty
-PILATES (w/ Nazih),11:30 AM,12:30 PM,"pilates, Strength training ",IceCube::Rule.weekly(1).day(4),Lifestyles - Health Fitness and Beauty
-CYCLING (w/ Diana),6:00 PM,7:00 PM,Cardio,IceCube::Rule.weekly(1).day(4),Lifestyles - Health Fitness and Beauty
-Stretching (w/ Hiyam),7:00 PM,7:45 PM,Stretching,IceCube::Rule.weekly(1).day(4),Lifestyles - Health Fitness and Beauty
-PILATES (w/ Rana),7:30 AM,8:15 AM,"pilates, Strength training ",IceCube::Rule.weekly(1).day(5),Lifestyles - Health Fitness and Beauty
-CROSS TRAINING ( w/ hasan),8:15 AM,9:00 AM,Strength training,IceCube::Rule.weekly(1).day(5),Lifestyles - Health Fitness and Beauty
-TONE & CORE (w/ Thaer),9:00 AM,10:00 AM,Strength training,IceCube::Rule.weekly(1).day(5),Lifestyles - Health Fitness and Beauty
-ORIENTAL DANCE (w/ PIERRE),10:00 AM,11:00 AM,Dance,IceCube::Rule.weekly(1).day(5),Lifestyles - Health Fitness and Beauty
-AQUA FIT (w/ Thaer),10:00 AM,11:00 AM,"Aerobic, Strength training",IceCube::Rule.weekly(1).day(5),Lifestyles - Health Fitness and Beauty
-YIN YOGA (w/ kaline),11:00 AM,12:30 PM,Yoga,IceCube::Rule.weekly(1).day(5),Lifestyles - Health Fitness and Beauty
-ORIENTAL DANCE (w/ Eyad),6:00 PM,6:45 AM,Dance,IceCube::Rule.weekly(1).day(5),Lifestyles - Health Fitness and Beauty
-PILATES (w/ Joelle),6:45 PM,7:30 PM,"Pilates, Strength training ",IceCube::Rule.weekly(1).day(5),Lifestyles - Health Fitness and Beauty
-ASHTANGA YOGA (Gary),6:00 PM,7:30 PM,Yoga,IceCube::Rule.weekly(1).day(5),Lifestyles - Health Fitness and Beauty
-CARDIO STEP (w/ Joelle),7:30 PM,8:15 PM,"Cardio, Strength training",IceCube::Rule.weekly(1).day(5),Lifestyles - Health Fitness and Beauty
-TOTAL BODY(w/ Dani),9:30 AM,10:30 AM,Strength training,IceCube::Rule.weekly(1).day(6),Lifestyles - Health Fitness and Beauty
-CYCLING (w/ Marwan),10:30 AM,11:30 AM,Cardio,IceCube::Rule.weekly(1).day(6),Lifestyles - Health Fitness and Beauty
-ROCKET VINYASA(w/ Gary),11:45 AM,1:15 PM,Yoga,IceCube::Rule.weekly(1).day(6),Lifestyles - Health Fitness and Beauty
-POWER (w/ Mohamad younes),10:00 AM,11:00 AM,Strength training,IceCube::Rule.weekly(1).day(1),3BGym
-BODYPUMP - LESMILLS,6:00 PM,7:00 PM,Strength training,IceCube::Rule.weekly(1).day(1),3BGym
-ORIENTAL DANCE (w/ zubayda),7:00 PM,8:00 PM,Dance,IceCube::Rule.weekly(1).day(1),3BGym
-SPINNING(w/ bader),8:00 PM,9:00 PM,Cardio,IceCube::Rule.weekly(1).day(1),3BGym
-SPINNING(w/ bader),11:00 AM,12:00 PM,Cardio,IceCube::Rule.weekly(1).day(2),3BGym
-ZUMBA (w/ SHANT),6:00 PM,7:00 PM,"Dance, Cardio","IceCube::Rule.weekly(1).day(2, 4)",3BGym
-PIGA- Pilates and Yoga(w/Mohamad shaker),7:00 PM,8:00 PM,"Pilates, Yoga ",IceCube::Rule.weekly(1).day(2),3BGym
-ABS & THINGS (w/ Mohamad Husseiny),8:00 PM,9:00 PM,Strength training,"IceCube::Rule.weekly(1).day(2, 4)",3BGym
-PIGA- Pilates and Yoga(w/Mohamad shaker),10:00 AM,11:00 AM,"Pilates, Yoga ","IceCube::Rule.weekly(1).day(3, 5)",3BGym
-ORIENTAL DANCE (w/ zubayda),6:00 PM,7:00 PM,Dance,IceCube::Rule.weekly(1).day(3),3BGym
-BODYCOMPAT - LESMILLS( w/ Kameel Mrouh),7:00 PM,8:00 PM,"Strength training, Martial arts",IceCube::Rule.weekly(1).day(3),3BGym
-MIXFIT (w/ Yehya Khalil),8:00 PM,9:00 PM,"cardio, Strength training",IceCube::Rule.weekly(1).day(3),3BGym
-CARDIO BOX (w/ Mohamad younes),10:00 AM,11:00 AM,Cardio,IceCube::Rule.weekly(1).day(4),3BGym
-BODYSHAPE(w/Mohamad shaker),7:00 PM,8:00 PM,Cardio,IceCube::Rule.weekly(1).day(4),3BGym
-BODYCOMPAT - LESMILLS( w/ Kameel Mrouh),6:00 PM,7:00 PM,"Strength training, Martial arts",IceCube::Rule.weekly(1).day(5),3BGym
-SPINNING(w/ bader),7:00 PM,8:00 PM,Cardio,IceCube::Rule.weekly(1).day(5),3BGym
-MUAYTHAI kids,5:30 PM,6:30 PM,"kids, Martial Arts","IceCube::Rule.weekly(1).day(1, 4)",Team Shogun
-MUAYTHAI '1',7:00 PM,8:15 PM,Martial Arts,"IceCube::Rule.weekly(1).day(1, 4)",Team Shogun
-MUAYTHAI '2',7:00 PM,8:15 PM,Martial Arts,"IceCube::Rule.weekly(1).day(2, 5)",Team Shogun
-Brazilian jiu-jitsu & MMA,8:30 PM,10:30 PM,Martial Arts,IceCube::Rule.weekly(1).day(1),Team Shogun
-Brazilian jiu-jitsu,8:00 PM,9:00 PM,Martial Arts,IceCube::Rule.weekly(1).day(3),Team Shogun
-MMA,9:00 PM,10:00 PM,Martial Arts,IceCube::Rule.weekly(1).day(3),Team Shogun
-BOXING,6:00 PM,7:00 PM,Martial Arts,IceCube::Rule.weekly(1).day(2),Team Shogun
-MUAYTHAI AUST,8:30 PM,9:45 PM,Martial Arts,"IceCube::Rule.weekly(1).day(2, 4)",Team Shogun
-MUAYTHAI juniors,5:00 PM,6:00 PM,Martial Arts,"IceCube::Rule.weekly(1).day(2, 5)",Team Shogun
-BOXING,10:30 AM,12:00 PM,Martial Arts,IceCube::Rule.weekly(1).day(6),Team Shogun
+Class,Start time,End time,Categories,rule,gym,
+XTREME CARDIO(w/ PATRICK),7:30,8:20,"Cardio,Strength training","IceCube::Rule.weekly(1).day(1, 3)",Athlete annonymous,
+CALISTHENICS - INTRO (w/ DOM),18:00,19:20,Strength training,IceCube::Rule.weekly(1).day(1),Athlete annonymous,
+TRX CIRCUIT (w/ RONNIE),19:00,19:55,Strength training,IceCube::Rule.weekly(1).day(1),Athlete annonymous,
+CALISTHENICS - INTRO/ADV (w/ DOM),19:20,20:55,Strength training,"IceCube::Rule.weekly(1).day(1, 3)",Athlete annonymous,
+POLE - ALL LEVELS(w/ LAURA),20:00,21:15,"DANCE,Strength training",IceCube::Rule.weekly(1).day(1),Athlete annonymous,
+A/A ABS CIRCUIT (w/ PATRICK),7:45,8:35,Strength training,"IceCube::Rule.weekly(1).day(2, 5)",Athlete annonymous,
+POLE - ALL LEVELS(w/ LAURA),9:45,11:00,"DANCE,Strength training","IceCube::Rule.weekly(1).day(2, 4)",Athlete annonymous,
+PILATES AND STRETCHING (w/ RANA),18:00,18:55,"Pilates,Strength training",IceCube::Rule.weekly(1).day(2),Athlete annonymous,
+BRAZILIAN BUTT (w/ DIALA),19:00,19:55,Strength training,IceCube::Rule.weekly(1).day(2),Athlete annonymous,
+BRAZILIAN BUTT (w/ DIALA),19:15,20:10,Strength training,IceCube::Rule.weekly(1).day(4),Athlete annonymous,
+A/A CIRCUIT (w/ HAROUT),19:00,20:00,Strength training,IceCube::Rule.weekly(1).day(2),Athlete annonymous,
+WALL CLIMBING - ALL LEVELS (w/ NIC),19:00,20:30,"Strength training,Climbing",IceCube::Rule.weekly(1).day(2),Athlete annonymous,
+BOXING (w/ CHARBEL),20:00,21:25,"Strength training,Martial arts",IceCube::Rule.weekly(1).day(2),Athlete annonymous,
+A/A CIRCUIT (w/ PATRICK),18:20,19:20,Strength training,IceCube::Rule.weekly(1).day(3),Athlete annonymous,
+POLE - ALL LEVELS(w/ LAURA),18:30,19:45,"DANCE,Strength training",IceCube::Rule.weekly(1).day(3),Athlete annonymous,
+VINYASA YOGA (w/ KHALED),20:00,21:25,Yoga,IceCube::Rule.weekly(1).day(3),Athlete annonymous,
+POLE - BEGINNERS (w/ LAURA),18:00,19:10,"DANCE,Strength training",IceCube::Rule.weekly(1).day(4),Athlete annonymous,
+CALISTHENICS - INTRO (w/ DOM),19:00,20:25,Strength training,IceCube::Rule.weekly(1).day(4),Athlete annonymous,
+POLE - INTERMEDIATE (w/ LAURA),18:15,19:25,"DANCE,Strength training",IceCube::Rule.weekly(1).day(5),Athlete annonymous,
+ATHLETICS (w/ DIALA),18:30,19:25,"Cardio,Strength training",IceCube::Rule.weekly(1).day(5),Athlete annonymous,
+TRX CIRCUIT (w/ PATRICK),19:30,20:25,Strength training,IceCube::Rule.weekly(1).day(5),Athlete annonymous,
+VINYASA YOGA (w/ KHALED),10:00,11:30,Yoga,IceCube::Rule.weekly(1).day(6),Athlete annonymous,
+BOXING (w/ CHARBEL),11:30,13:00,"Strength training,Martial arts",IceCube::Rule.weekly(1).day(6),Athlete annonymous,
+YOGA (w/ Sara),9:30,11:00,Yoga,IceCube::Rule.weekly(1).day(1),Gofit,
+ZUMBA (w/ Nadine),18:00,19:00,"Cardio,Dance",IceCube::Rule.weekly(1).day(1),Gofit,
+PILATES (w/ Iman),19:00,20:00,"Pilates,Strength training",IceCube::Rule.weekly(1).day(1),Gofit,
+TOTAL FIT (w/ Omar),9:00,10:00,"Cardio,Strength training",IceCube::Rule.weekly(1).day(2),Gofit,
+Stretching (w/ Manar),10:00,11:00,Yoga,IceCube::Rule.weekly(1).day(2),Gofit,
+CORE OF STEEL (w/ Garo),18:00,18:45,Strength training,IceCube::Rule.weekly(1).day(2),Gofit,
+TOTAL FIT (w/ Omar),18:45,19:45,"Cardio,Strength training",IceCube::Rule.weekly(1).day(2),Gofit,
+FITNESS JUNKIES(w/ Nadim),10:00,11:00,"Cardio,Strength training",IceCube::Rule.weekly(1).day(3),Gofit,
+BOXERCISE,18:00,19:00,"Strength training,Martial arts",IceCube::Rule.weekly(1).day(3),Gofit,
+Yoga (w/ Samer),19:00,20:30,Yoga,IceCube::Rule.weekly(1).day(3),Gofit,
+PILATES (w/ Hyam),10:00,11:00,"Pilates,Strength training",IceCube::Rule.weekly(1).day(4),Gofit,
+FITNESS JUNKIES(w/ Nadim),18:00,19:00,"Cardio,Strength training",IceCube::Rule.weekly(1).day(4),Gofit,
+Stretching (w/ Rana),19:00,20:00,Yoga,IceCube::Rule.weekly(1).day(4),Gofit,
+Stretching (w/ Jorge),10:00,11:00,Yoga,IceCube::Rule.weekly(1).day(5),Gofit,
+TOTAL FIT (w/ Omar),17:30,18:30,"Cardio,Strength training",IceCube::Rule.weekly(1).day(5),Gofit,
+CORE OF STEEL (w/ Garo),18:30,19:00,Strength training,IceCube::Rule.weekly(1).day(5),Gofit,
+BOOT CAMP (KIDS) (w/ Omar),11:00,11:40,Kids,IceCube::Rule.weekly(1).day(6),Gofit,
+HIP HOP (Kids) (w/ Rana),11:40,12:40,Kids,IceCube::Rule.weekly(1).day(6),Gofit,
+CORE POWER PILATES (w/ Rana),7:30,8:30,"Pilates,Strength training",IceCube::Rule.weekly(1).day(1),Lifestyles - Health Fitness and Beauty,
+CYCLING (w/ Diana),8:30,9:30,Cardio,"IceCube::Rule.weekly(1).day(1, 4)",Lifestyles - Health Fitness and Beauty,
+Body Weight Training (w/ Abed),9:30,10:15,"Cardio,Strength training",IceCube::Rule.weekly(1).day(1),Lifestyles - Health Fitness and Beauty,
+CORE (w/ Abed),10:15,10:45,Strength training,IceCube::Rule.weekly(1).day(1),Lifestyles - Health Fitness and Beauty,
+AQUA FIT (w/ Fadia),10:00,11:00,"Aerobic,Strength training","IceCube::Rule.weekly(1).day(1, 3)",Lifestyles - Health Fitness and Beauty,
+BREATHE YOGA FLOW (w/ Lulia),11:15,12:45,Yoga,IceCube::Rule.weekly(1).day(1),Lifestyles - Health Fitness and Beauty,
+LATIN DANCE (w/ Chloe),17:30,18:30,Dance,IceCube::Rule.weekly(1).day(1),Lifestyles - Health Fitness and Beauty,
+LESMILLS RPM(w/ RPM),18:00,19:00,Cardio,IceCube::Rule.weekly(1).day(1),Lifestyles - Health Fitness and Beauty,
+Power - Radical Fitness (w/ Mohamad),19:00,20:00,Strength training,"IceCube::Rule.weekly(1).day(1, 4)",Lifestyles - Health Fitness and Beauty,
+AQUA FIT (w/ May),18:00,19:00,"Aerobic,Strength training",IceCube::Rule.weekly(1).day(1),Lifestyles - Health Fitness and Beauty,
+YIN YOGA (w/ kaline),19:00,20:30,Yoga,IceCube::Rule.weekly(1).day(1),Lifestyles - Health Fitness and Beauty,
+ONLY BUTT (w/ BUTT),20:00,20:30,Strength training,IceCube::Rule.weekly(1).day(1),Lifestyles - Health Fitness and Beauty,
+Power - Radical Fitness (w/ Abed,8:30,9:30,Strength training,IceCube::Rule.weekly(1).day(2),Lifestyles - Health Fitness and Beauty,
+MEGADANZ - Radical Fitness (w/ Wael),9:30,10:30,"Dance,Cardio",IceCube::Rule.weekly(1).day(2),Lifestyles - Health Fitness and Beauty,
+UPPER POWER STRETCH (w/ Maha),10:30,11:30,"Yoga,Stretching",IceCube::Rule.weekly(1).day(2),Lifestyles - Health Fitness and Beauty,
+ORIENTAL DANCE (w/ Eyad),17:45,18:30,DANCE,IceCube::Rule.weekly(1).day(2),Lifestyles - Health Fitness and Beauty,
+CROSS TRAINING ( w/ hasan),18:30,19:30,Strength training,IceCube::Rule.weekly(1).day(2),Lifestyles - Health Fitness and Beauty,
+ADVANCED PILATES (w/ maha),18:00,19:00,"Pilates,Strength training",IceCube::Rule.weekly(1).day(2),Lifestyles - Health Fitness and Beauty,
+ZUMBA (w/ Nadine),19:30,20:30,"Dance,Cardio",IceCube::Rule.weekly(1).day(2),Lifestyles - Health Fitness and Beauty,
+Stretching (w/ Lina),19:00,20:00,Stretching,IceCube::Rule.weekly(1).day(2),Lifestyles - Health Fitness and Beauty,
+ELITE PILATES (w/ Joelle),7:30,8:15,"Pilates,Strength training",IceCube::Rule.weekly(1).day(3),Lifestyles - Health Fitness and Beauty,
+FIGHTDO - Radical Fitness(w /dani),8:15,9:00,"Cardio,Martial Arts",IceCube::Rule.weekly(1).day(3),Lifestyles - Health Fitness and Beauty,
+Stretching (w/ Joelle),8:15,9:00,Stretching,IceCube::Rule.weekly(1).day(3),Lifestyles - Health Fitness and Beauty,
+SYNRGY360 (w/ Abed),9:00,9:45,"Cardio,Strength training",IceCube::Rule.weekly(1).day(3),Lifestyles - Health Fitness and Beauty,
+FITBALL CORE (w / Abed),9:50,10:35,Strength training,IceCube::Rule.weekly(1).day(3),Lifestyles - Health Fitness and Beauty,
+BREATHE YOGA FLOW (w/ Lulia),11:00,12:30,Yoga,IceCube::Rule.weekly(1).day(3),Lifestyles - Health Fitness and Beauty,
+HATHA YOGA (w/Hisham),17:00,18:30,Yoga,IceCube::Rule.weekly(1).day(3),Lifestyles - Health Fitness and Beauty,
+AQUA FIT (w/ May),18:30,19:30,"Aerobic,Strength training",IceCube::Rule.weekly(1).day(1),Lifestyles - Health Fitness and Beauty,
+FIGHTDO - Radical Fitness(w /Abed),18:15,19:15,"Cardio,Martial Arts",IceCube::Rule.weekly(1).day(3),Lifestyles - Health Fitness and Beauty,
+SYNRGY360 (w/ Abed),19:15,20:00,"Cardio,Strength training",IceCube::Rule.weekly(1).day(3),Lifestyles - Health Fitness and Beauty,
+ABS & STRETCH (w/ Abed),20:00,20:30,"Stretching,Strength training",IceCube::Rule.weekly(1).day(3),Lifestyles - Health Fitness and Beauty,
+BRAZILIAN BUTT (w/ Hassan),7:45,8:30,Strength training,IceCube::Rule.weekly(1).day(4),Lifestyles - Health Fitness and Beauty,
+Power - Radical Fitness (w/ Salam),9:30,10:30,Strength training,IceCube::Rule.weekly(1).day(4),Lifestyles - Health Fitness and Beauty,
+ZUMBA (w/ Nadine),10:30,11:30,"Dance,Cardio",IceCube::Rule.weekly(1).day(4),Lifestyles - Health Fitness and Beauty,
+PILATES (w/ Rana),9:30,10:30,"pilates,Strength training",IceCube::Rule.weekly(1).day(4),Lifestyles - Health Fitness and Beauty,
+PILATES (w/ Nazih),11:30,12:30,"pilates,Strength training",IceCube::Rule.weekly(1).day(4),Lifestyles - Health Fitness and Beauty,
+CYCLING (w/ Diana),18:00,19:00,Cardio,IceCube::Rule.weekly(1).day(4),Lifestyles - Health Fitness and Beauty,
+Stretching (w/ Hiyam),19:00,19:45,Stretching,IceCube::Rule.weekly(1).day(4),Lifestyles - Health Fitness and Beauty,
+PILATES (w/ Rana),7:30,8:15,"pilates,Strength training",IceCube::Rule.weekly(1).day(5),Lifestyles - Health Fitness and Beauty,
+CROSS TRAINING ( w/ hasan),8:15,9:00,Strength training,IceCube::Rule.weekly(1).day(5),Lifestyles - Health Fitness and Beauty,
+TONE & CORE (w/ Thaer),9:00,10:00,Strength training,IceCube::Rule.weekly(1).day(5),Lifestyles - Health Fitness and Beauty,
+ORIENTAL DANCE (w/ PIERRE),10:00,11:00,Dance,IceCube::Rule.weekly(1).day(5),Lifestyles - Health Fitness and Beauty,
+AQUA FIT (w/ Thaer),10:00,11:00,"Aerobic,Strength training",IceCube::Rule.weekly(1).day(5),Lifestyles - Health Fitness and Beauty,
+YIN YOGA (w/ kaline),11:00,12:30,Yoga,IceCube::Rule.weekly(1).day(5),Lifestyles - Health Fitness and Beauty,
+ORIENTAL DANCE (w/ Eyad),18:00,6:45,Dance,IceCube::Rule.weekly(1).day(5),Lifestyles - Health Fitness and Beauty,
+PILATES (w/ Joelle),18:45,19:30,"Pilates,Strength training",IceCube::Rule.weekly(1).day(5),Lifestyles - Health Fitness and Beauty,
+ASHTANGA YOGA (Gary),18:00,19:30,Yoga,IceCube::Rule.weekly(1).day(5),Lifestyles - Health Fitness and Beauty,
+CARDIO STEP (w/ Joelle),19:30,20:15,"Cardio,Strength training",IceCube::Rule.weekly(1).day(5),Lifestyles - Health Fitness and Beauty,
+TOTAL BODY(w/ Dani),9:30,10:30,Strength training,IceCube::Rule.weekly(1).day(6),Lifestyles - Health Fitness and Beauty,
+CYCLING (w/ Marwan),10:30,11:30,Cardio,IceCube::Rule.weekly(1).day(6),Lifestyles - Health Fitness and Beauty,
+ROCKET VINYASA(w/ Gary),11:45,13:15,Yoga,IceCube::Rule.weekly(1).day(6),Lifestyles - Health Fitness and Beauty,
+POWER (w/ Mohamad younes),10:00,11:00,Strength training,IceCube::Rule.weekly(1).day(1),3BGym,
+BODYPUMP - LESMILLS,18:00,19:00,Strength training,IceCube::Rule.weekly(1).day(1),3BGym,
+ORIENTAL DANCE (w/ zubayda),19:00,20:00,Dance,IceCube::Rule.weekly(1).day(1),3BGym,
+SPINNING(w/ bader),20:00,21:00,Cardio,IceCube::Rule.weekly(1).day(1),3BGym,
+SPINNING(w/ bader),11:00,12:00,Cardio,IceCube::Rule.weekly(1).day(2),3BGym,
+ZUMBA (w/ SHANT),18:00,19:00,"Dance,Cardio","IceCube::Rule.weekly(1).day(2, 4)",3BGym,
+PIGA- Pilates and Yoga(w/Mohamad shaker),19:00,20:00,"Pilates,Yoga",IceCube::Rule.weekly(1).day(2),3BGym,
+ABS & THINGS (w/ Mohamad Husseiny),20:00,21:00,Strength training,"IceCube::Rule.weekly(1).day(2, 4)",3BGym,
+PIGA- Pilates and Yoga (w/Mohamad shaker),10:00,11:00,"Pilates,Yoga","IceCube::Rule.weekly(1).day(3, 5)",3BGym,
+ORIENTAL DANCE (w/ zubayda),18:00,19:00,Dance,IceCube::Rule.weekly(1).day(3),3BGym,
+BODYCOMPAT - LESMILLS ( w/ Kameel Mrouh),19:00,20:00,"Strength training,Martial arts",IceCube::Rule.weekly(1).day(3),3BGym,
+MIXFIT (w/ Yehya Khalil),20:00,21:00,"cardio,Strength training",IceCube::Rule.weekly(1).day(3),3BGym,
+CARDIO BOX (w/ Mohamad younes),10:00,11:00,Cardio,IceCube::Rule.weekly(1).day(4),3BGym,
+BODYSHAPE(w/Mohamad shaker),19:00,20:00,Cardio,IceCube::Rule.weekly(1).day(4),3BGym,
+BODYCOMPAT - LESMILLS( w/ Kameel Mrouh),18:00,19:00,"Strength training,Martial arts",IceCube::Rule.weekly(1).day(5),3BGym,
+SPINNING(w/ bader),19:00,20:00,Cardio,IceCube::Rule.weekly(1).day(5),3BGym,
+MUAYTHAI kids,17:30,18:30,"kids,Martial Arts","IceCube::Rule.weekly(1).day(1, 4)",Team Shogun,
+MUAYTHAI '1',19:00,20:15,Martial Arts,"IceCube::Rule.weekly(1).day(1, 4)",Team Shogun,
+MUAYTHAI '2',19:00,20:15,Martial Arts,"IceCube::Rule.weekly(1).day(2, 5)",Team Shogun,
+Brazilian jiu-jitsu & MMA,20:30,22:30,Martial Arts,IceCube::Rule.weekly(1).day(1),Team Shogun,
+Brazilian jiu-jitsu,20:00,21:00,Martial Arts,IceCube::Rule.weekly(1).day(3),Team Shogun,
+MMA,21:00,22:00,Martial Arts,IceCube::Rule.weekly(1).day(3),Team Shogun,
+BOXING,18:00,19:00,Martial Arts,IceCube::Rule.weekly(1).day(2),Team Shogun,
+MUAYTHAI AUST,20:30,21:45,Martial Arts,"IceCube::Rule.weekly(1).day(2, 4)",Team Shogun,
+MUAYTHAI juniors,17:00,18:00,Martial Arts,"IceCube::Rule.weekly(1).day(2, 5)",Team Shogun,
+BOXING,10:30,12:00,Martial Arts,IceCube::Rule.weekly(1).day(6),Team Shogun,
+Fit Ride (w / Patsy),9:00,10:00,Cardio,IceCube::Rule.weekly(1).day(1),Body Garage(Ashrafieh),Sassine Schedule
+Gymnastics (w / Kamel & Tima),16:15,17:15,Stretching,"IceCube::Rule.weekly(1).day(1,3,5)",Body Garage(Ashrafieh),Sassine Schedule
+Gymnastics (w / Kamel & Tima),17:15,18:15,Stretching,"IceCube::Rule.weekly(1).day(1,3,5)",Body Garage(Ashrafieh),Sassine Schedule
+Steel Butt (w / Patsy),18:15,19:15,"Strength training,Glutes",IceCube::Rule.weekly(1).day(1),Body Garage(Ashrafieh),Sassine Schedule
+Boot Camp (w / Elie),19:15,20:15,"cardio,Strength training","IceCube::Rule.weekly(1).day(1,5)",Body Garage(Ashrafieh),Sassine Schedule
+Kick Boxing (w / Daniel),20:15,21:00,Martial Arts,"IceCube::Rule.weekly(1).day(1,3)",Body Garage(Ashrafieh),Sassine Schedule
+Steel Butt (w / Patsy),9:00,10:00,"Strength training,Glutes",IceCube::Rule.weekly(1).day(2),Body Garage(Ashrafieh),Sassine Schedule
+Taekwando (w / Hadi),16:30,18:15,Martial Arts,IceCube::Rule.weekly(1).day(2),Body Garage(Ashrafieh),Sassine Schedule
+Metcon 3 (w / Anthony),18:30,19:15,"Metabolism,Conditioning,Strength training,HIIT",IceCube::Rule.weekly(1).day(2),Body Garage(Ashrafieh),Sassine Schedule
+Tae Bo (w / Patsy),19:15,20:00,Martial Arts,IceCube::Rule.weekly(1).day(2),Body Garage(Ashrafieh),Sassine Schedule
+Core (w / Patsy),20:00,21:00,"Strength training,Core",IceCube::Rule.weekly(1).day(2),Body Garage(Ashrafieh),Sassine Schedule
+Tae Bo (w / Patsy),9:00,10:00,Martial Arts,IceCube::Rule.weekly(1).day(3),Body Garage(Ashrafieh),Sassine Schedule
+BodyBand (w / Patsy),18:15,19:00,"Stretching,Resistance",IceCube::Rule.weekly(1).day(3),Body Garage(Ashrafieh),Sassine Schedule
+Boot Camp (w / Elie),19:00,20:00,"cardio,Strength training",IceCube::Rule.weekly(1).day(3),Body Garage(Ashrafieh),Sassine Schedule
+Core (w / Patsy),9:00,10:00,"Strength training,Core",IceCube::Rule.weekly(1).day(4),Body Garage(Ashrafieh),Sassine Schedule
+Tabata (w / Patsy),18:30,19:30,"HIIT,Cardio",IceCube::Rule.weekly(1).day(4),Body Garage(Ashrafieh),Sassine Schedule
+Tae Bo (w / Patsy),19:30,20:30,Martial Arts,IceCube::Rule.weekly(1).day(4),Body Garage(Ashrafieh),Sassine Schedule
+Tabata (w / Patsy),9:00,10:00,"HIIT,Cardio",IceCube::Rule.weekly(1).day(5),Body Garage(Ashrafieh),Sassine Schedule
+Fit Ride (w / Patsy),18:30,19:15,"Strength training,Glutes,Cardio",IceCube::Rule.weekly(1).day(5),Body Garage(Ashrafieh),Sassine Schedule
+Stretching (w / Wadih),20:15,21:00,stretching,IceCube::Rule.weekly(1).day(5),Body Garage(Ashrafieh),Sassine Schedule
+Taekwando (w / Hadi),10:15,12:00,Martial Arts,IceCube::Rule.weekly(1).day(6),Body Garage(Ashrafieh),Sassine Schedule
+Metamorphosis ( w / Patsy),8:00,8:45,"Yoga,Stretching",IceCube::Rule.weekly(1).day(1),Body Garage(Sodeco),Sodeco Schedule
+Interval (w / Michel),18:00,18:45,"HIIT,Cardio",IceCube::Rule.weekly(1).day(1),Body Garage(Sodeco),Sodeco Schedule
+Zumba (w / Alisson),19:15,20:00,Cardio,IceCube::Rule.weekly(1).day(1),Body Garage(Sodeco),Sodeco Schedule
+Fit Ride (w / Michel),19:15,20:00,"Cardio,Glutes","IceCube::Rule.weekly(1).day(1,4)",Body Garage(Sodeco),Sodeco Schedule
+Core (w / Samer),20:00,20:45,"Core,Strength training",IceCube::Rule.weekly(1).day(1),Body Garage(Sodeco),Sodeco Schedule
+W.O.D (w / Patsy),8:00,8:45,"Crossfit,Strength training",IceCube::Rule.weekly(1).day(2),Body Garage(Sodeco),Sodeco Schedule
+Steel Butt (w / Patsy),18:00,18:45,Glutes,"IceCube::Rule.weekly(1).day(2,5)",Body Garage(Sodeco),Sodeco Schedule
+Fit Ride (w / Michel),18:30,19:15,"Cardio,Glutes,Legs",IceCube::Rule.weekly(1).day(2),Body Garage(Sodeco),Sodeco Schedule
+Vinyasa Yoga (w/ Kaline),19:15,20:15,Yoga,IceCube::Rule.weekly(1).day(2),Body Garage(Sodeco),Sodeco Schedule
+Kick Boxing (w / Daniel),20:15,21:15,Martial Arts,"IceCube::Rule.weekly(1).day(2,4)",Body Garage(Sodeco),Sodeco Schedule
+Yin Yoga (w/ kaline),8:00,9:00,Yoga,IceCube::Rule.weekly(1).day(3),Body Garage(Sodeco),Sodeco Schedule
+Kettlebell (w/ Samer),18:00,18:45,"Body Toning,Strength training",IceCube::Rule.weekly(1).day(3),Body Garage(Sodeco),Sodeco Schedule
+Zumba (w/ Alisson),18:45,19:30,Cardio,IceCube::Rule.weekly(1).day(3),Body Garage(Sodeco),Sodeco Schedule
+W.O.D (w/ Michel),19:30,20:30,"Crossfit,Strength training",IceCube::Rule.weekly(1).day(3),Body Garage(Sodeco),Sodeco Schedule
+Tabata (w / Patsy),8:00,8:45,"HIIT,Cardio",IceCube::Rule.weekly(1).day(4),Body Garage(Sodeco),Sodeco Schedule
+Body Conditining (w/ Michel),18:30,19:15,"Strength training,Body Toning",IceCube::Rule.weekly(1).day(4),Body Garage(Sodeco),Sodeco Schedule
+Yin Yoga (w/ kaline),19:15,20:15,Yoga,IceCube::Rule.weekly(1).day(4),Body Garage(Sodeco),Sodeco Schedule
+Core (w / Samer),18:30,19:30,"Core,Strength training",IceCube::Rule.weekly(1).day(5),Body Garage(Sodeco),Sodeco Schedule
+Fit Ride (w / Michel),19:30,19:15,"Cardio,Glutes,Legs",IceCube::Rule.weekly(1).day(5),Body Garage(Sodeco),Sodeco Schedule
+Go Functional (w/ Nadine),18:30,19:30,"Functional,Core,Strength training","IceCube::Rule.weekly(1).day(1,3)",The Base,
+Challenger (w/ Coach Sarkis),18:00,19:00,"Crossfit,Strength training","IceCube::Rule.weekly(1).day(2,4)",The Base,
+Taekwando (w / Master Johnny Shalhoob),17:30,18:30,"Martial Arts,Kids","IceCube::Rule.weekly(1).day(3,5)",The Base,
+Taekwando (w / Master Johnny Shalhoob),11:00,12:00,"Martial Arts,Kids",IceCube::Rule.weekly(1).day(6),The Base,
+JiuJitsu (w Johnny Shalhoob),9:00,10:00,"Martial Arts,Kids",IceCube::Rule.weekly(1).day(6),The Base,
+HIP HOP (Kids) (w/ Lara Aoun),12:00,13:00,"Dance,Kids",IceCube::Rule.weekly(1).day(6),The Base,
+Judo (w/ Raphael Fernandez),16:30,17:30,"Martial Arts,Kids",IceCube::Rule.weekly(1).day(5),The Base,
+Gymnastics (w / Chris Demian),10:00,11:00,"Gymnastics,Kids,Stretching",IceCube::Rule.weekly(1).day(6),The Base,
+Boxing (w/ Samer Raad),19:00,20:00,"Boxing,Strength training,Martial Arts","IceCube::Rule.weekly(1).day(2,4)",The Base,
+Calisthenics,20:00,21:00,Strength training,"IceCube::Rule.weekly(1).day(2,4)",The Base,
+BJJ Team (w/ Wander Braga),20:30,21:30,Martial Arts,"IceCube::Rule.weekly(1).day(1,3)",The Base,
+Vinyasa Yoga (w/ Khaled Nahfawi),19:30,21:00,Yoga,IceCube::Rule.weekly(1).day(2),Level Up,
