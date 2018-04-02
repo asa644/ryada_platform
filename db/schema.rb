@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180324191605) do
+ActiveRecord::Schema.define(version: 20180401230543) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,6 +22,8 @@ ActiveRecord::Schema.define(version: 20180324191605) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "slug"
+    t.bigint "event_id"
+    t.index ["event_id"], name: "index_attendees_on_event_id"
     t.index ["slug"], name: "index_attendees_on_slug", unique: true
   end
 
@@ -57,6 +59,17 @@ ActiveRecord::Schema.define(version: 20180324191605) do
     t.datetime "updated_at", null: false
     t.index ["category_id"], name: "index_category_listings_on_category_id"
     t.index ["listing_id"], name: "index_category_listings_on_listing_id"
+  end
+
+  create_table "events", force: :cascade do |t|
+    t.time "start_time"
+    t.time "end_time"
+    t.string "place"
+    t.string "name"
+    t.float "price"
+    t.boolean "happening"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "feedbacks", force: :cascade do |t|
@@ -261,6 +274,7 @@ ActiveRecord::Schema.define(version: 20180324191605) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "attendees", "events"
   add_foreign_key "bookings", "lessons"
   add_foreign_key "bookings", "users"
   add_foreign_key "category_lessons", "lessons"
