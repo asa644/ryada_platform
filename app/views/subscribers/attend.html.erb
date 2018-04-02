@@ -6,14 +6,16 @@
     <div id="intro" class="preload darken">
       <div class="intro-item"  style="background-image: url('<%= image_path "events.png"%>')">
         <div class="caption attend">
-          <h2>LocalFitt Beirut: Strong by Zumba X Body Weight Training.</h2>
+          <h2><%=@event.name%>.</h2>
           <!-- <br> -->
-          <p style="margin-bottom: 0;"> <strong>Date & Time:</strong> Sunday, March 11. Arrival Time: 11:29 - 13:29</p>
-          <p style="margin-bottom: 0;"> <strong>Place: </strong>Pool d'Etat - Hamra Urban Gardens</p>
-          <p style="margin-bottom: 0;"> <strong>Classes: </strong>Strong by Zumba X Body Weight Training</p>
-          <p style="margin-bottom: 0;"> <strong>Limitation: </strong>Up to 30 People Max</p>
-          <p style="margin-bottom: 0;"> <strong>Requirement:</strong> Bring your own <strong>Mat</strong>, We have few mats for rent at the door.⠀</p>
-          <p style="margin-bottom: 0;"> <strong>Price</strong> 20,000 LBP</p>
+          <p style="margin-bottom: 0;"> <strong>Date & Time:</strong> <%=@event.start_date%>. Arrival Time: <%=@event.start_time%> - <%=@event.end_time%></p>
+          <p style="margin-bottom: 0;"> <strong>Place: </strong><%=@event.name%></p>
+
+<!--           <p style="margin-bottom: 0;"> <strong>Classes: </strong>Strong by Zumba X Body Weight Training</p>
+ -->
+<!--           <p style="margin-bottom: 0;"> <strong>Requirement:</strong> Bring your own <strong>Mat</strong>, We have few mats for rent at the door.⠀</p>
+ -->
+        <p style="margin-bottom: 0;"> <strong>Price</strong> <%=@event.price%>$</p>
         </div><!-- caption -->
       </div>
     </div><!-- intro -->

@@ -5,7 +5,8 @@ class SubscribersController < ApplicationController
     @subscriber = Subscriber.new
   end
   def attend
-    @attendee = Attendee.new
+    @event = Event.where(happening: true).first
+    @attendee = @event.attendees.new
   end
   def urban
     @attendee = Attendee.new
