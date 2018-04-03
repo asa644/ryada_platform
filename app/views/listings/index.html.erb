@@ -535,26 +535,30 @@ var infoBox_ratingType = 'star-rating';
                             <div class="listing-item-image">
                             <%=image_tag 'main.png'%>
                                 <span class="tag">
-                              <%lesson.categories.each do |category| %>
-                                <%=category.name%>
-                                <% unless lesson.categories.index(category) == lesson.categories.count - 1%>
-                                  &
-                                <%end%>
-                              <%end%>
-
-                                  </span>
+                                  <%=lesson.start_time.strftime("%I:%M %p")%> - <%=lesson.end_time.strftime("%I:%M %p")%>
+                                </span>
                             </div>
                             <div class="listing-item-content">
-                              <div class="listing-badge now-open"><%=lesson.start_time.strftime("%I:%M %p")%></div>
+
+<!--                               <div class="listing-badge now-open"><%=lesson.start_time.strftime("%I:%M %p")%></div>
+ -->
                               <div class="listing-item-inner">
                                 <h3><%=lesson.name%></h3>
                                 <span><%=lesson.listing.name%></span>
                                 <br>
+                                <span style="font-weight: bold;">
+                                <%lesson.categories.each do |category| %>
+                                  <%=category.name%>
+                                  <% unless lesson.categories.index(category) == lesson.categories.count - 1%>
+                                    &
+                                  <%end%>
+                                <%end%>
+                                </span>
                                 <span style="font-size: 14px;"><%=lesson.listing.city%>, <%=lesson.listing.street%> <%=lesson.listing.landmark%></span>
-                                  <div class="star-rating" data-rating="3.5">
+<!--                                   <div class="star-rating" data-rating="3.5">
                                     <div class="rating-counter">(12 reviews)</div>
                                   </div>
-                              </div>
+ -->                              </div>
                               <span class="like-icon"></span>
                             </div>
                         </div>
