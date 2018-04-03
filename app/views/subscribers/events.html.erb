@@ -83,7 +83,7 @@
             <%=@events.each do |event|%>
               <article class="item column four" data-groups='["fun", "minimal"]'>
                 <figure>
-                <%= cl_image_tag event.photo.photo%>
+                <%= cl_image_tag event.photo%>
 
                 </figure>
                 <a class="overlay" href="<%=event.link%>" target="_blank">
