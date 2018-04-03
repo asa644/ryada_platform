@@ -21,6 +21,7 @@ class SubscribersController < ApplicationController
     @feedback = Feedback.new
   end
   def events
+    @event = Event.where(happening: true).first
     @feedback = Feedback.new
   end
   def about
