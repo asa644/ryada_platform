@@ -83,11 +83,13 @@
             <%@events.each do |event|%>
               <article class="item column four" data-groups='["fun", "minimal"]'>
                 <figure>
-                <%= cl_image_tag event.photo%>
+                  <%= cl_image_tag event.photo%>
                 </figure>
                 <a class="overlay" href="<%=event.link%>" target="_blank">
                   <div class="overlay-content">
-                    <div class="post-type"><i class="icon icon-video"></i></div>
+                    <div class="post-type">
+                      <i class="icon icon-video"></i>
+                    </div>
                     <h2><%=@event.name%></h2>
                     <p>View video</p>
                   </div><!-- overlay-content -->

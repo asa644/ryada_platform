@@ -57,15 +57,15 @@
           <article class="item column four">
               <div class="blog-excerpt">
                 <div class="blog-excerpt-inner">
-                  <h2>Strong by Zumba X Body Weight Training</h2>
-                  <strong>Date:</strong> Sunday, March 11
+                  <h2><%=@event.name%></h2>
+                  <strong>Date:</strong> <%=@event.start_date.strftime("%A, %B %d")%>
                   <br>
-                  <strong>Time:</strong> 11:29 - 13:29
+                  <strong>Time:</strong> <%=@event.start_time.strftime("%I:%M %p")%> - <%=@event.end_time.strftime("%I:%M %p")%>
                   <br>
-                  <strong>Place:</strong> Pool d'Etat - Hamra Urban Gardens
+                  <strong>Place:</strong> <%=@event.place%>
                   <br>
-                  <strong>Requirement:</strong> Bring your own <strong>Mat</strong> and <strong>Towel</strong> / OR reserve one by DM or Email.
-                  <br>
+<!--                   <strong>Requirement:</strong> Bring your own <strong>Mat</strong> and <strong>Towel</strong> / OR reserve one by DM or Email.
+ -->                  <br>
                   <br>
                   <a class="button transparent blue" href="/urbanfitt/attend"> Apply now</a>
                 </div>
