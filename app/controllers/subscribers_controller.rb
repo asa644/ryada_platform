@@ -9,6 +9,7 @@ class SubscribersController < ApplicationController
     @attendee = @event.attendees.new
   end
   def urban
+    @event = Event.where(happening: true).first
     @attendee = Attendee.new
     @feedback = Feedback.new
   end
