@@ -80,11 +80,10 @@
             <li data-group="fun">Recent Popups</li>
           </ul>
           <div class="grid-items portfolio-section preload">
-            <%=@events.each do |event|%>
+            <%@events.each do |event|%>
               <article class="item column four" data-groups='["fun", "minimal"]'>
                 <figure>
                 <%= cl_image_tag event.photo%>
-
                 </figure>
                 <a class="overlay" href="<%=event.link%>" target="_blank">
                   <div class="overlay-content">
