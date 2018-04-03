@@ -80,19 +80,22 @@
             <li data-group="fun">Recent Popups</li>
           </ul>
           <div class="grid-items portfolio-section preload">
-            <article class="item column four" data-groups='["fun", "minimal"]'>
-              <figure>
-                <%=image_tag "event1.png"%>
-              </figure>
-              <a class="overlay" href="https://www.youtube.com/watch?v=3Vc91mqeMRw" target="_blank">
-                <div class="overlay-content">
-                  <div class="post-type"><i class="icon icon-video"></i></div>
-                  <h2>YOGAxPILATES Popup Event</h2>
-                  <p>View video</p>
-                </div><!-- overlay-content -->
-              </a><!-- overlay -->
-            </article>
-            <article class="item column four" data-groups='["fun", "minimal"]'>
+            <%=@events.each do |event|%>
+              <article class="item column four" data-groups='["fun", "minimal"]'>
+                <figure>
+                <%= cl_image_tag event.photo.photo%>
+
+                </figure>
+                <a class="overlay" href="<%=event.link%>" target="_blank">
+                  <div class="overlay-content">
+                    <div class="post-type"><i class="icon icon-video"></i></div>
+                    <h2><%=@event.name%></h2>
+                    <p>View video</p>
+                  </div><!-- overlay-content -->
+                </a><!-- overlay -->
+              </article>
+            <%end%>
+<!--             <article class="item column four" data-groups='["fun", "minimal"]'>
               <figure>
                 <%=image_tag "event2.png"%>
               </figure>
@@ -104,7 +107,7 @@
                 </div><!-- overlay-content -->
               </a><!-- overlay -->
             </article>
-
+ -->
             <div class="shuffle-sizer four"></div>
           </div><!-- grid-items -->
 
