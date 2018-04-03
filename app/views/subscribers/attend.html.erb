@@ -11,11 +11,12 @@
           <p style="margin-bottom: 0;"> <strong>Date & Time:</strong> <%=@event.start_date.strftime("%A, %B %d")%>. Time: <%=@event.start_time.strftime("%I:%M %p")%> - <%=@event.end_time.strftime("%I:%M %p")%></p>
           <p style="margin-bottom: 0;"> <strong>Place: </strong><%=@event.place%></p>
 
-<!--           <p style="margin-bottom: 0;"> <strong>Classes: </strong>Strong by Zumba X Body Weight Training</p>
- -->
+
 <!--           <p style="margin-bottom: 0;"> <strong>Requirement:</strong> Bring your own <strong>Mat</strong>, We have few mats for rent at the door.⠀</p>
  -->
         <p style="margin-bottom: 0;"> <strong>Price</strong> <%=@event.price%> $</p>
+          <a href="<%=@event.link%>" ><p style="margin-bottom: 0;">more info</p></a>
+
         </div><!-- caption -->
       </div>
     </div><!-- intro -->
