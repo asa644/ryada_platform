@@ -5,11 +5,13 @@
  -->
  <div class="column nine">
       <%= simple_form_for [@attendee], html: {id: "contact-form", class: "contact-section" } do |f| %>
-        <span class="pre-input"><i class="icon icon-user"></i></span>
-        <%= f.input_field :email, label: false, placeholder: "Email", class: "name plain buffer" %>
         <span class="pre-input"><i class="icon icon-email"></i></span>
+        <%= f.input_field :email, label: false, placeholder: "Email", class: "email plain buffer" %>
+        <span class="pre-input"><i class="icon icon-user"></i></span>
         <%= f.input_field :name, label: false, placeholder: "Full name", class: "name plain buffer" %>
-        <%= f.input_field :phonenumber, label: false, placeholder: "Phone number (Optional)", class: "plain buffer" %>
+        <span class="pre-input"><i class="icon icon-phone-two"></i></span>
+        <%= f.input_field :phonenumber, label: false, placeholder: "Phone number", class: "name plain buffer" %>
+        <%= f.input_field :event_id, as: :hidden, value: @event.id %>
         <%= f.button :submit, "Join us!", class: "plain button red"%>
         <br>
         <br>
