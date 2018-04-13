@@ -88,6 +88,7 @@ GEM
       sass (>= 3.3.4)
     bootstrap3-datetimepicker-rails (4.17.47)
       momentjs-rails (>= 2.8.1)
+    browser (2.4.0)
     builder (3.2.3)
     byebug (9.1.0)
     carrierwave (1.2.1)
@@ -364,6 +365,7 @@ DEPENDENCIES
   bootstrap-datepicker-rails!
   bootstrap-sass
   bootstrap3-datetimepicker-rails (~> 4.17.47)
+  browser
   carrierwave
   client_side_validations
   client_side_validations-simple_form

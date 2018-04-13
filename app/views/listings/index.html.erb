@@ -1,3 +1,4 @@
+<% unless browser.device.mobile?%>
 <% content_for(:after_js) do %>
   <%= javascript_tag do %>
 
@@ -448,7 +449,7 @@ var infoBox_ratingType = 'star-rating';
 
   <% end %>
 <% end %>
-
+<%end%>
 <!-- Content
 ================================================== -->
 <div class="fs-container">
