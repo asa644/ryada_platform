@@ -8,7 +8,6 @@ class CategoriesController < ApplicationController
     category = Category.find(params[:id])
     @listings = Listing.where.not(latitude: nil, longitude: nil)
     @lessons = []
-    @listings = []
     today = Time.now
     @array = [today, (today + 1.day), (today + 2.day), (today + 3.day), (today + 4.day), (today + 5.day), (today + 6.day)]
     @dayclass = []
