@@ -4,6 +4,7 @@ class CategoriesController < ApplicationController
     category = Category.find(params[:id])
   end
   def index
+    @booking = Booking.new
     category = Category.find(params[:id])
     @listings = Listing.where.not(latitude: nil, longitude: nil)
     @lessons = []

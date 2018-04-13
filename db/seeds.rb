@@ -5,31 +5,31 @@
 Category.destroy_all
 Category.create!(name: "Pilates")
 Category.create!(name: "Cardio")
-Category.create!(name: "Aerobic")
+# Category.create!(name: "Aerobic")
 Category.create!(name: "Kids")
 Category.create!(name: "Dance")
 Category.create!(name: "Stretching")
-Category.create!(name: "Boxing")
+# Category.create!(name: "Boxing")
 Category.create!(name: "Yoga")
 Category.create!(name: "Strength training")
 Category.create!(name: "Martial arts")
-Category.create!(name: "Glutes")
-Category.create!(name: "HIIT")
-Category.create!(name: "Legs")
-Category.create!(name: "Conditioning")
-Category.create!(name: "Crossfit")
-Category.create!(name: "Resistance")
-Category.create!(name: "Climbing")
-Category.create!(name: "Metabolism")
-Category.create!(name: "Core")
-Category.create!(name: "Body toning")
-Category.create!(name: "Functional")
-Category.create!(name: "Gymnastics")
+# Category.create!(name: "Glutes")
+# Category.create!(name: "HIIT")
+# Category.create!(name: "Legs")
+# Category.create!(name: "Conditioning")
+# Category.create!(name: "Crossfit")
+# Category.create!(name: "Resistance")
+# Category.create!(name: "Climbing")
+# Category.create!(name: "Metabolism")
+# Category.create!(name: "Core")
+# Category.create!(name: "Body toning")
+# Category.create!(name: "Functional")
+# Category.create!(name: "Gymnastics")
 
 
 Listing.destroy_all
 require 'csv'
-csv_lists = File.read(Rails.root.join('lib', 'seeds', 'fitness.csv'))
+csv_lists = File.read(Rails.root.join('lib', 'seeds', 'studios.csv'))
 csv_classes = File.read(Rails.root.join('lib', 'seeds', 'classes.csv'))
 listings = CSV.parse(csv_lists.scrub, headers: true)
 classes = CSV.parse(csv_classes.scrub, headers: true)
@@ -53,7 +53,7 @@ classes.each do |row|
   l.name = row['Class']
   l.start_time = row['Start time']
   l.end_time = row['End time']
-  l.price = 15
+  l.price = row['price']
   l.recurring = eval(row['rule'])
   list = Listing.where(name: row['gym'])
   l.listing = Listing.find_by_id(list.first.id)
@@ -62,7 +62,6 @@ classes.each do |row|
    if categories.include?(',')
     cat = categories.split(',')
     cat.each do |category|
-      p "TWO"
       if category == "HIIT"
         category_data = Category.where(name: category)
       else
@@ -70,6 +69,7 @@ classes.each do |row|
       end
       p l.name
       p l.start_time
+      p category_data
       p category_data.first.name
       unless category_data.nil?
         CategoryLesson.create!(category_id: category_data.first.id, lesson_id: l.id)
