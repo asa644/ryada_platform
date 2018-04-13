@@ -606,16 +606,15 @@ var infoBox_ratingType = 'star-rating';
 
     </div>
   </div>
+<% unless browser.device.mobile?%>
   <div class="fs-inner-container map-fixed">
-
     <!-- Map -->
-    <div id="map-container">
-        <div id="map" data-map-zoom="13" data-map-scroll="false">
-            <!-- map goes here -->
-        </div>
-    </div>
-
+      <div id="map-container">
+          <div id="map" data-map-zoom="13" data-map-scroll="false">
+          </div>
+      </div>
   </div>
+<%end%>
 </div>
 
 
