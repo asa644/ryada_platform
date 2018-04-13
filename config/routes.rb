@@ -35,6 +35,8 @@ Rails.application.routes.draw do
   # get '/dashboard' => 'users#dashboard'
   # get '/profile' => 'users#profile'
   get '/beta/active' => 'users#active'
+  get '/hi' => 'listings#hi'
+
   # get '/pending' => 'users#pending'
   # get '/expired' => 'users#expired'
 end

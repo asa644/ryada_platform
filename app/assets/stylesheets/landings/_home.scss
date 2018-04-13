@@ -94,6 +94,7 @@
 input[type="text"],
 input[type="password"],
 input[type="email"],
+input[type="tel"],
 input[type="number"],
 textarea,
 {
@@ -5945,7 +5946,7 @@ body .notification strong { border: none; }
 }
 
 .tab-content {
-  padding: 28px 33px;
+  /*padding: 28px 33px;*/
   position: relative;
   z-index: 10;
   display: inline-block;
@@ -6014,7 +6015,9 @@ body .notification strong { border: none; }
   padding: 30px 0 0 0;
 }
 
-
+.tab-content p{
+    color: #666;
+}
 /* Tabs Style 4 */
 .style-4 .tabs-nav {
   width: 35%;
@@ -6107,19 +6110,19 @@ body .notification strong { border: none; }
   cursor: pointer;
 }
 
-.sign-in-form .tabs-container { overflow: visible; }
+.sign-in-form .tabs-container-sign { overflow: visible; }
 
-.sign-in-form .tabs-nav li {
+.sign-in-form .tabs-nav-sign li {
     line-height: 15px;
 }
 
-.sign-in-form .tabs-nav li a {
+.sign-in-form .tabs-nav-sign li a {
     padding: 0 15px 18px 15px;
     color: #666;
 }
 
-.sign-in-form .tabs-nav li a:hover,
-.sign-in-form .tabs-nav li.active a {
+.sign-in-form .tabs-nav-sign li a:hover,
+.sign-in-form .tabs-nav-sign li.active a {
     color: #66676b;
 }
 
@@ -7241,7 +7244,7 @@ span.like-icon {
 .like-icon:before,
 .like-icon:after {
   transition: opacity 0.3s, transform 0.4s cubic-bezier(.0,-.41,.19,2.5);
-  font-family: "FontAwesome";
+  /*font-family: "FontAwesome";*/
   position: absolute;
   right: 0;
   left: 0;
@@ -10188,14 +10191,14 @@ button.mfp-close {
 }
 
 #small-dialog .mfp-close,
-#sign-in-dialog, .mfp-close,
+.sign-in-dialog, .mfp-close,
 .mfp-close:hover {
   color: #fff;
 }
 
 
 /* Popup close button*/
-#sign-in-dialog .mfp-close,
+.sign-in-dialog .mfp-close,
 #small-dialog .mfp-close {
   color: #666;
   background-color: #e4e4e4;
@@ -10206,15 +10209,15 @@ button.mfp-close {
     height: 40px;
 }
 
-#sign-in-dialog .mfp-close:hover,
+.sign-in-dialog .mfp-close:hover,
 #small-dialog .mfp-close:hover {
   color: #fff;
   transform: rotate(0);
   background-color: #66676b;
 }
 
-#sign-in-dialog .mfp-close::after,
-#sign-in-dialog .mfp-close::before,
+.sign-in-dialog .mfp-close::after,
+.sign-in-dialog .mfp-close::before,
 #small-dialog .mfp-close::after,
 #small-dialog .mfp-close::before {
   top: 4px;
@@ -10339,7 +10342,7 @@ button.mfp-close {
 }
 
 /* Popup */
-#sign-in-dialog,
+.sign-in-dialog,
 #small-dialog {
   background: #fff;
   padding: 40px;
@@ -10353,12 +10356,12 @@ button.mfp-close {
 }
 
 
-#sign-in-dialog {
+.sign-in-dialog {
   max-width: 500px;
 }
 
 
-#sign-in-dialog span.line,
+.sign-in-dialog span.line,
 #small-dialog span.line {padding-top: 0;}
 
 .my-mfp-zoom-in .zoom-anim-dialog {
@@ -11816,7 +11819,7 @@ img.mfp-img {
       transform: translateY(-100%);
       background-color: rgba(32,32,32,0.4);
       color: #fff;
-      right: 35px;
+      right: 15px;
   }
 
   .listing-item-container.list-layout .listing-item-details {
@@ -12006,19 +12009,18 @@ img.mfp-img {
       padding: 30px;
   }
 
-  #sign-in-dialog, #small-dialog {
+  .sign-in-dialog, #small-dialog {
     background: #fff;
     padding: 30px;
     padding-top: 0;
     }
 
-  #sign-in-dialog .mfp-close, #small-dialog .mfp-close {
+  .sign-in-dialog .mfp-close, #small-dialog .mfp-close {
       top: 24px;
       right: 30px;
       width: 40px;
       height: 40px;
   }
-
   .list-box-listing { display: block;}
 
   .list-box-listing-content .inner {
@@ -12076,7 +12078,7 @@ img.mfp-img {
       line-height: 30Px;
   }
 
-  #sign-in-dialog, #small-dialog {
+  .sign-in-dialog, #small-dialog {
       max-width: 75vw;
   }
 

@@ -5,31 +5,28 @@ class CategoriesController < ApplicationController
   end
   def index
     category = Category.find(params[:id])
-    @listings=[]
+    @listings = Listing.where.not(latitude: nil, longitude: nil)
     @lessons = []
-    category.lessons.each do |lesson|
-      l = lesson.listing
-      unless l.latitude.nil? && l.longitude.nil?
-        @lessons << lesson
-        @listings << l
+    @listings = []
+    today = Time.now
+    @array = [today, (today + 1.day), (today + 2.day), (today + 3.day), (today + 4.day), (today + 5.day), (today + 6.day)]
+    @dayclass = []
+    @array.each do |day|
+      category.each do |category|
+        ordered = category.lessons.order(:start_time)
+        @dayclass << ordered.select do |lesson|
+          l = lesson.schedule(Time.now)
+          if day.day == Time.now.day
+            l.occurs_on?(day) && lesson.start_time.hour > Time.now.hour
+          else
+            l.occurs_on?(day)
+          end
+        end
       end
     end
-    # @hash = Gmaps4rails.build_markers(@listings) do |listing, marker|
-    #   marker.lat listing.latitude
-    #   marker.lng listing.longitude
-    # end
+    @hash = Gmaps4rails.build_markers(@listings) do |listing, marker|
+      marker.lat listing.latitude
+      marker.lng listing.longitude
+    end
   end
 end
-  # def index
-  #   @listings = Listing.where.not(latitude: nil, longitude: nil)
-  #   @lessons = []
-  #   Lesson.all.each do |lesson|
-  #     unless lesson.listing.latitude.nil? && lesson.listing.longitude.nil?
-  #       @lessons << lesson
-  #     end
-  #   end
-  #   @hash = Gmaps4rails.build_markers(@listings) do |listing, marker|
-  #     marker.lat listing.latitude
-  #     marker.lng listing.longitude
-  #   end
-  # end

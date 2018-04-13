@@ -1,6 +1,6 @@
 
 <!-- Sign In Popup -->
-<div id="sign-in-dialog" class="zoom-anim-dialog mfp-hide">
+<div id="sign-in-dialog" class="zoom-anim-dialog mfp-hide sign-in-dialog">
 
   <div class="small-dialog-header">
     <h3>Sign In</h3>
@@ -9,15 +9,15 @@
   <!--Tabs -->
   <div class="sign-in-form style-1">
 
-    <ul class="tabs-nav">
-      <li class=""><a href="#tab1">Log In</a></li>
-      <li><a href="#tab2">Register</a></li>
+    <ul class="tabs-nav sign-nav">
+      <li class=""><a href="#tab9">Log In</a></li>
+      <li><a href="#tab10">Register</a></li>
     </ul>
 
-    <div class="tabs-container alt">
+    <div class="tabs-container sign-container alt">
 
       <!-- Login -->
-      <div class="tab-content" id="tab1" style="display: none;">
+      <div class="tab-content sign-content" id="tab9" style="display: none;">
           <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name),  html: { id: "login" })  do |f| %>
           <p class="form-row form-row-wide">
             <label for="username">Email:
@@ -46,7 +46,7 @@
       </div>
 
       <!-- Register -->
-      <div class="tab-content" id="tab2" style="display: none;">
+      <div class="tab-content sign-content" id="tab10" style="display: none;">
           <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
             <p class="form-row form-row-wide">
               <label for="email2">Email Address:

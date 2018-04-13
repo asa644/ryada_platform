@@ -465,29 +465,20 @@ var infoBox_ratingType = 'star-rating';
               <!-- Row With Forms -->
               <div class="row with-forms">
                 <!-- Filters -->
-                <div class="col-fs-12">
-                  <!-- Panel Dropdown / End -->
-
-
-              <ul class="nav nav-pills mb-7" id="pills-tab" role="tablist">
-                  <%@array.each do |day|%>
-                      <% if day.day == Time.now.day %>
-                      <li class="nav-item active">
-                        <a class="nav-link" id="pills-<%=day.strftime("%A")%>-tab" data-toggle="pill" href="#pills-<%=day.strftime("%A")%>" role="tab" aria-controls="pills-<%=day.strftime("%A")%>" aria-selected="true"><%=day.strftime("%A")%></a>
-                      </li>
-                    <%else%>
-                      <li class="nav-item">
-                        <a class="nav-link" id="pills-<%=day.strftime("%A")%>-tab" data-toggle="pill" href="#pills-<%=day.strftime("%A")%>" role="tab" aria-controls="pills-<%=day.strftime("%A")%>" aria-selected="false"><%=day.strftime("%A")%></a>
-                      </li>
-                    <%end%>
+                <div class="col-fs-6">
+                  <%= form_tag('/beta/categories',:method=>:get) do %>
+                      <%= select_tag "id", options_from_collection_for_select(Category.all, "id", "name"), class: "chosen-select", multiple: true %>
+                 </div>
+                <div class="col-fs-6">
+                    <%= button_tag "Apply", class: "button", style: "margin-top: 4px;"%>
+                </div>
                   <%end%>
-              </ul>
+
+                <!-- Main Search Input -->
+                <div class="col-fs-12 style-2">
+
                   <!-- Panel Dropdown / End -->
-
-                  <!-- Panel Dropdown -->
-
-                  <!-- Panel Dropdown / End -->
-
+<!-- the week days -->
                 </div>
                 <!-- Filters / End -->
 
@@ -513,20 +504,31 @@ var infoBox_ratingType = 'star-rating';
 
  -->
       <!-- Listings -->
-      <div class="row fs-listings">
+      <div class="row fs-listings style-2">
           <!-- Listing Item -->
-          <div class="tab-content" id="pills-tabContent" style="padding: 0px 0px">
-            <%@array.each do |day|%>
-            <% if day.day == Time.now.day %>
-              <div class="tab-pane fade active in" id="pills-<%=day.strftime("%A")%>" role="tabpanel" aria-labelledby="pills-<%=day.strftime("%A")%>-tab">
-            <%else%>
-              <div class="tab-pane fade" id="pills-<%=day.strftime("%A")%>" role="tabpanel" aria-labelledby="pills-<%=day.strftime("%A")%>-tab">
-            <%end%>
-              <%if @dayclass[@array.index(day)].count==0%>
-              <p class="showing-results">No fitness classes left today!</p>
-              <%end%>
-                <p class="showing-results"><%=@dayclass[@array.index(day)].count%> Results Found </p>
-
+                  <ul class="tabs-nav lesson-nav" style="padding-bottom: 20px;">
+                      <%@array.each do |day|%>
+                          <% if day.day == Time.now.day %>
+                          <li class="active">
+                            <a href="#tab<%=day.strftime("%w")%>b"><%=day.strftime("%A")%>
+                            </a>
+                          </li>
+                        <%else%>
+                          <li>
+                            <a href="#tab<%=day.strftime("%w")%>b"><%=day.strftime("%A")%>
+                            </a>
+                          </li>
+                        <%end%>
+                      <%end%>
+                      <br><br>
+                  </ul>
+        <div class="tabs-container lessons-container">
+          <%@array.each do |day|%>
+              <div class="tab-content lesson-content" id="tab<%=day.strftime("%w")%>b">
+                <%if @dayclass[@array.index(day)].count==0%>
+                  <p class="showing-results" style="padding-left: 13px;">No fitness classes left today!</p>
+                <%end%>
+                  <p class="showing-results" style="padding-left: 13px;"><%=@dayclass[@array.index(day)].count%> Results Found </p>
                 <%@dayclass[@array.index(day)].each do |lesson| %>
                     <div class="col-lg-12 col-md-12">
                       <div class="listing-item-container list-layout" data-marker-id="<%=lesson.listing.id%>">
@@ -539,9 +541,6 @@ var infoBox_ratingType = 'star-rating';
                                 </span>
                             </div>
                             <div class="listing-item-content">
-
-<!--                               <div class="listing-badge now-open"><%=lesson.start_time.strftime("%I:%M %p")%></div>
- -->
                               <div class="listing-item-inner">
                                 <h3><%=lesson.name%></h3>
                                 <span><%=lesson.listing.name%></span>
@@ -555,11 +554,13 @@ var infoBox_ratingType = 'star-rating';
                                 <%end%>
                                 </span>
                                 <span style="font-size: 14px;"><%=lesson.listing.city%>, <%=lesson.listing.street%> <%=lesson.listing.landmark%></span>
-<!--                                   <div class="star-rating" data-rating="3.5">
-                                    <div class="rating-counter">(12 reviews)</div>
-                                  </div>
- -->                              </div>
-                              <span class="like-icon"></span>
+                              </div>
+                          <% if user_signed_in? %>
+                              <span class="like-icon sign-in popup-with-zoom-anim" href="#book<%=lesson.id%>"></span>
+                              <%=render 'layouts/book', lesson: lesson, day: day%>
+                          <% else %>
+                              <span class="like-icon sign-in popup-with-zoom-anim" href="#sign-in-dialog"></span>
+                          <%end%>
                             </div>
                         </div>
                       </div>

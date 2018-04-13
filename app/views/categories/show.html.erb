@@ -1,73 +1,65 @@
 <% content_for(:after_js) do %>
   <%= javascript_tag do %>
-var infoBox_ratingType = 'star-rating';
 
-(function($){
+var infoBox_ratingType = 'star-rating';
+(function($) {
     "use strict";
 
     function mainMap() {
+        var ib = new InfoBox();
 
-      // Locations
-      // ----------------------------------------------- //
-      var ib = new InfoBox();
+        function locationData(locationURL, locationImg, locationTitle, locationAddress, locationRating, locationRatingCounter) {
+            return ('' +
+                '<a href="' + locationURL + '" class="listing-img-container">' +
+                '<div class="infoBox-close"><i class="fa fa-times"></i></div>' +
+                '<img src="' + locationImg + '" alt="">' +
+                '<div class="listing-item-content">' +
+                '<h3>' + locationTitle + '</h3>' +
+                '<span>' + locationAddress + '</span>' +
+                '</div>' +
+                '</a>' +
+                '<div class="listing-content">' +
+                '<div class="listing-title">' +
+                '<div class="' + infoBox_ratingType + '" data-rating="' + locationRating + '"><div class="rating-counter">(' + locationRatingCounter + ' reviews)</div></div>' +
+                '</div>' +
+                '</div>')
+        }
 
-      // Infobox Output
-      function locationData(locationURL,locationImg,locationTitle, locationAddress, locationRating, locationRatingCounter) {
-          return(''+
-            '<a href="'+ locationURL +'" class="listing-img-container">'+
-               '<div class="infoBox-close"><i class="fa fa-times"></i></div>'+
-               '<img src="'+locationImg+'" alt="">'+
-
-               '<div class="listing-item-content">'+
-                  '<h3>'+locationTitle+'</h3>'+
-                  '<span>'+locationAddress+'</span>'+
-               '</div>'+
-
-            '</a>'+
-
-            '<div class="listing-content">'+
-               '<div class="listing-title">'+
-                  '<div class="'+infoBox_ratingType+'" data-rating="'+locationRating+'"><div class="rating-counter">('+locationRatingCounter+' reviews)</div></div>'+
-               '</div>'+
-            '</div>')
-      }
 
       // Locations
       var locations = [
       <% @listings.each do |listing|%>
-        [ locationData('/listings/<%=listing.id%>',"<%=image_path 'main.png'%>","<%=listing.name%>",'<%=listing.city%>, <%=listing.country%>', '3.5', '12'), <%=listing.latitude%>, <%=listing.longitude%>, <%=listing.id%>, '<i class="im im-icon-Chef-Hat"></i>'],
+        [ locationData('/beta/listings/<%=listing.id%>',"<%=image_path 'main.png'%>","<%=listing.name%>",'<%=listing.city%>, <%=listing.country%>', '3.5', '12'), <%=listing.latitude%>, <%=listing.longitude%>, <%=listing.id%>, '<i class="im im-icon-Dumbbell"></i>'],
       <%end%>
       ];
 
       // Chosen Rating Type
-      google.maps.event.addListener(ib,'domready',function(){
-         if (infoBox_ratingType = 'numerical-rating') {
-            numericalRating('.infoBox .'+infoBox_ratingType+'');
-         }
-         if (infoBox_ratingType = 'star-rating') {
-            starRating('.infoBox .'+infoBox_ratingType+'');
-         }
-      });
-
+        google.maps.event.addListener(ib, 'domready', function() {
+            if (infoBox_ratingType = 'numerical-rating') {
+                numericalRating('.infoBox .' + infoBox_ratingType + '');
+            }
+            if (infoBox_ratingType = 'star-rating') {
+                starRating('.infoBox .' + infoBox_ratingType + '');
+            }
+        });
 
 
       // Map Attributes
       // ----------------------------------------------- //
 
-      var mapZoomAttr = $('#map').attr('data-map-zoom');
-      var mapScrollAttr = $('#map').attr('data-map-scroll');
+        var mapZoomAttr = $('#map').attr('data-map-zoom');
+        var mapScrollAttr = $('#map').attr('data-map-scroll');
+        if (typeof mapZoomAttr !== typeof undefined && mapZoomAttr !== false) {
+            var zoomLevel = parseInt(mapZoomAttr);
+        } else {
+            var zoomLevel = 5;
+        }
+        if (typeof mapScrollAttr !== typeof undefined && mapScrollAttr !== false) {
+            var scrollEnabled = parseInt(mapScrollAttr);
+        } else {
+            var scrollEnabled = false;
+        }
 
-      if (typeof mapZoomAttr !== typeof undefined && mapZoomAttr !== false) {
-          var zoomLevel = parseInt(mapZoomAttr);
-      } else {
-          var zoomLevel = 5;
-      }
-
-      if (typeof mapScrollAttr !== typeof undefined && mapScrollAttr !== false) {
-         var scrollEnabled = parseInt(mapScrollAttr);
-      } else {
-        var scrollEnabled = false;
-      }
 
 
       // Main Map
@@ -92,84 +84,72 @@ var infoBox_ratingType = 'star-rating';
 
       // Marker highlighting when hovering listing item
       $('.listing-item-container').on('mouseover', function(){
-
         var listingAttr = $(this).data('marker-id');
-
         if(listingAttr !== undefined) {
           var listing_id = $(this).data('marker-id') ;
-          console.log(listing_id);
-          console.log(allMarkers);
-
-          var marker_div = allMarkers[listing_id].div;
-
+          for (i = 0; i < allMarkers.length; i++) {
+            if (allMarkers[i].args.marker_id==listing_id){
+              var marker_div = allMarkers[i].div;
+            }
+          };
+          // var marker_div = allMarkers[listing_id].div;
           $(marker_div).addClass('clicked');
-
           $(this).on('mouseout', function(){
               if ($(marker_div).is(":not(.infoBox-opened)")) {
                  $(marker_div).removeClass('clicked');
               }
            });
         }
-
       });
-
 
       // Infobox
       // ----------------------------------------------- //
 
-      var boxText = document.createElement("div");
-      boxText.className = 'map-box'
-
-      var currentInfobox;
-
-      var boxOptions = {
-              content: boxText,
-              disableAutoPan: false,
-              alignBottom : true,
-              maxWidth: 0,
-              pixelOffset: new google.maps.Size(-134, -55),
-              zIndex: null,
-              boxStyle: {
+        var boxText = document.createElement("div");
+        boxText.className = 'map-box'
+        var currentInfobox;
+        var boxOptions = {
+            content: boxText,
+            disableAutoPan: false,
+            alignBottom: true,
+            maxWidth: 0,
+            pixelOffset: new google.maps.Size(-134, -55),
+            zIndex: null,
+            boxStyle: {
                 width: "270px"
-              },
-              closeBoxMargin: "0",
-              closeBoxURL: "",
-              infoBoxClearance: new google.maps.Size(25, 25),
-              isHidden: false,
-              pane: "floatPane",
-              enableEventPropagation: false,
-      };
-
-
-      var markerCluster, overlay, i;
-      var allMarkers = [];
-
-      var clusterStyles = [
-        {
-          textColor: 'white',
-          url: '',
-          height: 50,
-          width: 50
-        }
-      ];
-
+            },
+            closeBoxMargin: "0",
+            closeBoxURL: "",
+            infoBoxClearance: new google.maps.Size(25, 25),
+            isHidden: false,
+            pane: "floatPane",
+            enableEventPropagation: false,
+        };
+        var markerCluster, overlay, i;
+        var allMarkers = [];
+        var clusterStyles = [{
+            textColor: 'white',
+            url: '',
+            height: 50,
+            width: 50
+        }];
 
       var markerIco;
       for (i = 0; i < locations.length; i++) {
 
         markerIco = locations[i][4];
-
+        // console.log(locations[i][3]);
         var overlaypositions = new google.maps.LatLng(locations[i][1], locations[i][2]),
 
         overlay = new CustomMarker(
          overlaypositions,
           map,
           {
-            marker_id: i
+            marker_id: locations[i][3]
           },
           markerIco
         );
-
+        // console.log(overlay.args.marker_id);
         allMarkers.push(overlay);
 
         google.maps.event.addDomListener(overlay, 'click', (function(overlay, i) {
@@ -177,8 +157,8 @@ var infoBox_ratingType = 'star-rating';
           return function() {
              ib.setOptions(boxOptions);
              boxText.innerHTML = locations[i][0];
+             ib.close();
              ib.open(map, overlay);
-
              currentInfobox = locations[i][3];
              // var latLng = new google.maps.LatLng(locations[i][1], locations[i][2]);
              // map.panTo(latLng);
@@ -186,6 +166,7 @@ var infoBox_ratingType = 'star-rating';
 
 
             google.maps.event.addListener(ib,'domready',function(){
+              console.log("hello");
               $('.infoBox-close').click(function(e) {
                   e.preventDefault();
                   ib.close();
@@ -203,13 +184,13 @@ var infoBox_ratingType = 'star-rating';
       // Marker Clusterer Init
       // ----------------------------------------------- //
 
-      var options = {
-          imagePath: 'images/',
-          styles : clusterStyles,
-          minClusterSize : 2
-      };
+      // var options = {
+      //     imagePath: 'images/',
+      //     styles : clusterStyles,
+      //     minClusterSize : 2
+      // };
 
-      markerCluster = new MarkerClusterer(map, allMarkers, options);
+      // markerCluster = new MarkerClusterer(map, allMarkers, options);
 
       google.maps.event.addDomListener(window, "resize", function() {
           var center = map.getCenter();
@@ -483,127 +464,26 @@ var infoBox_ratingType = 'star-rating';
 
               <!-- Row With Forms -->
               <div class="row with-forms">
-
-                <!-- Main Search Input -->
-                <div class="col-fs-6">
-                  <div class="input-with-icon">
-                    <i class="sl sl-icon-magnifier"></i>
-                    <input type="text" placeholder="What are you looking for?" value=""/>
-                  </div>
-                </div>
-
-                <!-- Main Search Input -->
-                <div class="col-fs-6">
-                  <div class="input-with-icon location">
-
-                    <input type="text" placeholder="Destination, city, address" value=""/>
-                    <a href="#"><i class="fa fa-dot-circle-o"></i></a>
-                  </div>
-                </div>
-
-
                 <!-- Filters -->
                 <div class="col-fs-12">
-
-                  <!-- Panel Dropdown / End -->
-                  <div class="panel-dropdown">
-                    <a href="#">Categories</a>
-                    <div class="panel-dropdown-content checkboxes categories">
-
-                      <!-- Checkboxes -->
-                      <div class="row">
-                        <div class="col-md-6">
-                          <input id="check-1" type="checkbox" name="check" checked class="all">
-                          <label for="check-1">All Categories</label>
-
-                          <input id="check-2" type="checkbox" name="check">
-                          <label for="check-2">Shops</label>
-
-                          <input id="check-3" type="checkbox" name="check">
-                          <label for="check-3">Hotels</label>
-                        </div>
-
-                        <div class="col-md-6">
-                          <input id="check-4" type="checkbox" name="check" >
-                          <label for="check-4">Eat & Drink</label>
-
-                          <input id="check-5" type="checkbox" name="check">
-                          <label for="check-5">Fitness</label>
-
-                          <input id="check-6" type="checkbox" name="check">
-                          <label for="check-6">Events</label>
-                        </div>
-                      </div>
-
-                      <!-- Buttons -->
-                      <div class="panel-buttons">
-                        <button class="panel-cancel">Cancel</button>
-                        <button class="panel-apply">Apply</button>
-                      </div>
-
-                    </div>
-                  </div>
                   <!-- Panel Dropdown / End -->
 
-                  <!-- Panel Dropdown -->
-                  <div class="panel-dropdown wide">
-                    <a href="#">More Filters</a>
-                    <div class="panel-dropdown-content checkboxes">
-
-                      <!-- Checkboxes -->
-                      <div class="row">
-                        <div class="col-md-6">
-                          <input id="check-a" type="checkbox" name="check">
-                          <label for="check-a">Elevator in building</label>
-
-                          <input id="check-b" type="checkbox" name="check">
-                          <label for="check-b">Friendly workspace</label>
-
-                          <input id="check-c" type="checkbox" name="check">
-                          <label for="check-c">Instant Book</label>
-
-                          <input id="check-d" type="checkbox" name="check">
-                          <label for="check-d">Wireless Internet</label>
-                        </div>
-
-                        <div class="col-md-6">
-                          <input id="check-e" type="checkbox" name="check" >
-                          <label for="check-e">Free parking on premises</label>
-
-                          <input id="check-f" type="checkbox" name="check" >
-                          <label for="check-f">Free parking on street</label>
-
-                          <input id="check-g" type="checkbox" name="check">
-                          <label for="check-g">Smoking allowed</label>
-
-                          <input id="check-h" type="checkbox" name="check">
-                          <label for="check-h">Events</label>
-                        </div>
-                      </div>
-
-                      <!-- Buttons -->
-                      <div class="panel-buttons">
-                        <button class="panel-cancel">Cancel</button>
-                        <button class="panel-apply">Apply</button>
-                      </div>
-
-                    </div>
-                  </div>
-                  <!-- Panel Dropdown / End -->
-
-                  <!-- Panel Dropdown -->
-                  <div class="panel-dropdown">
-                    <a href="#">Distance Radius</a>
-                    <div class="panel-dropdown-content">
-                      <input class="distance-radius" type="range" min="1" max="100" step="1" value="50" data-title="Radius around selected destination">
-                      <div class="panel-buttons">
-                        <button class="panel-cancel">Disable</button>
-                        <button class="panel-apply">Apply</button>
-                      </div>
-                    </div>
-                  </div>
-                  <!-- Panel Dropdown / End -->
-
+        <!-- Tabs Navigation -->
+                  <ul class="tabs-nav">
+                      <%@array.each do |day|%>
+                          <% if day.day == Time.now.day %>
+                          <li class="active">
+                            <a href="#tab<%=day.strftime("%w")%>b"><%=day.strftime("%A")%>
+                            </a>
+                          </li>
+                        <%else%>
+                          <li>
+                            <a href="#tab<%=day.strftime("%w")%>b"><%=day.strftime("%A")%>
+                            </a>
+                          </li>
+                        <%end%>
+                      <%end%>
+                  </ul>
                 </div>
                 <!-- Filters / End -->
 
@@ -617,48 +497,65 @@ var infoBox_ratingType = 'star-rating';
       <!-- Search / End -->
 
     <section class="listings-container margin-top-30">
-
       <!-- Sorting / Layout Switcher -->
-      <div class="row fs-switcher">
+<!--       <div class="row fs-switcher">
 
         <div class="col-md-6">
-          <!-- Showing Results -->
+          Showing Results
           <p class="showing-results">14 Results Found </p>
         </div>
 
       </div>
 
-
+ -->
       <!-- Listings -->
       <div class="row fs-listings">
-          <% count = 0%>
-
-          <% @lessons.each do |lesson| %>
-
           <!-- Listing Item -->
-            <div class="col-lg-6 col-md-6">
-<!--               <a href="listings-single-page.html" class="listing-item-container compact" data-marker-id="1">
- -->
-              <%= link_to lesson.listing, class: "listing-item-container compact", :data => { "marker-id" => count} do %>
-                <div class="listing-item">
-                <%count = count + 1 %>
-                  <%=image_tag 'main.png'%>
-                  <div class="listing-badge now-open">Now Open</div>
-                  <div class="listing-item-content">
-                    <div class="numerical-rating" data-rating="3.5"></div>
-                    <h3><%=lesson.name%></h3>
-                    <span><%=lesson.listing.address%></span>
-                  </div>
-                  <span class="like-icon"></span>
-                </div>
+        <div class="tabs-container">
+          <%@array.each do |day|%>
+              <div class="tab-content" id="tab<%=day.strftime("%w")%>b">
+                <%if @dayclass[@array.index(day)].count==0%>
+                  <p class="showing-results">No fitness classes left today!</p>
                 <%end%>
-            </div>
-          <%end%>
+                  <p class="showing-results"><%=@dayclass[@array.index(day)].count%> Results Found </p>
+                <%@dayclass[@array.index(day)].each do |lesson| %>
+                    <div class="col-lg-12 col-md-12">
+                      <div class="listing-item-container list-layout" data-marker-id="<%=lesson.listing.id%>">
+                        <div class="listing-item">
+                            <!-- Image -->
+                            <div class="listing-item-image">
+                            <%=image_tag 'main.png'%>
+                                <span class="tag">
+                                  <%=lesson.start_time.strftime("%I:%M %p")%> - <%=lesson.end_time.strftime("%I:%M %p")%>
+                                </span>
+                            </div>
+                            <div class="listing-item-content">
+                              <div class="listing-item-inner">
+                                <h3><%=lesson.name%></h3>
+                                <span><%=lesson.listing.name%></span>
+                                <br>
+                                <span style="font-weight: bold;">
+                                <%lesson.categories.each do |category| %>
+                                  <%=category.name%>
+                                  <% unless lesson.categories.index(category) == lesson.categories.count - 1%>
+                                    &
+                                  <%end%>
+                                <%end%>
+                                </span>
+                                <span style="font-size: 14px;"><%=lesson.listing.city%>, <%=lesson.listing.street%> <%=lesson.listing.landmark%></span>
+                              </div>
+                              <span class="like-icon"></span>
+                            </div>
+                        </div>
+                      </div>
+                    </div>
+                <%end%>
+              </div>
+            <%end%>
+          </div>
         <!-- Listing Item / End -->
       </div>
       <!-- Listings Container / End -->
-
-
       <!-- Pagination Container -->
       <div class="row fs-listings">
         <div class="col-md-12">
@@ -683,7 +580,7 @@ var infoBox_ratingType = 'star-rating';
           <!-- Pagination / End -->
 
           <!-- Copyrights -->
-          <div class="copyrights margin-top-0">© 2017 LocalFitt. All Rights Reserved.</div>
+          <div class="copyrights margin-top-0">© 2018 LocalFitt. All Rights Reserved.</div>
 
         </div>
       </div>
@@ -706,10 +603,3 @@ var infoBox_ratingType = 'star-rating';
 
 
 </div>
-
-// <% content_for(:after_js) do %>
-//   <%= javascript_tag do %>
-//     var myButton = document.getElementsByClassName("map-marker-container");
-//     console.log("myButton");
-// <%end%>
-// <%end%>

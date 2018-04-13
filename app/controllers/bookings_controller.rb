@@ -1,6 +1,7 @@
 class BookingsController < ApplicationController
   before_action :set_booking, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
+  before_action :require_permission, only: [:edit, :show]
 
   # GET /bookings
   # GET /bookings.json
@@ -43,6 +44,13 @@ class BookingsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def booking_params
-      params.require(:booking).permit(:start_time, :lesson_id)
+      params.require(:booking).permit(:start_time, :day, :lesson_id, :phone)
     end
+    def require_permission
+      if current_user != Booking.find(params[:id]).user
+        redirect_to root_path
+        #Or do something else here
+      end
+    end
+
 end

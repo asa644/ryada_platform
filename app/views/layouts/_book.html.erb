@@ -1,0 +1,46 @@
+
+<!-- Sign In Popup -->
+<div id="book<%=lesson.id%>" class="zoom-anim-dialog mfp-hide sign-in-dialog">
+  <div id="sign-in-dialog">
+
+    <div class="small-dialog-header">
+      <h3>Book <%=lesson.name%></h3>
+    </div>
+
+    <!--Tabs -->
+    <div class="sign-in-form style-1">
+
+      <ul class="tabs-nav sign-nav">
+        <li class=""><a href="#tab9">BOOK</a></li>
+      </ul>
+
+      <div class="tabs-container sign-container alt">
+
+        <!-- Login -->
+        <div class="tab-content sign-content" id="tab9" style="display: none;">
+        <p><strong>class name:</strong> <%=lesson.name%><p>
+        <p><strong>description:</strong> <%=lesson.description%><p>
+        <p><strong>Studio address:</strong> <%=lesson.listing.city%>, <%=lesson.listing.street%> <%=lesson.listing.landmark%><p>
+        <p><strong>price:</strong> <%=lesson.price%> $<p>
+          <%= simple_form_for [@booking],  html: { id: "login" } do |f| %>
+              <%=f.input_field :lesson_id, as: :hidden, value: lesson.id%>
+              <p><%=lesson.id%></p>
+              <%=f.input_field :day, as: :hidden, value: day%>
+              <% if current_user.phone.nil?%>
+          <p class="form-row form-row-wide">
+            <label for="username">Your phone number:
+              <i class="im im-icon-Telephone"></i>
+              <%= f.input_field :phone, label: false, required: true %>
+            </label>
+          </p>
+              <%end%>
+            <%=f.submit 'Confirm booking', class: 'button border margin-top-5'%>
+            <%end%>
+        </div>
+        <!-- Register -->
+        <div class="tab-content sign-content" id="tab10" style="display: none;">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

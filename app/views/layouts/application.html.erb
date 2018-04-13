@@ -83,10 +83,9 @@
 
 
     <!-- <div id="wrapper"> -->
-    <% unless controller_name == "subscribers" || controller_name == "attendees" || controller_name == "feedbacks"%>
+    <% unless controller_name == "subscribers" || controller_name == "attendees" || controller_name == "feedbacks" || controller_name == "bookings"%>
       <%= render 'shared/navbar' %>
       <%= render 'shared/flashes' %>
-
     <%end%>
 
 

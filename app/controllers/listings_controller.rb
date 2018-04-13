@@ -3,12 +3,14 @@ class ListingsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :update, :destroy, :edit]
   # GET /listings
   # GET /listings.json
+  def hi
+  end
   def index
+    @booking = Booking.new
     @listings = Listing.where.not(latitude: nil, longitude: nil)
     @lessons = []
     today = Time.now
     @array = [today, (today + 1.day), (today + 2.day), (today + 3.day), (today + 4.day), (today + 5.day), (today + 6.day)]
-    # @lesson.recur
     @dayclass = []
     @array.each do |day|
       ordered = Lesson.order(:start_time)

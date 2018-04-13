@@ -1,6 +1,6 @@
 
 <!-- Print Button -->
-<a href="javascript:window.print()" class="print-button">Print this invoice</a>
+<a href="javascript:window.print()" class="print-button">Print this Booking</a>
 
 <!-- Invoice -->
 <div id="invoice">
@@ -14,9 +14,10 @@
     <div class="col-md-6">
 
       <p id="details">
-        <strong>Order:</strong> #00124 <br>
-        <strong>Issued:</strong> 20/07/2017 <br>
-        Due 7 days from date of issue
+        <strong>Class Name:</strong> <%=@booking.lesson.name%> <br>
+        <strong>Class Date:</strong> <%=@booking.day.strftime("%A, %m %B")%> <br>
+        <strong>Class Start time:</strong> <%=@booking.lesson.start_time.strftime("%H:%M %p")%> <br>
+        <strong>Class Start time:</strong> <%=@booking.lesson.end_time.strftime("%H:%M %p")%> <br>
       </p>
     </div>
   </div>
@@ -25,24 +26,24 @@
   <!-- Client & Supplier -->
   <div class="row">
     <div class="col-md-12">
-      <h2>Invoice</h2>
+      <h2>Booking</h2>
     </div>
 
     <div class="col-md-6">
-      <strong class="margin-bottom-5">Supplier</strong>
+      <strong class="margin-bottom-5">Trainee</strong>
       <p>
-        Listeo Ltd. <br>
-        21 St Andrews Lane <br>
-        London, CF44 6ZL, UK <br>
+        Name: <%=@booking.user.name%> <br>
+        Phone number: <%=@booking.user.phone%> <br>
       </p>
     </div>
 
     <div class="col-md-6">
-      <strong class="margin-bottom-5">Customer</strong>
+      <strong class="margin-bottom-5">Gym</strong>
       <p>
-        John Doe <br>
-        36 Edgewater Street <br>
-        Melbourne, 2540, Australia <br>
+        <%=@booking.lesson.listing.name%> <br>
+        <%=@booking.lesson.listing.city%>, <%=@booking.lesson.listing.street%> <%=@booking.lesson.listing.landmark%> <br>
+        <br>
+        <a href="http://maps.google.com/?q=<%=@booking.lesson.listing.latitude%>,<%=@booking.lesson.listing.longitude%>" target="_blank" class="button medium border"><i class="sl sl-icon-directions"></i>  Click for Location</a>
       </p>
     </div>
   </div>
@@ -60,10 +61,10 @@
         </tr>
 
         <tr>
-          <td>Extended Plan</td>
+          <td>Fitness class</td>
           <td>1</td>
           <td>$0.00</td>
-          <td>$9.00</td>
+          <td>$<%=@booking.lesson.price%></td>
         </tr>
       </table>
     </div>
@@ -72,7 +73,7 @@
       <table id="totals">
         <tr>
           <th>Total Due</th>
-          <th><span>$9.00</span></th>
+          <th><span>$<%=@booking.lesson.price%></span></th>
         </tr>
       </table>
     </div>
@@ -83,9 +84,9 @@
   <div class="row">
     <div class="col-md-12">
       <ul id="footer">
-        <li><span>www.example.com</span></li>
-        <li>office@example.com</li>
-        <li>(123) 123-456</li>
+        <li><span>www.localfitt.com</span></li>
+        <li>hello@localfitt.com</li>
+        <a href="tel:+96176414070">+961 76 414 070</a>
       </ul>
     </div>
   </div>
