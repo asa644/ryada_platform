@@ -16,6 +16,7 @@ Rails.application.routes.draw do
     resources :bookings, only: [:create, :show]
     resources :categories
   end
+  resources :posts
   devise_for :users, controllers: { confirmations: 'confirmations' }
   # root to: 'landings#home'
   root to: 'subscribers#home'

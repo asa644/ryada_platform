@@ -3,7 +3,7 @@
 
 <!-- Header Container
 ================================================== -->
-<% if current_page?(root_path)%>
+<% if current_page?(root_path) || controller_name == "posts"%>
     <header id="header-container">
         <!-- Header -->
         <div id="header">

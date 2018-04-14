@@ -28,6 +28,7 @@
 //= require fullcalendar
 //= require turbolinks
 //= require timedropper
+//= require ckeditor/init
 
 // alert('Sadly this is static...');
 $(document).on("submit", "form[data-turboform]", function(e) {

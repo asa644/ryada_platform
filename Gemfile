@@ -70,6 +70,7 @@ end
 
 # custom cms
 # gem 'spina', github: 'asa644/spina'
+gem 'ckeditor'
 
 #search
 gem 'algoliasearch-rails'
