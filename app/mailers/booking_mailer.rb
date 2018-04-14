@@ -7,7 +7,7 @@ class BookingMailer < ApplicationMailer
       :from => 'hello@localfitt.com',
       :track_opens => 'true')
   end
-  def confirm(booking)
+  def confirmation(booking)
     @booking = booking  # Instance variable => available in view
     mail(
       :subject => 'Your booking',
