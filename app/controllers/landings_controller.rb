@@ -15,6 +15,7 @@ class LandingsController < ApplicationController
       end
     end
     if @dayclass.empty?
+      raise @dayclass
       @day = DateTime.tomorrow
       @dayclass = ordered.select do |lesson|
         l = lesson.schedule(Time.now)
