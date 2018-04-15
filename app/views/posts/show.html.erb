@@ -44,10 +44,9 @@
         <!-- Content -->
         <div class="post-content">
 
-          <h3>The 50 Greatest Street Arts In London</h3>
-
+          <h3><%=@post.title%></h3>
           <ul class="post-meta">
-            <li>August 22, 2017</li>
+            <li><%= @post.created_at.strftime('%b %d, %Y') %></li>
             <li><a href="#">Tips</a></li>
             <li><a href="#">5 Comments</a></li>
           </ul>
@@ -85,9 +84,9 @@
       <div class="about-author">
         <img src="images/user-avatar.jpg" alt="" />
         <div class="about-description">
-          <h4>Tom Perrin</h4>
-          <a href="#">tom@example.com</a>
-          <p>Nullam ultricies, velit ut varius molestie, ante metus condimentum nisi, dignissim facilisis turpis ex in libero. Sed porta ante tortor, a pulvinar mi facilisis nec. Proin finibus dolor ac convallis congue.</p>
+          <h4><%=@post.user.name%></h4>
+          <a href="#"><%=@post.user.email%></a>
+          <p><%=@post.user.bio%></p>
         </div>
       </div>
 

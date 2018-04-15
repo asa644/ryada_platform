@@ -12,6 +12,7 @@
 
       <ul class="tabs-nav sign-nav">
         <li class=""><a href="#tab9">BOOK</a></li>
+        <li class=""><a href="#tab10">Class Description</a></li>
       </ul>
 
       <div class="tabs-container sign-container alt">
@@ -19,7 +20,8 @@
         <!-- Login -->
         <div class="tab-content sign-content" id="tab9" style="display: none;">
         <p><strong>class name:</strong> <%=lesson.name%><p>
-        <p><strong>description:</strong> <%=lesson.description%><p>
+        <strong>Class Start time:</strong> <%=lesson.start_time.strftime("%H:%M %p")%> <br>
+        <strong>Class End time:</strong> <%=lesson.end_time.strftime("%H:%M %p")%> <br>
         <p><strong>Studio address:</strong> <%=lesson.listing.city%>, <%=lesson.listing.street%> <%=lesson.listing.landmark%><p>
         <p><strong>price:</strong> $<%=lesson.price%><p>
           <%= simple_form_for [@booking],  html: { id: "login" } do |f| %>
@@ -38,6 +40,7 @@
         </div>
         <!-- Register -->
         <div class="tab-content sign-content" id="tab10" style="display: none;">
+          <%=lesson.description%>
         </div>
       </div>
     </div>
