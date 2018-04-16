@@ -12,7 +12,19 @@ class CategoriesController < ApplicationController
     @array = [today, (today + 1.day), (today + 2.day), (today + 3.day), (today + 4.day), (today + 5.day), (today + 6.day)]
     @dayclass = []
     @array.each do |day|
-      category.each do |category|
+      unless category.class == Category
+        category.each do |category|
+          ordered = category.lessons.order(:start_time)
+          @dayclass << ordered.select do |lesson|
+            l = lesson.schedule(Time.now)
+            if day.day == Time.now.day
+              l.occurs_on?(day) && lesson.start_time.hour > Time.now.hour
+            else
+              l.occurs_on?(day)
+            end
+          end
+        end
+      else
         ordered = category.lessons.order(:start_time)
         @dayclass << ordered.select do |lesson|
           l = lesson.schedule(Time.now)
