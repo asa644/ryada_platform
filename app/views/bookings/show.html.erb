@@ -64,7 +64,7 @@
           <td>Fitness class</td>
           <td>1</td>
           <td>$0.00</td>
-          <td>$<%=@booking.lesson.price%></td>
+          <td>$<%=number_with_precision(@booking.lesson.price , :precision => 2)%></td>
         </tr>
       </table>
     </div>
@@ -73,7 +73,7 @@
       <table id="totals">
         <tr>
           <th>Total Due</th>
-          <th><span>$<%=@booking.lesson.price%></span></th>
+          <th><span>$<%=number_with_precision(@booking.lesson.price , :precision => 2)%></span></th>
         </tr>
       </table>
     </div>

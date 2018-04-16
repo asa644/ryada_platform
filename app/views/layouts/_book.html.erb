@@ -19,11 +19,11 @@
 
         <!-- Login -->
         <div class="tab-content sign-content" id="tab9" style="display: none;">
-        <p><strong>class name:</strong> <%=lesson.name%><p>
-        <strong>Class Start time:</strong> <%=lesson.start_time.strftime("%H:%M %p")%> <br>
-        <strong>Class End time:</strong> <%=lesson.end_time.strftime("%H:%M %p")%> <br>
+        <p><strong>CLASS NAME:</strong> <%=lesson.name%><p>
+        <strong>Start time:</strong> <%=lesson.start_time.strftime("%H:%M %p")%> <br>
+        <strong>End time:</strong> <%=lesson.end_time.strftime("%H:%M %p")%> <br>
         <p><strong>Studio address:</strong> <%=lesson.listing.city%>, <%=lesson.listing.street%> <%=lesson.listing.landmark%><p>
-        <p><strong>price:</strong> $<%=lesson.price%><p>
+        <p><strong>PRICE:</strong> $<%=number_with_precision(lesson.price, :precision => 2)%><p>
           <%= simple_form_for [@booking],  html: { id: "login" } do |f| %>
               <%=f.input_field :lesson_id, as: :hidden, value: lesson.id%>
               <%=f.input_field :day, as: :hidden, value: day%>
