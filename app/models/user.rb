@@ -9,9 +9,9 @@ class User < ApplicationRecord
   has_many :reviews
   has_many :responds
   mount_uploader :photo, PhotoUploader
-  enum gender: [:not_specified, :male, :female]
+  enum gender: [:other, :male, :female]
 
-  def name
-    self.email.split('@')[0]
-  end
+  # def name
+  #   self.email.split('@')[0]
+  # end
 end

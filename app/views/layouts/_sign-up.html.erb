@@ -49,11 +49,23 @@
       <div class="tab-content sign-content" id="tab10" style="display: none;">
           <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
             <p class="form-row form-row-wide">
+              <label for="username">Name:
+                <i class="im im-icon-User"></i>
+                <%= f.input_field :name, label: false, required: true, autofocus: true, id: "login_email" %>
+              </label>
+            </p>
+            <p class="form-row form-row-wide">
               <label for="email2">Email Address:
                 <i class="im im-icon-Mail"></i>
               <%= f.input_field :email, label: false, required: true, autofocus: true %>
               </label>
             </p>
+            <p class="form-row form-row-wide">
+              <label for="email2">Gender:
+                <%= f.select :gender, User.genders.keys%>
+              </label>
+            </p>
+
             <p class="form-row form-row-wide">
               <label for="password1">Password:
                 <i class="im im-icon-Lock-2"></i>
