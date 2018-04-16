@@ -20,7 +20,7 @@
 
                 <!-- Logo -->
                 <div id="logo">
-                    <%= link_to beta_url, data:{turbolinks: false} do%>
+                    <%= link_to root_path, data:{turbolinks: false} do%>
                         <%= image_tag "logo.png"%>
                     <%end%>
                 </div>
@@ -55,7 +55,10 @@
                             </ul>
                         </li>
  -->
-                        <li><a href="/urbanfitt">UrbanFitt</a></li>
+                        <li>
+                            <%=link_to "UrbanFitt", urbanfitt_path,data:{turbolinks: false} %>
+                            <!-- <a href="/urbanfitt">UrbanFitt</a> -->
+                        </li>
 
                     </ul>
                 </nav>

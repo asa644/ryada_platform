@@ -30,7 +30,7 @@ var infoBox_ratingType = 'star-rating';
       // Locations
       var locations = [
       <% @listings.each do |listing|%>
-        [ locationData('/beta/listings/<%=listing.id%>',"<%=image_path 'main.png'%>","<%=listing.name%>",'<%=listing.city%>, <%=listing.country%>', '3.5', '12'), <%=listing.latitude%>, <%=listing.longitude%>, <%=listing.id%>, '<i class="im im-icon-Dumbbell"></i>'],
+        [ locationData('/listings/<%=listing.id%>',"<%=image_path 'main.png'%>","<%=listing.name%>",'<%=listing.city%>, <%=listing.country%>', '3.5', '12'), <%=listing.latitude%>, <%=listing.longitude%>, <%=listing.id%>, '<i class="im im-icon-Dumbbell"></i>'],
       <%end%>
       ];
 
@@ -467,7 +467,7 @@ var infoBox_ratingType = 'star-rating';
               <div class="row with-forms">
                 <!-- Filters -->
                 <div class="col-fs-6">
-                  <%= form_tag('/beta/categories',:method=>:get) do %>
+                  <%= form_tag('/categories',:method=>:get) do %>
                       <%= select_tag "id", options_from_collection_for_select(Category.all, "id", "name"), class: "chosen-select", multiple: true %>
                  </div>
                 <div class="col-fs-6">

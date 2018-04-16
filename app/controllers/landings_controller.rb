@@ -27,4 +27,7 @@ class LandingsController < ApplicationController
       end
     end
   end
+  def notice
+
+  end
 end
