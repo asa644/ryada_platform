@@ -40,7 +40,7 @@
         <div class="col-md-12">
             <h3 class="headline centered margin-bottom-45">
                 Upcoming Fitness Classes
-              <%if @day.today?%>
+              <%if @day.day == Time.now.day%>
                 Today!
               <%else%>
                 Tomorrow!
@@ -65,7 +65,7 @@
                           <%else%>
                           <%=image_tag "main.png"%>
                           <%end%>
-                          <%if @day.today?%>
+                          <%if @day.day == Time.now.day%>
                               <% s = lesson.start_time.hour - Time.now.hour %>
                           <%else%>
                               <% s = 24 - Time.now.hour + lesson.start_time.hour %>
