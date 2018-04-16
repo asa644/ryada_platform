@@ -60,8 +60,12 @@
             <%= f.error_notification %>
 
             <div class="my-profile">
-              <label>Your Name</label>
-              <%=f.input :name, label: false%>
+              <label>First Name</label>
+              <%=f.input :first_name, label: false%>
+              <label>Last Name</label>
+              <%=f.input :last_name, label: false%>
+              <label>Gender</label>
+              <%= f.select :gender, User.genders.keys%>
               <label>Phone</label>
               <%=f.input :phone, label: false%>
               <label>Email</label>

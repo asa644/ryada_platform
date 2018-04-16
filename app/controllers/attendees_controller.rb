@@ -14,6 +14,7 @@ class AttendeesController < ApplicationController
   end
 
   def show
+    @event = Event.where(happening: true).first
     @attendee = Attendee.friendly.find(params[:id])
     # @feedback = Feedback.new
   end
