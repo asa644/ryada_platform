@@ -23,7 +23,7 @@ module RyadaPlatform
     config.action_mailer.delivery_method = :postmark
     config.action_mailer.postmark_settings = { :api_token => "9eaf4e5c-6104-4d07-9fc0-6757e757437e" }
     config.action_mailer.default_url_options = { host: "ryadapp.herokuapp.com" }
-    config.time_zone = "Etc/GMT-3"
+    # config.time_zone = "Etc/GMT-3"
     config.generators do |generate|
       generate.assets false
       generate.helper false
