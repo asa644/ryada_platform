@@ -70,7 +70,7 @@
                           <%else%>
                               <% s = 24 - Time.now.hour + lesson.start_time.hour %>
                           <%end%>
-                            <div class="listing-badge now-open">In <%=s%> hours </div>
+                            <div class="listing-badge now-open"><%=lesson.start_time.strftime("%H:%M")%></div>
                             <div class="listing-item-content">
                                 <h3><%=lesson.name%></h3>
                                 <span>
