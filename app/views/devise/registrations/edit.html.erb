@@ -73,7 +73,7 @@
               <label>Height(cm)</label>
               <%=f.input :height, label: false%>
               <label>birthday</label>
-              <%=f.input :birthdate, label: false%>
+              <%=f.input :birthdate, label: false, as: :date, :start_year => 2014, :end_year => 1930%>
     <%= f.input :current_password, hint: "we need your current password to confirm your changes", required: true %>
             </div>
             <%=f.button :submit, 'Save changes', class: "button margin-top-15"%>

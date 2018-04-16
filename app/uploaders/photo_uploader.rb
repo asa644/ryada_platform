@@ -4,7 +4,7 @@ class PhotoUploader < CarrierWave::Uploader::Base
     storage :file
 
   include Cloudinary::CarrierWave
-    process eager: true  # Force version generation at upload time.
+  process eager: true  # Force version generation at upload time.
 
   process convert: 'jpg'
 

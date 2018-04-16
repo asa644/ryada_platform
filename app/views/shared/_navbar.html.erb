@@ -75,7 +75,11 @@
                 <%else%>
                     <div class="user-menu">
 
-                        <div class="user-name"><span><%= cl_image_tag current_user.photo%></span><%=current_user.name%></div>
+                        <div class="user-name"><span>
+
+                            <%= cl_image_tag current_user.photo,:width => 35, :height => 35, :crop => :fill%>
+
+                            </span><%=current_user.name%></div>
                         <ul>
                             <li>
                                 <%=link_to edit_user_registration_url do%>
