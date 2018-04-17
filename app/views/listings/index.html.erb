@@ -470,7 +470,6 @@ var infoBox_ratingType = 'star-rating';
                   <%= form_tag('/categories',:method=>:get) do %>
                       <%= select_tag "id", options_from_collection_for_select(Category.all, "id", "name"), class: "chosen-select", multiple: true %>
                  </div>
-                 <%=Time.now%>
                 <div class="col-fs-6">
                     <%= button_tag "Apply", class: "button", style: "margin-top: 4px;"%>
                 </div>
