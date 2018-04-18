@@ -8,7 +8,7 @@ class Listing < ApplicationRecord
   has_many :timings, dependent: :destroy
   accepts_nested_attributes_for :timings
   has_many :lessons, dependent: :destroy
-  accepts_nested_attributes_for :lessons
+  # accepts_nested_attributes_for :lessons
   has_many :listing_photos, inverse_of: :listing, dependent: :destroy
   accepts_nested_attributes_for :listing_photos
   # has_many :service_listing, dependent: :destroy
