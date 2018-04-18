@@ -10,11 +10,11 @@
           <h4>Expolore top-rated classes, activities and more</h4>
 
           <div class="main-search-input">
-            <div class="main-search-input-item location">
+            <div class="main-search-input-item">
               <!-- <input type="text" placeholder="Beirut" value=""/> -->
           <%= form_tag('/categories',:method=>:get) do %>
 
-           <%= select_tag "location", options_for_select(Listing.distinct.pluck(:city)) %>
+           <%= select_tag "location", options_for_select(Listing.distinct.pluck(:city)), class: "chosen-select" %>
 
               <!-- <a href="#"><i class="fa fa-dot-circle-o"></i></a> -->
             </div>
