@@ -3,7 +3,7 @@ class Lesson < ApplicationRecord
   serialize :recurring, Hash
   has_many :lesson_exceptions
   belongs_to :user, optional: true
-  # belongs_to :listing
+  belongs_to :listing
   has_many :bookings, dependent: :destroy
   has_many :category_lesson, dependent: :destroy
   has_many :categories, through: :category_lesson
