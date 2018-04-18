@@ -14,7 +14,10 @@ class CategoriesController < ApplicationController
     @array.each do |day|
       unless category.class == Category
         category.each do |category|
-          ordered = category.lessons.order(:start_time)
+        ordered = Lesson.joins(:listing, :categories)
+        .where('listings.city = ? AND categories.name = ?', "#{params[:location]}", "#{category.name}")
+        .order(:start_time)
+          # ordered = category.lessons.order(:start_time)
           @dayclass << ordered.select do |lesson|
             l = lesson.schedule(Time.now)
             if day.day == Time.now.day
@@ -25,7 +28,10 @@ class CategoriesController < ApplicationController
           end
         end
       else
-        ordered = category.lessons.order(:start_time)
+        # ordered = category.lessons.order(:start_time)
+        ordered = Lesson.joins(:listing, :categories)
+        .where('listings.city = ? AND categories.name = ?', "#{params[:location]}", "#{category.name}")
+        .order(:start_time)
         @dayclass << ordered.select do |lesson|
           l = lesson.schedule(Time.now)
           if day.day == Time.now.day
@@ -36,6 +42,7 @@ class CategoriesController < ApplicationController
         end
       end
     end
+
     @hash = Gmaps4rails.build_markers(@listings) do |listing, marker|
       marker.lat listing.latitude
       marker.lng listing.longitude

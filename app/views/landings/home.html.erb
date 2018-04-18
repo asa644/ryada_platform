@@ -11,14 +11,14 @@
 
           <div class="main-search-input">
             <div class="main-search-input-item location">
-              <input type="text" placeholder="Beirut" value=""/>
+              <!-- <input type="text" placeholder="Beirut" value=""/> -->
+          <%= form_tag('/categories',:method=>:get) do %>
 
-<!--              <%= select_tag Listing.distinct.pluck(:city), class: "chosen-select" %>
- -->
-              <a href="#"><i class="fa fa-dot-circle-o"></i></a>
+           <%= select_tag "location", options_for_select(Listing.distinct.pluck(:city)) %>
+
+              <!-- <a href="#"><i class="fa fa-dot-circle-o"></i></a> -->
             </div>
               <div class="main-search-input-item">
-                  <%= form_tag('/categories',:method=>:get) do %>
                       <%= select_tag "id", options_from_collection_for_select(Category.all, "id", "name"), class: "chosen-select" %>
               </div>
               <%= button_tag "Search", class: "button" %>

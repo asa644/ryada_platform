@@ -2,13 +2,13 @@ class Listing < ApplicationRecord
   geocoded_by :address
   after_validation :geocode, if: :address_changed?
   mount_uploaders :photos, PhotoUploader
-  include AlgoliaSearch
+  # include AlgoliaSearch
   belongs_to :owner, :class_name => 'User', optional: true
   belongs_to :user,  :class_name => 'User'
   has_many :timings, dependent: :destroy
   accepts_nested_attributes_for :timings
-  has_many :lessons, inverse_of: :listing ,dependent: :destroy
-  accepts_nested_attributes_for :lessons, reject_if: :all_blank, allow_destroy: true
+  has_many :lessons, dependent: :destroy
+  accepts_nested_attributes_for :lessons
   has_many :listing_photos, inverse_of: :listing, dependent: :destroy
   accepts_nested_attributes_for :listing_photos
   # has_many :service_listing, dependent: :destroy
