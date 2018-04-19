@@ -2,6 +2,7 @@ class LandingsController < ApplicationController
   skip_before_action :authenticate_user!
   # , only: [:home]
   def home
+    @subscriber = Subscriber.new
     @listings = Listing.all
     @booking = Booking.new
     ordered = Lesson.order(:start_time)
