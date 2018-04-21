@@ -7319,10 +7319,11 @@ span.like-icon {
 }
 
 .category-small-box {
+  height: 13px;
   float: left;
   background-color: #f2f2f2;
   border-radius: 4px;
-  margin: 20px 0 0 20px;
+  margin: 20px 0 0 6px;
   padding: 22px 20px;
   text-align: center;
   color: #777;
@@ -7346,7 +7347,12 @@ span.like-icon {
 .category-small-box:hover h4 {
   font-size: 17px;
 }
-
+.category-small-box.active {
+  background-color: #f30c0c;
+}
+.category-small-box.active h4 {
+  color: #fff;
+}
 .category-small-box h4 {
   font-size: 16px;
   color: #333;
@@ -7367,7 +7373,7 @@ span.like-icon {
 
 /* Media Queries For Small Category Boxes */
 @media (max-width: 768px) {
-  .category-small-box { width: calc(100% * (1/2) - 20px); }
+  .category-small-box { width: calc(100% * (1/2) - 100px); }
 }
 @media (min-width: 768px) {
   .category-small-box { width: calc(100% * (1/3) - 20px); }

@@ -467,8 +467,8 @@ var infoBox_ratingType = 'star-rating';
               <div class="row with-forms">
                 <!-- Filters -->
                 <div class="col-fs-6">
-                  <%= form_tag('/categories',:method=>:get) do %>
-           <%= select_tag "location", options_for_select(Listing.distinct.pluck(:city).reverse), class: "chosen-select" %>
+                  <%= form_tag('/categories#results',:method=>:get) do %>
+                     <%= select_tag "location", options_for_select(Listing.distinct.pluck(:city).reverse), class: "chosen-select" %>
 
                       <%= select_tag "id", options_from_collection_for_select(Category.all, "id", "name"), class: "chosen-select", multiple: true %>
                  </div>
@@ -494,7 +494,7 @@ var infoBox_ratingType = 'star-rating';
       </section>
       <!-- Search / End -->
 
-    <section class="listings-container margin-top-30">
+    <section class="listings-container margin-top-30" id="results">
       <!-- Sorting / Layout Switcher -->
 <!--       <div class="row fs-switcher">
 
@@ -509,25 +509,29 @@ var infoBox_ratingType = 'star-rating';
       <!-- Listings -->
       <div class="row fs-listings style-2">
           <!-- Listing Item -->
-                  <ul class="tabs-nav lesson-nav" style="padding-bottom: 20px;">
+
+                   <div class="categories-boxes-container margin-top-5 margin-bottom-30 tabs-nav-days">
                       <%@array.each do |day|%>
                           <% if day.day == Time.now.day %>
-                          <li class="active">
-                            <a href="#tab<%=day.strftime("%w")%>b"><%=day.strftime("%A")%>
+                          <!-- <li class="active"> -->
+                             <a href="#tab<%=day.strftime("%w")%>b" class="category-small-box active">
+                               <h4><%=day.strftime("%A")[0..2]%></h4>
                             </a>
-                          </li>
+                          <!-- </li> -->
                         <%else%>
-                          <li>
-                            <a href="#tab<%=day.strftime("%w")%>b"><%=day.strftime("%A")%>
+                      <!-- <li> -->
+                             <a href="#tab<%=day.strftime("%w")%>b" class="category-small-box">
+                               <h4><%=day.strftime("%A")[0..2]%></h4>
                             </a>
-                          </li>
+<!-- </li> -->
                         <%end%>
                       <%end%>
                       <br><br>
+                    </div>
                   </ul>
         <div class="tabs-container lessons-container">
           <%@array.each do |day|%>
-              <div class="tab-content lesson-content" id="tab<%=day.strftime("%w")%>b">
+              <div class="tab-content-day lesson-content" id="tab<%=day.strftime("%w")%>b">
                 <%if @dayclass[@array.index(day)].count==0%>
                   <p class="showing-results" style="padding-left: 13px;">No fitness classes left today!</p>
                 <%end%>
@@ -610,7 +614,6 @@ var infoBox_ratingType = 'star-rating';
   </div>
 <% unless browser.device.mobile?%>
   <div class="fs-inner-container map-fixed">
-
     <!-- Map -->
       <div id="map-container">
           <div id="map" data-map-zoom="11" data-map-scroll="false">
@@ -618,7 +621,6 @@ var infoBox_ratingType = 'star-rating';
       </div>
   </div>
 <%end%>
-
 </div>
 
 
