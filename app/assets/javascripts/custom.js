@@ -7,6 +7,7 @@ $(document).ready(function(){
   // $('#test').on('cocoon:before-insert', function(event, insertedItem) {
 
   // });
+	window.location.hash = '#results';
 
   $('#test').on('cocoon:after-insert', function(e, insertedItem) {
   // 		// 		e.preventDefault();
@@ -646,7 +647,6 @@ $(document).ready(function(){
 
 	$tabsNavLis.on('click', function(e) {
 		 var $this = $(this);
-		 console.log($this);
 		 $this.siblings().removeClass('active').end()
 		 .addClass('active');
 
@@ -656,7 +656,8 @@ $(document).ready(function(){
 		 e.preventDefault();
 	});
 	var hash = window.location.hash;
-	var anchor = $('.tabs-nav a[href="' + hash + '"]');
+	console.log(hash);
+	var anchor = $('.tabs-nav-days a[href="' + hash + '"]');
 	if (anchor.length === 0) {
 		 $(".tabs-nav-days a:first").addClass("active").show(); //Activate first tab
 		 $(".tab-content-day:first").show(); //Show first tab content

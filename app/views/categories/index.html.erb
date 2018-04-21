@@ -467,7 +467,7 @@ var infoBox_ratingType = 'star-rating';
               <div class="row with-forms">
                 <!-- Filters -->
                 <div class="col-fs-6">
-                  <%= form_tag('/categories#results',:method=>:get) do %>
+                  <%= form_tag('/categories',:method=>:get) do %>
                      <%= select_tag "location", options_for_select(Listing.distinct.pluck(:city).reverse), class: "chosen-select" %>
 
                       <%= select_tag "id", options_from_collection_for_select(Category.all, "id", "name"), class: "chosen-select", multiple: true %>
