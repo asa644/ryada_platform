@@ -7,7 +7,7 @@ $(document).ready(function(){
   // $('#test').on('cocoon:before-insert', function(event, insertedItem) {
 
   // });
-	window.location.hash = '#results';
+  window.location.hash = '#results';
 
   $('#test').on('cocoon:after-insert', function(e, insertedItem) {
   // 		// 		e.preventDefault();
