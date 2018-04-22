@@ -5,7 +5,8 @@ class CategoriesController < ApplicationController
   end
   def index
     @booking = Booking.new
-    categories = Category.find(params[:id])
+    @categories = Category.find(params[:id])
+    @s = params[:id]
     @listings = Listing.where.not(latitude: nil, longitude: nil)
     @lessons = []
     today = Time.now
@@ -13,7 +14,7 @@ class CategoriesController < ApplicationController
     @dayclass = []
     @array.each do |day|
       today_classes = []
-      categories.each do |category|
+      @categories.each do |category|
         ordered = Lesson.joins(:listing, :categories)
         .where('listings.city = ? AND categories.name = ?', "#{params[:location]}", "#{category.name}")
         .order(:start_time)
@@ -27,7 +28,7 @@ class CategoriesController < ApplicationController
             l.occurs_on?(day)
           end
         end
-      if category.equal?(categories.last)
+      if category.equal?(@categories.last)
         today_classes = today_classes.uniq
       end
 
