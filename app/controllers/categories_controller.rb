@@ -18,8 +18,6 @@ class CategoriesController < ApplicationController
         ordered = Lesson.joins(:listing, :categories)
         .where('listings.city = ? AND categories.name = ?', "#{params[:location]}", "#{category.name}")
         .order(:start_time)
-        # raise 's'
-          # ordered = category.lessons.order(:start_time)
         today_classes << ordered.select do |lesson|
           l = lesson.schedule(Time.now)
           if day.day == Time.now.day
@@ -28,12 +26,16 @@ class CategoriesController < ApplicationController
             l.occurs_on?(day)
           end
         end
-      if category.equal?(@categories.last)
-        today_classes = today_classes.uniq
       end
-
+      d = []
+      today_classes.each do |cat|
+        cat.each do |cla|
+          unless d.include?(cla)
+            d << cla
+          end
+        end
       end
-      @dayclass << today_classes[0]
+      @dayclass << d
     end
   end
 end
