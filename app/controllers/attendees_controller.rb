@@ -7,6 +7,7 @@ class AttendeesController < ApplicationController
   def create
     @attendee = Attendee.new(attendee_params)
     if @attendee.save
+      AttendeeMailer.inform(@attendee).deliver_now
       redirect_to @attendee
     else
       redirect_to root_path
