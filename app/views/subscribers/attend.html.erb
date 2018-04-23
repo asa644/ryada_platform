@@ -14,7 +14,7 @@
 
 <!--           <p style="margin-bottom: 0;"> <strong>Requirement:</strong> Bring your own <strong>Mat</strong>, We have few mats for rent at the door.⠀</p>
  -->
-        <p style="margin-bottom: 0;"> <strong>Price</strong> <%=@event.price%> $</p>
+        <p style="margin-bottom: 0;"> <strong>Price: </strong>$<%=number_with_precision(@event.price, :precision => 2)%></p>
           <a href="<%=@event.link%>" target="_blank"><p style="margin-bottom: 0;">more info</p></a>
 
         </div><!-- caption -->
