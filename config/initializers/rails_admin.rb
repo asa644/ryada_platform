@@ -24,6 +24,17 @@ end
   ## == Gravatar integration ==
   ## To disable Gravatar integration in Navigation Bar set to false
   # config.show_gravatar = true
+  config.model Lesson do
+    field :name
+    field :description
+    field :categories
+    # field :recurring
+    field :start_time
+    field :end_time
+    field :listing do
+      nested_form false
+    end
+  end
 
   config.actions do
     dashboard                     # mandatory

@@ -1,5 +1,7 @@
 class Listing < ApplicationRecord
   geocoded_by :address
+  extend FriendlyId
+  friendly_id :name, use: :slugged
   after_validation :geocode, if: :address_changed?
   mount_uploaders :photos, PhotoUploader
   # include AlgoliaSearch
