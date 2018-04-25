@@ -53,6 +53,8 @@ gem 'client_side_validations-simple_form'
 
 # turbolinks
 gem 'turbolinks'
+# gem 'jquery-turbolinks'
+
 #kaminari for multiple pages
 # gem 'will_paginate'
 # gem 'betterlorem', '~> 0.1.2'
