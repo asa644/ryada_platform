@@ -542,7 +542,11 @@ var infoBox_ratingType = 'star-rating';
                         <div class="listing-item">
                             <!-- Image -->
                             <div class="listing-item-image">
-                            <%=image_tag 'main.png'%>
+                            <% if lesson.categories.first.photo.nil? %>
+                              <%=image_tag 'main.png'%>
+                            <%else%>
+                              <%= cl_image_tag lesson.categories.first.photo %>
+                            <%end
                                 <span class="tag">
                                   <%=lesson.start_time.strftime("%I:%M %p")%> - <%=lesson.end_time.strftime("%I:%M %p")%>
                                 </span>

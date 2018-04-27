@@ -63,11 +63,11 @@
 
                     <div class="listing-item-container">
                         <div class="listing-item">
-                          <% unless lesson.listing.listing_photos.empty? %>
-                          <%= cl_image_tag lesson.listing.listing_photos.first.photo, height: 300, width: 400, crop: :fill %>
-                          <%else%>
-                          <%=image_tag "main.png"%>
-                          <%end%>
+                            <% if lesson.categories.first.photo.nil? %>
+                              <%=image_tag 'main.png'%>
+                            <%else%>
+                              <%= cl_image_tag lesson.categories.first.photo %>
+                            <%end
                           <%if @day.day == Time.now.day%>
                               <% s = lesson.start_time.hour - Time.now.hour %>
                           <%else%>
