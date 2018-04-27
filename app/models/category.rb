@@ -1,4 +1,5 @@
 class Category < ApplicationRecord
+  mount_uploader :photo, PhotoUploader
   include AlgoliaSearch
   has_many :category_listing, dependent: :destroy
   has_many :listings, through: :category_listing
