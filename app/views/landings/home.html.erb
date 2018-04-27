@@ -67,7 +67,7 @@
                               <%=image_tag 'main.png'%>
                             <%else%>
                               <%= cl_image_tag lesson.categories.first.photo %>
-                            <%end
+                            <%end%>
                           <%if @day.day == Time.now.day%>
                               <% s = lesson.start_time.hour - Time.now.hour %>
                           <%else%>
