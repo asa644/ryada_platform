@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   devise_for :users, controllers: { confirmations: 'confirmations' }
   resources :subscribers, only: [:create, :show]
   resources :feedbacks, only: [:new, :create, :show, :index]
+  get '/contact' => 'feedbacks#new'
   get '/workouts' => 'listings#index'
 
   # get '/search' => 'listings#search'

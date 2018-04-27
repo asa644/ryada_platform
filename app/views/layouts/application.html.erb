@@ -42,7 +42,7 @@
 
     <%= csrf_meta_tags %>
     <%= action_cable_meta_tag %>
-    <% if controller_name == "subscribers" || controller_name == "attendees" || controller_name == "feedbacks"%>
+    <% if controller_name == "subscribers" || controller_name == "attendees"%>
             <%= stylesheet_link_tag "urban"%>
         <%else%>
             <%= stylesheet_link_tag 'application', media: 'all' %>
@@ -75,7 +75,7 @@
     </script>
 
   </head>
-    <% if controller_name == "subscribers" || controller_name == "attendees" || controller_name == "feedbacks"%>
+    <% if controller_name == "subscribers" || controller_name == "attendees"%>
       <body class="page">
     <%else%>
         <body>
@@ -85,14 +85,14 @@
     <!-- <div id="wrapper"> -->
 
     <div id="wrapper">
-    <% unless controller_name == "subscribers" || controller_name == "attendees" || controller_name == "feedbacks"%>
+    <% unless controller_name == "subscribers" || controller_name == "attendees"%>
       <%= render 'shared/navbar' %>
       <%= render 'shared/flashes' %>
     <%end%>
          <%= yield %>
     </div>
     <!-- </div> -->
-    <% unless controller_name == "subscribers" || controller_name == "attendees" || controller_name == "feedbacks"%>
+    <% unless controller_name == "subscribers" || controller_name == "attendees"%>
         <% unless user_signed_in? %>
           <%= render 'layouts/sign-up' %>
         <% end %>
@@ -103,7 +103,7 @@
     <%= javascript_include_tag "https://cdn.rawgit.com/googlemaps/js-rich-marker/gh-pages/src/richmarker-compiled.js" %>
 
     <%= javascript_include_tag "https://cdn.rawgit.com/printercu/google-maps-utility-library-v3-read-only/master/infobox/src/infobox_packed.js" %>
-    <% if controller_name == "subscribers" || controller_name == "attendees" || controller_name == "feedbacks"%>
+    <% if controller_name == "subscribers" || controller_name == "attendees"%>
         <%= javascript_include_tag "urban" %>
     <%else%>
         <%= javascript_include_tag "application" %>

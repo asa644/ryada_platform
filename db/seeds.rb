@@ -30,7 +30,7 @@ Category.create!(name: "Body toning")
 Listing.destroy_all
 require 'csv'
 csv_lists = File.read(Rails.root.join('lib', 'seeds', 'studios.csv'))
-csv_classes = File.read(Rails.root.join('lib', 'seeds', 'classes.csv'))
+csv_classes = File.read(Rails.root.join('lib', 'seeds', 'classes_updated.csv'))
 listings = CSV.parse(csv_lists.scrub, headers: true)
 classes = CSV.parse(csv_classes.scrub, headers: true)
 listings.each do |row|

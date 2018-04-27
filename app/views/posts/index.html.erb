@@ -30,30 +30,32 @@
       <div class="row">
         <div class="col-lg-9 col-md-8 padding-right-30">
           <!-- Blog Post -->
-          <div class="blog-post">
-            <!-- Img -->
-            <a href="pages-blog-post.html" class="post-img">
-              <img src="images/blog-post-01.jpg" alt="">
-            </a>
-            <!-- Content -->
-            <div class="post-content">
-              <h3><a href="pages-blog-post.html">Hotels for All Budgets </a></h3>
-              <ul class="post-meta">
-                <li>August 22, 2017</li>
-                <li><a href="#">Tips</a></li>
-                <li><a href="#">5 Comments</a></li>
-              </ul>
-              <p>Nam nisl lacus, dignissim ac tristique ut, scelerisque eu massa. Vestibulum ligula nunc, rutrum in malesuada vitae, tempus sed augue. Curabitur quis lectus quis augue dapibus facilisis.</p>
-              <a href="pages-blog-post.html" class="read-more">Read More <i class="fa fa-angle-right"></i></a>
+          <%@posts.each do |post| %>
+            <div class="blog-post">
+              <!-- Img -->
+              <a href="pages-blog-post.html" class="post-img">
+                <img src="images/blog-post-01.jpg" alt="">
+              </a>
+              <!-- Content -->
+              <div class="post-content">
+                <h3><a href="/posts/<%=post.id%>"><%=post.title%> </a></h3>
+                <ul class="post-meta">
+                  <li><%=post.created_at.strftime('%b %d, %Y')%></li>
+                  <!-- <li><a href="#">Tips</a></li> -->
+                  <!-- <li><a href="#">5 Comments</a></li> -->
+                </ul>
+                <%=truncate(sanitize(post.body, tags: []), length: 200)%>
+                <a href="/posts/<%=post.id%>" class="read-more">Read More <i class="fa fa-angle-right"></i></a>
+              </div>
             </div>
-          </div>
+          <%end%>
           <!-- Blog Post / End -->
           <!-- Pagination -->
-          <div class="clearfix"></div>
+<!--           <div class="clearfix"></div>
           <div class="row">
             <div class="col-md-12">
-              <!-- Pagination -->
-              <div class="pagination-container margin-bottom-40">
+ -->              <!-- Pagination -->
+<!--               <div class="pagination-container margin-bottom-40">
                 <nav class="pagination">
                   <ul>
                     <li><a href="#" class="current-page">1</a></li>
@@ -65,7 +67,7 @@
               </div>
             </div>
           </div>
-          <!-- Pagination / End -->
+ -->          <!-- Pagination / End -->
 
         </div>
 
@@ -77,22 +79,13 @@
           <div class="sidebar right">
 
             <!-- Widget -->
-            <div class="widget">
-              <h3 class="margin-top-0 margin-bottom-25">Search Blog</h3>
-              <div class="search-blog-input">
-                <div class="input"><input class="search-field" type="text" placeholder="Type and hit enter" value=""/></div>
-              </div>
-              <div class="clearfix"></div>
-            </div>
-            <!-- Widget / End -->
-
 
             <!-- Widget -->
             <div class="widget margin-top-40">
               <h3>Got any questions?</h3>
               <div class="info-box margin-bottom-10">
-                <p>Having any questions? Feel free to ask!</p>
-                <a href="pages-contact.html" class="button fullwidth margin-top-20"><i class="fa fa-envelope-o"></i> Drop Us a Line</a>
+                <p>Having any feedback or questions? Feel free!</p>
+                <a href="/contact" class="button fullwidth margin-top-20"><i class="fa fa-envelope-o"></i> Contact us</a>
               </div>
             </div>
             <!-- Widget / End -->

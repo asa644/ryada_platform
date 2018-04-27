@@ -1,8 +1,6 @@
 <% unless browser.device.mobile?%>
 <% content_for(:after_js) do %>
   <%= javascript_tag do %>
-  window.location.hash = '#results';
-
 var infoBox_ratingType = 'star-rating';
 (function($) {
     "use strict";
@@ -453,6 +451,8 @@ var infoBox_ratingType = 'star-rating';
 <%end%>
 <!-- Content
 ================================================== -->
+<script type="text/javascript">  window.location.hash = '#results';
+</script>
 <div class="fs-container">
 
   <div class="fs-inner-container content">
