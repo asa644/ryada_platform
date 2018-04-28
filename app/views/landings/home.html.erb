@@ -63,7 +63,7 @@
 
                     <div class="listing-item-container">
                         <div class="listing-item">
-                            <% if lesson.categories.first.photo.nil? %>
+                            <% if lesson.categories.first.nil? %>
                               <%=image_tag 'main.png'%>
                             <%else%>
                               <%= cl_image_tag lesson.categories.first.photo %>
