@@ -14,7 +14,7 @@
               <!-- <input type="text" placeholder="Beirut" value=""/> -->
           <%= form_tag('/categories#results',:method=>:get) do %>
 
-           <%= select_tag "location", options_for_select(Listing.distinct.pluck(:city).reverse), class: "chosen-select"%>
+           <%= select_tag "location", options_for_select(Listing.distinct.pluck(:city)), class: "chosen-select"%>
 
               <!-- <a href="#"><i class="fa fa-dot-circle-o"></i></a> -->
             </div>
