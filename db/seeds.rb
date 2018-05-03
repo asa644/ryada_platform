@@ -34,9 +34,8 @@ csv_classes = File.read(Rails.root.join('lib', 'seeds', 'classes_updated.csv'))
 listings = CSV.parse(csv_lists.scrub, headers: true)
 classes = CSV.parse(csv_classes.scrub, headers: true)
 listings.each do |row|
-  l = Listing.new
+ l = Listing.new
  l.name = row['Gym name']
- l.description = row['description']
  l.latitude = row['latitude']
  l.longitude = row['longitude']
  l.city = row['City']
@@ -45,7 +44,6 @@ listings.each do |row|
  l.user = User.first
  l.owner = User.first
  l.save
-  puts "#{l.name} saved"
 end
 Lesson.destroy_all
 classes.each do |row|
@@ -54,6 +52,7 @@ classes.each do |row|
   l.start_time = row['Start time']
   l.end_time = row['End time']
   l.price = row['price']
+  l.description = row['description']
   l.recurring = eval(row['rule'])
   list = Listing.where(name: row['gym'])
   l.listing = Listing.find_by_id(list.first.id)
@@ -67,10 +66,10 @@ classes.each do |row|
       else
         category_data = Category.where(name: category.capitalize)
       end
-      p l.name
-      p l.start_time
-      p category_data
-      p category_data.first.name
+      # p l.name
+      # p l.start_time
+      # p category_data
+      # p category_data.first.name
       unless category_data.nil?
         CategoryLesson.create!(category_id: category_data.first.id, lesson_id: l.id)
       end
