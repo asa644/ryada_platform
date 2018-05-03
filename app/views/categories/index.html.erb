@@ -469,7 +469,7 @@ var infoBox_ratingType = 'star-rating';
                 <!-- Filters -->
                 <div class="col-fs-6">
                   <%= form_tag('/categories',:method=>:get) do %>
-                     <%= select_tag "location", options_for_select(Listing.distinct.pluck(:city).reverse), class: "chosen-select" %>
+                     <%= select_tag "location", options_for_select(Listing.distinct.pluck(:city).reverse, @location), class: "chosen-select" %>
                       <%= select_tag "id", options_from_collection_for_select(Category.all, "id", "name", @s), class: "chosen-select", multiple: true%>
                  </div>
                 <div class="col-fs-6">
@@ -539,7 +539,11 @@ var infoBox_ratingType = 'star-rating';
                 <%@dayclass[@array.index(day)].each do |lesson| %>
                     <div class="col-lg-12 col-md-12">
                       <div class="listing-item-container list-layout" data-marker-id="<%=lesson.listing.id%>">
-                        <div class="listing-item">
+                          <% if user_signed_in? %>
+                        <div class="listing-item popup-with-zoom-anim" href="#book<%=lesson.id%>">
+                          <% else %>
+                        <div class="listing-item popup-with-zoom-anim" href="#sign-in-dialog">
+                          <%end%>
                             <!-- Image -->
                             <div class="listing-item-image">
                             <% if lesson.categories.first.photo.nil? %>

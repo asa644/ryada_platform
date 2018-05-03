@@ -34,11 +34,15 @@
                 <nav id="navigation" class="style-1">
                     <ul id="responsive">
 
-                        <li><a class="current" href="/">Home</a>
+                        <li>
+                        <%=link_to root_path, data:{turbolinks: false} do%>
+                            Home
+                        <%end%>
+
                         </li>
                         <li>
                         <%=link_to workouts_path, data:{turbolinks: false} do%>
-                            Workouts
+                            Fitness classes
                         <%end%>
                         </li>
 <!--

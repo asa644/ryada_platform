@@ -7,6 +7,7 @@ class CategoriesController < ApplicationController
     @booking = Booking.new
     @categories = Category.find(params[:id])
     @s = params[:id]
+    @location = params[:location]
     @listings = Listing.where.not(latitude: nil, longitude: nil)
     @lessons = []
     today = Time.now
