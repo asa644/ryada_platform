@@ -8,6 +8,7 @@ var infoBox_ratingType = 'star-rating';
 
     function mainMap() {
         var ib = new InfoBox();
+        var myMapOptions = { clickableIcons: false }
 
         function locationData(locationURL, locationImg, locationTitle, locationAddress, locationRating, locationRatingCounter) {
             return ('' +
@@ -66,6 +67,7 @@ var infoBox_ratingType = 'star-rating';
       // Main Map
       var map = new google.maps.Map(document.getElementById('map'), {
         zoom: zoomLevel,
+        clickableIcons: false,
         scrollwheel: scrollEnabled,
         center: new google.maps.LatLng(33.8966, 35.4823),
         mapTypeId: google.maps.MapTypeId.ROADMAP,
@@ -280,6 +282,7 @@ var infoBox_ratingType = 'star-rating';
 
     // Map Init
     var map =  document.getElementById('map');
+
     if (typeof(map) != 'undefined' && map != null) {
       google.maps.event.addDomListener(window, 'load',  mainMap);
       google.maps.event.addDomListener(window, 'resize',  mainMap);

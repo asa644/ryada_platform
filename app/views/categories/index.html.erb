@@ -65,6 +65,7 @@ var infoBox_ratingType = 'star-rating';
       // Main Map
       var map = new google.maps.Map(document.getElementById('map'), {
         zoom: zoomLevel,
+        clickableIcons: false,
         scrollwheel: scrollEnabled,
         center: new google.maps.LatLng(33.8966, 35.4823),
         mapTypeId: google.maps.MapTypeId.ROADMAP,
