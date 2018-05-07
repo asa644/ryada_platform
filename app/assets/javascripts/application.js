@@ -11,6 +11,7 @@
 //= require rails.validations.customValidators
 //= require jpanelmenu.min
 //= require cocoon
+
 //= require chosen.min
 //= require slick.min
 //= require rangeslider.min
@@ -29,7 +30,7 @@
 //= require turbolinks
 //= require timedropper
 //= require ckeditor/init
-
+console.log("hello3");
 // alert('Sadly this is static...');
 $(document).on("submit", "form[data-turboform]", function(e) {
     Turbolinks.visit(this.action+(this.action.indexOf('?') == -1 ? '?' : '&')+$(this).serialize());

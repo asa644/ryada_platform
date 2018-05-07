@@ -1,3 +1,6 @@
+
+<script type="text/javascript">console.log("hi1");</script>
+
 <!-- Banner
 ================================================== -->
 
@@ -19,7 +22,7 @@
               <!-- <a href="#"><i class="fa fa-dot-circle-o"></i></a> -->
             </div>
               <div class="main-search-input-item">
-                      <%= select_tag "id", options_from_collection_for_select(Category.all, "id", "name"), class: "chosen-select", multiple: true  %>
+                      <%= select_tag "id",options_from_collection_for_select(beirut, 'id', 'name'), class: "chosen-select", multiple: true  %>
               </div>
               <%= button_tag "Search", class: "button" %>
           <% end %>
