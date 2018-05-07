@@ -13,14 +13,14 @@ class LandingsController < ApplicationController
     # beirut = Category.first(3)
     # jounieh = Category.first(4)
     # @beirut= "#{options_from_collection_for_select(beirut, 'id', 'name')}".html_safe
-    @beirut = "".html_safe
-    beirut.each do |option|
-      @beirut << "<option value=#{option.id}>#{option.name}</option>".html_safe
-    end
-    @jounieh = "".html_safe
-    jounieh.each do |option|
-      @jounieh << "<option value=#{option.id}>#{option.name}</option>".html_safe
-    end
+    # @beirut = "".html_safe
+    # beirut.each do |option|
+    #   @beirut << "<option value=#{option.id}>#{option.name}</option>".html_safe
+    # end
+    # @jounieh = "".html_safe
+    # jounieh.each do |option|
+    #   @jounieh << "<option value=#{option.id}>#{option.name}</option>".html_safe
+    # end
 
     @day = Time.now
     @dayclass = ordered.select do |lesson|
