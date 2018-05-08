@@ -2,9 +2,12 @@
   <%= javascript_tag do %>
     $(document).ready(function(){
                     // $("#id").html('');
+      $('#id').addClass("chosen-select");
+
       $('#id').attr('multiple','multiple');
       $('#id').html("<%=@beirut%>");
       $('#id').chosen();
+
       $("select#location").on('change', function(){
             var val = $(this).val();
             if (val == "Beirut"){
@@ -54,7 +57,7 @@
               <!-- <a href="#"><i class="fa fa-dot-circle-o"></i></a> -->
             </div>
               <div class="main-search-input-item">
-                      <%= select_tag "id", multiple: true  %>
+                      <%= select_tag "id", options_from_collection_for_select(Category.all, 'id', 'name') ,multiple: true, class: "chosen-select"%>
               </div>
               <%= button_tag "Search", class: "button" %>
           <% end %>
