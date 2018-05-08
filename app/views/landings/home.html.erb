@@ -1,4 +1,36 @@
-
+<% content_for(:after_js) do %>
+  <%= javascript_tag do %>
+    $(document).ready(function(){
+                    // $("#id").html('');
+      $('#id').attr('multiple','multiple');
+      $('#id').html("<%=@beirut%>");
+      $('#id').chosen();
+      $("select#location").on('change', function(){
+            var val = $(this).val();
+            if (val == "Beirut"){
+              $('#id').empty();
+              $('#id').attr('multiple','multiple');
+              $('#id').html("<%=@beirut%>");
+              $('#id').chosen();
+              $('#id').trigger("chosen:updated");
+            } else if (val == "Jounieh"){
+              $('#id').empty();
+              $('#id').attr('multiple','multiple');
+              $('#id').html("<%=@jounieh%>");
+              $('#id').chosen();
+              $('#id').trigger("chosen:updated");
+            } else {
+              console.log("matn");
+              $('#id').empty();
+              $('#id').attr('multiple','multiple');
+              $('#id').html("<%=@matn%>");
+              $('#id').chosen();
+              $('#id').trigger("chosen:updated");
+            }
+          });
+    });
+  <%end%>
+<%end%>
 <script type="text/javascript">console.log("hi1");</script>
 
 <!-- Banner
@@ -22,7 +54,7 @@
               <!-- <a href="#"><i class="fa fa-dot-circle-o"></i></a> -->
             </div>
               <div class="main-search-input-item">
-                      <%= select_tag "id",options_from_collection_for_select(Category.all, 'id', 'name'), class: "chosen-select", multiple: true  %>
+                      <%= select_tag "id", multiple: true  %>
               </div>
               <%= button_tag "Search", class: "button" %>
           <% end %>
