@@ -20,7 +20,7 @@
 
                 <!-- Logo -->
                 <div id="logo">
-                    <%= link_to root_path, data:{turbolinks: false} do%>
+                    <%= link_to root_path do%>
                         <%= image_tag "logo.png"%>
                     <%end%>
                 </div>
@@ -35,13 +35,13 @@
                     <ul id="responsive">
 
                         <li>
-                        <%=link_to root_path, data:{turbolinks: false} do%>
+                        <%=link_to root_path do%>
                             Home
                         <%end%>
 
                         </li>
                         <li>
-                        <%=link_to workouts_path, data:{turbolinks: false} do%>
+                        <%=link_to workouts_path do%>
                             Fitness classes
                         <%end%>
                         </li>
@@ -100,7 +100,7 @@
 
 
                 <%end%>
-                <%= link_to new_listing_url, class: "button border with-icon", data:{turbolinks: false} do %>
+                <%= link_to new_listing_url, class: "button border with-icon" do %>
                         Add Listing <i class="sl sl-icon-plus"></i>
                     <%end%>
                 </div>

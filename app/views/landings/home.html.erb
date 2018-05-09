@@ -1,13 +1,9 @@
 <% content_for(:after_js) do %>
   <%= javascript_tag do %>
     $(document).ready(function(){
-                    // $("#id").html('');
-      $('#id').addClass("chosen-select");
-
       $('#id').attr('multiple','multiple');
       $('#id').html("<%=@beirut%>");
       $('#id').chosen();
-
       $("select#location").on('change', function(){
             var val = $(this).val();
             if (val == "Beirut"){
@@ -147,7 +143,7 @@
 
 
 <!-- Flip banner -->
-<a href="/workouts" class="flip-banner parallax margin-top-65" data-background="<%= image_url "home.png"%>" data-color="#f91942" data-color-opacity="0.85" data-img-width="2500" data-img-height="1666" data-turbolinks="false">
+<a href="/workouts" class="flip-banner parallax margin-top-65" data-background="<%= image_url "home.png"%>" data-color="#f91942" data-color-opacity="0.85" data-img-width="2500" data-img-height="1666">
 
     <div class="flip-banner-content">
         <h2 class="flip-visible">Expolore all Workouts and fitness classes nearby</h2>
