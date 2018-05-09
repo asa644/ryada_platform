@@ -3,9 +3,8 @@
       $('#id').attr('multiple','multiple');
       $('#id').html("<%=@beirut%>");
       $('#id').chosen();
-      // var s = <%=raw @s.to_json %>;
-      // console.log("he");
-      // $('#id').val(s).trigger("chosen:updated");
+      var s = <%=raw @s.to_json %>;
+      $('#id').val(s).trigger("chosen:updated");
       $("select#location").on('change', function(){
             var val = $(this).val();
             if (val == "Beirut"){

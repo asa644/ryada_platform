@@ -4,9 +4,9 @@ class CategoriesController < ApplicationController
     category = Category.find(params[:id])
   end
   def index
-    beirut = []
-    jounieh = []
-    matn = []
+    @beirutt = []
+    @jouniehh = []
+    @matnn = []
     Category.all.each do |category|
       lessons_beirut = Lesson.joins(:listing, :categories)
       .where('listings.city = ? AND categories.name = ?', "Beirut", "#{category.name}")
@@ -15,27 +15,27 @@ class CategoriesController < ApplicationController
       lessons_matn = Lesson.joins(:listing, :categories)
       .where('listings.city = ? AND categories.name = ?', "Matn", "#{category.name}")
       unless lessons_beirut.empty?
-        beirut << category
+        @beirutt << category
       end
       unless lessons_jounieh.empty?
-        jounieh << category
+        @jouniehh << category
       end
       unless lessons_matn.empty?
-        matn << category
+        @matnn << category
       end
     end
     # raise ''
     # @beirut= "#{options_from_collection_for_select(beirut, 'id', 'name')}".html_safe
     @beirut = "".html_safe
-    beirut.each do |option|
+    @beirutt.each do |option|
       @beirut << "<option value=#{option.id}>#{option.name}</option>".html_safe
     end
     @jounieh = "".html_safe
-    jounieh.each do |option|
+    @jouniehh.each do |option|
       @jounieh << "<option value=#{option.id}>#{option.name}</option>".html_safe
     end
     @matn = "".html_safe
-    matn.each do |option|
+    @matnn.each do |option|
       @matn << "<option value=#{option.id}>#{option.name}</option>".html_safe
     end
 

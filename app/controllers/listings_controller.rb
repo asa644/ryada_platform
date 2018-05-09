@@ -6,6 +6,40 @@ class ListingsController < ApplicationController
   def hi
   end
   def index
+    @beirutt = []
+    @jouniehh = []
+    @matnn = []
+    Category.all.each do |category|
+      lessons_beirut = Lesson.joins(:listing, :categories)
+      .where('listings.city = ? AND categories.name = ?', "Beirut", "#{category.name}")
+      lessons_jounieh = Lesson.joins(:listing, :categories)
+      .where('listings.city = ? AND categories.name = ?', "Jounieh", "#{category.name}")
+      lessons_matn = Lesson.joins(:listing, :categories)
+      .where('listings.city = ? AND categories.name = ?', "Matn", "#{category.name}")
+      unless lessons_beirut.empty?
+        @beirutt << category
+      end
+      unless lessons_jounieh.empty?
+        @jouniehh << category
+      end
+      unless lessons_matn.empty?
+        @matnn << category
+      end
+    end
+    # raise ''
+    # @beirut= "#{options_from_collection_for_select(beirut, 'id', 'name')}".html_safe
+    @beirut = "".html_safe
+    @beirutt.each do |option|
+      @beirut << "<option value=#{option.id}>#{option.name}</option>".html_safe
+    end
+    @jounieh = "".html_safe
+    @jouniehh.each do |option|
+      @jounieh << "<option value=#{option.id}>#{option.name}</option>".html_safe
+    end
+    @matn = "".html_safe
+    @matnn.each do |option|
+      @matn << "<option value=#{option.id}>#{option.name}</option>".html_safe
+    end
     @booking = Booking.new
     @listings = Listing.where.not(latitude: nil, longitude: nil)
     @lessons = []
