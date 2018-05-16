@@ -24,7 +24,6 @@ class CategoriesController < ApplicationController
         @matnn << category
       end
     end
-    # raise ''
     # @beirut= "#{options_from_collection_for_select(beirut, 'id', 'name')}".html_safe
     @beirut = "".html_safe
     @beirutt.each do |option|
@@ -77,4 +76,3 @@ class CategoriesController < ApplicationController
     end
   end
 end
-#
