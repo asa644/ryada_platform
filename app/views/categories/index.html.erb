@@ -523,133 +523,101 @@
       </section>
       <!-- Search / End -->
 
-    <section class="listings-container margin-top-30" id="results">
+    <section class="listings-container margin-top-30" id="§">
       <!-- Sorting / Layout Switcher -->
-<!--       <div class="row fs-switcher">
-
-        <div class="col-md-6">
-          Showing Results
-          <p class="showing-results">14 Results Found </p>
-        </div>
-
-      </div>
-
- -->
       <!-- Listings -->
       <div class="row fs-listings style-2">
           <!-- Listing Item -->
-
-                   <div class="categories-boxes-container margin-top-5 margin-bottom-30 tabs-nav-days">
-                      <%@array.each do |day|%>
-                          <% if day.day == Time.now.day %>
-                          <!-- <li class="active"> -->
-                             <a href="#tab<%=day.strftime("%w")%>b" class="category-small-box active">
-                              <p style="font-size: 7px;line-height: 5px; color: black;"><%=@dayclass[@array.index(day)].count%> results</p>
-                               <h4><%=day.strftime("%A")[0..2]%></h4>
-                            </a>
-                          <!-- </li> -->
-                        <%else%>
-                      <!-- <li> -->
-                             <a href="#tab<%=day.strftime("%w")%>b" class="category-small-box">
-                              <p style="font-size: 7px;line-height: 5px; color: black;"><%=@dayclass[@array.index(day)].count%> results</p>
-
-                               <h4><%=day.strftime("%A")[0..2]%></h4>
-                            </a>
-<!-- </li> -->
-                        <%end%>
-                      <%end%>
-                      <br><br>
-                    </div>
-                  </ul>
+        <div class="categories-boxes-container margin-top-5 margin-bottom-30 tabs-nav-days">
+          <%@array.each do |day|%>
+              <% if @dayclass[@array.index(day)].count > 0 %>
+                 <a href="#tab<%=day.strftime("%w")%>b" class="category-small-box">
+                  <p style="font-size: 7px;line-height: 5px; color: black;"><%=@dayclass[@array.index(day)].count%> results</p>
+                   <h4><%=day.strftime("%A")[0..2]%></h4>
+                 </a>
+              <%end%>
+          <%end%>
+          <br><br>
+        </div>
         <div class="tabs-container lessons-container">
           <%@array.each do |day|%>
+            <% if @dayclass[@array.index(day)].count > 0 %>
               <div class="tab-content-day lesson-content" id="tab<%=day.strftime("%w")%>b">
                 <%if @dayclass[@array.index(day)].count==0%>
                   <p class="showing-results" style="padding-left: 13px;">No fitness classes left today!</p>
                 <%end%>
                   <p class="showing-results" style="padding-left: 13px;"><%=@dayclass[@array.index(day)].count%> Results Found </p>
                 <%@dayclass[@array.index(day)].each do |lesson| %>
-                    <div class="col-lg-12 col-md-12">
-                      <div class="listing-item-container list-layout" data-marker-id="<%=lesson.listing.id%>">
-                          <% if user_signed_in? %>
-                        <div class="listing-item popup-with-zoom-anim" href="#book<%=lesson.id%>">
-                          <% else %>
-                        <div class="listing-item popup-with-zoom-anim" href="#sign-in-dialog">
-                          <%end%>
-                            <!-- Image -->
-                            <div class="listing-item-image">
+                  <div class="col-lg-12 col-md-12">
+                    <div class="listing-item-container list-layout" data-marker-id="<%=lesson.listing.id%>">
+                        <%if user_signed_in? %>
+                          <div class="listing-item popup-with-zoom-anim" href="#book<%=lesson.id%>">
+                        <%else %>
+                          <div class="listing-item popup-with-zoom-anim" href="#sign-in-dialog">
+                        <%end%>
+                          <!-- Image -->
+                          <div class="listing-item-image">
                             <% if lesson.categories.first.photo.nil? %>
                               <%=image_tag 'main.png'%>
                             <%else%>
                               <%= cl_image_tag lesson.categories.first.photo %>
                             <%end%>
-                                <span class="tag">
-                                  <%=lesson.start_time.strftime("%I:%M %p")%> - <%=lesson.end_time.strftime("%I:%M %p")%>
-                                </span>
-                            </div>
-                            <div class="listing-item-content">
-                              <div class="listing-item-inner">
-                                <h3><%=lesson.name%></h3>
-                                <span><%=lesson.listing.name%></span>
-                                <br>
-                                <span style="font-weight: bold;">
-                                <%lesson.categories.each do |category| %>
-                                  <%=category.name%>
-                                  <% unless lesson.categories.index(category) == lesson.categories.count - 1%>
-                                    &
-                                  <%end%>
+                            <span class="tag">
+                              <%=lesson.start_time.strftime("%I:%M %p")%> - <%=lesson.end_time.strftime("%I:%M %p")%>
+                            </span>
+                          </div>
+                          <div class="listing-item-content">
+                            <div class="listing-item-inner">
+                              <h3><%=lesson.name%></h3>
+                              <span><%=lesson.listing.name%></span>
+                              <br>
+                              <span style="font-weight: bold;">
+                              <%lesson.categories.each do |category| %>
+                                <%=category.name%>
+                                <% unless lesson.categories.index(category) == lesson.categories.count - 1%>
+                                  &
                                 <%end%>
-                                </span>
-                                <span style="font-size: 14px;"><%=lesson.listing.city%>, <%=lesson.listing.street%> <%=lesson.listing.landmark%></span>
-                              </div>
-                          <% if user_signed_in? %>
+                              <%end%>
+                              </span>
+                              <span style="font-size: 14px;"><%=lesson.listing.city%>, <%=lesson.listing.street%> <%=lesson.listing.landmark%></span>
+                            </div>
+                            <% if user_signed_in? %>
                               <span class="like-icon sign-in popup-with-zoom-anim" href="#book<%=lesson.id%>"></span>
                               <%=render 'layouts/book', lesson: lesson, day: day%>
-                          <% else %>
+                            <% else %>
                               <span class="like-icon sign-in popup-with-zoom-anim" href="#sign-in-dialog"></span>
-                          <%end%>
-                            </div>
-                        </div>
+                            <%end%>
+                          </div>
                       </div>
                     </div>
+                  </div>
                 <%end%>
               </div>
-            <%end%>
-          </div>
+            <% end%>
+          <%end%>
         <!-- Listing Item / End -->
-      </div>
-      <!-- Listings Container / End -->
-      <!-- Pagination Container -->
-      <div class="row fs-listings">
-        <div class="col-md-12">
-
-          <!-- Pagination -->
-          <div class="clearfix"></div>
-          <div class="row">
-            <div class="col-md-12">
-              <!-- Pagination -->
-<!--          <div class="pagination-container margin-top-15 margin-bottom-40">
-                <nav class="pagination">
-                  <ul>
-                    <li><a href="#" class="current-page">1</a></li>
-                    <li><a href="#">2</a></li>
-                    <li><a href="#"><i class="sl sl-icon-arrow-right"></i></a></li>
-                  </ul>
-                </nav>
-              </div>-->
+        </div>
+        <!-- Listings Container / End -->
+        <!-- Pagination Container -->
+        <div class="row fs-listings">
+          <div class="col-md-12">
+            <!-- Pagination -->
+            <div class="clearfix"></div>
+            <div class="row">
+              <div class="col-md-12">
+                <!-- Pagination -->
+              </div>
             </div>
+            <div class="clearfix"></div>
+            <!-- Pagination / End -->
+
+            <!-- Copyrights -->
+            <div class="copyrights margin-top-0">© 2018 LocalFitt. All Rights Reserved.</div>
           </div>
-          <div class="clearfix"></div>
-          <!-- Pagination / End -->
-
-          <!-- Copyrights -->
-          <div class="copyrights margin-top-0">© 2018 LocalFitt. All Rights Reserved.</div>
-
         </div>
       </div>
       <!-- Pagination Container / End -->
     </section>
-
     </div>
   </div>
 <% unless browser.device.mobile?%>

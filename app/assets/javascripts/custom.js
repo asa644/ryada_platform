@@ -635,7 +635,10 @@ $(document).ready(function(){
 
 	var $tabsNav    = $('.tabs-nav-days'),
 	$tabsNavLis = $tabsNav.children('a');
-
+	var $some = $tabsNav.children('a');
+ 	$some.parent().next().children('.tab-content-day').stop(true,true).hide()
+ .first().show();
+ console.log($some.attr('href'));
 	$tabsNav.each(function() {
 		 var $this = $(this);
 
@@ -644,16 +647,17 @@ $(document).ready(function(){
 
 		 $this.children('a').first().addClass('active').stop(true,true).show();
 	});
-
 	$tabsNavLis.on('click', function(e) {
+	if ($tabsNavLis.length > 1){
 		 var $this = $(this);
 		 $this.siblings().removeClass('active').end()
 		 .addClass('active');
 
 		 $this.parent().next().children('.tab-content-day').stop(true,true).hide()
 		 .siblings( $this.attr('href') ).fadeIn();
-
+		 console.log($this.parent().next().children('.tab-content-day').siblings($this.attr('href')));
 		 e.preventDefault();
+		}
 	});
 	var hash = window.location.hash;
 	console.log(hash);

@@ -20,6 +20,7 @@
         <!-- Login -->
         <div class="tab-content sign-content" id="tab9" style="display: none;">
         <p><strong>CLASS NAME:</strong> <%=lesson.name%><p>
+        <strong>Date:</strong> <%=lesson.start_time.strftime("%H:%M %p")%> <br>
         <strong>Start time:</strong> <%=lesson.start_time.strftime("%H:%M %p")%> <br>
         <strong>End time:</strong> <%=lesson.end_time.strftime("%H:%M %p")%> <br>
         <p><strong>Studio address:</strong> <%=lesson.listing.city%>, <%=lesson.listing.street%> <%=lesson.listing.landmark%><p>
