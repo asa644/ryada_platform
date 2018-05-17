@@ -532,8 +532,8 @@
           <%@array.each do |day|%>
               <% if @dayclass[@array.index(day)].count > 0 %>
                  <a href="#tab<%=day.strftime("%w")%>b" class="category-small-box">
-                  <p style="font-size: 7px;line-height: 5px; color: black;"><%=@dayclass[@array.index(day)].count%> results</p>
-                   <h4><%=day.strftime("%A")[0..2]%></h4>
+<!--                   <p style="font-size: 7px;line-height: 5px; color: black;"><%=@dayclass[@array.index(day)].count%> results</p>
+ -->                   <h4><%=day.strftime("%A")[0..2]%></h4>
                  </a>
               <%end%>
           <%end%>
