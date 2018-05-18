@@ -22,13 +22,13 @@
           <p class="form-row form-row-wide">
             <label for="username">Email:
               <i class="im im-icon-Mail"></i>
-              <%= f.input_field :email, label: false, required: true, autofocus: true, id: "login_email" %>
+              <%= f.input_field :email, label: false, required: true, autofocus: true, id: "login_email", required: "required" %>
             </label>
           </p>
           <p class="form-row form-row-wide">
             <label for="password">Password:
               <i class="im im-icon-Lock-2"></i>
-              <%= f.input_field :password, required: true, label: false, id: "login_pass" %>
+              <%= f.input_field :password, required: true, label: false, id: "login_pass", required: "required" %>
             </label>
             <span class="lost_password">
             <%= link_to "Forgot your password?", new_password_path(resource_name) %>
@@ -51,13 +51,13 @@
             <p class="form-row form-row-wide">
               <label for="username">Name:
                 <i class="im im-icon-User"></i>
-                <%= f.input_field :name, label: false, required: true, autofocus: true, id: "login_email" %>
+                <%= f.input_field :name, label: false, required: true, autofocus: true, id: "login_email", required: "required" %>
               </label>
             </p>
             <p class="form-row form-row-wide">
               <label for="email2">Email Address:
                 <i class="im im-icon-Mail"></i>
-              <%= f.input_field :email, label: false, required: true, autofocus: true %>
+              <%= f.input_field :email, label: false, required: true, autofocus: true, required: "required" %>
               </label>
             </p>
             <p class="form-row form-row-wide">
@@ -69,14 +69,14 @@
             <p class="form-row form-row-wide">
               <label for="password1">Password:
                 <i class="im im-icon-Lock-2"></i>
-              <%= f.input_field :password, label: false, required: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length) %>
+              <%= f.input_field :password, label: false, required: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length), required: "required" %> %>
               </label>
             </p>
 
             <p class="form-row form-row-wide">
               <label for="password2">Repeat Password:
                 <i class="im im-icon-Lock-2"></i>
-                <%= f.input_field :password_confirmation, label: false, required: true, autofocus: true %>
+                <%= f.input_field :password_confirmation, label: false, required: true, autofocus: true, required: "required" %> %>
               </label>
             </p>
             <%=f.submit 'Register', class: 'button border fw margin-top-10'%>
