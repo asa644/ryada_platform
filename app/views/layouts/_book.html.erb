@@ -28,14 +28,14 @@
           <%= simple_form_for [@booking],  html: { id: "login" } do |f| %>
               <%=f.input_field :lesson_id, as: :hidden, value: lesson.id%>
               <%=f.input_field :day, as: :hidden, value: day%>
-              <% if current_user.phone.nil?%>
-          <p class="form-row form-row-wide">
-            <label for="username">Your phone number:
-              <i class="im im-icon-Telephone"></i>
-              <%= f.input_field :phone, label: false, required: true %>
-            </label>
-          </p>
-              <%end%>
+          <% if current_user.phone.empty?%>
+              <p class="form-row form-row-wide">
+                <label for="username">Your phone number:
+                  <i class="im im-icon-Telephone"></i>
+                  <%= f.input_field :phone, label: false, required: "required" %>
+                </label>
+              </p>
+            <%end%>
             <%=f.submit 'Confirm booking', class: 'button border margin-top-5'%>
             <%end%>
         </div>
