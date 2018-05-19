@@ -69,14 +69,14 @@
             <p class="form-row form-row-wide">
               <label for="password1">Password:
                 <i class="im im-icon-Lock-2"></i>
-              <%= f.input_field :password, label: false, required: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length), required: "required" %> %>
+              <%= f.input_field :password, label: false, required: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length), required: "required" %>
               </label>
             </p>
 
             <p class="form-row form-row-wide">
               <label for="password2">Repeat Password:
                 <i class="im im-icon-Lock-2"></i>
-                <%= f.input_field :password_confirmation, label: false, required: true, autofocus: true, required: "required" %> %>
+                <%= f.input_field :password_confirmation, label: false, required: true, autofocus: true, required: "required" %>
               </label>
             </p>
             <%=f.submit 'Register', class: 'button border fw margin-top-10'%>
