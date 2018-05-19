@@ -28,7 +28,7 @@
           <%= simple_form_for [@booking],  html: { id: "login" } do |f| %>
               <%=f.input_field :lesson_id, as: :hidden, value: lesson.id%>
               <%=f.input_field :day, as: :hidden, value: day%>
-          <% if current_user.phone.empty?%>
+          <% if current_user.phone.nil?%>
               <p class="form-row form-row-wide">
                 <label for="username">Your phone number:
                   <i class="im im-icon-Telephone"></i>
