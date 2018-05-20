@@ -2,35 +2,35 @@
 # # # The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
 # # #
 # # # Examples:
-Category.destroy_all
-Category.create!(name: "Pilates")
-Category.create!(name: "Cardio")
-# Category.create!(name: "Aerobic")
-Category.create!(name: "Kids")
-Category.create!(name: "Dance")
-Category.create!(name: "Stretching")
-# Category.create!(name: "Boxing")
-Category.create!(name: "Yoga")
-Category.create!(name: "Strength training")
-Category.create!(name: "Martial arts")
-Category.create!(name: "Glutes")
-# Category.create!(name: "HIIT")
-Category.create!(name: "Legs")
-Category.create!(name: "Conditioning")
-Category.create!(name: "Crossfit")
-Category.create!(name: "Resistance")
-Category.create!(name: "Prenatal")
-Category.create!(name: "Metabolism")
-Category.create!(name: "Core")
-Category.create!(name: "Body toning")
+# Category.destroy_all
+# Category.create!(name: "Pilates")
+# Category.create!(name: "Cardio")
+# # Category.create!(name: "Aerobic")
+# Category.create!(name: "women only")
+# Category.create!(name: "Dance")
+# Category.create!(name: "Stretching")
+# # Category.create!(name: "Boxing")
+# Category.create!(name: "Yoga")
+# Category.create!(name: "Strength training")
+# Category.create!(name: "Martial arts")
+# Category.create!(name: "Glutes")
+# # Category.create!(name: "HIIT")
+# Category.create!(name: "Legs")
+# Category.create!(name: "Conditioning")
+# Category.create!(name: "Crossfit")
+# Category.create!(name: "Resistance")
+# Category.create!(name: "Prenatal")
+# Category.create!(name: "Metabolism")
+# Category.create!(name: "Core")
+# Category.create!(name: "Body toning")
 # Category.create!(name: "Functional")
 # Category.create!(name: "Gymnastics")
 
 
-Listing.destroy_all
+# Listing.destroy_all
 require 'csv'
-csv_lists = File.read(Rails.root.join('lib', 'seeds', 'studios.csv'))
-csv_classes = File.read(Rails.root.join('lib', 'seeds', 'classes_updated.csv'))
+csv_lists = File.read(Rails.root.join('lib', 'seeds', 'studios_2.csv'))
+csv_classes = File.read(Rails.root.join('lib', 'seeds', 'classes_2.csv'))
 listings = CSV.parse(csv_lists.scrub, headers: true)
 classes = CSV.parse(csv_classes.scrub, headers: true)
 listings.each do |row|
@@ -45,7 +45,7 @@ listings.each do |row|
  l.owner = User.first
  l.save
 end
-Lesson.destroy_all
+# Lesson.destroy_all
 classes.each do |row|
   l = Lesson.new
   l.name = row['Class']
