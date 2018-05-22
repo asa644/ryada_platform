@@ -35,20 +35,19 @@
 <!-- Banner
 ================================================== -->
 
-<div class="main-search-container dark-overlay" data-background-image="<%= image_url 'landing-page-background.png'%>">
+<div class="main-search-container" data-background-image="<%= image_url 'tabata.png'%>">
   <div class="main-search-inner">
     <div class="container">
       <div class="row">
         <div class="col-md-12">
-          <h2>Find Nearby fitness classes</h2>
-          <h4>Expolore top-rated classes, activities and more</h4>
-
+          <h2 style="font-weight: bold;">Access The Best Fitness Classes In Lebanon</h2>
+          <h4 style="font-weight: bold;">Expolore top-rated classes, activities and more</h4>
           <div class="main-search-input">
             <div class="main-search-input-item">
               <!-- <input type="text" placeholder="Beirut" value=""/> -->
           <%= form_tag('/categories#results',:method=>:get) do %>
 
-           <%= select_tag "location", options_for_select(Listing.distinct.pluck(:city).reverse), class: "chosen-select"%>
+           <%= select_tag "location", options_for_select(Listing.distinct.pluck(:city)), class: "chosen-select", input_html: {data: { placeholder: "..." }}%>
 
               <!-- <a href="#"><i class="fa fa-dot-circle-o"></i></a> -->
             </div>
