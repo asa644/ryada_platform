@@ -30,7 +30,7 @@
 # Listing.destroy_all
 require 'csv'
 # csv_lists = File.read(Rails.root.join('lib', 'seeds', 'studios_2.csv'))
-csv_classes = File.read(Rails.root.join('lib', 'seeds', 'classes_2.csv'))
+csv_classes = File.read(Rails.root.join('lib', 'seeds', 'classes_3.csv'))
 # listings = CSV.parse(csv_lists.scrub, headers: true)
 classes = CSV.parse(csv_classes.scrub, headers: true)
 # listings.each do |row|
