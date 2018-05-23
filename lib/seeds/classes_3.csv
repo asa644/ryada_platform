@@ -1,0 +1,2 @@
+Class,Start time,End time,Categories,rule,gym,price,level,description
+Vinyasa,10:00,11:30,Yoga,IceCube::Rule.weekly(1).day(1),AK Yoga Studio,20,All levels,"Vinyasa Yoga focuses on synchronizing every movement with a breath. Vinyasa not only condition the body, but it also works on improving temperment, discipline and mental focus. This class is suited to those with some yoga experience"
