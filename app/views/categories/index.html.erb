@@ -58,7 +58,7 @@
         // Locations
         var locations = [
         <% @listings.each do |listing|%>
-          [ locationData('/listings/<%=listing.id%>',"<%=image_path 'main.png'%>","<%=listing.name%>",'<%=listing.city%>, <%=listing.country%>', '3.5', '12'), <%=listing.latitude%>, <%=listing.longitude%>, <%=listing.id%>, '<i class="im im-icon-Dumbbell"></i>'],
+          [ locationData('_#',"<%=image_path 'main.png'%>","<%=listing.name%>",'<%=listing.city%>, <%=listing.country%>', '3.5', '12'), <%=listing.latitude%>, <%=listing.longitude%>, <%=listing.id%>, '<i class="im im-icon-Dumbbell"></i>'],
         <%end%>
         ];
 
