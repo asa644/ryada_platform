@@ -1,5 +1,53 @@
-<h2>Forgot your password?</h2>
 
+
+<!-- <div class="clearfix"></div> -->
+<!-- Header Container / End -->
+
+
+<!-- Titlebar
+================================================== -->
+<div id="titlebar">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+
+        <h2>Registration</h2>
+
+        <!-- Breadcrumbs -->
+        <nav id="breadcrumbs">
+          <ul>
+            <li><a href="#">Home</a></li>
+            <li>Change password</li>
+          </ul>
+        </nav>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Pricing Tables
+================================================== -->
+
+<!-- Container / Start -->
+<div class="container">
+
+  <!-- Row / Start -->
+  <div class="row">
+
+    <div class="col-md-8">
+  <div class="sign-in-form style-1">
+
+    <ul class="tabs-nav sign-nav">
+      <li class=""><a href="#tab9">Change password</a></li>
+      <li><a href="#tab10">Register</a></li>
+    </ul>
+
+    <div class="tabs-container sign-container alt">
+
+      <!-- Login -->
+      <div class="tab-content sign-content" id="tab9" style="display: none;">
 <%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
   <%= f.error_notification %>
 
@@ -12,4 +60,58 @@
   </div>
 <% end %>
 
-<%= render "devise/shared/links" %>
+      </div>
+
+      <!-- Register -->
+      <div class="tab-content sign-content" id="tab10" style="display: none;">
+          <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+            <p class="form-row form-row-wide">
+              <label for="username">Name:
+                <i class="im im-icon-User"></i>
+                <%= f.input_field :name, label: false, required: true, autofocus: true, id: "login_email", required: "required" %>
+              </label>
+            </p>
+            <p class="form-row form-row-wide">
+              <label for="email2">Email Address:
+                <i class="im im-icon-Mail"></i>
+              <%= f.input_field :email, label: false, required: true, autofocus: true, required: "required" %>
+              </label>
+            </p>
+            <p class="form-row form-row-wide">
+              <label for="email2">Gender:
+                <%= f.select :gender, User.genders.keys, class: "chosen-select"%>
+              </label>
+            </p>
+
+            <p class="form-row form-row-wide">
+              <label for="password1">Password:
+                <i class="im im-icon-Lock-2"></i>
+              <%= f.input_field :password, label: false, required: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length), required: "required" %>
+              </label>
+            </p>
+
+            <p class="form-row form-row-wide">
+              <label for="password2">Repeat Password:
+                <i class="im im-icon-Lock-2"></i>
+                <%= f.input_field :password_confirmation, label: false, required: true, autofocus: true, required: "required" %>
+              </label>
+            </p>
+            <%=f.submit 'Register', class: 'button border fw margin-top-10'%>
+          <%end%>
+      </div>
+    </div>
+  </div>
+    </div>
+  </div>
+  <!-- Row / End -->
+
+</div>
+<!-- Container / End -->
+
+
+<!-- Back To Top Button -->
+
+<br><br>
+ <%= render 'shared/footer' %>
+
+

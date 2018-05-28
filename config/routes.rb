@@ -12,7 +12,7 @@ Rails.application.routes.draw do
     end
     resources :lessons
   end
-  resources :bookings, only: [:create, :show]
+  resources :bookings, only: [:new,:create, :show]
   resources :categories
   resources :posts
   devise_for :users, controllers: { confirmations: 'confirmations' }

@@ -1,13 +1,12 @@
 class BookingsController < ApplicationController
   before_action :set_booking, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!
+  before_action :authenticate_user!, except: [:new]
   before_action :require_permission, only: [:edit, :show]
 
   # GET /bookings
   # GET /bookings.json
-  # def index
-  #   @bookings = Booking.all
-  # end
+  def new
+  end
 
   # GET /bookings/1
   # GET /bookings/1.json

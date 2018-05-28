@@ -3,7 +3,7 @@
 
 <!-- Header Container
 ================================================== -->
-<% if current_page?(root_path) || controller_name == "posts"%>
+<% if current_page?(root_path) || controller_name == "posts" || devise_controller?%>
     <header id="header-container">
         <!-- Header -->
         <div id="header">
@@ -107,7 +107,7 @@
 
                 <%end%>
                 <%= link_to new_listing_url, class: "button border with-icon" do %>
-                        Add Listing <i class="sl sl-icon-plus"></i>
+                        Become a Partner <i class="sl sl-icon-plus"></i>
                     <%end%>
                 </div>
             </div>

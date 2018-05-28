@@ -52,7 +52,7 @@
               <!-- <a href="#"><i class="fa fa-dot-circle-o"></i></a> -->
             </div>
               <div class="main-search-input-item">
-                      <%= select_tag "id", options_from_collection_for_select(Category.all, 'id', 'name') ,multiple: true, class: "chosen-select"%>
+                      <%= select_tag "id", options_from_collection_for_select(Category.all, 'id', 'name'), multiple: true, class: "chosen-select"%>
               </div>
               <%= button_tag "Search", class: "button" %>
           <% end %>
