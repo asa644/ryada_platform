@@ -2,6 +2,8 @@ Rails.application.routes.draw do
 # match "*path" => redirect("https://www.localfitt.com/%{path}"), :constraints => { :protocol => "http://" }
 # match "*path" => redirect("https://www.localfitt.com/%{path}"), :constraints => { :subdomain => "" }
    # resources :lessons
+mount PdfjsViewer::Rails::Engine => "/pdfjs", as: 'pdfjs'
+
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   root to: 'landings#home'
   resources :listings do
@@ -12,6 +14,7 @@ Rails.application.routes.draw do
     end
     resources :lessons
   end
+  # get 'yogaforacause' => 'subscribers#yoga'
   resources :bookings, only: [:new,:create, :show]
   resources :categories
   resources :posts
@@ -36,6 +39,8 @@ Rails.application.routes.draw do
     resources :attendees, only: [:new, :create, :show]
   end
   get '/notice' => 'landings#notice'
+  get '/yogaforacause' => 'landings#yoga'
+
   get '*path' => redirect('/')
 
   # get '/pending' => 'users#pending'

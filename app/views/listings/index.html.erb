@@ -500,7 +500,7 @@
                   <%= form_tag('/categories#results',:method=>:get) do %>
                      <%= select_tag "location", options_for_select(Listing.distinct.pluck(:city).reverse, "Beirut"), class: "chosen-select" %>
 
-                      <%= select_tag "id", options_from_collection_for_select(Category.all, 'id', 'name') ,multiple: true, class: "chosen-select", width: "200px"%>
+                      <%= select_tag "id", options_from_collection_for_select(Category.all, 'id', 'name') , multiple: true, class: "chosen-select", width: "200px"%>
                  </div>
                 <div class="col-fs-6">
                     <%= button_tag "Apply", class: "button", style: "margin-top: 4px;"%>

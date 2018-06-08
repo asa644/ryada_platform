@@ -26,6 +26,7 @@ gem 'friendly_id', '~> 5.1.0'
 gem 'cloudinary'
 # gem 'csv',
 gem 'browser'
+gem 'pdfjs_viewer-rails'
 
 # gem 'activesupport-json_encoder'
 gem 'ice_cube'

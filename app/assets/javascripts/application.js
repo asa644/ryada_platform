@@ -29,5 +29,6 @@
 //= require fullcalendar
 //= require timedropper
 //= require ckeditor/init
+//= require pdfobject
 console.log("hello3");
 // alert('Sadly this is static...');

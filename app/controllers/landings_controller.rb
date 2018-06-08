@@ -64,4 +64,8 @@ class LandingsController < ApplicationController
   def notice
 
   end
+  def yoga
+    @pdf = Pdf.first.attachment
+   # @pdf = File.read(Rails.root.join('lib', 'seeds', 'booking_2.pdf'))
+  end
 end
