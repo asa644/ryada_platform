@@ -29,22 +29,22 @@
 
 # Listing.destroy_all
 require 'csv'
-# csv_lists = File.read(Rails.root.join('lib', 'seeds', 'studios_2.csv'))
-csv_classes = File.read(Rails.root.join('lib', 'seeds', 'classes_3.csv'))
-# listings = CSV.parse(csv_lists.scrub, headers: true)
+csv_lists = File.read(Rails.root.join('lib', 'seeds', 'studios_3.csv'))
+csv_classes = File.read(Rails.root.join('lib', 'seeds', 'classes_4.csv'))
+listings = CSV.parse(csv_lists.scrub, headers: true)
 classes = CSV.parse(csv_classes.scrub, headers: true)
-# listings.each do |row|
-#  l = Listing.new
-#  l.name = row['Gym name']
-#  l.latitude = row['latitude']
-#  l.longitude = row['longitude']
-#  l.city = row['City']
-#  l.street = row['Street']
-#  l.landmark = row['Landmark']
-#  l.user = User.first
-#  l.owner = User.first
-#  l.save
-# end
+listings.each do |row|
+ l = Listing.new
+ l.name = row['Gym name']
+ l.latitude = row['latitude']
+ l.longitude = row['longitude']
+ l.city = row['City']
+ l.street = row['Street']
+ l.landmark = row['Landmark']
+ l.user = User.first
+ l.owner = User.first
+ l.save
+end
 # Lesson.create!(name:Vinyasa, start_time: 10:00 end_time: 11:30 Yoga  IceCube::Rule.weekly(1).day(0)  AK Yoga Studio  20  All levels  Vinyasa Yoga focuses on synchronizing every movement with a breath. Vinyasa not only condition the body, but it also works on improving temperment, discipline and mental focus. This class is suited to those with some yoga experience
 # Lesson.destroy_all
 classes.each do |row|

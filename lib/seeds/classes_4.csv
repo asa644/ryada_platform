@@ -1,0 +1,9 @@
+Class,Start time,End time,Categories,rule,gym,price,level,description
+ABS & BUTT,19:00,20:00,Strength training,"IceCube::Rule.weekly(1).day(1,3)",ABBA Gym Lebanon,10,All levels,Train and strengthen your core and so you can achieve that summer body you desire
+ZUMBA,8:00 PM,9:00 PM,"Dance,Cardio","IceCube::Rule.weekly(1).day(1,3)",ABBA Gym Lebanon,10,All levels,"Mix fun, dance, and cardio with zumba.. All at once."
+MMA,8:30 PM,10:00 PM,Martial arts,"IceCube::Rule.weekly(1).day(2,4)",ABBA Gym Lebanon,10,All levels,Learn the skills of mixed martial arts and learn how to defend yourself
+AEROBICS,5:00 PM,6:00 PM,"Cardio,Stretching",IceCube::Rule.weekly(1).day(3),ABBA Gym Lebanon,10,All levels,"Do cardio, with fun aerobic activities so you achieve more flexibility! "
+LATIN,6:00 PM,7:00 PM,Dance,IceCube::Rule.weekly(1).day(4),ABBA Gym Lebanon,10,All levels,Learn a wide range of dance latin moves
+AEROBICS,12:00 PM,1:00 PM,"Cardio,Stretching",IceCube::Rule.weekly(1).day(3),ABBA Gym Lebanon,10,All levels,"Do cardio, with fun aerobic activities so you achieve more flexibility! "
+LATIN Kids,5:00 PM,6:00 PM,"Dance,kids",IceCube::Rule.weekly(1).day(5),ABBA Gym Lebanon,10,All levels,Let your kids learn a wide range of dance latin moves
+Yoga,7:00 PM,8:30 PM,Yoga,IceCube::Rule.weekly(1).day(5),ABBA Gym Lebanon,10,All levels,Stretch and keep calm while relaxing your body and mind
