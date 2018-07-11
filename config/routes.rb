@@ -14,6 +14,8 @@ mount PdfjsViewer::Rails::Engine => "/pdfjs", as: 'pdfjs'
     end
     resources :lessons
   end
+    resources :lessons
+
   # get 'yogaforacause' => 'subscribers#yoga'
   resources :bookings, only: [:new,:create, :show]
   resources :categories

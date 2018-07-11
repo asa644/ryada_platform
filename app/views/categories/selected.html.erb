@@ -57,7 +57,9 @@
 
         // Locations
         var locations = [
-          [ locationData('_#',"<%=image_path 'main.png'%>","<%=@listing.name%>",'<%=@listing.city%>, <%=@listing.country%>', '3.5', '12'), <%=@listing.latitude%>, <%=@listing.longitude%>, <%=@listing.id%>, '<i class="im im-icon-Dumbbell"></i>'],
+        <% @listings.each do |listing|%>
+          [ locationData('_#',"<%=image_path 'main.png'%>","<%=listing.name%>",'<%=listing.city%>, <%=listing.country%>', '3.5', '12'), <%=listing.latitude%>, <%=listing.longitude%>, <%=listing.id%>, '<i class="im im-icon-Dumbbell"></i>'],
+        <%end%>
         ];
 
         // Chosen Rating Type
@@ -526,46 +528,62 @@
       <!-- Listings -->
       <div class="row fs-listings style-2">
           <!-- Listing Item -->
+        <div class="categories-boxes-container margin-top-5 margin-bottom-30 tabs-nav-days">
+          <%@array.each do |day|%>
+              <% if @dayclass[@array.index(day)].count > 0 %>
+                 <a href="#tab<%=day.strftime("%w")%>b" class="category-small-box">
+<!--                   <p style="font-size: 7px;line-height: 5px; color: black;"><%=@dayclass[@array.index(day)].count%> results</p>
+ -->                   <h4><%=day.strftime("%A")[0..2]%></h4>
+                 </a>
+              <%end%>
+          <%end%>
+          <br><br>
+        </div>
         <div class="tabs-container lessons-container">
-              <div class="tab-content-day lesson-content" id="">
+          <%@array.each do |day|%>
+            <% if @dayclass[@array.index(day)].count > 0 %>
+              <div class="tab-content-day lesson-content" id="tab<%=day.strftime("%w")%>b">
+                <%if @dayclass[@array.index(day)].count==0%>
+                  <p class="showing-results" style="padding-left: 13px;">No fitness classes left today!</p>
+                <%end%>
+                  <p class="showing-results" style="padding-left: 13px;"><%=@dayclass[@array.index(day)].count%> Results Found </p>
+                <%@dayclass[@array.index(day)].each do |lesson| %>
                   <div class="col-lg-12 col-md-12">
-                    <div class="listing-item-container list-layout" data-marker-id="<%=@lesson.listing.id%>">
+                    <div class="listing-item-container list-layout" data-marker-id="<%=lesson.listing.id%>">
                         <%if user_signed_in? %>
-                          <div class="listing-item popup-with-zoom-anim" href="#book<%=@lesson.id%>">
+                          <div class="listing-item popup-with-zoom-anim" href="#book<%=lesson.id%>">
                         <%else %>
                           <div class="listing-item popup-with-zoom-anim" href="#sign-in-dialog">
                         <%end%>
                           <!-- Image -->
                           <div class="listing-item-image">
-                            <% if @lesson.categories.first.photo.nil? %>
+                            <% if lesson.categories.first.photo.nil? %>
                               <%=image_tag 'main.png'%>
                             <%else%>
-                              <%= cl_image_tag @lesson.categories.first.photo %>
+                              <%= cl_image_tag lesson.categories.first.photo %>
                             <%end%>
                             <span class="tag">
-                              <%=@lesson.start_time.strftime("%I:%M %p")%> - <%=@lesson.end_time.strftime("%I:%M %p")%>
+                              <%=lesson.start_time.strftime("%I:%M %p")%> - <%=lesson.end_time.strftime("%I:%M %p")%>
                             </span>
                           </div>
                           <div class="listing-item-content">
                             <div class="listing-item-inner">
-                              <h3><%=@lesson.name%></h3>
-                              <%=@date.strftime("%A")%>
-                              <br>
-                              <span><%=@lesson.listing.name%></span>
+                              <h3><%=lesson.name%></h3>
+                              <span><%=lesson.listing.name%></span>
                               <br>
                               <span style="font-weight: bold;">
-                              <%@lesson.categories.each do |category| %>
+                              <%lesson.categories.each do |category| %>
                                 <%=category.name%>
-                                <% unless @lesson.categories.index(category) == @lesson.categories.count - 1%>
+                                <% unless lesson.categories.index(category) == lesson.categories.count - 1%>
                                   &
                                 <%end%>
                               <%end%>
                               </span>
-                              <span style="font-size: 14px;"><%=@lesson.listing.city%>, <%=@lesson.listing.street%> <%=@lesson.listing.landmark%></span>
+                              <span style="font-size: 14px;"><%=lesson.listing.city%>, <%=lesson.listing.street%> <%=lesson.listing.landmark%></span>
                             </div>
                             <% if user_signed_in? %>
-                              <span class="like-icon sign-in popup-with-zoom-anim" href="#book<%=@lesson.id%>"></span>
-                              <%=render 'layouts/book', lesson: @lesson, day: Time.now%>
+                              <span class="like-icon sign-in popup-with-zoom-anim" href="#book<%=lesson.id%>"></span>
+                              <%=render 'layouts/book', lesson: lesson, day: day%>
                             <% else %>
                               <span class="like-icon sign-in popup-with-zoom-anim" href="#sign-in-dialog"></span>
                             <%end%>
@@ -573,7 +591,10 @@
                       </div>
                     </div>
                   </div>
+                <%end%>
               </div>
+            <% end%>
+          <%end%>
         <!-- Listing Item / End -->
         </div>
         <!-- Listings Container / End -->

@@ -11,6 +11,27 @@ class LessonsController < ApplicationController
   # GET /lessons/1
   # GET /lessons/1.json
   def show
+    today = Time.now
+
+    @array = [today, (today + 1.day), (today + 2.day), (today + 3.day), (today + 4.day), (today + 5.day), (today + 6.day)]
+    @booking = Booking.new
+    @listing = @lesson.listing
+    @date = @lesson.schedule(Time.now).next_occurrence(Time.now)
+
+    # @dayclass = []
+    # @array.each do |day|
+    #   today_classes = []
+    #   d = []
+    #   today_classes.each do |cat|
+    #     cat.each do |cla|
+    #       unless d.include?(cla)
+    #         d << cla
+    #       end
+    #     end
+    #   end
+    #   @dayclass << d
+    # end
+
   end
 
   # GET /lessons/new

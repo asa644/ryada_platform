@@ -75,4 +75,5 @@ class CategoriesController < ApplicationController
       @dayclass << d
     end
   end
+
 end
