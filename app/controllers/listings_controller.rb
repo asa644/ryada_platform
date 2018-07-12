@@ -62,6 +62,63 @@ class ListingsController < ApplicationController
       marker.lng listing.longitude
     end
   end
+  def select
+    @beirutt = []
+    @jouniehh = []
+    @matnn = []
+    Category.all.each do |category|
+      lessons_beirut = Lesson.joins(:listing, :categories)
+      .where('listings.city = ? AND categories.name = ?', "Beirut", "#{category.name}")
+      lessons_jounieh = Lesson.joins(:listing, :categories)
+      .where('listings.city = ? AND categories.name = ?', "Jounieh", "#{category.name}")
+      lessons_matn = Lesson.joins(:listing, :categories)
+      .where('listings.city = ? AND categories.name = ?', "Matn", "#{category.name}")
+      unless lessons_beirut.empty?
+        @beirutt << category
+      end
+      unless lessons_jounieh.empty?
+        @jouniehh << category
+      end
+      unless lessons_matn.empty?
+        @matnn << category
+      end
+    end
+    # raise ''
+    # @beirut= "#{options_from_collection_for_select(beirut, 'id', 'name')}".html_safe
+    @beirut = "".html_safe
+    @beirutt.each do |option|
+      @beirut << "<option value=#{option.id}>#{option.name}</option>".html_safe
+    end
+    @jounieh = "".html_safe
+    @jouniehh.each do |option|
+      @jounieh << "<option value=#{option.id}>#{option.name}</option>".html_safe
+    end
+    @matn = "".html_safe
+    @matnn.each do |option|
+      @matn << "<option value=#{option.id}>#{option.name}</option>".html_safe
+    end
+    @booking = Booking.new
+    @listings = Listing.where.not(latitude: nil, longitude: nil)
+    @lessons = []
+    today = Time.now
+    @array = [today, (today + 1.day), (today + 2.day), (today + 3.day), (today + 4.day), (today + 5.day), (today + 6.day)]
+    @dayclass = []
+    @array.each do |day|
+      ordered = Lesson.order(:start_time)
+      @dayclass << ordered.select do |lesson|
+        l = lesson.schedule(Time.now)
+        if day.day == Time.now.day
+          l.occurs_on?(day) && lesson.start_time.hour > Time.now.hour
+        else
+          l.occurs_on?(day)
+        end
+      end
+    end
+    @hash = Gmaps4rails.build_markers(@listings) do |listing, marker|
+      marker.lat listing.latitude
+      marker.lng listing.longitude
+    end
+  end
   def pendings
     @listings = Listing.where(status: 'pending')
   end

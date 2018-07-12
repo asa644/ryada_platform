@@ -25,6 +25,7 @@ mount PdfjsViewer::Rails::Engine => "/pdfjs", as: 'pdfjs'
   resources :feedbacks, only: [:new, :create, :show, :index]
   get '/contact' => 'feedbacks#new'
   get '/workouts' => 'listings#index'
+  get '/select' => 'listings#select'
 
   # get '/search' => 'listings#search'
   # get '/pendings' => 'listings#pendings'
