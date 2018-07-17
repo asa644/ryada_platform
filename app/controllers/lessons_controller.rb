@@ -17,7 +17,7 @@ class LessonsController < ApplicationController
     @booking = Booking.new
     @listing = @lesson.listing
     @date = @lesson.schedule(Time.now).next_occurrence(Time.now)
-
+    @date = @lesson.schedule(Time.now).occurrences(Time.now+1.week).first
     # @dayclass = []
     # @array.each do |day|
     #   today_classes = []
